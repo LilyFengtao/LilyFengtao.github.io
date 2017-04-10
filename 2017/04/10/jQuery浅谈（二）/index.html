@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jQuery浅谈（二） | 李锋涛</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content=李锋涛   >
+  <link rel="apple-touch-icon" href="img/icons/152.png">
+  
+  
+  <meta name="theme-color" content="#0c0c1f">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternate" href="/atom.xml" title="李锋涛" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class=" ">
+  	   <div class="iewarn" id="iewarn">
+<div>---------!!!!!!!!!!!!!!!!-----------------</div>
+检测到您正在使用IE9或更低版本浏览器访问本站，为了您的阅读体验，本站推荐您使用<a href="https://www.google.com/chrome/" target="_blank" >Chrome浏览器</a> 或者<a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank" >Firefox浏览器 </a> 对本站进行访问
+
+</div>
+      <header class="main-header">
+
+<div class="logo nav-list">
+<a href="/"><img src=/img/logo1.jpg alt="logo" width="50px" height="50px" /></a>
+</div>
+<ul class="nav-list nav">
+
+<li class="nav-list">
+<a href="/">
+<i class="fa fa-home" aria-hidden="true" ></i>
+首页
+</a>
+</li>
+<li class="nav-list">
+<a href="/about">
+<i class="fa fa-youtube-play" aria-hidden="true" ></i>
+关于我
+</a>
+</li>
+<li class="nav-list">
+<a href="/atom.xml" target="_blank" >
+<i class="fa fa-feed" aria-hidden="true" ></i>
+订阅我
+</a>
+</li>
+<li class="nav-list lightmode ">
+<a href="javascript:;" >
+<i class="fa fa-moon-o" aria-hidden="true"></i>
+关灯
+</a>
+</li>
+</ul>
+
+</header>
+        <article>
+  <div class="article-share">
+<div id="qrcode">
+	<div class="qr-text">
+	扫一扫，分享到微信
+	<i class="fa fa-window-close-o fa-2" aria-hidden="true"></i>
+	</div>
+</div>
+<ul class="share-content">
+<li >
+		<i class="fa fa-share-alt" aria-hidden="true"></i>
+	</li>
+	<li>
+		<a ><i class="fa fa-weixin" aria-hidden="true" id="toweixin"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-weibo" aria-hidden="true" id="toweibo"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-twitter" aria-hidden="true" id="totwitter"></i></a>
+	</li>
+</ul>
+</div>
+<div class="article main-body" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <!--采用相对的时间或者绝对的时间，默认相对-->
+
+<div class="article-date">
+  	<time datetime="2017-04-10T09:15:19.000Z" itemprop="datePublished">
+  	
+  	
+  	
+  	
+  	
+    
+          
+      
+      
+        
+    
+    
+    
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	 	
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	
+  	
+  		
+  	
+  	
+  	43minutesago
+
+
+  
+<div>
+read time: 4分钟
+</div>
+</div>
+
+
+
+
+  </div>
+  <div class="article-inner">
+   
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery浅谈（二）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="jQuery-动画"><a href="#jQuery-动画" class="headerlink" title="jQuery 动画"></a>jQuery 动画</h2><p>  1 显示与隐藏<br>    显示(show)与隐藏(hide)是一组动画：</p>
+<pre><code>  show方法详解：
+  show([speed], [callback]);
+  speed(可选)：动画的执行时间
+1 如果不传，就没有动画效果。
+2 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+3 固定字符串，slow(200)、normal(400)、fast(600) ，如果传其他字符串，则默认为normal。
+  callback(可选):执行完动画后执行的回调函数
+4 hide 方法详解
+   与show方法的用法完全一致。
+   show/hide：修改的是元素的width、height、opacity。
+</code></pre><p>   2滑入与滑出</p>
+<pre><code>  滑入(slideUp)与滑出(slideDown)是一组动画，效果与卷帘门类似
+  slideUp/slideDown,使用方法与show/hide基本一致
+
+ slideUp(speed, callback);
+ speed(可选)：动画的执行时间
+1 如果不传，默认为normal，注意区分show/hide。
+2 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+   3 固定字符串，slow(200)、normal(400)、fast(600)
+ callback(可选):执行完动画后执行的回调函数
+</code></pre><p>   3 滑入与滑出切换</p>
+<pre><code>$(selector).slideToggle(speed,callback);
+如果是隐藏状态，那么执行slideDown操作，如果是显示状态，那么执行slideUp操作。
+
+slideUp/slideDown：修改的是元素的height
+</code></pre><p>   4 渐入渐出</p>
+<pre><code>  fadeIn/fadeOut使用方法与show/hide、slideDown/slideUp一致。
+  fadeIn(speed, callback);
+  speed(可选)：动画的执行时间
+1 如果不传，默认是normal。
+2 毫秒值(比如1000),动画在1000毫秒执行完成(推荐)
+   3 固定字符串，slow(200)、normal(400)、fast(600)
+    callback(可选):执行完动画后执行的回调函数
+  淡入淡出切换
+  fadeToggle(speed, callback);
+  如果当前元素处于隐藏状态，那么执行fadeIn操作，如果处于显示状态，那么执行fadeOut操作。
+
+  淡入淡出到某个值
+  淡入与淡出的区别：淡入淡出只能控制元素的不透明度从 完全不透明 到完全透明；而fadeTo可以指定元素不透明度的具体值。并且时间参数是必需的！
+
+  fadeTo(speed, value, [callback])//可以设置具体的透明度
+  speed（必须）
+  value  0-1之间的数值(比如0.4)，表示淡到某一个值。
+  callback(可选) 回调函数
+
+  注意：fade系列方法：修改的是元素的opacity
+</code></pre><h2 id="动画小结"><a href="#动画小结" class="headerlink" title="动画小结"></a>动画小结</h2><pre><code>1.    jQuery给我们提供了三组动画，show/hide、slideUp/slideDown、fadeIn/fadeOut
+2.    动画切换方法：slideToggle、fadeToggle，注意：show和hide没有切换的方法。
+3.    淡入淡出到某个值：fadeTo方法。
+4.    show/slideDown/fadeIn三个是显示效果、hide/slideUp/fadeOut三个是隐藏效果。
+5.    show/hide修改的是元素的height,width,opacity。slide系列方法修改的是元素的height。fade系列方法修改的是元素的opacity。这三种方法修改的这些值，都是带数字的，因为带了数字才能做渐变。
+</code></pre><h2 id="自定义动画"><a href="#自定义动画" class="headerlink" title="自定义动画"></a>自定义动画</h2><pre><code>$(selector).animate({params},[speed],[callback]);
+ {params}：要执行动画的CSS属性，带数字（必选）
+ speed：执行动画时长（可选）
+ callback：动画执行完后立即执行的回调函数（可选）
+</code></pre><h2 id="easing-参数"><a href="#easing-参数" class="headerlink" title="easing 参数"></a>easing 参数</h2><pre><code>控制动画在不同元素的速度，默认为“swing”
+“swing”：在开头和结尾移动慢，在中间移动速度快
+“linear”：匀速移动
+</code></pre><h3 id="动画队列问题"><a href="#动画队列问题" class="headerlink" title="动画队列问题"></a>动画队列问题</h3><pre><code>在同一个元素上执行多个动画，那么对于这个动画来说，后面的动画会被放到动画队列中，等前面的动画执行完成了才会执行（联想：地铁进站）
+</code></pre><h2 id="停止动画-stop方法"><a href="#停止动画-stop方法" class="headerlink" title="停止动画 stop方法"></a>停止动画 stop方法</h2><pre><code>stop(clearQueue, jumpToEnd);
+第一个参数：是否清除队列
+第二个参数：是否跳转到最终效果
+最常用的停止动画：stop();
+</code></pre>
+      
+    </div>
+    
+<div class="reward" id="rewardme">
+「喜欢，就赞一个呗！(:3 」∠)_ (￣y▽￣)~*」
+
+<div class="reward-qr">
+<div class="reward-tks">
+「鼓励我写出更好的文字」
+<i class="fa fa-window-close" aria-hidden="true"></i>
+</div>
+<img src= "/img/alipay.jpg" />
+「支付宝」
+</div>
+
+
+<div class="reward-btn" >
+<div class="reward-text">赏</div>
+</div>
+
+
+</div>
+ 
+    
+    
+
+
+
+
+<div class="copyright">
+<blockquote>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（二）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（二）/ </a>
+<div>
+<strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
+</div>
+</blockquote>
+</div>
+
+	
+
+    
+    <div class="cat-and-tags">
+    
+    <div class="show-tags">
+<ul>
+
+
+
+<li>
+
+
+
+<a href=http:lilyfengtao.github.io/tags/jQuery >
+<i class="fa fa-tags" aria-hidden="true"></i>
+jQuery
+</a>
+</li>
+
+
+</ul>
+</div>
+
+
+    </div>
+    
+    <!--注意网易云跟贴url位置必须在网易网站配置中的网站域名之下，比如当我在localhost下设置的时候哦
+就会因为与网易网站设置的域名不匹配而导致跟贴不能显示出来
+-->
+
+
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+
+var pathname=document.location.pathname
+var cloudTieConfig = {
+  url: "http:lilyfengtao.github.io"+pathname, 
+  sourceId: "uuuu",
+  productKey: "d9ac976925074859942b446f585903fd",
+  target: "cloud-tie-wrapper"
+};
+var yunManualLoad = true;
+Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
+
+  </div>
+ 
+ 
+  <!--上一篇下一篇 -->
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/10/jQuery浅谈（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          jQuery浅谈（一）
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+
+</div>
+</article>
+
+      <footer id="footer">
+  <div class="outer">
+     
+     <div id="footer-info" class="inner">
+     
+      &copy;  2014 - 2017 
+       李锋涛<br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </br>
+      theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
+      </div>
+      
+      
+     
+
+
+     
+    
+  </div>
+  <div class="to-top">
+    <div class="toTop-btn">
+    <div class="toTop-text">返回顶部</div>
+  	<button class="toTop-button">
+  		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+  	</button >
+    </div>
+  </div>
+</footer>
+     
+    
+
+<script src="/js/qrcode.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/lightmode.js"></script>
+
+<script src="/js/iewarn.js"></script>
+
+
+  
+</body>
+</html>
