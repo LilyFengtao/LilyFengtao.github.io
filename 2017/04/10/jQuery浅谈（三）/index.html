@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery浅谈（一） | 李锋涛</title>
+  <title>jQuery浅谈（三） | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2017-04-10T08:07:51.000Z" itemprop="datePublished">
+  	<time datetime="2017-04-10T15:55:37.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,7 +129,7 @@
   		
   	
   	
-  	9hoursago
+  	anhourago
 
 
   
@@ -149,7 +149,7 @@ read time: 4分钟
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery浅谈（一）
+      jQuery浅谈（三）
     </h1>
   
 
@@ -157,96 +157,98 @@ read time: 4分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="什么是jQuery"><a href="#什么是jQuery" class="headerlink" title="什么是jQuery?"></a>什么是jQuery?</h2><pre><code>jQery是一个javascript的库，使用js文件，内部封装了许多方法供我们使用。
-</code></pre><h2 id="jQ的入口函数"><a href="#jQ的入口函数" class="headerlink" title="jQ的入口函数"></a>jQ的入口函数</h2><pre><code>1 $(document).ready(function(){    });
-2 $(function(){ })
-jQ的入口函数加载时机，页面生成后触发；
-jQ两种执行顺序，谁在签名先执行谁。
-</code></pre><h2 id="jQ对象和Dom对象之间的关系？"><a href="#jQ对象和Dom对象之间的关系？" class="headerlink" title="jQ对象和Dom对象之间的关系？"></a>jQ对象和Dom对象之间的关系？</h2><pre><code>1 Dom对象就是原生Jjs种提供的对象，使用js方法获取的对象
-2 jQ 对象就是提供jQ的方式不获取的对象
-2 Dom对象无法使用jq的属性和方法，jq也无法使用Dom的属性和方法
-4 jq对象的内部包含了所需要的Dom对象，jq对象是Dom对象的包装集
-</code></pre><h2 id="jQ对象和Dom对象之间的转换？"><a href="#jQ对象和Dom对象之间的转换？" class="headerlink" title="jQ对象和Dom对象之间的转换？"></a>jQ对象和Dom对象之间的转换？</h2><pre><code>1 使用$()包裹一个Dom对象，可以将这个Dom对象转换为jq对象
-    例：$box=$(#box)
-2 将jq转换为Dom 对象
-    例： $(&quot;box&quot;)[0]或 $(&quot;box&quot;).get(0);
-</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>1 传统选择器
+        <h2 id="juery操作Dom（节点）"><a href="#juery操作Dom（节点）" class="headerlink" title="juery操作Dom（节点）"></a>juery操作Dom（节点）</h2><pre><code>1 创建元素
+    $(htmlStr)
+    htmlStr：html格式的字符串
+    $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
+2 添加元素
 
-- 标签选择器： $(&quot;div&quot;)
-- 类选择器: $(&quot;.box&quot;)
-- id 选择器 $(&quot;#box&quot;)
-- 子代选择器 $(&quot;#list&gt;li&quot;)
-- 后代选择器 $(&quot;#list li&quot;)
+      添加新建的元素
+  +     方法一：将jQuery对象添加到调用者内部的最后面。 
+    var $span = $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
+    $(“div”).append($span);
 
-2 过滤选择器
+    + 方法二：参数传字符串，会自动创建成jquery对象
+    $(“div”).append(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
+    添加已经存在的元素
+    var $p = $(“p”);
+    $(“div”).append($p);
+    注意：如果添加的是已经存在的元素，那么会把之前的元素给干掉。（类似于剪切的功能）。
 
-- eq(书写索引值) 可以去除索引值
-- even 选中索引值为偶数的元素
-- odd 选中索引值为奇数的元素
+    prepend() 在子节点的最前面插入    
 
-3  筛选选择器
-- children() 子代选择器 
-- find()      后代选择器
-- siblings()  兄弟选择器，获取所有同级元素
-- parent()  父元素，想弹鼓parentNode
-- eq()       筛选选择器（可以获取一些标签种指定的标签)
-- next()    获取最后一个同级元素
-- prev()     获取抢一个同级元素
-</code></pre><h2 id="Css操作"><a href="#Css操作" class="headerlink" title="Css操作"></a>Css操作</h2><pre><code>功能：设置或者修改样式，操作的是style属性。
+    before() 在同级元素的前面插入
 
-1 设置单个样式
-    name：需要设置的样式名称
-    value：对应的样式值
-    css(name, value);
-    使用案例
-    $(&quot;#one&quot;).css(&quot;background&quot;,&quot;gray&quot;);//将背景色修改为灰色
-2 设置多个样式
+    after() 在同级元素的后面插入
 
-  参数是一个对象，对象中包含了需要设置的样式名和样式值
-    css(obj);
-    使用案例
-    $(&quot;#one&quot;).css({
-    &quot;background&quot;:&quot;gray&quot;,
-    &quot;width&quot;:&quot;400px&quot;,
-    &quot;height&quot;:&quot;200px&quot;
+    appendTo() 添加插入到... 括号内是目标元素
+    例 : $(&quot;#text&quot;).appendTo(&quot;#box&quot;)
+    prependTo() 和appendTo()正好相反
+    例： $(&quot;#box&quot;).appendTo(&quot;#text&quot;)
+</code></pre><h2 id="清空元素"><a href="#清空元素" class="headerlink" title="清空元素"></a>清空元素</h2><pre><code>empty：清空指定节点的所有元素，自身保留(清理门户)
+$(“div”).empty();//清空div的所有内容（推荐使用，会清除子元素上绑定的内容，源码）
+清空元素的第二种方法
+$(“div”).html(“”);//使用html方法来清空元素，有就保留，清除其他的，缺点是，内部标签有事件不清除。（不推荐使用，会造成内存泄漏，绑定的事件不会被清除。）
+</code></pre><h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><pre><code>remove（ ）：相比于empty，自身也删除（自杀），传谁 杀谁。
+</code></pre><h2 id="克隆元素-clone"><a href="#克隆元素-clone" class="headerlink" title="克隆元素 clone()"></a>克隆元素 clone()</h2><pre><code>作用:复制匹配的元素
+复制$(selector)所匹配到的元素（深度复制，即复制标签还复制事件）
+cloneNode(true)
+ 返回值为复制的新元素，和原来的元素没有任何关系了。即修改新元素，不会影响到原来的元素。
+$(selector).clone(false);
+浅复制（复制标签和内容）
+</code></pre><h2 id="jQuery操作属性"><a href="#jQuery操作属性" class="headerlink" title="jQuery操作属性"></a>jQuery操作属性</h2><pre><code>1  设置单个属性
+    第一个参数：需要设置的属性名
+    第二个参数：对应的属性值
+    attr(name, value);
+    用法举例
+    $(“img”).attr(“title”,”哎哟，不错哦”);
+    $(“img”).attr(“alt”,“哎哟，不错哦”);
+
+2     设置多个属性
+    参数是一个对象，包含了需要设置的属性名和属性值
+    attr(obj)
+    用法举例
+    $(&quot;img&quot;).attr({
+    title:&quot;哎哟，不错哦&quot;,
+    alt:&quot;哎哟，不错哦&quot;,
+    style:&quot;opacity:.5&quot;
     });
+</code></pre><h2 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h2><pre><code>传需要获取的属性名称，返回对应的属性值
+attr(name)
+用法举例
+var oTitle = $(&quot;img&quot;).attr(&quot;title&quot;);
+alert(oTitle);
+注意：
+1.    获取属性时，只会获取到第一个元素对应的属性，与css方法一样
+2.    获取属性时，如果该属性不存在，那么会返回undefined
+</code></pre><h2 id="移除事件-removeAttr"><a href="#移除事件-removeAttr" class="headerlink" title="移除事件 removeAttr()"></a>移除事件 removeAttr()</h2><pre><code>参数：需要移除的属性名，如果传空，那么不会有任何操作，注意，并不是移除所有的属性。区分removeClass。
+removeAttr(name);
+用法举例
+$(&quot;img&quot;).removeAttr(&quot;title&quot;);
+</code></pre><h2 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h2><pre><code>注意：在jQuery1.6之后，对于checked、selected、disable这类boolean类型的属性来说，如果使用attr方法获取属性值，得到的不是true和false，而是checked以及undefined。，使用prop方法来获取或者设置checked、selected、disable这类的值。prop方法使用跟attr方法一样。
+设置属性
+$(“:checked”).prop(“checked”,true);
+获取属性
+$(“:checked”).prop(“checked”);//返回true或者false
+</code></pre><h2 id="jQuery操作值与内容"><a href="#jQuery操作值与内容" class="headerlink" title="jQuery操作值与内容"></a>jQuery操作值与内容</h2><pre><code>1  val 方法
+    val方法用于设置和获取表单元素的值，例如input、select、textarea的值
+    设置值
+    $(“#name”).val(“张三”);
+    获取值
+    $(“#name”).val();
+2 html 方法
+    设置内容
+    $(“div”).html(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
+    获取内容
+    $(“div”).html()
+3 text 方法
+    设置内容
+    $(“div”).text(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
+    获取内容
+    $(“div”).text()
 
-3 获取样式
-
-    name:需要获取的样式名称
-    css(name);
-    案例
-    $(&quot;div&quot;).css(&quot;background-color&quot;);
-    注意：获取样式操作只会返回第一个元素对应的样式值。
-</code></pre><h2 id="class操作"><a href="#class操作" class="headerlink" title="class操作"></a>class操作</h2><pre><code>1 添加样式 addClass()
-    name：需要添加的样式类名，注意参数不要带点.
-    addClass(name);
-    例子,给所有的div添加one的样式。
-    $(“div”).addClass(“one”);
-2 移除所有样式 removeClass()
-     不带参数，移除所有的样式类
-    removeClass()
-    例子，移除div所有的样式类
-    $(“div”).removeClass();
-3 移除单个样式
-    name:需要移除的样式类名
-    removeClass(“name”);
-    例子，移除div中one的样式类名
-    $(“div”).removeClass(“one”);
-4  判断是否有样式值 hasClass()
-    name:用于判断的样式类名，返回值为true false
-    hasClass(name)
-    例子，判断第一个div是否有one的样式类
-    $(“div”).hasClass(“one”);
-5 切换样式 toggleClass() 
-    toggleClass(name);
-    例子
-    $(“div”).toggleClass(“one”);
-
-    经验总结：
-    1.    如果操作到的样式非常少，可以考虑css方法
-    2. 如果操作到的样式非常多，那么可以通过class方法来操作，将样式写到一个class类里面。
-    3.    如果考虑到后期维护方便，将css从js中分离出来，那么推荐使用class的方式来操作。
+html方法与text方法的区别：
+html方法会识别html标签，text方法会把内容直接当成字符串，并不会识别html标签。
 </code></pre>
       
     </div>
@@ -259,7 +261,7 @@ jQ两种执行顺序，谁在签名先执行谁。
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（一）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（一）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（三）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（三）/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -321,20 +323,15 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2017/04/10/AngularJs简介与学习（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/10/jQuery浅谈（二）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          AngularJs简介与学习（二）
+          jQuery浅谈（二）
         
       </div>
     </a>
   
-  
-    <a href="/2017/04/10/jQuery浅谈（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jQuery浅谈（二）</div>
-    </a>
   
 </nav>
 
