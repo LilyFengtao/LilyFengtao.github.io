@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AngularJs简介与学习（二） | 李锋涛</title>
+  <title>浅谈RESTful | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2017-04-09T16:09:42.000Z" itemprop="datePublished">
+  	<time datetime="2017-04-11T01:38:45.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	2daysago
+  	12hoursago
 
 
   
 <div>
-read time: 2分钟
+read time: 3分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 2分钟
         
   
     <h1 class="article-title" itemprop="name">
-      AngularJs简介与学习（二）
+      浅谈RESTful
     </h1>
   
 
@@ -157,40 +157,42 @@ read time: 2分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><pre><code>变量的作用域通常来说，在一段程序里面的某个变量的名字并不总是可用的，而限定这个变量的使用的范围就是作用域。
-</code></pre><h3 id="angular-的作用域"><a href="#angular-的作用域" class="headerlink" title="angular 的作用域"></a>angular 的作用域</h3><pre><code>作用域的关系就像函数里面方法的作用域的关系一样。作用域指的是$scope 的数据能否被获取到.
-有一个根作用域，以后我有一部分数据在整个应用里面是需要共享的，我就把这个数据赋值给$rootScope上面，我在应用的任何一个位置都可以获取.
-</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><pre><code> 1 内置过滤器
-      date    日期
-      currency 货币
-      limitTo   截取字符串
-      json     将对象转换成json 格式字符串
-      uppercase  转换成为大写
-      lowercase  转换成小写
-      filter     获取数据，找到对应的数据，主要是用来做界面的搜索的
-      number     获取数据，对数据的小数点做一个精确
-      orderBy    排序，列表我就可以进行排序
+        <h2 id="RESTful-是什么？"><a href="#RESTful-是什么？" class="headerlink" title="RESTful 是什么？"></a>RESTful 是什么？</h2><pre><code>一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件‘
+主要用于客户端和服务器交互的软件。可以更简洁，更有层次，更易于缓存等机制。
+地址/user/addUser  方法名 POST canshu {name:&quot;lione&quot;,&quot;age&quot;:2}
+响应 成功{success:&quot;成功&quot;,data:{id:&quot;ddddddd&quot;}}
+失败{error:&quot;失败&quot;,data:{,msg:&quot;哈哈哈&quot;}}
 
-2 自定义过滤器
-    app.directive 自定义指令
-    app.filter(&quot;&quot;) 自定义过滤器，有一个默认的参数
-</code></pre><h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><pre><code>所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制。
- 通俗的讲就是通入注入的方式解决依赖关系。
- 常见的AngularJS内置服务有$http、$location、$timeout、$rootScope等
+1  增 GET /user 获取user信息列表  GET/getUserlist？page=1
 
-1 $http 我们这个模块肯定是用来供后台进行交互的
-2 $location 这个是angular 封装了一个location 对象，在暴露出来的api
-3 $timeout  这个是封装了我们的一个函数 window.setTimeout()
-4 $rootScope 这个$rootScope  $scope 模型数据. 我在$rootScope 里面绑定了数据，我在页面的任何地方都可以使用
-这个数据.
-</code></pre><p>  5 $inteval  这个是封装了我们的一个函数 window.setInterval();</p>
-<pre><code>我们可以把这些功能都可以理解成服务。对外提供什么样的功能，就是对外提供什么样的服务.
-我的模块要使用这些服务，就需要去注入这些服务
-  注入有两种方式：
-      1  行内式  第二个参数是数组
-      2 推断式  第二个参数是函数
-    我们推荐使用第一个种行内式，为了避免代码压缩.
-</code></pre>
+2 查 GET /user/17  查看id为17的具体user信息 GET/getUserById？Id=1
+
+ POST /user  新建一个user  POST/addUser
+
+3 改 PUT /user /17 更新id为17的user信息 PUT/updateUser
+
+ 4 删 DELETE /user/17 删除id为17de user信息 DELETE /delUserById?id=14
+</code></pre><h1 id="Es6"><a href="#Es6" class="headerlink" title="Es6"></a>Es6</h1><h2 id="什么是Es6"><a href="#什么是Es6" class="headerlink" title="什么是Es6?"></a>什么是Es6?</h2><p>ECMAScript es标准的作用，定义js的发展方向的一套标准</p>
+<h2 id="为什么用es6？"><a href="#为什么用es6？" class="headerlink" title="为什么用es6？"></a>为什么用es6？</h2><p>   新的语法，写起来更严谨更安全更简单</p>
+<h2 id="为什么前端不用，node要用？"><a href="#为什么前端不用，node要用？" class="headerlink" title="为什么前端不用，node要用？"></a>为什么前端不用，node要用？</h2><pre><code>js---&gt;浏览器---&gt;引擎执行js代码
+
+node----&gt;v8执行js代码
+node 不考虑兼容性，es6能给我们带来好处。
+node.js 覆盖了93%de ECMAScript 6 
+</code></pre><h2 id="user-strict-严格模式"><a href="#user-strict-严格模式" class="headerlink" title="user strict 严格模式"></a>user strict 严格模式</h2><pre><code>消除了javascript语法的一些不合理，不严谨之处，减少一些怪异行为
+1 规范了javascript语法
+2 告诉js引擎用什么语法解析
+严格模式下不允许进行全局定义
+</code></pre><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><pre><code>使用let去定义变量  let  xx==00;
+作用域：都在花括号内
+</code></pre><h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><pre><code>const 使用来定义很顶的值
+node 多用于包的引用，复合作用域在会计作用域内
+</code></pre><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><pre><code>var foo=&quot;asdhfhfjgg&quot;
+var bar=&quot;hehe&quot;+foo+&quot;haha&quot;
+var baz=`hehe${foo}haha`;
+console.log(baz
+)    
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
       
     </div>
     
@@ -222,7 +224,7 @@ read time: 2分钟
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/11/浅谈RESTful/" href="_blank" > http:lilyfengtao.github.io/2017/04/11/浅谈RESTful/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -236,18 +238,6 @@ read time: 2分钟
     
     <div class="show-tags">
 <ul>
-
-
-
-<li>
-
-
-
-<a href=http:lilyfengtao.github.io/tags/AngularJs >
-<i class="fa fa-tags" aria-hidden="true"></i>
-AngularJs
-</a>
-</li>
 
 
 </ul>
@@ -284,19 +274,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2017/04/09/AngularJs简介与学习（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/10/jQuery浅谈（三）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          AngularJs简介与学习（一）
+          jQuery浅谈（三）
         
       </div>
     </a>
   
   
-    <a href="/2017/04/10/jQuery浅谈（一）/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/04/11/jQuery浅谈（四）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jQuery浅谈（一）</div>
+      <div class="article-nav-title">jQuery浅谈（四）</div>
     </a>
   
 </nav>

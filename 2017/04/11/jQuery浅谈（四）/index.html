@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>jQuery浅谈（四） | 李锋涛</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content=李锋涛   >
+  <link rel="apple-touch-icon" href="img/icons/152.png">
+  
+  
+  <meta name="theme-color" content="#0c0c1f">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternate" href="/atom.xml" title="李锋涛" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class=" ">
+  	   <div class="iewarn" id="iewarn">
+<div>---------!!!!!!!!!!!!!!!!-----------------</div>
+检测到您正在使用IE9或更低版本浏览器访问本站，为了您的阅读体验，本站推荐您使用<a href="https://www.google.com/chrome/" target="_blank" >Chrome浏览器</a> 或者<a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank" >Firefox浏览器 </a> 对本站进行访问
+
+</div>
+      <header class="main-header">
+
+<div class="logo nav-list">
+<a href="/"><img src=/img/logo1.jpg alt="logo" width="50px" height="50px" /></a>
+</div>
+<ul class="nav-list nav">
+
+<li class="nav-list">
+<a href="/">
+<i class="fa fa-home" aria-hidden="true" ></i>
+首页
+</a>
+</li>
+<li class="nav-list">
+<a href="/about">
+<i class="fa fa-youtube-play" aria-hidden="true" ></i>
+关于我
+</a>
+</li>
+<li class="nav-list">
+<a href="/atom.xml" target="_blank" >
+<i class="fa fa-feed" aria-hidden="true" ></i>
+订阅我
+</a>
+</li>
+<li class="nav-list lightmode ">
+<a href="javascript:;" >
+<i class="fa fa-moon-o" aria-hidden="true"></i>
+关灯
+</a>
+</li>
+</ul>
+
+</header>
+        <article>
+  <div class="article-share">
+<div id="qrcode">
+	<div class="qr-text">
+	扫一扫，分享到微信
+	<i class="fa fa-window-close-o fa-2" aria-hidden="true"></i>
+	</div>
+</div>
+<ul class="share-content">
+<li >
+		<i class="fa fa-share-alt" aria-hidden="true"></i>
+	</li>
+	<li>
+		<a ><i class="fa fa-weixin" aria-hidden="true" id="toweixin"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-weibo" aria-hidden="true" id="toweibo"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-twitter" aria-hidden="true" id="totwitter"></i></a>
+	</li>
+</ul>
+</div>
+<div class="article main-body" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <!--采用相对的时间或者绝对的时间，默认相对-->
+
+<div class="article-date">
+  	<time datetime="2017-04-11T11:28:34.000Z" itemprop="datePublished">
+  	
+  	
+  	
+  	
+  	
+    
+          
+      
+      
+        
+    
+    
+    
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	 	
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	
+  	
+  		
+  	
+  	
+  	2hoursago
+
+
+  
+<div>
+read time: 7分钟
+</div>
+</div>
+
+
+
+
+  </div>
+  <div class="article-inner">
+   
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jQuery浅谈（四）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="jQuery操作尺寸"><a href="#jQuery操作尺寸" class="headerlink" title="jQuery操作尺寸"></a>jQuery操作尺寸</h2><pre><code>1 height  设置或者获取高度
+
+    带参数表示设置高度
+    $(“img”).height(200);
+    不带参数获取高度
+    $(“img”).height();
+    返回值是number类型（比如200），而使用$(“img”).css(“width”)返回的是字符串（比如200px）
+2 width    设置或获取宽度，与高度操作功能一样
+
+    带参数表示设置宽度
+    $(“img”).width(200);
+    不带参数获取宽度
+    $(“img”).width();
+</code></pre><h2 id="jQuery-操作坐标值"><a href="#jQuery-操作坐标值" class="headerlink" title="jQuery 操作坐标值"></a>jQuery 操作坐标值</h2><pre><code>1 offset   设置或获取元素相对于文档document位置        
+    设置位置
+
+    $(selector).offset({left:100, top: 150});
+    获取位置
+    $(selector).offset();
+    注意：使用offset操作，如果元素没有设置定位(默认position:static)，则会把position修改为relative.会修改left、top
+
+2    position 获取相对于其最近的有定位的父元素的位置
+
+    获取，返回值为对象：{left:num, top:num}        
+    $(selector).position();
+    注意：position方法只能获取，不能设置
+
+3  scrollTop 设置或者获取垂直滚动条的位置
+
+    有参数表示设置偏移，参数为数值类型
+    $(selector).scrollTop(100);
+    无参数表示获取偏移
+    $(selector).scrollTop();
+
+4  scrollLeft 设置或者获取水平滚动条的位置
+
+    有参数表示设置偏移，参数为数值类型
+    $(selector).scrollLeft(100);
+    无参数表示获取偏移
+    $(selector).scrollLeft();
+</code></pre><h2 id="jQuery事件机制"><a href="#jQuery事件机制" class="headerlink" title="jQuery事件机制"></a>jQuery事件机制</h2><pre><code>JavaScript中已经学习过了事件，但是jQuery对JavaScript事件进行了封装，增加并扩展了事件处理机制。jQuery不仅提供了更加优雅的事件处理语法，而且极大的增强了事件的处理能力。
+</code></pre><h2 id="jQuery事件的发展历程"><a href="#jQuery事件的发展历程" class="headerlink" title="jQuery事件的发展历程"></a>jQuery事件的发展历程</h2><pre><code>    简单事件绑定&gt;&gt;bind事件绑定&gt;&gt;delegate事件绑定&gt;&gt;on事件绑定(推荐)
+1 简单事件绑定
+    click(handler)  单击事件
+    mouseenter(handler)  鼠标进入事件
+    mouseleaver(handeler) 鼠标离开事件
+    scroll(handler)   滚动事件
+    缺点： 一次只能绑定一次事件
+2 bind 事件绑定    
+    不推荐使用，jQuery1.7版本后被on取代
+    绑定多个事件
+    第一个参数：事件类型
+    第二个参数：事件处理程序
+    $(&quot;p&quot;).bind(&quot;click mouseenter&quot;, function(){
+    事件响应方法
+    });
+    缺点：不支持动态创建出来的元素绑定事件。
+3 delegate 事件绑定
+     第一个参数：selector，要绑定事件的元素
+     第二个参数：事件类型
+     第三个参数：事件处理函数
+    $(&quot;.parentBox&quot;).delegate(&quot;p&quot;, &quot;click&quot;, function(){
+    为 .parentBox下面的所有的p标签绑定事件
+    });
+    理解：为什么delegate支持动态绑定事件？原因是事件冒泡机制。因为事件时绑定到父元素上的，由子元素触发。
+</code></pre><h2 id="on-事件绑定（重点）"><a href="#on-事件绑定（重点）" class="headerlink" title="on 事件绑定（重点）"></a>on 事件绑定（重点）</h2><pre><code>jQuery1.7之后，jQuery用on统一了所有事件的处理方法。
+优势：最现代的方式，兼容zepto(移动端类似jQuery的一个库)，强烈建议使用此。
+
+ 第一个参数：events，绑定事件的名称可以是由空格分隔的多个事件（标准事件或者自定义事件）
+ 第二个参数：selector, 执行事件的后代元素（可选），如果没有后代元素，那么事件将有自己执行。
+第三个参数：data，传递给处理函数的数据，事件触发的时候通过event.data来使用（不常使用）
+ 第四个参数：handler，事件处理函数
+$(selector).on(events[,selector][,data],handler);
+
+例子：
+ 表示给$(selector)绑定代理事件，当必须是它的内部元素span才能触发这个事件，支持动态绑定
+$(selector).on( &quot;click&quot;,“span”, function() {});
+表示给$(selector)绑定事件，并且由自己触发，不支持动态绑定（不使用代理）。
+
+$(selector).on( &quot;click&quot;, function() {});
+</code></pre><h2 id="事件解绑"><a href="#事件解绑" class="headerlink" title="事件解绑"></a>事件解绑</h2><pre><code>1     unbind() 方法
+    $(selector).unbind(); //解绑所有的事件
+    $(selector).unbind(“click”); //解绑指定的事件
+2  undelegate() 作用：解除事件绑定
+    ( selector ).undelegate(); //解绑所有的delegate事件
+    $( selector).undelegate( “click” ); //解绑所有的click事
+</code></pre><h2 id="off-作用：解除绑定"><a href="#off-作用：解除绑定" class="headerlink" title="off 作用：解除绑定"></a>off 作用：解除绑定</h2><pre><code> 解绑匹配元素的所有事件
+$(selector).off();
+解绑匹配元素的所有click事件
+$(selector).off(“click”);
+ 解绑所有代理的click事件，元素本身的事件不会被解绑 
+$(selector).off( “click”, “**” ); 
+</code></pre><h2 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h2><pre><code>简单事件触发
+$(selector).click(); //触发 click事件
+trigger方法触发事件
+$(selector).trigger(“click”);
+triggerHandler触发 事件响应方法，不触发浏览器行为
+比如:文本框获得焦点的默认行为
+$(selector).triggerHandler(“focus”);
+</code></pre><h2 id="jQuery-事件对象"><a href="#jQuery-事件对象" class="headerlink" title="jQuery 事件对象()"></a>jQuery 事件对象()</h2><pre><code>    事件类型
+event.type     对象属性    
+event.data     存储绑定事件时传递的附加数据
+event.target   点了谁就是谁
+event.currentTarget  当前DOM元素，等同于this
+event.delegateTarget  代理对象
+screenX和screenY   对应屏幕最左上角的值
+offsetX和offsetY    点击的位置距离元素的左上角的位置
+clientX和clientY   距离页面左上角的位置（忽视滚动条）
+pageX和pageY    距离页面最顶部的左上角的位置（会计算滚动条的距离）
+event.witch   鼠标按键类型，1=鼠标左键 2=鼠标中键 3=鼠标右键
+event.keyCode  按下的键盘代码
+event.stopPropagation()   阻止事件冒泡行为
+event.preventDefault()  阻止浏览器默认行为
+return false;
+</code></pre><h2 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h2><pre><code>链式编程原理：return this;
+通常情况下，只有设置操作才能把链式编程延续下去。因为获取操作的时候，会返回获取到的相应的值，无法返回 this。
+
+
+end(); // 筛选选择器会改变jQuery对象的DOM对象，想要回复到上一次的状态，并且返回匹配元素之前的状态。
+</code></pre><h2 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h2><pre><code>隐式迭代的意思是：在方法的内部会为匹配到的所有元素进行循环遍历，执行相应的方法；而不用我们再进行循环，简化我们的操作，方便我们调用。
+如果获取的是多元素的值，大部分情况下返回的是第一个元素的值。
+设置性操作的时候：设置的是所有的元素
+获取性操作：获取的是第一个元素。
+</code></pre><h2 id="each-方法"><a href="#each-方法" class="headerlink" title="each 方法"></a>each 方法</h2><pre><code>    有了隐式迭代，为什么还要使用each函数遍历？
+
+    大部分情况下是不需要使用each方法的，因为jQuery的隐式迭代特性。
+如果要对每个元素做不同的处理，这时候就用到了each方法
+
+作用：遍历jQuery对象集合，为每个匹配的元素执行一个函数
+参数一表示当前元素在所有匹配元素中的索引号
+参数二表示当前元素（DOM对象）
+$(selector).each(function(index,element){});
+</code></pre><h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><pre><code>    我们知道jQuery占用了$这个标识符，如果引用的其他库也用到$这个标识符，这时候为了保证每个库都能正常使用，这时候就存在了多库共存的问题。
+    后引入的$的会覆盖掉先引入的库中的$。
+    $ === jQuery
+    解决办法：
+jQuery的$和jQuery是两个相同的变量，因此遇到多库共存的时候，可以让jquery交出$符的控制权，这个时候还是可以使用$.
+console.log($);//function(selector, context){}
+$.noConflict();//释放$的控制权
+console.log($);{name:”zhangsan”,age:12}
+
+jQuery(function () {
+jQuery(&quot;div&quot;).html(&quot;我不是div的内容&quot;);
+});
+</code></pre>
+      
+    </div>
+    
+<div class="reward" id="rewardme">
+「喜欢，就赞一个呗！(:3 」∠)_ (￣y▽￣)~*」
+
+<div class="reward-qr">
+<div class="reward-tks">
+「鼓励我写出更好的文字」
+<i class="fa fa-window-close" aria-hidden="true"></i>
+</div>
+<img src= "/img/456.jpg" />
+「支付宝」
+</div>
+
+
+<div class="reward-btn" >
+<div class="reward-text">赏</div>
+</div>
+
+
+</div>
+ 
+    
+    
+
+
+
+
+<div class="copyright">
+<blockquote>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/11/jQuery浅谈（四）/" href="_blank" > http:lilyfengtao.github.io/2017/04/11/jQuery浅谈（四）/ </a>
+<div>
+<strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
+</div>
+</blockquote>
+</div>
+
+	
+
+    
+    <div class="cat-and-tags">
+    
+    <div class="show-tags">
+<ul>
+
+
+
+<li>
+
+
+
+<a href=http:lilyfengtao.github.io/tags/jQuery >
+<i class="fa fa-tags" aria-hidden="true"></i>
+jQuery
+</a>
+</li>
+
+
+</ul>
+</div>
+
+
+    </div>
+    
+    <!--注意网易云跟贴url位置必须在网易网站配置中的网站域名之下，比如当我在localhost下设置的时候哦
+就会因为与网易网站设置的域名不匹配而导致跟贴不能显示出来
+-->
+
+
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+
+var pathname=document.location.pathname
+var cloudTieConfig = {
+  url: "http:lilyfengtao.github.io"+pathname, 
+  sourceId: "uuuu",
+  productKey: "d9ac976925074859942b446f585903fd",
+  target: "cloud-tie-wrapper"
+};
+var yunManualLoad = true;
+Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
+
+  </div>
+ 
+ 
+  <!--上一篇下一篇 -->
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/11/浅谈RESTful/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          浅谈RESTful
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+
+</div>
+</article>
+
+      <footer id="footer">
+  <div class="outer">
+     
+     <div id="footer-info" class="inner">
+     
+      &copy;  2014 - 2017 
+       李锋涛<br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </br>
+      theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
+      </div>
+      
+      
+     
+
+
+     
+    
+  </div>
+  <div class="to-top">
+    <div class="toTop-btn">
+    <div class="toTop-text">返回顶部</div>
+  	<button class="toTop-button">
+  		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+  	</button >
+    </div>
+  </div>
+</footer>
+     
+    
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'http://www.lifengtao.cn/', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<script src="/js/qrcode.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/lightmode.js"></script>
+
+<script src="/js/iewarn.js"></script>
+
+
+  
+</body>
+</html>
