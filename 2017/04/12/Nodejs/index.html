@@ -134,7 +134,7 @@
 
   
 <div>
-read time: 8分钟
+read time: 9分钟
 </div>
 </div>
 
@@ -186,12 +186,49 @@ node.js的特点： 事件驱动，无阻塞的io模型，使node轻量高效
   node -v
 </code></pre><h2 id="node-的群居环境"><a href="#node-的群居环境" class="headerlink" title="node 的群居环境"></a>node 的群居环境</h2><pre><code>  global和window很像，都是全局对象
 node运行js的时候一个js里面的代码的作用域就是这个js
-</code></pre><h2 id="noee-js-得模块化"><a href="#noee-js-得模块化" class="headerlink" title="noee.js 得模块化"></a>noee.js 得模块化</h2><pre><code>1 一个js文件就是一个模块，模块里面的代码的作用域就在这个文件中
+</code></pre><h2 id="node-js-得模块化"><a href="#node-js-得模块化" class="headerlink" title="node.js 得模块化"></a>node.js 得模块化</h2><pre><code>1 一个js文件就是一个模块，模块里面的代码的作用域就在这个文件中
 优点 1.一次编写多次使用
       2.便于维护
 2. node的模块化符合commonjs规范
-</code></pre><h2 id="module-模块对象"><a href="#module-模块对象" class="headerlink" title="module  模块对象"></a>module  模块对象</h2><pre><code>当运行js的时候，有一个js，node 就会为其创建一个module去存储这个js的相关信息
-</code></pre><h2 id="module-erprots-全局对象"><a href="#module-erprots-全局对象" class="headerlink" title="module.erprots  全局对象"></a>module.erprots  全局对象</h2><pre><code>module.exports 打破封装性，通过模块间传递module.exports对象，来打破封装性
+所谓的模块化开发其实也就是如何有效的组织你的JavaScript代码
+全局函数直接写到html中
+将js代码提取出来放到单独的js文件中
+封装对象的方式解决全局函数面临的问题
+给对象加入独立的作用域空间
+</code></pre><h2 id="commonjs规范"><a href="#commonjs规范" class="headerlink" title="commonjs规范"></a>commonjs规范</h2><pre><code>希望JavaScript可以在任何地方运行，以达到像Java、PHP、Ruby、Python具备开发大型应用的能力
+出发点：
+没有模块系统
+标准库较少
+缺乏包管理系统
+1. 模块引用require
+2. 模块定义
+一个文件就是一个模块
+将方法挂载到exports对象上作为属性即可定义导出的方式
+3. 模块标识
+必须是符合小驼峰命名的字符串
+以.、..开头的相对路径
+绝对路径
+可以没有文件名后缀.js
+</code></pre><h2 id="commonjs-特点"><a href="#commonjs-特点" class="headerlink" title="commonjs 特点"></a>commonjs 特点</h2><pre><code>所有代码都运行在模块作用域，不会污染全局作用域
+模块可以多次加载,但是只会在第一次加载时运行一次,然后运行结果就缓存了，以后再加载,就直接读取缓存结果。
+模块加载的顺序，按照其在代码中出现的顺序
+</code></pre><h2 id="node-js-模块介绍"><a href="#node-js-模块介绍" class="headerlink" title="node.js 模块介绍"></a>node.js 模块介绍</h2><pre><code>Node程序由许多模块组成，每个模块就是一个文件。Node模块采用了CommonJS规范。
+Node.js本身就是一个高度模块化的一个平台
+根据CommonJS规范，每一个模块都是一个单独的作用域
+CommonJS规定，每个文件对外的接口是module.exports对象，该对象所有属性和方法，都可以被其它文件导入。
+</code></pre><h2 id="module-模块对象"><a href="#module-模块对象" class="headerlink" title="module  模块对象"></a>module  模块对象</h2><pre><code>    module.id    带有绝对路径的模块文件名
+    module.filename      模块的文件名，带有绝对路径
+    module.loaded          表示模块是否已经完成加载
+    module.parent        返回一个对象，表示调用该模块的模块。
+    module.children      返回一个数组，表示该模块要用到的其他模块。
+    module.exports          模块对外输出的值
+
+
+当运行js的时候，有一个js，node 就会为其创建一个module去存储这个js的相关信息
+</code></pre><h2 id="module-exports-全局对象"><a href="#module-exports-全局对象" class="headerlink" title="module.exports  全局对象"></a>module.exports  全局对象</h2><pre><code>module.exports属性表示当前模块对外输出的接口，其它文件加载该模块,实际上就是读取module.exports属性
+点儿导出单个函数、对象或者值的时候非常有用，本质上就是少了一个.
+
+module.exports 打破封装性，通过模块间传递module.exports对象，来打破封装性
 module.exports 是全局的对象，初始值是空对象
 暴露什么（方法、对象、数字）都行
 module.exports=123 使用直接赋值的形式只能使用一次
@@ -211,20 +248,21 @@ exports替代module.exports在属性赋值的时候使用
 6. 一个模块的信息被保存在module对象里面，每一个模块都有一个module与之对应
    module对象产生了以后，第二次加载就不会再去执行，而是去内存中的module对象中找module.exports
 </code></pre><h2 id="模块得种类"><a href="#模块得种类" class="headerlink" title="模块得种类"></a>模块得种类</h2><pre><code>第一类，核心模块（原生模块），node自带，用名称直接可以加载。
-</code></pre><ul>
-<li>核心模块<ul>
-<li>fs file system 文件系统</li>
-<li>http  制作网站的</li>
-<li>os   获取电脑信息    </li>
-<li>path 路径拼接用的</li>
-<li>query  </li>
-<li>url<br>…<br>require(‘fs’)</li>
-</ul>
-</li>
-<li>核心模块存在的意义，<br>我们需要node给我们提供一些方法，让我们可以方便的去处理电    脑的硬件，<br>第二类，文件模块，用路径加载，有一种特殊的文件模块—–&gt;包，可以用名字。<h2 id="什么是3m"><a href="#什么是3m" class="headerlink" title="什么是3m?"></a>什么是3m?</h2>npm nrm nvm </li>
-</ul>
-<h2 id="require-参数解析"><a href="#require-参数解析" class="headerlink" title="require 参数解析"></a>require 参数解析</h2><pre><code>require(&apos;./foo&apos;);
-require(&apos;fs&apos;);//
+核心模块
+  + fs file system 文件系统
+  + http  制作网站的
+  + os   获取电脑信息    
+  + path 路径拼接用的
+  + query  
+  + url
+  ...
+  require(&apos;fs&apos;)
+核心模块存在的意义，
+  我们需要node给我们提供一些方法，让我们可以方便的去处理电    脑的硬件，
+第二类，文件模块，用路径加载，有一种特殊的文件模块-----&gt;包，可以用名字。
+</code></pre><h2 id="什么是3m"><a href="#什么是3m" class="headerlink" title="什么是3m?"></a>什么是3m?</h2><pre><code>npm nrm nvm 
+</code></pre><h2 id="require-参数解析"><a href="#require-参数解析" class="headerlink" title="require 参数解析"></a>require 参数解析</h2><pre><code>    require(&apos;./foo&apos;);
+    require(&apos;fs&apos;);//
 
 引入一个叫fs的模块，node会帮我们把fs加载进来
 var fs=require(&apos;fs&apos;);
@@ -234,43 +272,33 @@ var fs=require(&apos;fs&apos;);
 fs.readFile(&apos;路径&apos;,&apos;utf8&apos;,function(){
 
     })
-</code></pre><h2 id="assert-断言（判断）"><a href="#assert-断言（判断）" class="headerlink" title="assert 断言（判断）"></a>assert 断言（判断）</h2><pre><code>console.assert(foo==456,&quot;错了~~~~~呵呵&quot;);
-测试代码运行效率的
-console.time(&quot;test&quot;);
- for (var index = 0; index &lt; 100000000; index++) {
- }
- console.timeEnd(&apos;test&apos;);
 </code></pre><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><pre><code>还有一种特殊的文件模块，其实就是包
 包的作用：在模块的基础上进一步组织JavaScript代码
 </code></pre><h2 id="包得组成"><a href="#包得组成" class="headerlink" title="包得组成"></a>包得组成</h2><pre><code>   包结构
 包就是一个文件夹，文件夹的名字最好是包名。
 （1、2是必选项）
-</code></pre><ol>
-<li>入口文件 index.js或app.js  写大的应用例如网站的时候，叫app.js</li>
-<li>包说明文件，不只是给人看的~~~~—-&gt;package.json</li>
-<li>lib文件夹 存放js文件的</li>
-<li>bin文件夹 二进制文件或者脚本文件</li>
-<li>test  测试文件夹</li>
-<li>docs  文档放这里</li>
-<li><p>node_modules 如果我需要引入别的包,不能改</p>
-<p>包描述文件package.json</p>
-<pre><code> 描述你的当前的包的一些相关的信息
+    1. 入口文件 index.js或app.js  写大的应用例如网站的时候，叫app.js
+    2. 包说明文件，不只是给人看的~~~~----&gt;package.json
+    3. lib文件夹 存放js文件的
+    4. bin文件夹 二进制文件或者脚本文件
+    5. test  测试文件夹
+    6. docs  文档放这里
+    7. node_modules 如果我需要引入别的包,不能改
 
-属性解释
-  - name 包名
-  - version 版本号
-  - description 包的描述
-  - main 入口文件
-  - keywords 关键词
-  - author 作者
-  - repository 代码库地址
-  - bugs 提交地址
-  - license 许可证
-  - devDependencies 开发环境包依赖
-  - dependencies 生产环境包依赖
-</code></pre></li>
-</ol>
-<h2 id="dependencies"><a href="#dependencies" class="headerlink" title="+ dependencies"></a>+ dependencies</h2><pre><code>-  包名：“版本号” 
+  8 包描述文件package.json
+    描述你的当前的包的一些相关的信息
+</code></pre><h2 id="package-json-属性解释"><a href="#package-json-属性解释" class="headerlink" title="package.json 属性解释"></a>package.json 属性解释</h2><pre><code>- name 包名
+- version 版本号
+- description 包的描述
+- main 入口文件
+- keywords 关键词
+- author 作者
+- repository 代码库地址
+- bugs 提交地址
+- license 许可证
+- devDependencies 开发环境包依赖
+- dependencies 生产环境包依赖
+</code></pre><h2 id="dependencies"><a href="#dependencies" class="headerlink" title="+ dependencies"></a>+ dependencies</h2><pre><code>-  包名：“版本号” 
 -  &gt; +版本号   下载大于某个版本号，npm会下最新版
 -  &lt; +版本号   下载小于某个版本号，npm会下小于这个版本号最新版
 -  &lt;= 小于等于 一定会下你写的这个版本，除非没有你写的这个版本
@@ -282,28 +310,30 @@ console.time(&quot;test&quot;);
 1表示重大更新
 2表示向下兼容
 3表示补丁包更新
+</code></pre><h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h1><pre><code>即为node package manager 得缩写 
+（通过 npm help 查看命令列表 
+npm –l 查看各个命令的简单用法）
 
-# npm node package manager
 - 基于Node.js开发的包的托管网站
 - Node.js包管理工具
 
 npm :基于包的规范实现的一个包管理工具
-- npm init 初始化一个package.json
+1 npm init 初始化一个package.json
 
-- npm install  安装package.json里面设定好的依赖的包
+2 npm install  安装package.json里面设定好的依赖的包
 
 - npm install 包名
   npm i jquery@3.2.1
 
-npm install --save 生产环境
+3 npm install --save 生产环境
 npm i -S jquery
 
-npm install -g 包名 只要是全局安装就是安装命令行工具
+4  npm install -g 包名 只要是全局安装就是安装命令行工具
 
 - npm install 缩写 npm i
 - npm install -save-dev 开发环境
 npm i -D jquery
-npm config set prefix  修改全局安装目录
+5 npm config set prefix  修改全局安装目录
 </code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>        箭头函数就是一种语法糖
 语法糖是一种语法，用这种语法能尝到甜头，能是编程高效
 当函数体有一个参数有返回值的时候
@@ -409,7 +439,7 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
 <nav id="article-nav">
   
     <a href="/2017/04/11/jQuery浅谈（四）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
           jQuery浅谈（四）
