@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Node.js 入门（一） | 李锋涛</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content=李锋涛   >
+  <link rel="apple-touch-icon" href="img/icons/152.png">
+  
+  
+  <meta name="theme-color" content="#0c0c1f">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternate" href="/atom.xml" title="李锋涛" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class=" ">
+  	   <div class="iewarn" id="iewarn">
+<div>---------!!!!!!!!!!!!!!!!-----------------</div>
+检测到您正在使用IE9或更低版本浏览器访问本站，为了您的阅读体验，本站推荐您使用<a href="https://www.google.com/chrome/" target="_blank" >Chrome浏览器</a> 或者<a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank" >Firefox浏览器 </a> 对本站进行访问
+
+</div>
+      <header class="main-header">
+
+<div class="logo nav-list">
+<a href="/"><img src=/img/logo1.jpg alt="logo" width="50px" height="50px" /></a>
+</div>
+<ul class="nav-list nav">
+
+<li class="nav-list">
+<a href="/">
+<i class="fa fa-home" aria-hidden="true" ></i>
+首页
+</a>
+</li>
+<li class="nav-list">
+<a href="/about">
+<i class="fa fa-youtube-play" aria-hidden="true" ></i>
+关于我
+</a>
+</li>
+<li class="nav-list">
+<a href="/atom.xml" target="_blank" >
+<i class="fa fa-feed" aria-hidden="true" ></i>
+订阅我
+</a>
+</li>
+<li class="nav-list lightmode ">
+<a href="javascript:;" >
+<i class="fa fa-moon-o" aria-hidden="true"></i>
+关灯
+</a>
+</li>
+</ul>
+
+</header>
+        <article>
+  <div class="article-share">
+<div id="qrcode">
+	<div class="qr-text">
+	扫一扫，分享到微信
+	<i class="fa fa-window-close-o fa-2" aria-hidden="true"></i>
+	</div>
+</div>
+<ul class="share-content">
+<li >
+		<i class="fa fa-share-alt" aria-hidden="true"></i>
+	</li>
+	<li>
+		<a ><i class="fa fa-weixin" aria-hidden="true" id="toweixin"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-weibo" aria-hidden="true" id="toweibo"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-twitter" aria-hidden="true" id="totwitter"></i></a>
+	</li>
+</ul>
+</div>
+<div class="article main-body" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <!--采用相对的时间或者绝对的时间，默认相对-->
+
+<div class="article-date">
+  	<time datetime="2017-04-12T12:42:35.000Z" itemprop="datePublished">
+  	
+  	
+  	
+  	
+  	
+    
+      
+      
+         
+        
+    
+    
+    
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	 	
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	
+  	
+  		
+  	
+  	
+  	1dayago
+
+
+  
+<div>
+read time: 8分钟
+</div>
+</div>
+
+
+
+
+  </div>
+  <div class="article-inner">
+   
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Node.js 入门（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="初识node-js"><a href="#初识node-js" class="headerlink" title="初识node.js"></a>初识node.js</h2><pre><code>node.js是javascript运行的一个环境 基于chrome浏览器的v8引擎
+node.js的特点： 事件驱动，无阻塞的io模型，使node轻量高效
+包生态系统----&gt;npm  node package manager是一个客户端工具 世界上最大的包管理系统
+</code></pre><h2 id="浏览器与node-js运行js的模型"><a href="#浏览器与node-js运行js的模型" class="headerlink" title="浏览器与node.js运行js的模型"></a>浏览器与node.js运行js的模型</h2><pre><code>1 浏览器与js的关系   被动
+2 node.js 与js的关系  主动
+3 node.js 如何运行js 文件
+答：node +文件路径，node是调用已经安装的node应用程序
+文件路径是给node 传的一个参数
+</code></pre><h2 id="如何执行js文件"><a href="#如何执行js文件" class="headerlink" title="如何执行js文件"></a>如何执行js文件</h2><pre><code>1 用node执行js文件，文件在当前目录下----&gt;node +文件名
+2 如果不在当前目录下，node +文件路径的形式执行
+
+   相对路径
+       ./ 当前路径
+       ../ 上级目录
+
+     绝对路径执行js的方式
+    node c:\Users\cena\Desktop\code\01helloworld.js
+    注意点：不能跨盘去调用js文件
+</code></pre><h2 id="js的引擎"><a href="#js的引擎" class="headerlink" title="js的引擎"></a>js的引擎</h2><pre><code>1 转化： 汽油转化能量
+例如： 模板引擎  模板+数据---》页面
+     js引擎   js代码---&gt;可以被电脑运行的代码     
+ 2.移植  node是给v8引擎套了一个壳
+</code></pre><h2 id="node-的应用场景"><a href="#node-的应用场景" class="headerlink" title="node 的应用场景"></a>node 的应用场景</h2><pre><code>1 读写文件
+2 写网站后端（服务器)
+</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code>注意点： node 是后台的技术，是门技术不是语言，使用js干后台干的事情
+</code></pre><h2 id="如何确认是否安装成功"><a href="#如何确认是否安装成功" class="headerlink" title="如何确认是否安装成功?"></a>如何确认是否安装成功?</h2><pre><code>`win + r` ，然后输入 `cmd` ，然后敲回车 就可以进入 cmd 控制台
+  node -v
+</code></pre><h2 id="node-的群居环境"><a href="#node-的群居环境" class="headerlink" title="node 的群居环境"></a>node 的群居环境</h2><pre><code>  global和window很像，都是全局对象
+node运行js的时候一个js里面的代码的作用域就是这个js
+</code></pre><h2 id="noee-js-得模块化"><a href="#noee-js-得模块化" class="headerlink" title="noee.js 得模块化"></a>noee.js 得模块化</h2><pre><code>1 一个js文件就是一个模块，模块里面的代码的作用域就在这个文件中
+优点 1.一次编写多次使用
+      2.便于维护
+2. node的模块化符合commonjs规范
+</code></pre><h2 id="module-模块对象"><a href="#module-模块对象" class="headerlink" title="module  模块对象"></a>module  模块对象</h2><pre><code>当运行js的时候，有一个js，node 就会为其创建一个module去存储这个js的相关信息
+</code></pre><h2 id="module-erprots-全局对象"><a href="#module-erprots-全局对象" class="headerlink" title="module.erprots  全局对象"></a>module.erprots  全局对象</h2><pre><code>module.exports 打破封装性，通过模块间传递module.exports对象，来打破封装性
+module.exports 是全局的对象，初始值是空对象
+暴露什么（方法、对象、数字）都行
+module.exports=123 使用直接赋值的形式只能使用一次
+module.exports.foo=123;
+module.exports.bar=456;使用属性赋值的形式能够使用多次
+exports替代module.exports在属性赋值的时候使用
+</code></pre><h2 id="require-全局方法"><a href="#require-全局方法" class="headerlink" title="require 全局方法"></a>require 全局方法</h2><pre><code>第一次加载js（module）的时候，会执行一遍js里面的代码
+第二次加载js的时候，不执行js代码的，直接去内存中找到第一次加载js对应的module对象，
+从中找到module.exports
+</code></pre><h2 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h2><pre><code>exports 是module.exports的别名，外号、花名
+</code></pre><h2 id="模块化总结"><a href="#模块化总结" class="headerlink" title="模块化总结"></a>模块化总结</h2><pre><code>1. 模块化的代码具有封装性，对代码进行包装，我想让你用什么接口，使用什么
+2. 有封装就有打破封装，需要给别人开接口 module.exports exports
+3. module.exports直接赋值
+4. exports 当一个js中有很多的属性很方法的时候，就使用exports向外曝露
+
+5. 一个js文件就是一个模块
+6. 一个模块的信息被保存在module对象里面，每一个模块都有一个module与之对应
+   module对象产生了以后，第二次加载就不会再去执行，而是去内存中的module对象中找module.exports
+</code></pre><h2 id="模块得种类"><a href="#模块得种类" class="headerlink" title="模块得种类"></a>模块得种类</h2><pre><code>第一类，核心模块（原生模块），node自带，用名称直接可以加载。
+</code></pre><ul>
+<li>核心模块<ul>
+<li>fs file system 文件系统</li>
+<li>http  制作网站的</li>
+<li>os   获取电脑信息    </li>
+<li>path 路径拼接用的</li>
+<li>query  </li>
+<li>url<br>…<br>require(‘fs’)</li>
+</ul>
+</li>
+<li>核心模块存在的意义，<br>我们需要node给我们提供一些方法，让我们可以方便的去处理电    脑的硬件，<br>第二类，文件模块，用路径加载，有一种特殊的文件模块—–&gt;包，可以用名字。<h2 id="什么是3m"><a href="#什么是3m" class="headerlink" title="什么是3m?"></a>什么是3m?</h2>npm nrm nvm </li>
+</ul>
+<h2 id="require-参数解析"><a href="#require-参数解析" class="headerlink" title="require 参数解析"></a>require 参数解析</h2><pre><code>require(&apos;./foo&apos;);
+require(&apos;fs&apos;);//
+
+引入一个叫fs的模块，node会帮我们把fs加载进来
+var fs=require(&apos;fs&apos;);
+</code></pre><h2 id="fs-readFile-读文件"><a href="#fs-readFile-读文件" class="headerlink" title="fs.readFile() 读文件"></a>fs.readFile() 读文件</h2><pre><code>参数：1 路径
+    2 编码格式
+    3 回调函数 1，err错误对象  2 读得参数
+fs.readFile(&apos;路径&apos;,&apos;utf8&apos;,function(){
+
+    })
+</code></pre><h2 id="assert-断言（判断）"><a href="#assert-断言（判断）" class="headerlink" title="assert 断言（判断）"></a>assert 断言（判断）</h2><pre><code>console.assert(foo==456,&quot;错了~~~~~呵呵&quot;);
+测试代码运行效率的
+console.time(&quot;test&quot;);
+ for (var index = 0; index &lt; 100000000; index++) {
+ }
+ console.timeEnd(&apos;test&apos;);
+</code></pre><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><pre><code>还有一种特殊的文件模块，其实就是包
+包的作用：在模块的基础上进一步组织JavaScript代码
+</code></pre><h2 id="包得组成"><a href="#包得组成" class="headerlink" title="包得组成"></a>包得组成</h2><pre><code>   包结构
+包就是一个文件夹，文件夹的名字最好是包名。
+（1、2是必选项）
+</code></pre><ol>
+<li>入口文件 index.js或app.js  写大的应用例如网站的时候，叫app.js</li>
+<li>包说明文件，不只是给人看的~~~~—-&gt;package.json</li>
+<li>lib文件夹 存放js文件的</li>
+<li>bin文件夹 二进制文件或者脚本文件</li>
+<li>test  测试文件夹</li>
+<li>docs  文档放这里</li>
+<li><p>node_modules 如果我需要引入别的包,不能改</p>
+<p>包描述文件package.json</p>
+<pre><code> 描述你的当前的包的一些相关的信息
+
+属性解释
+  - name 包名
+  - version 版本号
+  - description 包的描述
+  - main 入口文件
+  - keywords 关键词
+  - author 作者
+  - repository 代码库地址
+  - bugs 提交地址
+  - license 许可证
+  - devDependencies 开发环境包依赖
+  - dependencies 生产环境包依赖
+</code></pre></li>
+</ol>
+<h2 id="dependencies"><a href="#dependencies" class="headerlink" title="+ dependencies"></a>+ dependencies</h2><pre><code>-  包名：“版本号” 
+-  &gt; +版本号   下载大于某个版本号，npm会下最新版
+-  &lt; +版本号   下载小于某个版本号，npm会下小于这个版本号最新版
+-  &lt;= 小于等于 一定会下你写的这个版本，除非没有你写的这个版本
+-  &gt;= 大于等于  下载最新版
+-   *、&quot; &quot;、X  任意 npm会给你下最新版
+-   ^ +版本号  不跃迁版本下载，^2.1.0 npm会下载大版本不变，去下载2.x.x版本里的最近版
+-   ~ +版本号  会去下约等于这个版本的最新版，在大版本不变的情况下下一个比较新的版本
+</code></pre><h2 id="语义化版本号"><a href="#语义化版本号" class="headerlink" title="语义化版本号"></a>语义化版本号</h2><pre><code>1.2.3
+1表示重大更新
+2表示向下兼容
+3表示补丁包更新
+
+# npm node package manager
+- 基于Node.js开发的包的托管网站
+- Node.js包管理工具
+
+npm :基于包的规范实现的一个包管理工具
+- npm init 初始化一个package.json
+
+- npm install  安装package.json里面设定好的依赖的包
+
+- npm install 包名
+  npm i jquery@3.2.1
+
+npm install --save 生产环境
+npm i -S jquery
+
+npm install -g 包名 只要是全局安装就是安装命令行工具
+
+- npm install 缩写 npm i
+- npm install -save-dev 开发环境
+npm i -D jquery
+npm config set prefix  修改全局安装目录
+</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>        箭头函数就是一种语法糖
+语法糖是一种语法，用这种语法能尝到甜头，能是编程高效
+当函数体有一个参数有返回值的时候
+
+var foo=function(v){ return v;}
+var foo=v=&gt;v;
+当函数体没有参数有返回值的时候
+
+var foo=function(){ return v;}
+
+var foo=()=&gt;v;
+当函数体有多个参数有返回值的时候
+
+var foo=function(v1,v2){ return v1+v2;}
+var foo=(v1,v2)=&gt;v1+v2;
+当函数体有多个参数没有返回值的时候
+var foo=function(v1,v2){ 
+  console.log(v1); console.log(v2);
+  }
+var foo=(v1,v2)=&gt;{
+  console.log(v1); console.log(v2);
+  };
+</code></pre>
+      
+    </div>
+    
+<div class="reward" id="rewardme">
+「喜欢，就赞一个呗！(:3 」∠)_ (￣y▽￣)~*」
+
+<div class="reward-qr">
+<div class="reward-tks">
+「鼓励我写出更好的文字」
+<i class="fa fa-window-close" aria-hidden="true"></i>
+</div>
+<img src= "/img/456.jpg" />
+「支付宝」
+</div>
+
+
+<div class="reward-btn" >
+<div class="reward-text">赏</div>
+</div>
+
+
+</div>
+ 
+    
+    
+
+
+
+
+<div class="copyright">
+<blockquote>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/12/Nodejs/" href="_blank" > http:lilyfengtao.github.io/2017/04/12/Nodejs/ </a>
+<div>
+<strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
+</div>
+</blockquote>
+</div>
+
+	
+
+    
+    <div class="cat-and-tags">
+    
+    <div class="show-tags">
+<ul>
+
+
+</ul>
+</div>
+
+
+    </div>
+    
+    <!--注意网易云跟贴url位置必须在网易网站配置中的网站域名之下，比如当我在localhost下设置的时候哦
+就会因为与网易网站设置的域名不匹配而导致跟贴不能显示出来
+-->
+
+
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+
+var pathname=document.location.pathname
+var cloudTieConfig = {
+  url: "http:lilyfengtao.github.io"+pathname, 
+  sourceId: "uuuu",
+  productKey: "d9ac976925074859942b446f585903fd",
+  target: "cloud-tie-wrapper"
+};
+var yunManualLoad = true;
+Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
+
+  </div>
+ 
+ 
+  <!--上一篇下一篇 -->
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/11/jQuery浅谈（四）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Nieuwer</strong>
+      <div class="article-nav-title">
+        
+          jQuery浅谈（四）
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+
+</div>
+</article>
+
+      <footer id="footer">
+  <div class="outer">
+     
+     <div id="footer-info" class="inner">
+     
+      &copy;  2014 - 2017 
+       李锋涛<br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </br>
+      theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
+      </div>
+      
+      
+     
+
+
+     
+    
+  </div>
+  <div class="to-top">
+    <div class="toTop-btn">
+    <div class="toTop-text">返回顶部</div>
+  	<button class="toTop-button">
+  		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+  	</button >
+    </div>
+  </div>
+</footer>
+     
+    
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'http://www.lifengtao.cn/', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<script src="/js/qrcode.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/lightmode.js"></script>
+
+<script src="/js/iewarn.js"></script>
+
+
+  
+</body>
+</html>
