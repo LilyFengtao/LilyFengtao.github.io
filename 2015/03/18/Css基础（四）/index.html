@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>jQuery浅谈（三） | 李锋涛</title>
+  <title>Css基础（四）之清除浮动 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2017-04-10T15:55:37.000Z" itemprop="datePublished">
+  	<time datetime="2015-03-18T15:35:03.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	8daysago
+  	2yearsago
 
 
   
 <div>
-read time: 4分钟
+read time: 3分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 4分钟
         
   
     <h1 class="article-title" itemprop="name">
-      jQuery浅谈（三）
+      Css基础（四）之清除浮动
     </h1>
   
 
@@ -157,98 +157,60 @@ read time: 4分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="juery操作Dom（节点）"><a href="#juery操作Dom（节点）" class="headerlink" title="juery操作Dom（节点）"></a>juery操作Dom（节点）</h2><pre><code>1 创建元素
-    $(htmlStr)
-    htmlStr：html格式的字符串
-    $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-2 添加元素
+        <h3 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h3><pre><code>标准流：元素在浏览器中默认的显示方式。
+</code></pre><h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><pre><code>float:left/right
+特点：1） 元素脱离标准流
+      2） 浮动可以让块元素在一行上显示
+注意：如果想让块级元素在一行上显示，需要给所有的块级元素设置浮动。
+      3） 该元素不占位置。
+      4） 实现元素的模式转换（脱标）
+作用：
+    1）实现网页布局  （让网页中块级元素的盒子在一行上显示）
+    2）用来制作网页导航（使用列表制作）
 
-      添加新建的元素
-  +     方法一：将jQuery对象添加到调用者内部的最后面。 
-    var $span = $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-    $(“div”).append($span);
-
-    + 方法二：参数传字符串，会自动创建成jquery对象
-    $(“div”).append(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-    添加已经存在的元素
-    var $p = $(“p”);
-    $(“div”).append($p);
-    注意：如果添加的是已经存在的元素，那么会把之前的元素给干掉。（类似于剪切的功能）。
-
-    prepend() 在子节点的最前面插入    
-
-    before() 在同级元素的前面插入
-
-    after() 在同级元素的后面插入
-
-    appendTo() 添加插入到... 括号内是目标元素
-    例 : $(&quot;#text&quot;).appendTo(&quot;#box&quot;)
-    prependTo() 和appendTo()正好相反
-    例： $(&quot;#box&quot;).appendTo(&quot;#text&quot;)
-</code></pre><h2 id="清空元素"><a href="#清空元素" class="headerlink" title="清空元素"></a>清空元素</h2><pre><code>empty：清空指定节点的所有元素，自身保留(清理门户)
-$(“div”).empty();//清空div的所有内容（推荐使用，会清除子元素上绑定的内容，源码）
-清空元素的第二种方法
-$(“div”).html(“”);//使用html方法来清空元素，有就保留，清除其他的，缺点是，内部标签有事件不清除。（不推荐使用，会造成内存泄漏，绑定的事件不会被清除。）
-</code></pre><h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><pre><code>remove（ ）：相比于empty，自身也删除（自杀），传谁 杀谁。
-</code></pre><h2 id="克隆元素-clone"><a href="#克隆元素-clone" class="headerlink" title="克隆元素 clone()"></a>克隆元素 clone()</h2><pre><code>作用:复制匹配的元素
-复制$(selector)所匹配到的元素（深度复制，即复制标签还复制事件）
-cloneNode(true)
- 返回值为复制的新元素，和原来的元素没有任何关系了。即修改新元素，不会影响到原来的元素。
-$(selector).clone(false);
-浅复制（复制标签和内容）
-</code></pre><h2 id="jQuery操作属性"><a href="#jQuery操作属性" class="headerlink" title="jQuery操作属性"></a>jQuery操作属性</h2><pre><code>1  设置单个属性
-    第一个参数：需要设置的属性名
-    第二个参数：对应的属性值
-    attr(name, value);
-    用法举例
-    $(“img”).attr(“title”,”哎哟，不错哦”);
-    $(“img”).attr(“alt”,“哎哟，不错哦”);
-
-2     设置多个属性
-    参数是一个对象，包含了需要设置的属性名和属性值
-    attr(obj)
-    用法举例
-    $(&quot;img&quot;).attr({
-    title:&quot;哎哟，不错哦&quot;,
-    alt:&quot;哎哟，不错哦&quot;,
-    style:&quot;opacity:.5&quot;
-    });
-</code></pre><h2 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h2><pre><code>传需要获取的属性名称，返回对应的属性值
-attr(name)
-用法举例
-var oTitle = $(&quot;img&quot;).attr(&quot;title&quot;);
-alert(oTitle);
-注意：
-1.    获取属性时，只会获取到第一个元素对应的属性，与css方法一样
-2.    获取属性时，如果该属性不存在，那么会返回undefined
-</code></pre><h2 id="移除事件-removeAttr"><a href="#移除事件-removeAttr" class="headerlink" title="移除事件 removeAttr()"></a>移除事件 removeAttr()</h2><pre><code>参数：需要移除的属性名，如果传空，那么不会有任何操作，注意，并不是移除所有的属性。区分removeClass。
-removeAttr(name);
-用法举例
-$(&quot;img&quot;).removeAttr(&quot;title&quot;);
-</code></pre><h2 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h2><pre><code>注意：在jQuery1.6之后，对于checked、selected、disable这类boolean类型的属性来说，如果使用attr方法获取属性值，得到的不是true和false，而是checked以及undefined。，使用prop方法来获取或者设置checked、selected、disable这类的值。prop方法使用跟attr方法一样。
-设置属性
-$(“:checked”).prop(“checked”,true);
-获取属性
-$(“:checked”).prop(“checked”);//返回true或者false
-</code></pre><h2 id="jQuery操作值与内容"><a href="#jQuery操作值与内容" class="headerlink" title="jQuery操作值与内容"></a>jQuery操作值与内容</h2><pre><code>1  val 方法
-    val方法用于设置和获取表单元素的值，例如input、select、textarea的值
-    设置值
-    $(“#name”).val(“张三”);
-    获取值
-    $(“#name”).val();
-2 html 方法
-    设置内容
-    $(“div”).html(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
-    获取内容
-    $(“div”).html()
-3 text 方法
-    设置内容
-    $(“div”).text(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
-    获取内容
-    $(“div”).text()
-
-html方法与text方法的区别：
-html方法会识别html标签，text方法会把内容直接当成字符串，并不会识别html标签。
+    3）根本的作用： 实现图片文字环绕效果 （文字不会被浮动的元素压着）
+</code></pre><h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><pre><code>清除浮动：消除浮动的影响。
+什么时候需要清除浮动？
+1 父容器没有设置高度（不需要设置height属性）
+2 父容器中所有的子元素都设置了浮动
+</code></pre><h3 id="清除浮动的方式"><a href="#清除浮动的方式" class="headerlink" title="清除浮动的方式"></a>清除浮动的方式</h3><pre><code>1 使用clean:left /right/    both
+2 给父容器设置 overflow：hidden;
+ 注意：如果使用overflow:hidden清除浮动，首先要保证父容器中没有定位的元素，如果有定位的元素，则不推荐使用该方法清除浮动。
+3 使用伪元素清除浮动
+    .clearfix:after{
+        content:&quot;&quot;;
+        height:0;
+        line-height:0;
+        clear:both;
+        display:block;
+        visibility:hidden;
+    }
+    .clearfix{
+        zoom:1;// 兼容IE浏览器
+    }
+4 使用双伪元素清除浮动
+    .clearfix:before,.clearfix:after{
+        content:&quot;&quot;;
+        height:0;
+        line-height:0;
+        clear:both;
+        display:block;
+        visibility:hidden;
+    }
+    .clearfix{
+        zoom:1;// 兼容IE浏览器
+    }
+</code></pre><h3 id="清除浮动中遇到的问题"><a href="#清除浮动中遇到的问题" class="headerlink" title="清除浮动中遇到的问题"></a>清除浮动中遇到的问题</h3><pre><code>1 首先看父元素有没有设置固定高度
+2 父元素中是不是所有的子元素都设置了浮动
+3 清除浮动的代码有没有问题
+4 调用清除浮动的标签是否正确
+5 最后检查html结构是否有问题 
+</code></pre><h3 id="css-初始化"><a href="#css-初始化" class="headerlink" title="css 初始化"></a>css 初始化</h3><pre><code>1  通过设置样式将页面中标签默认的样式层叠掉（margin，padding,list-style...）
+2  设置页面中标签的默认样式（统一性）
+</code></pre><h3 id="overflow-的用法"><a href="#overflow-的用法" class="headerlink" title="overflow 的用法"></a>overflow 的用法</h3><pre><code>[溢出，超出] overflow:visible(默认值)
+            overflow: hidden 超出部分隐藏
+            overflow: scroll 添加滚动条
+            overflow: auto 根据内容判断是否添加滚动条
 </code></pre>
       
     </div>
@@ -281,7 +243,7 @@ html方法会识别html标签，text方法会把内容直接当成字符串，�
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（三）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/jQuery浅谈（三）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/03/18/Css基础（四）/" href="_blank" > http:lilyfengtao.github.io/2015/03/18/Css基础（四）/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -302,9 +264,9 @@ html方法会识别html标签，text方法会把内容直接当成字符串，�
 
 
 
-<a href=http:lilyfengtao.github.io/tags/jQuery >
+<a href=http:lilyfengtao.github.io/tags/css >
 <i class="fa fa-tags" aria-hidden="true"></i>
-jQuery
+css
 </a>
 </li>
 
@@ -343,19 +305,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2017/04/10/jQuery浅谈（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/02/25/Css基础（三）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          jQuery浅谈（二）
+          Css基础（三）
         
       </div>
     </a>
   
   
-    <a href="/2017/04/11/浅谈RESTful/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/03/26/Css基础（五）/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">浅谈RESTful</div>
+      <div class="article-nav-title">Css基础（五）之定位</div>
     </a>
   
 </nav>
