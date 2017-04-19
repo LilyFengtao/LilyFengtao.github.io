@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AngularJs简介与学习（二） | 李锋涛</title>
+  <title>Css3简介及选择器 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2017-04-09T16:09:42.000Z" itemprop="datePublished">
+  	<time datetime="2015-04-04T03:29:03.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	10daysago
+  	2yearsago
 
 
   
 <div>
-read time: 2分钟
+read time: 3分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 2分钟
         
   
     <h1 class="article-title" itemprop="name">
-      AngularJs简介与学习（二）
+      Css3简介及选择器
     </h1>
   
 
@@ -157,39 +157,70 @@ read time: 2分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><pre><code>变量的作用域通常来说，在一段程序里面的某个变量的名字并不总是可用的，而限定这个变量的使用的范围就是作用域。
-</code></pre><h3 id="angular-的作用域"><a href="#angular-的作用域" class="headerlink" title="angular 的作用域"></a>angular 的作用域</h3><pre><code>作用域的关系就像函数里面方法的作用域的关系一样。作用域指的是$scope 的数据能否被获取到.
-有一个根作用域，以后我有一部分数据在整个应用里面是需要共享的，我就把这个数据赋值给$rootScope上面，我在应用的任何一个位置都可以获取.
-</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><pre><code> 1 内置过滤器
-      date    日期
-      currency 货币
-      limitTo   截取字符串
-      json     将对象转换成json 格式字符串
-      uppercase  转换成为大写
-      lowercase  转换成小写
-      filter     获取数据，找到对应的数据，主要是用来做界面的搜索的
-      number     获取数据，对数据的小数点做一个精确
-      orderBy    排序，列表我就可以进行排序
-
-2 自定义过滤器
-    app.directive 自定义指令
-    app.filter(&quot;&quot;) 自定义过滤器，有一个默认的参数
-</code></pre><h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><pre><code>所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制。
- 通俗的讲就是通入注入的方式解决依赖关系。
- 常见的AngularJS内置服务有$http、$location、$timeout、$rootScope等
-
-1 $http 我们这个模块肯定是用来供后台进行交互的
-2 $location 这个是angular 封装了一个location 对象，在暴露出来的api
-3 $timeout  这个是封装了我们的一个函数 window.setTimeout()
-4 $rootScope 这个$rootScope  $scope 模型数据. 我在$rootScope 里面绑定了数据，我在页面的任何地方都可以使用
-这个数据.
-</code></pre><p>  5 $inteval  这个是封装了我们的一个函数 window.setInterval();</p>
-<pre><code>我们可以把这些功能都可以理解成服务。对外提供什么样的功能，就是对外提供什么样的服务.
-我的模块要使用这些服务，就需要去注入这些服务
-  注入有两种方式：
-      1  行内式  第二个参数是数组
-      2 推断式  第二个参数是函数
-    我们推荐使用第一个种行内式，为了避免代码压缩.
+        <h3 id="css3的现状"><a href="#css3的现状" class="headerlink" title="css3的现状"></a>css3的现状</h3><pre><code>1 浏览器支持程度擦，需要添加私有前缀。
+私有前缀：各个浏览器根据内核的不同添加的一些本类型的浏览器认识的一些标记。
+作用：伪类兼容本类低版本的浏览器写的一些特殊的字符
+常见的浏览器内核：webkit(chrome opera safari) moz(firefox) IE,edge(ms) opera(o)
+常用私有前缀：
+-webkit- chrome opera safari
+-moz-  firefox
+-ms- IE
+-o- opera
+私有前缀的由来
+-webkit-border-radius
+-moz-border-radius
+-ms-border-radius
+-o-border-radius
+产看某个属性是否添加私有前缀：www.caniuse.com
+自动的工具：1 autoprefixer 2 gulp 考拉软件
+2 移动短支持优于pc端
+3 不断改进中
+</code></pre><h3 id="什么式渐进增强和优雅降级？"><a href="#什么式渐进增强和优雅降级？" class="headerlink" title="什么式渐进增强和优雅降级？"></a>什么式渐进增强和优雅降级？</h3><pre><code>1 坚持渐进增强原则:针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
+2 优雅降级:最完美的效果和体验开始，往低版本浏览器进行降级，只留下最核心的内容和信息,如果出现一些小的无关紧要的bug，忽略不计
+</code></pre><h3 id="css3选择器"><a href="#css3选择器" class="headerlink" title="css3选择器"></a>css3选择器</h3><h4 id="属性选择器设置样式"><a href="#属性选择器设置样式" class="headerlink" title="属性选择器设置样式"></a>属性选择器设置样式</h4><pre><code>1 E[attr] 表示存在attr属性即可
+例：a[href]{
+    color:red;
+}//表示所有attr都变色
+2 E[attr=value] 表示属性值完全等于value
+例： a[href=&apos;a.mp4&apos;]{
+    color:red;
+}
+3 E[attr^=val] 表示的属性值里包含val字符并且在“开始”位置
+例： a[href^=&apos;b&apos;]{
+    color:red;
+}
+4 E[attr$=val] 表示的属性值里包含val字符并且在“结束”位置
+例： a[href$=&apos;b&apos;]{
+    color:red;
+}
+5 E[attr*=val] 表示的属性值里包含val字符并且在“任意”位置
+例：a[href*=&apos;b&apos;]{
+    color:red;
+}
+</code></pre><h4 id="伪类选择器设置样式"><a href="#伪类选择器设置样式" class="headerlink" title="伪类选择器设置样式 :"></a>伪类选择器设置样式 :</h4><pre><code>1 E:first-child 第一个子元素
+例： li:first-child{
+    background-color:red;
+}
+2 E:last-child 最后一个子元素
+例：li:last-child{
+    background-color:red;
+}
+3 E:nth-child(n) 第n个子元素，计算方法式E元素的全部兄弟元素
+例： li:nth-child(4)  li元素的第四个元素
+      li:nth-child(2n)  li元素的偶数元素
+      li:nth-child(odd) li的奇数元素
+      li:nth-child(-n+5) 选择到E元素的父元素的前5个子元素
+    E:nth-last-child(n) 同E:nth-child(n) 相似，只是倒着计算
+</code></pre><h4 id="伪元素选择器设置样式"><a href="#伪元素选择器设置样式" class="headerlink" title="伪元素选择器设置样式"></a>伪元素选择器设置样式</h4><pre><code>    E::after&amp;&amp;E::before
+    例：在div前面添加一个::before伪元素
+    div::before{
+        content:&quot;&quot;; 必须写content属性，否则无法添加伪元素
+        display:block; 伪元素都是行内元素
+        width:200px;
+        height:200px;
+        background-color:red;
+    }
+在元素上添加before和after,只能同时各添加一个before和after，不能在同一个元素上出现多个。
 </code></pre>
       
     </div>
@@ -222,7 +253,7 @@ read time: 2分钟
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/04/04/Css3简介及选择器/" href="_blank" > http:lilyfengtao.github.io/2015/04/04/Css3简介及选择器/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -243,9 +274,9 @@ read time: 2分钟
 
 
 
-<a href=http:lilyfengtao.github.io/tags/AngularJs >
+<a href=http:lilyfengtao.github.io/tags/css3 >
 <i class="fa fa-tags" aria-hidden="true"></i>
-AngularJs
+css3
 </a>
 </li>
 
@@ -284,19 +315,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2017/04/09/AngularJs简介与学习（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/03/26/Css基础（五）/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          AngularJs简介与学习（一）
+          Css基础（五）之定位
         
       </div>
     </a>
   
   
-    <a href="/2017/04/10/jQuery浅谈（一）/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/04/18/Css3阴影及盒子尺寸/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jQuery浅谈（一）</div>
+      <div class="article-nav-title">Css3阴影及盒子尺寸</div>
     </a>
   
 </nav>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>AngularJs简介与学习（二） | 李锋涛</title>
+  <title>Css3渐变及转换 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2017-04-09T16:09:42.000Z" itemprop="datePublished">
+  	<time datetime="2015-04-25T07:43:19.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	10daysago
+  	2yearsago
 
 
   
 <div>
-read time: 2分钟
+read time: 4分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 2分钟
         
   
     <h1 class="article-title" itemprop="name">
-      AngularJs简介与学习（二）
+      Css3渐变及转换
     </h1>
   
 
@@ -157,39 +157,111 @@ read time: 2分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><pre><code>变量的作用域通常来说，在一段程序里面的某个变量的名字并不总是可用的，而限定这个变量的使用的范围就是作用域。
-</code></pre><h3 id="angular-的作用域"><a href="#angular-的作用域" class="headerlink" title="angular 的作用域"></a>angular 的作用域</h3><pre><code>作用域的关系就像函数里面方法的作用域的关系一样。作用域指的是$scope 的数据能否被获取到.
-有一个根作用域，以后我有一部分数据在整个应用里面是需要共享的，我就把这个数据赋值给$rootScope上面，我在应用的任何一个位置都可以获取.
-</code></pre><h3 id="过滤器"><a href="#过滤器" class="headerlink" title="过滤器"></a>过滤器</h3><pre><code> 1 内置过滤器
-      date    日期
-      currency 货币
-      limitTo   截取字符串
-      json     将对象转换成json 格式字符串
-      uppercase  转换成为大写
-      lowercase  转换成小写
-      filter     获取数据，找到对应的数据，主要是用来做界面的搜索的
-      number     获取数据，对数据的小数点做一个精确
-      orderBy    排序，列表我就可以进行排序
+        <h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><pre><code>1 线性渐变 liner-gradient 
+    有四个属性值：方向 起始颜色 终止颜色 距离
+    默认的方向是自上向下，距离就是div的高度
+    例: 实现一个45度的渐变，起始颜色黄色，终止颜色粉色，距离就是div的宽度
+    background-image:linear-gradient(-45deg,yellow,pink)
+2 径向渐变 radial-gradient
+    background-image:radial-gradient(半径 at 位置 ，颜色，颜色)
+</code></pre><h3 id="CSS3的过渡属性"><a href="#CSS3的过渡属性" class="headerlink" title="CSS3的过渡属性"></a>CSS3的过渡属性</h3><pre><code>1 如变化的属性过多就用 transition:all 
+2 过度持续时间 transition-duration:1s;
+3 设置过度速度 transition-timing-function:linear/ease(匀速/缓慢);
+4 过渡延迟时间 transition-delay:1s;
+</code></pre><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><pre><code>transform:translate X(横坐标：正向右，负向左)
+transform:translate Y(纵坐标：正向下，负向上)
+transform:translate(-50%,-50%) 未知盒子宽高居中
 
-2 自定义过滤器
-    app.directive 自定义指令
-    app.filter(&quot;&quot;) 自定义过滤器，有一个默认的参数
-</code></pre><h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><pre><code>所谓依赖注入是指在运行时自动查找依赖关系，然后将查找到依赖传递给使用者的一种机制。
- 通俗的讲就是通入注入的方式解决依赖关系。
- 常见的AngularJS内置服务有$http、$location、$timeout、$rootScope等
+水平居中一个已知尺寸的元素
+position:absolute;
+top:50%;
+left:50%;
+margin-top:-高的一半;
+margin-left:-宽的一半;
 
-1 $http 我们这个模块肯定是用来供后台进行交互的
-2 $location 这个是angular 封装了一个location 对象，在暴露出来的api
-3 $timeout  这个是封装了我们的一个函数 window.setTimeout()
-4 $rootScope 这个$rootScope  $scope 模型数据. 我在$rootScope 里面绑定了数据，我在页面的任何地方都可以使用
-这个数据.
-</code></pre><p>  5 $inteval  这个是封装了我们的一个函数 window.setInterval();</p>
-<pre><code>我们可以把这些功能都可以理解成服务。对外提供什么样的功能，就是对外提供什么样的服务.
-我的模块要使用这些服务，就需要去注入这些服务
-  注入有两种方式：
-      1  行内式  第二个参数是数组
-      2 推断式  第二个参数是函数
-    我们推荐使用第一个种行内式，为了避免代码压缩.
+水平居中一个未知尺寸的元素
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%)
+</code></pre><h4 id="旋转-transform-rotate"><a href="#旋转-transform-rotate" class="headerlink" title="旋转 transform:rotate;"></a>旋转 transform:rotate;</h4><pre><code>1 transform:rotate(正值为顺时针，负值为逆时针)
+ rotateX() 横坐标旋转 routeY()  纵坐标旋转
+ 2 transform:scole(?) ? 为放大倍数
+ scoleX() 横坐标缩放 scoleY()纵坐标缩放
+ 3 倾斜 transform:skew(30deg)
+</code></pre><h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><pre><code>动画的创建： 关键字：@keyframes 动画名称
+格式：@keyframes 动画名称{
+        百分比{}
+        百分比{}
+        }
+1 动画名称 animation-name (需要调用)
+2 动画延迟 animation-dely:3s;
+3 动画总时间 animation-duration:5s;
+4 动画速度 animation-timing-function:liner;
+5 动画次数 animation-iteration-count:?
+6 控制动画完成时的状态 animation-fill-mode:back wards(回到初)/both()
+
+动画创建方式一：
+@keyframes move {
+    0%{
+        transform:translate(0px,0px);
+    }
+    25%{
+    transform:translate(500px,0px)
+    }
+    50%{
+        transform:translate(500px,500px)
+    }
+    75{
+        transform:translate(0px,500px)
+    }
+    100%{
+        transform:translate(0px,0px)
+    }
+}
+创建的第二中方法：
+@keyframes route{
+    from{
+        transform:translate(0deg);
+    }
+    to{
+        transform:translate(360deg)
+    }
+}
+</code></pre><h3 id="伸缩布局"><a href="#伸缩布局" class="headerlink" title="伸缩布局"></a>伸缩布局</h3><pre><code>1 传统布局：基于盒状模型，依赖 display属性 + position属性 + float属性
+缺点：不方便，比如垂直居中不容易实现
+2 伸缩布局
+1）伸缩容器：只要给某个元素display:flex 就是伸缩容器
+2）伸缩项目：只要包含在伸缩容器中的直接子元素，就是伸缩项目
+3）主轴：是可以调整方向的，默认是水平方向
+4）侧轴：侧轴是垂直于主轴的
+</code></pre><h3 id="伸缩布局的相关属性并解释其含义"><a href="#伸缩布局的相关属性并解释其含义" class="headerlink" title="伸缩布局的相关属性并解释其含义"></a>伸缩布局的相关属性并解释其含义</h3><pre><code>1 设置某个元素为伸缩容器    display:flex;
+2 调整伸缩容器的主轴方向 
+    flex-direction:row 从左向右
+    flex-direction:row-reverse 从右向左
+    flex-direction:column 从上往下
+    flex-direction:column-reverse 从下往上
+
+3 主轴对齐方式
+    justify-content:flex-start 主轴起点对齐
+    justify-content:flex-end 主轴终点对齐
+    justify-content:flex-center 中心对齐
+    justify-content:flex-space-between 两端对齐
+    justify-content:flex-space-around 控件环绕
+4 设置伸缩项目是否换行
+    flex-wrap:nowrap 默认不换行
+    flex-wrap:wrap 换行
+5 设置侧轴对齐方式
+    align-items:flex-start 侧轴起点对齐
+    align-items:flex-end 侧轴终点对齐
+    align-items:center 侧轴中心对齐
+    align-items:stretch 拉伸
+6 设置换行后的对齐方式
+    align-content:flex-start 侧轴起点对齐
+    align-content:flex-end 侧轴终点对齐
+    align-content:flex-center 中心对齐
+    align-content:space-between 两端对齐
+    align-content:space-around 控件环绕
 </code></pre>
       
     </div>
@@ -222,7 +294,7 @@ read time: 2分钟
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/" href="_blank" > http:lilyfengtao.github.io/2017/04/10/AngularJs简介与学习（二）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/04/25/Css3渐变及转换/" href="_blank" > http:lilyfengtao.github.io/2015/04/25/Css3渐变及转换/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -243,9 +315,9 @@ read time: 2分钟
 
 
 
-<a href=http:lilyfengtao.github.io/tags/AngularJs >
+<a href=http:lilyfengtao.github.io/tags/css3 >
 <i class="fa fa-tags" aria-hidden="true"></i>
-AngularJs
+css3
 </a>
 </li>
 
@@ -284,19 +356,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2017/04/09/AngularJs简介与学习（一）/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/04/18/Css3阴影及盒子尺寸/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          AngularJs简介与学习（一）
+          Css3阴影及盒子尺寸
         
       </div>
     </a>
   
   
-    <a href="/2017/04/10/jQuery浅谈（一）/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2017/03/12/webpack/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jQuery浅谈（一）</div>
+      <div class="article-nav-title">webpack</div>
     </a>
   
 </nav>
