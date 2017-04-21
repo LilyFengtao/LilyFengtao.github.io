@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Css清除浮动 | 李锋涛</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <link rel="manifest" href="/manifest.json">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content=李锋涛   >
+  <link rel="apple-touch-icon" href="img/icons/152.png">
+  
+  
+  <meta name="theme-color" content="#0c0c1f">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternate" href="/atom.xml" title="李锋涛" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class=" ">
+  	   <div class="iewarn" id="iewarn">
+<div>---------!!!!!!!!!!!!!!!!-----------------</div>
+检测到您正在使用IE9或更低版本浏览器访问本站，为了您的阅读体验，本站推荐您使用<a href="https://www.google.com/chrome/" target="_blank" >Chrome浏览器</a> 或者<a href="https://www.mozilla.org/en-US/firefox/products/" target="_blank" >Firefox浏览器 </a> 对本站进行访问
+
+</div>
+      <header class="main-header">
+
+<div class="logo nav-list">
+<a href="/"><img src=/img/logo1.jpg alt="logo" width="50px" height="50px" /></a>
+</div>
+<ul class="nav-list nav">
+
+<li class="nav-list">
+<a href="/">
+<i class="fa fa-home" aria-hidden="true" ></i>
+首页
+</a>
+</li>
+<li class="nav-list">
+<a href="/about">
+<i class="fa fa-youtube-play" aria-hidden="true" ></i>
+关于我
+</a>
+</li>
+<li class="nav-list">
+<a href="/atom.xml" target="_blank" >
+<i class="fa fa-feed" aria-hidden="true" ></i>
+订阅我
+</a>
+</li>
+<li class="nav-list lightmode ">
+<a href="javascript:;" >
+<i class="fa fa-moon-o" aria-hidden="true"></i>
+关灯
+</a>
+</li>
+</ul>
+
+</header>
+        <article>
+  <div class="article-share">
+<div id="qrcode">
+	<div class="qr-text">
+	扫一扫，分享到微信
+	<i class="fa fa-window-close-o fa-2" aria-hidden="true"></i>
+	</div>
+</div>
+<ul class="share-content">
+<li >
+		<i class="fa fa-share-alt" aria-hidden="true"></i>
+	</li>
+	<li>
+		<a ><i class="fa fa-weixin" aria-hidden="true" id="toweixin"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-weibo" aria-hidden="true" id="toweibo"></i></a>
+	</li>
+	<li>
+		<a ><i class="fa fa-twitter" aria-hidden="true" id="totwitter"></i></a>
+	</li>
+</ul>
+</div>
+<div class="article main-body" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <!--采用相对的时间或者绝对的时间，默认相对-->
+
+<div class="article-date">
+  	<time datetime="2015-03-18T15:35:03.000Z" itemprop="datePublished">
+  	
+  	
+  	
+  	
+  	
+    
+          
+      
+      
+        
+    
+    
+    
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	 	
+  	
+  		
+  	
+  	
+    
+    
+  	
+  	
+  	
+  		
+  	
+  	
+  	2yearsago
+
+
+  
+<div>
+read time: 3分钟
+</div>
+</div>
+
+
+
+
+  </div>
+  <div class="article-inner">
+   
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Css清除浮动
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h3><pre><code>标准流：元素在浏览器中默认的显示方式。
+</code></pre><h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><pre><code>float:left/right
+特点：1） 元素脱离标准流
+      2） 浮动可以让块元素在一行上显示
+注意：如果想让块级元素在一行上显示，需要给所有的块级元素设置浮动。
+      3） 该元素不占位置。
+      4） 实现元素的模式转换（脱标）
+作用：
+    1）实现网页布局  （让网页中块级元素的盒子在一行上显示）
+    2）用来制作网页导航（使用列表制作）
+
+    3）根本的作用： 实现图片文字环绕效果 （文字不会被浮动的元素压着）
+</code></pre><h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><pre><code>清除浮动：消除浮动的影响。
+什么时候需要清除浮动？
+1 父容器没有设置高度（不需要设置height属性）
+2 父容器中所有的子元素都设置了浮动
+</code></pre><h3 id="清除浮动的方式"><a href="#清除浮动的方式" class="headerlink" title="清除浮动的方式"></a>清除浮动的方式</h3><pre><code>1 使用clean:left /right/    both
+2 给父容器设置 overflow：hidden;
+ 注意：如果使用overflow:hidden清除浮动，首先要保证父容器中没有定位的元素，如果有定位的元素，则不推荐使用该方法清除浮动。
+3 使用伪元素清除浮动
+    .clearfix:after{
+        content:&quot;&quot;;
+        height:0;
+        line-height:0;
+        clear:both;
+        display:block;
+        visibility:hidden;
+    }
+    .clearfix{
+        zoom:1;// 兼容IE浏览器
+    }
+4 使用双伪元素清除浮动
+    .clearfix:before,.clearfix:after{
+        content:&quot;&quot;;
+        height:0;
+        line-height:0;
+        clear:both;
+        display:block;
+        visibility:hidden;
+    }
+    .clearfix{
+        zoom:1;// 兼容IE浏览器
+    }
+</code></pre><h3 id="清除浮动中遇到的问题"><a href="#清除浮动中遇到的问题" class="headerlink" title="清除浮动中遇到的问题"></a>清除浮动中遇到的问题</h3><pre><code>1 首先看父元素有没有设置固定高度
+2 父元素中是不是所有的子元素都设置了浮动
+3 清除浮动的代码有没有问题
+4 调用清除浮动的标签是否正确
+5 最后检查html结构是否有问题 
+</code></pre><h3 id="css-初始化"><a href="#css-初始化" class="headerlink" title="css 初始化"></a>css 初始化</h3><pre><code>1  通过设置样式将页面中标签默认的样式层叠掉（margin，padding,list-style...）
+2  设置页面中标签的默认样式（统一性）
+</code></pre><h3 id="overflow-的用法"><a href="#overflow-的用法" class="headerlink" title="overflow 的用法"></a>overflow 的用法</h3><pre><code>[溢出，超出] overflow:visible(默认值)
+            overflow: hidden 超出部分隐藏
+            overflow: scroll 添加滚动条
+            overflow: auto 根据内容判断是否添加滚动条
+</code></pre>
+      
+    </div>
+    
+<div class="reward" id="rewardme">
+「喜欢，就赞一个呗！(:3 」∠)_ (￣y▽￣)~*」
+
+<div class="reward-qr">
+<div class="reward-tks">
+「鼓励我写出更好的文字」
+<i class="fa fa-window-close" aria-hidden="true"></i>
+</div>
+<img src= "/img/456.jpg" />
+「支付宝」
+</div>
+
+
+<div class="reward-btn" >
+<div class="reward-text">赏</div>
+</div>
+
+
+</div>
+ 
+    
+    
+
+
+
+
+<div class="copyright">
+<blockquote>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/03/18/Css清除浮动/" href="_blank" > http:lilyfengtao.github.io/2015/03/18/Css清除浮动/ </a>
+<div>
+<strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
+</div>
+</blockquote>
+</div>
+
+	
+
+    
+    <div class="cat-and-tags">
+    
+    <div class="show-tags">
+<ul>
+
+
+
+<li>
+
+
+
+<a href=http:lilyfengtao.github.io/tags/css >
+<i class="fa fa-tags" aria-hidden="true"></i>
+css
+</a>
+</li>
+
+
+</ul>
+</div>
+
+
+    </div>
+    
+    <!--注意网易云跟贴url位置必须在网易网站配置中的网站域名之下，比如当我在localhost下设置的时候哦
+就会因为与网易网站设置的域名不匹配而导致跟贴不能显示出来
+-->
+
+
+<div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+<script>
+
+var pathname=document.location.pathname
+var cloudTieConfig = {
+  url: "http:lilyfengtao.github.io"+pathname, 
+  sourceId: "uuuu",
+  productKey: "d9ac976925074859942b446f585903fd",
+  target: "cloud-tie-wrapper"
+};
+var yunManualLoad = true;
+Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+</script>
+
+  </div>
+ 
+ 
+  <!--上一篇下一篇 -->
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/25/Css行高及盒子模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Css行高及盒子模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/26/Css定位/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Css基础（五）之定位</div>
+    </a>
+  
+</nav>
+
+  
+
+</div>
+</article>
+
+      <footer id="footer">
+  <div class="outer">
+     
+     <div id="footer-info" class="inner">
+     
+      &copy;  2014 - 2017 
+       李锋涛<br>
+
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      </br>
+      theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
+      </div>
+      
+      
+     
+
+
+     
+    
+  </div>
+  <div class="to-top">
+    <div class="toTop-btn">
+    <div class="toTop-text">返回顶部</div>
+  	<button class="toTop-button">
+  		<i class="fa fa-arrow-up" aria-hidden="true"></i>
+  	</button >
+    </div>
+  </div>
+</footer>
+     
+    
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'http://www.lifengtao.cn/', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+<script src="/js/qrcode.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/lightmode.js"></script>
+
+<script src="/js/iewarn.js"></script>
+
+
+  
+</body>
+</html>
