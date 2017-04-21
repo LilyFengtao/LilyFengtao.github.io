@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>html5（一） | 李锋涛</title>
+  <title>html5简介 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -134,7 +134,7 @@
 
   
 <div>
-read time: 6分钟
+read time: 3分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 6分钟
         
   
     <h1 class="article-title" itemprop="name">
-      html5（一）
+      html5简介
     </h1>
   
 
@@ -157,7 +157,7 @@ read time: 6分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="HTML简介"><a href="#HTML简介" class="headerlink" title="HTML简介"></a>HTML简介</h2><pre><code>- 侠义上的html5 ：1  HTML4.0的升级版
+        <h2 id="HTML5简介"><a href="#HTML5简介" class="headerlink" title="HTML5简介"></a>HTML5简介</h2><pre><code>- 侠义上的html5 ：1  HTML4.0的升级版
                  2 HTML5+Css3+新增JS API 的结束组合
  - 广义上的HTML5 1 :HTML5行业的代名词
                   2 当前新技术的代名词
@@ -206,77 +206,6 @@ Arcitcle、nav、aside可以理解为特殊的section，可以用article、nav�
 说明：lt(代表less than)  当IE浏览器的版本小于IE6的时候，会执行其中的代码
 [if lte IE 8]
 说明：lte(代表less than equals)当IE浏览器的版本小于等于IE8的时候，会执行其中的代码
-</code></pre><h2 id="HTML-新增表单类型"><a href="#HTML-新增表单类型" class="headerlink" title="HTML 新增表单类型"></a>HTML 新增表单类型</h2><pre><code>- 邮箱&lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot;&gt;
-  注意：会验证邮箱的格式，如果输入错误，则会提示
-- 网址 &lt;input type=&quot;url&quot; name=&quot;url&quot; id=&quot;url&quot;&gt;
-注意：会验证输入的url是否带有http或https协议前缀，如果没有，则会提示
-- 搜索 &lt;input type=&quot;search&quot; name=&quot;search&quot; id=&quot;search&quot;&gt;
-注意：在有内容的情况下，会出现清除按钮
-- 数字 &lt;input type=&quot;number&quot; name=&quot;number&quot; id=&quot;number&quot; max=&quot; min=&quot; step=&quot;&quot; value=&quot;&quot;&gt;
-注意：Max：数字输入框的最大值
-  Min：数字输入框的最小值
-  Step：步进值
-  Value：当前的值
-- 范围 &lt;input type=&quot;range&quot; name=&quot;range&quot; id=&quot;range&quot; max=&quot; min=&quot; step=&quot; value=&quot;&gt;
-    注意：Max：数字输入框的最大值
-      Min：数字输入框的最小值
-      Step：步进值
-      Value：当前的值
-- 时间 &lt;input type=&quot;time&quot; name=&quot;time&quot; id=&quot;time&quot;&gt;
-- 日期 &lt;input type=&quot;date&quot; name=&quot;date&quot; id=&quot;date&quot;&gt;
-- 颜色 &lt;input type=&quot;color&quot; name=&quot;color&quot; id=&quot;color&quot;&gt;
-- 手机号 &lt;input type=&quot;tel&quot; name=&quot;tel&quot; id=&quot;tel&quot;&gt;
-</code></pre><h2 id="新增表单元素"><a href="#新增表单元素" class="headerlink" title="新增表单元素"></a>新增表单元素</h2><pre><code>datalist 数据列表
-一般河input配合使用，要保证datalist的id和input的listd的值完全一致
-例： &lt;input type=&quot;text&quot; name=&quot;text&quot; id=&quot;text&quot; list=&quot;program&quot;&gt;
-&lt;datalist id=&quot;program&quot;&gt;
-    &lt;option value=&quot;java&quot;&gt;&lt;/option&gt;
-    &lt;option value=&quot;php&quot;&gt;&lt;/option&gt;
-    &lt;option value=&quot;C++&quot;&gt;&lt;/option&gt;
-&lt;/datalist&gt;    
-</code></pre><h2 id="新增表单属性"><a href="#新增表单属性" class="headerlink" title="新增表单属性"></a>新增表单属性</h2><pre><code>1 placeholder 占位符 
-告诉用户在该输入框中输入什么样的内容
-2 Autocomplete  自动完成
-当在输入框中输入，提交之后，下次输入可以自动填充
-3 autofouse 
-自动完成，当页面载入之后，光标会自动聚焦在该输入框上
-4 require 
-必填，拥有该属性的输入框，如果不填，则无法成功提交
-5 multiple 
-多选，可以一次性选择多个文件
-6 pattern 
-自定义验证，根据正则表达式验证内容是否符合正则的规则
-</code></pre><h2 id="新增的表单事件"><a href="#新增的表单事件" class="headerlink" title="新增的表单事件"></a>新增的表单事件</h2><pre><code>1 element.oninput=function(){}
-作用：当用户在该输入框中输入的时候，会多次触发该事件
-2 element.oninvalid=function(){}
-作用：当验证不通过的时候，会触发该事件
-3 element.setCustomValidity(&apos;&apos;)
-作用：设置错误提示的信息
-</code></pre><h2 id="HTML5-多媒体标签"><a href="#HTML5-多媒体标签" class="headerlink" title="HTML5 多媒体标签"></a>HTML5 多媒体标签</h2><pre><code>1 Audio 标签媒体标签
-例： &lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot;&gt;
-&lt;source src=&quot;....&quot; type=&quot;audio/mp3&quot;&gt;    
-&lt;/audio&gt;
-2 Video 标签播放视频
-    &lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot;&gt;
-    &lt;source src=&quot;....&quot; type=&quot;video/mp4&quot;&gt;    
-    &lt;/audio&gt;
-audio文件格式： ogg, Mp3,WAN,
-video 文件格式： ogg MP4, WebM
-</code></pre><h2 id="HTML5-的DOM扩展"><a href="#HTML5-的DOM扩展" class="headerlink" title="HTML5 的DOM扩展"></a>HTML5 的DOM扩展</h2><pre><code>1 API获取元素
- document.querySelector(&apos;&apos;);
- document.querySelectorAll(&apos;&apos;);
- 2 API 操作类名
- node.classList.add(&apos;&apos;)  添加类名
- node.classList.remove(&apos;&apos;) 删除类名
- node.classList.contains(&apos;&apos;) 判断类名中是否包含一个类名
- node.classList.toggle(&apos;&apos;)
- 替换类名 （有则删除，无则添加）
-</code></pre><h2 id="API-自定义属性"><a href="#API-自定义属性" class="headerlink" title="API 自定义属性"></a>API 自定义属性</h2><pre><code>自定义属性设置
-以data开头 
-格式： data-*(自定义的值)=value;
-获取 node.dataset.* （*代表我们自己给属性起的名字）
-用js获取自定义属性的值
-node.dataset.*=value
 </code></pre>
       
     </div>
@@ -309,7 +238,7 @@ node.dataset.*=value
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2014/12/16/html5(一）/" href="_blank" > http:lilyfengtao.github.io/2014/12/16/html5(一）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2014/12/16/html5简介/" href="_blank" > http:lilyfengtao.github.io/2014/12/16/html5简介/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -330,9 +259,9 @@ node.dataset.*=value
 
 
 
-<a href=http:lilyfengtao.github.io/tags/html >
+<a href=http:lilyfengtao.github.io/tags/html5 >
 <i class="fa fa-tags" aria-hidden="true"></i>
-html
+html5
 </a>
 </li>
 
@@ -371,19 +300,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2014/12/10/html/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Nieuwer</strong>
+    <a href="/2014/12/10/html入门介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
-          html
+          html入门介绍
         
       </div>
     </a>
   
   
-    <a href="/2014/12/20/html5（二）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ouder</strong>
-      <div class="article-nav-title">html5（二）</div>
+    <a href="/2014/12/18/H5新增表单/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">H5新增表单</div>
     </a>
   
 </nav>
@@ -401,7 +330,7 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
       &copy;  2014 - 2017 
        李锋涛<br>
 
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
       </br>
       theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
       </div>
