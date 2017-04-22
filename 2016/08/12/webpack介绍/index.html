@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Css基础（三） | 李锋涛</title>
+  <title>webpack介绍 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2015-02-25T01:56:18.000Z" itemprop="datePublished">
+  	<time datetime="2016-08-12T05:06:45.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,7 +129,7 @@
   		
   	
   	
-  	2yearsago
+  	8monthsago
 
 
   
@@ -149,7 +149,7 @@ read time: 4分钟
         
   
     <h1 class="article-title" itemprop="name">
-      Css基础（三）
+      webpack介绍
     </h1>
   
 
@@ -157,73 +157,62 @@ read time: 4分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="浏览器中默认文字大小"><a href="#浏览器中默认文字大小" class="headerlink" title="浏览器中默认文字大小"></a>浏览器中默认文字大小</h3><pre><code>默认文字大小为16px;
-</code></pre><h3 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h3><pre><code>默认文字的行高为18px;
-行高=文字大小+上间距+下间距
-特点：
-   1）文字大小会影响行高（不设置行高）
-   2）文字字体也会影响行高
-   3）行高只能影响文字
-   作用：
-       实现文字垂直居中
-        1） 给一个盒子中的文字设置行高值等于该盒子的高度
-</code></pre><h3 id="行高单位问题"><a href="#行高单位问题" class="headerlink" title="行高单位问题"></a>行高单位问题</h3><pre><code>px, em,百分比（%），不带单位。
+        <h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><pre><code>weba是一个module.bundler(模块打包工具)其可以兼容多种js书写规范，且可以处理模块间的依赖关系，具有更强大的js模块化的功能。Webpack对它们进行统 一的管理以及打包发布
+</code></pre><h4 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h4><pre><code>官网：http://webpack.github.io/docs/ 
+Webpack-handlebook: http://zhaoda.net/webpack-handbook/
+Gitbook: http://fakefish.github.io/react-webpack-cookbook/index.html
+</code></pre><h4 id="为什么使用webpack"><a href="#为什么使用webpack" class="headerlink" title="为什么使用webpack?"></a>为什么使用webpack?</h4><pre><code>1 对CommonJs，AMD ,ES6 的语法做了兼容
+2 对js css图片等资源文件都支持打包
+3  串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
+4 有独立的配置文件webpack.config.js
+5 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
+6 支持 SourceUrls 和 SourceMaps，易于调试
+7 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
+8 .webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
+</code></pre><h4 id="webpack事物使用"><a href="#webpack事物使用" class="headerlink" title="webpack事物使用"></a>webpack事物使用</h4><pre><code>1 安装webpack与运行介绍
+Deploy是编译之后的可用于文件打包的文件，src中的是开发文件
+2 引入wenpack依赖
+ 在项目根目录打开命令窗口引入项目依赖，全局安装
+ npm  install  webpack  -g // 全局安装webpack
+3 创建配置文件
+ （1）webpack.base.config.js  公用的配置方在这里面（可通过插件继承）
+  （2） webpack.develop.config.js 开发环境中用到的配置文件
+  （3）webpack.publish.config.js 生产环境中用到的配置文件
+</code></pre><h4 id="module-exports-必须有的结构"><a href="#module-exports-必须有的结构" class="headerlink" title="module.exports={// 必须有的结构"></a>module.exports={// 必须有的结构</h4><pre><code>    //所有配置都在{}内部
+    //指定入口
+    entry:{
+        //这里可以有多个入口
+        main:&apos;./main.js&apos;,
+    },
+    optput:{
+        //出口
+        filename:&apos;./build.js&apos;
+    },      
+    对于es6的一些代码，最好我们需要转换
+    module:{
+        包含多个模块，这些模块为对应的代码提供了转化功能
+        loaders:[
+            {tes:/.js/,  告诉webpack什么文件走loader:test要写正则表达式
+            loader:&apos;babel-loader&apos;,
+            告诉loader添加额外的配置
+            option:{
+                出来这个配置带s的不是数组之外，其他都是数组
+                presets:[&apos;es2015&apos;],//设置Es6关键字的解析 在下载的时候babel-plugin-transform-runtime-;
+                plugins:[&apos;transform-runtime&apos;]//解析ES6函数
+            }
+        }
 
-      ✔当给一个单独的标签设置行高（默认该标签中    的文字大小为20px）
-     ☞如果行高值为px，那么文字的行高就是设置的行高值。与设置的文字大小无关。
-     ☞如果行高值为em，那么文字的行高=文字大小*设置的行高值
-      ☞如果设置行高为%，那么文字的行高=文字大小*设置的行高值
-     ☞如果设置的行高不带单位，那么文字的行高=文字大小*设置的行高值
-    ✔当给一个父元素设置行高，研究子元素中的文字行高大小。
-      ☞如果父元素设置的行高值为px，默认子元素的行高=父元素的行高（行高继承）
-      ☞如果父元素设置的行高为em, 默认子元素的行高=父元素的文字大小*父元素设置的行高值。（先计算后继承）
-      ☞如果父元素设置的行高为%， 默认子元素的行高=父元素的文字大小*父元素设置的行高值。（先计算后继承）
-      ☞如果父元素设置的行高不带单位， 默认子元素的行高=子元素的文字大小*父元素设置的行高值。（先继承后计算
-</code></pre><h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><pre><code>作用： 进行网页布局
-盒子的组成部分：
-1 边框 border
-2 内边距 padding 内容与边框之间的距离
-(通过内边距可以移动盒子中的内容)
-3 外边距 margin 盒子与盒子之间的距离
-（通过外边距移动盒子）
-</code></pre><h3 id="盒子模型边框-border"><a href="#盒子模型边框-border" class="headerlink" title="盒子模型边框 border"></a>盒子模型边框 border</h3><pre><code>1 border-width      设置边框的宽度    
-2 border-style       设置边框的样式
-    默认值： none  没有边框
-            solid  实线边框
-            dotted 点线边框
-            dashed 虚线边框
-3 border-color 设置边框的颜色
-    注意：
-     1）去掉边框  border:0  none;
-     2) 去掉轮廓线  outline-style:   none;
-优化写法： border:1px solid red;
-合并边框： border-collapse：collapse;
-注意： border-clooapse属性只能在表格中使用
-</code></pre><h3 id="内边距-padding"><a href="#内边距-padding" class="headerlink" title="内边距 padding"></a>内边距 padding</h3><pre><code>注意：
- 1）设置的宽度和高度，指的是盒子中内容范围的大小。
-内边距： padding-left/right/top/bottom;
-内边距属性联写：
-padding:5px 
-内边距为：上，右，下，左各为5px
-padding:10px 10px
-内边距为：上下，左右各为10px
-</code></pre><h3 id="盒子大小问题"><a href="#盒子大小问题" class="headerlink" title="盒子大小问题"></a>盒子大小问题</h3><pre><code>1）边框可以改变盒子大小
-2）内边距可以改变盒子大小
-盒子真正宽度=内容的宽度+左右边框+左右内边距
- 盒子真正高度=内容的高度+上下边框+上下内边距
-</code></pre><h3 id="padding-值特殊性"><a href="#padding-值特殊性" class="headerlink" title="padding 值特殊性"></a>padding 值特殊性</h3><pre><code>会影响）
-</code></pre><h3 id="外边距-margin"><a href="#外边距-margin" class="headerlink" title="外边距 margin"></a>外边距 margin</h3><pre><code>注意：
-    1）外边距移动的是盒子。
-    2）外边距不会影响盒子大小
-外边距属性联写,与padding属性联写的设置方向一样。
-</code></pre><h3 id="外边距特带你"><a href="#外边距特带你" class="headerlink" title="外边距特带你"></a>外边距特带你</h3><pre><code>1) 垂直外边距合并： 在垂直方向上设置外边距，以最大值为准。（水平方向不会发生合并）
-2）垂直外边距塌陷： 当给子元素设置margin-top的时候，父元素也随之移动。
-☞ 给父元素设置边框。
-☞ 给父元素设置
-overflow:hidden;  
- 注意：
-     给父元素设overflow:hidden 会触发父元素的bfc(格式化上下文) 
-不要给行内元素设置上下内外边距。浏览器直接忽略
+        ]
+    }
+}
+最终我们到当前的webpack.js文件中执行就ok了
+</code></pre><h4 id="运行webpack"><a href="#运行webpack" class="headerlink" title="运行webpack"></a>运行webpack</h4><pre><code> 1 通过配置文件运行
+    在根目录运行webpack的命令，默认会去查找名称为webpack.config.js的文件执行，如果没有就会报配置信息没有配置的错误。
+    命令： Webpack
+ 2 这时候我们可以通过运行下面的命令进行配置文件的选择
+ webpack –-config  webpack.develop.config.js
+你可以运行webpack  -h查看webpack的其他命令，
+注意：但是我们基本上不用这种直接提供的命令，因为我们需要手动的敲打很多字母，我们现在开发通用的方法都是使用配置文件的方式运行。
 </code></pre>
       
     </div>
@@ -256,7 +245,7 @@ overflow:hidden;
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/02/25/Css基础（三）/" href="_blank" > http:lilyfengtao.github.io/2015/02/25/Css基础（三）/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2016/08/12/webpack介绍/" href="_blank" > http:lilyfengtao.github.io/2016/08/12/webpack介绍/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -277,9 +266,9 @@ overflow:hidden;
 
 
 
-<a href=http:lilyfengtao.github.io/tags/css >
+<a href=http:lilyfengtao.github.io/tags/webpack >
 <i class="fa fa-tags" aria-hidden="true"></i>
-css
+webpack
 </a>
 </li>
 
@@ -318,19 +307,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2015/01/17/Css基础（二）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Récent</strong>
+    <a href="/2015/07/20/jQuery动画/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Css基础（二）
+          jQuery动画
         
       </div>
     </a>
   
   
-    <a href="/2015/03/18/Css基础（四）/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Ancien</strong>
-      <div class="article-nav-title">Css基础（四）之清除浮动</div>
+    <a href="/2016/08/20/webpack使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">webpack使用</div>
     </a>
   
 </nav>
@@ -348,7 +337,7 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
       &copy;  2014 - 2017 
        李锋涛<br>
 
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
       </br>
       theme <a href="http://github.com/zhangolve/olive">olive</a> by zhangolve
       </div>
