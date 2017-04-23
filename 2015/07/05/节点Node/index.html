@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>事件响应及让网页交互 | 李锋涛</title>
+  <title>节点Node | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2015-07-09T09:08:33.000Z" itemprop="datePublished">
+  	<time datetime="2015-07-05T12:29:04.000Z" itemprop="datePublished">
   	
   	
   	
@@ -134,7 +134,7 @@
 
   
 <div>
-read time: 2分钟
+read time: 3分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 2分钟
         
   
     <h1 class="article-title" itemprop="name">
-      事件响应及让网页交互
+      节点Node
     </h1>
   
 
@@ -157,27 +157,67 @@ read time: 2分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="什么是事件？"><a href="#什么是事件？" class="headerlink" title="什么是事件？"></a>什么是事件？</h4><pre><code> JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为。 网页中的每个元素都可以产生某些可以触发 JavaScript 函数或程序的事件。
-1 鼠标单击事件 onclick
-    onclick是鼠标单击事件，当在网页上单击鼠标时，就会发生该事件。同时onclick事件调用的程序块就会被执行，通常与按钮一起使用。
-2 鼠标经过事件 onmouseover
-    鼠标经过事件，当鼠标移到一个对象上时，该对象就触发onmouseover事件，并执行onmouseover事件调用的程序。
-3 鼠标移开事件 onmouseout
-    鼠标移开事件，当鼠标移开当前对象时，执行onmouseout调用的程序。
-4 光标聚集事件 onfocus
-    当网页中的对象获得聚点时，执行onfocus调用的程序就会被执行。
-5 失焦事件 onblur
-    onblur事件与onfocus是相对事件，当光标离开当前获得聚焦对象的时候，触发onblur事件，同时执行被调用的程序。
-6 内容选中事件 onselect
- 选中事件，当文本框或者文本域中的文字被选中时，触发onselect事件，同时调用的程序就会被执行。
- 7 文本框内容改变事件 onchange
- 通过改变文本框的内容来触发onchange事件，同时执行被调用的程序
- 8 加载事件 onload
-     事件会在页面加载完成后，立即发生，同时执行被调用的程序。
-    注意：1. 加载页面时，触发onload事件，事件写在&lt;body&gt;标签内。
-      2. 此节的加载页面，可理解为打开一个新页面时。
-  9 卸载事件 onunload
-      当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序
+        <h4 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h4><pre><code>1 nodeName:节点的名称
+- 元素节点的 nodeName 与标签名相同
+- 属性节点的 nodeName 是属性的名称
+- 文本节点的 nodeName 永远是 #text
+- 文档节点的 nodeName 永远是 #document
+2 nodeValue 节点的值
+- 元素节点的 nodeValue 是 undefined 或 null
+- 文本节点的 nodeValue 是文本自身
+- 属性节点的 nodeValue 是属性的值
+3 nodeType 节点的类型
+   元素类型    节点类型
+     元素          1
+     属性          2
+     文本          3
+     注释          8
+     文档          9
+</code></pre><h4 id="节点的一些操作"><a href="#节点的一些操作" class="headerlink" title="节点的一些操作"></a>节点的一些操作</h4><pre><code> 1 访问子节点 childNodes
+ 语法： elementNode.childNodes
+   注意：
+   如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。
+ 2 访问子节点的第一和最后项
+ - firstChild 属性返回‘childNodes’数组的第一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+     语法： node.firstChild
+     说明：与elementNode.childNodes[0]是同样的效果。 
+ - lastChild  属性返回‘childNodes’数组的最后一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+     语法： node.lastChild
+     说明：与elementNode.childNodes[elementNode.childNodes.length-1]是同样的效果。 
+3 访问父节点 parentNode
+    语法：elementNode.parentNode
+    注意:父节点只能有一个。
+4 访问兄弟节点 
+ - nextSibling 属性可返回某个节点之后紧跟的节点（处于同一树层级中）。
+ 语法： nodeObject.nextSibling
+ 说明：如果无此节点，则该属性返回 null。
+ -  previousSibling 属性可返回某个节点之前紧跟的节点（处于同一树层级中）。
+ 语法：nodeObject.previousSibling
+ 说明：如果无此节点，则该属性返回 null。
+</code></pre><h4 id="节点的添加，插入，删除，替换，创建"><a href="#节点的添加，插入，删除，替换，创建" class="headerlink" title="节点的添加，插入，删除，替换，创建"></a>节点的添加，插入，删除，替换，创建</h4><pre><code>1 添加节点 appendChild()
+在指定节点的最后一个子节点列表之后添加一个新的子节点。
+语法：appendChild(newnode)
+2 插入节点 insertBefore()
+    insertBefore() 方法可在已有的子节点前插入一个新的子节点。
+    语法：insertBefore(newnode,node);
+  参数:newnode: 要插入的新节点。
+      node: 指定此节点前插入节点。
+3 删除节点 removeChild()
+removeChild() 方法从子节点列表中删除某个节点。如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。
+语法：nodeObject.removeChild(node)
+参数： node 必须，指定要删除的节点
+4 替换元素节点 replaceChild()
+  语法：node.replaceChild (newnode,oldnew ) 
+  参数：newnode : 必需，用于替换 oldnew 的对象。 
+      oldnew : 必需，被 newnode 替换的对象。
+5 创建元素节点 createElement
+    createElement()方法可创建元素节点。此方法可返回一个 Element 对象。
+    语法：document.createElement(tagName)
+    参数：tagName：字符串值，这个字符串用来指明创建元素的类型。
+    注意：要与appendChild() 或 insertBefore()方法联合使用，将元素显示在页面中。
+ 6 创建文本节点 createTextNode
+     createTextNode() 方法创建新的文本节点，返回新创建的 Text 节点。
+     语法：document.createTextNode(data)
 </code></pre>
       
     </div>
@@ -210,7 +250,7 @@ read time: 2分钟
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/07/09/事件响应及让网页交互/" href="_blank" > http:lilyfengtao.github.io/2015/07/09/事件响应及让网页交互/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/07/05/节点Node/" href="_blank" > http:lilyfengtao.github.io/2015/07/05/节点Node/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -272,19 +312,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2015/07/05/节点Node/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/02/动态创建元素/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          节点Node
+          动态创建元素
         
       </div>
     </a>
   
   
-    <a href="/2015/07/10/jQuery介绍及选择器/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/07/09/事件响应及让网页交互/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">jQuery介绍及选择器</div>
+      <div class="article-nav-title">事件响应及让网页交互</div>
     </a>
   
 </nav>
