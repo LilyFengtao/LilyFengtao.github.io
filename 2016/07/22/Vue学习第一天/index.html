@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>javascript计时器 | 李锋涛</title>
+  <title>vue学习第一天 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2015-08-01T02:50:00.000Z" itemprop="datePublished">
+  	<time datetime="2016-07-22T04:32:04.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	3yearsago
+  	2yearsago
 
 
   
 <div>
-read time: 2分钟
+read time: 5分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 2分钟
         
   
     <h1 class="article-title" itemprop="name">
-      javascript计时器
+      vue学习第一天
     </h1>
   
 
@@ -157,33 +157,65 @@ read time: 2分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="javascript-计时器"><a href="#javascript-计时器" class="headerlink" title="javascript 计时器"></a>javascript 计时器</h4><pre><code>  计时器类型： 仅在指定的延迟时间之后触发一次。
-  间隔性触发计时器：每隔一定的时间间隔就触发一次。
- 计时器方法：
-1   setTimeout()  指定的延迟时间之后来执行代码
-语法：
-setInterval(代码,交互时间);
-参数说明：1)  代码：要调用的函数或要执行的代码串。
-        2)交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。 
-2  clearTimeout() 取消settimeout()设置
-语法：
-clearInterval(id_of_setInterval)
-参数说明:
-id_of_setInterval：由 setInterval() 返回的 ID 值。
-每隔 100 毫秒调用 clock() 函数,并显示时间。当点击按钮时，停止时间,
-3 setInterval() 每隔指定的时间执行代码
-语法:
-setTimeout(代码,延迟时间);
-参数说明：
-1. 要调用的函数或要执行的代码串。
-2. 延时时间：在执行代码前需等待的时间，以毫秒为单位（1s=1000ms)。
-4  clearInterval() 取消setInterval()设置
-调用函数格式(假设有一个clock()函数):
-setInterval(&quot;clock()&quot;,1000)
-语法:
-clearTimeout(id_of_setTimeout)
-参数说明:
-id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
+        <h4 id="一：-书写方式"><a href="#一：-书写方式" class="headerlink" title="一： 书写方式"></a>一： 书写方式</h4><pre><code>  el代表的是element 
+ Data:{  (存储数据)}
+   格式为： new Vue({
+   el :”要绑定的元素，可以是body Id选择元素  类名选择元素”
+   data :{要存储的数据
+}})
+</code></pre><h4 id="二：-关于类名-v-bind-class-”XXX”-可以简写-class-”XXX"><a href="#二：-关于类名-v-bind-class-”XXX”-可以简写-class-”XXX" class="headerlink" title="二： 关于类名   v-bind:class=”XXX” 可以简写  :class=”XXX"></a>二： 关于类名   v-bind:class=”XXX” 可以简写  :class=”XXX</h4><pre><code>1 &lt;strong :class=&quot;[re]&quot;&gt;文字...&lt;/strong&gt;
+  &lt;p :class=&quot;re&quot;&gt; xxxxxx&lt;/p&gt;
+  :class=”re” 和：class=”[ re]效果一样 只是[ ]可以绑定多个类名
+2 &lt;strong :class=&quot;{red:true,blue:true}&quot;&gt;文字...&lt;/strong&gt;
+      ：class=“”  也可以绑定布尔值， true显示 false 就不显示
+3  此 ：class=” a”   a的值也可以在data:{ }中显示 用true或false来判断
+4 ：class=“json” 此在data: { }中可以多个用布尔值判定
+</code></pre><h4 id="三：在style-中-和class一样-都有简写：style-””-此用法和class-一摸一样"><a href="#三：在style-中-和class一样-都有简写：style-””-此用法和class-一摸一样" class="headerlink" title="三：在style 中 和class一样 都有简写：style=”” 此用法和class 一摸一样"></a>三：在style 中 和class一样 都有简写：style=”” 此用法和class 一摸一样</h4><h4 id="四-过滤器"><a href="#四-过滤器" class="headerlink" title="四 过滤器"></a>四 过滤器</h4><pre><code>1 {{‘hellow’|uppercase}}  此是转化为大写
+2 {{‘HELLOW’|lowercase}} 此是转化成小写
+3 {{12|currency}} 转化为钱币
+{{12|currency $}} 转化的是美元  {{12 |currency ￥}}转化的是人民币
+4 debounce    要配合事件 延迟执行
+ 例：&lt;input type=&quot;text&quot; @keyup=&quot;show | debounce 2000&quot;&gt; 意思是延迟两秒执行，必须和事件配合执行
+   5 数据配合过滤器
+   5.1 LimitBy 参数（去几个  从哪开始）
+   例：  &lt;li v-for=&quot;val in arr | limitBy 2 arr.length-2&quot;&gt;
+               {{val}}
+           &lt;/li&gt;  此意思是取后面两位
+   5.2 orderBy 排序 1 是正序 -1是倒序
+   例：&lt;li v-for=&quot;val in arr | orderBy -1（o如果是o，意思就是从o开始排序）&quot;&gt;
+               {{val}}
+           &lt;/li&gt;
+   5.3 filterBy 过滤器  过滤包含的
+   例：&lt;li v-for=&quot;val in arr | filterBy a&quot;&gt;
+               {{val}}
+  &lt;/li&gt;  过滤的是包含有a 的
+</code></pre><h4 id="五-事件"><a href="#五-事件" class="headerlink" title="五 事件"></a>五 事件</h4><pre><code>1 v-on:click=”a” 点击事件 可以简写成@click=”a”
+2 dblclick  双击事件 
+3 mouseenter 移入事件
+4 mouseout 移出事件
+ 用法实例：methods:{a:function(){要执行的函数} }
+</code></pre><h4 id="六-双向数据绑定-v-model-”msg”"><a href="#六-双向数据绑定-v-model-”msg”" class="headerlink" title="六 双向数据绑定 v-model=”msg”"></a>六 双向数据绑定 v-model=”msg”</h4><pre><code>  实例：&lt;div id=&quot;box&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;
+          {{msg}}
+&lt;/div&gt;
+此msg 有两种显示方式 1 可以随绑定的v-model的msg 变化而变化 2 可以在data:{ }中 msg的值写上
+</code></pre><h4 id="七-属性src"><a href="#七-属性src" class="headerlink" title="七 属性src"></a>七 属性src</h4><pre><code>1 &lt;img :src=&quot;url&quot; alt=&quot;&quot; :width=&quot;w&quot; :title=&quot;t&quot;&gt;可以在src中直接写url 然后在data 中写上url的地址
+2 可以写多个属性  只需在data 的url中用逗号隔开。
+</code></pre><h4 id="八-循环-v-for-”item-in-items”"><a href="#八-循环-v-for-”item-in-items”" class="headerlink" title="八 循环 v-for=”item in items”"></a>八 循环 v-for=”item in items”</h4><pre><code>1 直接{{item}} 就可以循环items 的内容了
+2 {{$index}} 可以打印出索引值
+3 {{$key}} 可以打印出对象的key值 例如 json:{a:&apos;apple&apos;,b:&apos;banana&apos;,c:&apos;orange&apos;}
+{{$key}} 可以打印出a b c
+</code></pre><h4 id="九-键盘事件"><a href="#九-键盘事件" class="headerlink" title="九 键盘事件"></a>九 键盘事件</h4><pre><code>1 @keydown 点击下去的时候触发事件&lt;input type=&quot;text&quot; @keydown=&quot;show($event)&quot;&gt;
+ methods:{
+              show:function(ev){
+                  alert(ev.keyCode);
+              }
+          } 此ev.keyCode 能打印出keydown 的当前值
+2 @keyup 点击离开后触发事件
+3 3 &lt;input type=&quot;text&quot; @keyup.enter=&quot;show()&quot;&gt; 这是绑定的回车键 @keyup.left=’show()’ 这是绑定了左键
+4 默认行为 @contextmenu=&quot;show($event)&quot; 就比如ev.preventDefault 
+5 事件冒泡 ev.cancelBubble=true;(在事件的函数中)
+6 事件对象 ev.clientX 横坐标的值
 </code></pre>
       
     </div>
@@ -216,7 +248,7 @@ id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的�
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/08/01/javascript计时器/" href="_blank" > http:lilyfengtao.github.io/2015/08/01/javascript计时器/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2016/07/22/Vue学习第一天/" href="_blank" > http:lilyfengtao.github.io/2016/07/22/Vue学习第一天/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -237,9 +269,9 @@ id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的�
 
 
 
-<a href=http:lilyfengtao.github.io/tags/js >
+<a href=http:lilyfengtao.github.io/tags/Vue >
 <i class="fa fa-tags" aria-hidden="true"></i>
-js
+Vue
 </a>
 </li>
 
@@ -278,19 +310,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2015/07/22/String对象/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/01/25/bootstrap插件/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          String对象
+          bootstrap插件
         
       </div>
     </a>
   
   
-    <a href="/2015/08/06/浏览器窗口可视区域大小/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/12/webpack介绍/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">浏览器窗口可视区域大小</div>
+      <div class="article-nav-title">webpack介绍</div>
     </a>
   
 </nav>
