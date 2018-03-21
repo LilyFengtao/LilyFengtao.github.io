@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>git | 李锋涛</title>
+  <title>hexo博客的打开及发布 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2015-09-10T06:04:31.000Z" itemprop="datePublished">
+  	<time datetime="2017-10-21T14:07:52.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	3yearsago
+  	5monthsago
 
 
   
 <div>
-read time: 3分钟
+read time: 1分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 3分钟
         
   
     <h1 class="article-title" itemprop="name">
-      git
+      hexo博客的打开及发布
     </h1>
   
 
@@ -157,56 +157,11 @@ read time: 3分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h4><pre><code>window安装 http://git-scm.com/download/win下载Git客户端软件，和普通软件安装方式一样。
-Linux 安装
-CentOS发行版：sudo yum install git
-Ubuntu发行版：sudo apt-get install git
-Mac安装
-打开Terminal直接输入git命令，会自动提示，按提示引导安装即可
-</code></pre><h4 id="git-工作原理"><a href="#git-工作原理" class="headerlink" title="git 工作原理"></a>git 工作原理</h4><pre><code> git管理我们文件的三种状态，分别是已递交（committted),已修改(modified),已缓存（staged)由此引入git项目的桑工作区域概念：git仓库，工作目录，暂存区域
- 基本的Git工作流程如下：
-1、在工作目录中修改文件。
-2、暂存文件，将文件的快照放入暂存区域。
-3、提交文件，找到暂存区域的文件，将快照永久性存储到Git仓库目录。
-</code></pre><h4 id="配置用户"><a href="#配置用户" class="headerlink" title="配置用户"></a>配置用户</h4><pre><code>git config [option]
---global 全局配置，再当前用户下的所有仓库都共享同一个用户的配置信息
---system 系统配置，再该电脑下的所有仓库都共享同一个用户的配置信息
---local 本地配置,再该仓库下使用当前配置的用户信息
-git config --global user.name &quot;自已的名字&quot;
-git config --global user.email &quot;自已的邮箱地址&quot;
-查看： git config --get user.name|git config --get user.email
-替换：想要修改或者替换掉原先的用户信息，可以从新配置来实现。
-</code></pre><h4 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h4><pre><code>1 git init 只是创建了一个名为.git的隐藏目录。这个目录就是存储我们历史版本的仓库，ls -al可以查看
-2 git clone 克隆仓库地址
-3 git status 可以检测当前仓库文件的状态（会忽略孔目录）
-4 git add 文件名 *或-A代表所有
- git add &apos;所要添加的文件名&apos; 添加某一个文件
- 5 git commit -m &quot;当前版本的描述信息&quot;
- 递交单个文件版本库，形成一个新版本：git commit filename -m &quot;版本信息&quot;
- 6 git log 查看递交的历史版本 
- git reflog  查看所有历史递交版本
- 7 git checkout filename 撤销指定文件修改
- 再撤销更改的时候，如果暂存区 有该文件的话，就恢复暂存区的文件到工作目录。如果暂存区没有该文件，就从版本库中恢复。
- 8 git reset [option] 回退版本
- git reset --hard &apos;版本id-sha值&apos; 恢复上一次递交的状态
- git reset  HEAD^ 回退到上一次递交的版本
- git reset HEAD^^ 回退到上上个版本
- git reset HEAD~2 回退到前面两个版本
-</code></pre><h4 id="git-分支"><a href="#git-分支" class="headerlink" title="git 分支"></a>git 分支</h4><pre><code>再初始化一个孔的本地仓库时，默认时没有主分支（master分支）的，必须在主分支上递交一次版本，git才会创建master分支。
-git在创建分支时，必需保证当前仓库有master分支
-1 创建分支 git branch name
- git checkout -b branchname 创建并切换到新分支
-2 查看分支 git branch
-有*标记的分支，表示当前工作目录所处的分支。
-3 切换分支 git checkout name
-4 合并分支 git merge branchname
-将指定的分支合并到当前分支
-5 删除分支 git branch -d branchname
-</code></pre><h4 id="git分支策略"><a href="#git分支策略" class="headerlink" title="git分支策略"></a>git分支策略</h4><pre><code>在时机开发中，虽然git分支很强大，但是不能肆意使用，通常按照一定策略使用。提高开发效率
-1 要保证主分支的稳定性，就是数保证主分支功能完整，且务bug。不能在主分支上开发
-2 如果开发新功能，就穿概念一个开发该功能的分支，在该分支上惊醒编写。当功能开发完毕，并且测试务bug，将该分支合并到主分支上
-该分支命名一半规范为:&apos;dev&apos; +相关功能描述的单词
-3 如果在开发时原道协同开发，就要创建协同开发分支，在该分支上去编写代码。
+        <h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><pre><code>在页面打开 git base Heare,然后输入hexo new &apos;博客的名称&apos;
+</code></pre><h4 id="生成及发布"><a href="#生成及发布" class="headerlink" title="生成及发布"></a>生成及发布</h4><pre><code>      以后每次新建文章后，待你完成编辑。即可以此执行下面几个命令来把新的文章部署到服务器上: 
+- hexo clean 
+- hexo g 
+- hexo d
 </code></pre>
       
     </div>
@@ -239,7 +194,7 @@ git在创建分支时，必需保证当前仓库有master分支
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/09/10/git/" href="_blank" > http:lilyfengtao.github.io/2015/09/10/git/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2017/10/21/hexo博客的打开及发布/" href="_blank" > http:lilyfengtao.github.io/2017/10/21/hexo博客的打开及发布/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -260,9 +215,9 @@ git在创建分支时，必需保证当前仓库有master分支
 
 
 
-<a href=http:lilyfengtao.github.io/tags/git >
+<a href=http:lilyfengtao.github.io/tags/hexo >
 <i class="fa fa-tags" aria-hidden="true"></i>
-git
+hexo
 </a>
 </li>
 
@@ -301,20 +256,15 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2015/09/04/shell和vi/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/12/Nodejs/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          shell和vi
+          Node.js 入门（一）
         
       </div>
     </a>
   
-  
-    <a href="/2015/09/18/git远程仓库/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">git远程仓库</div>
-    </a>
   
 </nav>
 
