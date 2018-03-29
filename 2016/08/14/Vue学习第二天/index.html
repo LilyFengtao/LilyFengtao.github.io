@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>shell和vi | 李锋涛</title>
+  <title>Vue学习第二天 | 李锋涛</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   
   <link rel="manifest" href="/manifest.json">
@@ -95,7 +95,7 @@
     <!--采用相对的时间或者绝对的时间，默认相对-->
 
 <div class="article-date">
-  	<time datetime="2015-09-04T09:31:46.000Z" itemprop="datePublished">
+  	<time datetime="2016-08-14T15:21:56.000Z" itemprop="datePublished">
   	
   	
   	
@@ -129,12 +129,12 @@
   		
   	
   	
-  	3yearsago
+  	2yearsago
 
 
   
 <div>
-read time: 3分钟
+read time: 5分钟
 </div>
 </div>
 
@@ -149,7 +149,7 @@ read time: 3分钟
         
   
     <h1 class="article-title" itemprop="name">
-      shell和vi
+      Vue学习第二天
     </h1>
   
 
@@ -157,58 +157,87 @@ read time: 3分钟
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a>什么是shell</h4><pre><code>在计算机科学中，Shell俗称壳，用来区别于Kernel（核），是指“提供使用者使用界面”的软件（命令解析器）。它接收用户命令，然后调用相应的应用程序。
-</code></pre><h4 id="shell分类"><a href="#shell分类" class="headerlink" title="shell分类"></a>shell分类</h4><pre><code>1 图形界面shell：提供提供友好的可视化界面，调用相应的应用程序：如windows系列操作系统，Linux系统上的图形化应用程序GNOME、KDE等
-2 命令行shell：提供键盘输入特定命令的方式，调用相应的应用程序，如windows系统的cmd.exe、Windows PowerShell，Linux系统的Bourne shell ( sh)、Bourne Again shell ( bash)等。
-</code></pre><h4 id="认识bash这个shell"><a href="#认识bash这个shell" class="headerlink" title="认识bash这个shell"></a>认识bash这个shell</h4><pre><code>再window系统下使用bash，需要一个软件，这个软件模拟集成了bash大部分命令。
-1 1、bash命令格式
-  命令 [-options]  [参数]，如：tar  zxvf  demo.tar.gz
-  查看帮助：命令 --help
-2 bash常见命令
-- pwd(print working Director) 查看当前目录
- - ls(list) 产看当前目录下内容 如ls-al
- - cd(change Directory) 切换目录 如cd/etc
- cd .. 上一级目录
- - mkdir(Make Directory) 创建目录，如mkdir blog
- - touch 创建文件如touch index.html
- - cat 擦好看文件全部内容 如cat index.html
- - more less 查看文件 如more/etc/password,less/etc/passwd
- - rm(remove) 删除文件 如rm index.html
- - rmdir(remove Directory) 删除文件夹，只删除空文件夹
- - mv(move) 移动文件或重命名 如mv index.html./demo/index.html
- - cp(copy) 复制文件 cp index.html ./demo/index.html
- - head 产看文件前几行 如head-5 index.html
- - tail 查看文件后几行 -n-f 如tail -f -n 5 index.html
- - tab 自动补全，连按两次会将所有匹配内容显示出来
- - history 查看操作历史
- - ssh 远程登录，如ssh root@gitlab.study.com
- - &gt; 和 &gt;&gt;重定向，如echo hello world! &gt; README.md，&gt;覆盖 &gt;&gt;追加
- - wget 下载，如wget https://nodejs.org/dist/v4.4.0/node-v4.4.0.tar.gz
- - tar 解压缩，如tar zxvf node-v4.4.0.tar.gz
- - curl 网络请求，如curl http://www.baidu.com
- - whoami 查看当前用户
- - | 管道符可以将多个命令连接使用，上一次（命令）的执行结果当成下一次（命令）的参数。
- - grep 匹配内容，一般结合管道符使用
-</code></pre><h4 id="vi编译器"><a href="#vi编译器" class="headerlink" title="vi编译器"></a>vi编译器</h4><pre><code>vi编译器提供了三种模式，分别是命令模式，插入模式，底行模式。
-1 打开/创建文件 vi 文件路径
-2 底行模式 （小写）w保存 w filenme 另存为
-3 底行模式 q 退出
-4 底行模式 e!撤销更改。返回上一次保存的状态
-5 底行模式 q! 不保存强制退出
-6 底行模式 set nu 设置行号
+        <h4 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h4><pre><code>属性：Vue.directive(&apos;指令名称&apos;，function(参数){
+    this.el--&gt;原生dom元素
+    })
+    例：&lt;div v-red&gt;&lt;/div&gt; 注意：必须以v-开头  
+    Vue.directive(&apos;red&apos;,function(){
+        this.el.style.backgroundColor=&quot;red&quot;,
+        })
+</code></pre><h4 id="自定义元素指令-此指令用处不大"><a href="#自定义元素指令-此指令用处不大" class="headerlink" title="自定义元素指令   //此指令用处不大"></a>自定义元素指令   //此指令用处不大</h4><pre><code>属性： Vue.elementDirective(&quot;自定义元素名称&quot;，{
+    bind:function(){
+        this.el.style.属性=&quot; ?&quot;
+    }
+    })
+例： Vue.elementDirective(&apos;zns-red&apos;,{
+    bind:function(){
+        this.el.style.background=&apos;red&apos;;
+    }
+});
+ zns-red{
+    width:100px;
+    background: yellow;
+    height:100px;
+    display: block;
+}    
+</code></pre><h4 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h4><pre><code> Vue.filter(name,function(){           
+     })
+例：&lt;div id=&quot;box&quot;&gt;
+      {{a | toDou}}
+    &lt;/div&gt;
+  Vue.filter(&apos;toDou&apos;,function(input){
+      return input&lt;10?&apos;0&apos;+input:&apos;&apos;+input;
+  });
+</code></pre><h4 id="自定义键盘信息"><a href="#自定义键盘信息" class="headerlink" title="自定义键盘信息"></a>自定义键盘信息</h4><pre><code>Vue.directive(&apos;on&apos;).keyCodes.ctrl=17;
+Vue.directive(&apos;on&apos;).keyCodes.myenter=13;
+</code></pre><h4 id="自定义拖拽"><a href="#自定义拖拽" class="headerlink" title="自定义拖拽"></a>自定义拖拽</h4><pre><code>    &lt;div id=&quot;box&quot;&gt;
+    &lt;div v-drag :style=&quot;{width:&apos;100px&apos;, height:&apos;100px&apos;, background:&apos;blue&apos;, position:&apos;absolute&apos;, right:0, top:0}&quot;&gt;&lt;/div&gt;
+    &lt;div v-drag :style=&quot;{width:&apos;100px&apos;, height:&apos;100px&apos;, background:&apos;red&apos;, position:&apos;absolute&apos;, left:0, top:0}&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+Vue.directive(&apos;drag&apos;,function(){
+    var oDiv=this.el;
+    oDiv.onmousedown=function(ev){
+         var disX=ev.clientX-oDiv.offsetLeft;
+            var disY=ev.clientY-oDiv.offsetTop;
 
-7 命令模式 ZZ 保存并退出
-8 命令模式  u撤销操作，可多次使用
-9 命令模式 dd删除当前行
-10 命令模式 yy复制当前行
-11命令模式  p黏贴内容
-12 命令模式 ctrl+f 向前翻页
-13 命令模式  ctrl+b 向后翻页
-14 命令模式 i进入编辑模式，当前光标处插入
-命令模式 a进入编辑模式，当前光标后插入
-15 命令模式 A进入编辑模式，光标移动到行尾
-16 命令模式 o进入编辑模式，当前行下面插入新行
-17 命令模式 O进入编辑模式，当前行上面插入新行
+             document.onmousemove=function(ev){
+                var l=ev.clientX-disX;
+                var t=ev.clientY-disY;
+                oDiv.style.left=l+&apos;px&apos;;
+                oDiv.style.top=t+&apos;px&apos;;
+            };
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            };
+    }
+    })
+</code></pre><h4 id="计算属性componend"><a href="#计算属性componend" class="headerlink" title="计算属性componend"></a>计算属性componend</h4><pre><code>例：  componend:function(){
+    b:function(){
+        return 值 (如果不return 就娶不到值)
+        }//此b 是属性，不是函数
+}
+完整写法是： computed:{
+    b:{
+        get:function(){
+            return 
+            },
+            set:function(){
+            return 
+            }
+    }
+}    computed 里面可以防止一些逻辑代码，但一定记得return 
+</code></pre><h4 id="Vue-实例简单方法"><a href="#Vue-实例简单方法" class="headerlink" title="Vue 实例简单方法"></a>Vue 实例简单方法</h4><pre><code>var vm=new Vue({
+    el:&quot;#box&quot;
+    data:{}
+    })
+vm.$el  元素
+vm.$data  就是data
+vm.$mount(&apos;#box&apos;) 手动挂载 （可以去掉el:&apos;#box&apos;,和其一样)
+</code></pre><h4 id="循环-v-for-”value-in-data”"><a href="#循环-v-for-”value-in-data”" class="headerlink" title="循环 v-for=”value in data”"></a>循环 v-for=”value in data”</h4><pre><code>会有重复数据？如添加一个数据，但是不能多次添加
+解决方法： track-by=&quot;$index/Uid&quot;(索引/或ID)
+例： &lt;li v-for=&quot;value in data  track-by=&quot;$index&gt;
+&lt;/li&gt;
 </code></pre>
       
     </div>
@@ -241,7 +270,7 @@ read time: 3分钟
 
 <div class="copyright">
 <blockquote>
-<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2015/09/04/shell和vi/" href="_blank" > http:lilyfengtao.github.io/2015/09/04/shell和vi/ </a>
+<strong>本文链接</strong>:  <a href= "http:lilyfengtao.github.io/2016/08/14/Vue学习第二天/" href="_blank" > http:lilyfengtao.github.io/2016/08/14/Vue学习第二天/ </a>
 <div>
 <strong>版权声明</strong>:本博客所有文章除特别声明外，均采用<a href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" target="_blank" >CC BY-NC-SA 3.0 CN许可协议</a>进行许可。转载请注明出处！
 </div>
@@ -262,9 +291,9 @@ read time: 3分钟
 
 
 
-<a href=http:lilyfengtao.github.io/tags/git >
+<a href=http:lilyfengtao.github.io/tags/Vue >
 <i class="fa fa-tags" aria-hidden="true"></i>
-git
+Vue
 </a>
 </li>
 
@@ -303,19 +332,19 @@ Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true)
     
 <nav id="article-nav">
   
-    <a href="/2015/08/21/数组的正反向遍历/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/08/12/webpack介绍/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          数组的正反向遍历
+          webpack介绍
         
       </div>
     </a>
   
   
-    <a href="/2015/09/10/git/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/08/20/webpack使用/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">flex布局</div>
+      <div class="article-nav-title">webpack使用</div>
     </a>
   
 </nav>
