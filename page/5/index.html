@@ -152,6 +152,247 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Js的样式操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/26/Js的样式操作/">Js的样式操作</a>
+    </h1>
+  
+
+        
+        <a href="/2015/06/26/Js的样式操作/" class="archive-article-date">
+  	<time datetime="2015-06-26T06:52:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h4><pre><code> 1 访问样式可以通过标签的样式属性
+ document.getElementById(&quot;box&quot;).style
+ 2 访问样式中具体的某个样式，可以通过style再去访问内部具体样式
+ document.getElementById(&quot;box&quot;).style.width=&quot;100px&quot;
+  注意：设置的样式值为字符串形式，并且加单位！
+
+遇到在css中需要加-的写法：background-color 在js中换成驼峰命名法
+例如：设置background-acolor
+document.getElementById(“box”).style.backgroundColor = “red”;
+</code></pre><h4 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h4><pre><code>1 innerHTML： 
+（1）、    可以设置和获取纯文本
+（2）、    可以设置和获取内部的标签：
+使用innerhtml直接设置可以替换掉box内部的所有的内容
+增加文字的方法： box.innerHTML=box.innerHTML+&quot;内容&quot;
+2 innertext(html中某一对标签中的文字)
+想要设置或者获取某个标签中间的文字内容，使用：innertext属性
+</code></pre><h4 id="innertext和value的区别"><a href="#innertext和value的区别" class="headerlink" title="innertext和value的区别"></a>innertext和value的区别</h4><pre><code>1 innerText 和 value 属性改变里面的内容进行设置 但innerText属性设置后，无论是页面还是elements(F12快捷键)中内容都改变     （只能设置或获取存文本）
+2 value属性只能改变页面显示效果
+</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>  作用：让页面可以捕获用户的操作
+  事件的三要素
+  1 每个事件都有三个必须的组成部分。
+  事件源--触发事件的对象
+  事件类型--如何触发
+  事件处理程序--事件执行产生的结果
+
+  2 事件的语法
+  事件源.事件类型 = function(){
+事件处理程序：代码会在用户触发事件时执行。
+};
+
+事件相关问题
+现象：多次给一个标签添加同一事件，后设置的会覆盖前面的事件。
+原理：一个属性名只能保存一个数据，一个方法名只能保存一个函数。
+</code></pre><h4 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h4><pre><code>1 添加属性：DOM元素 . setAttribute(&quot;属性名&quot;,&quot;属性值&quot;); 
+2 获取属性值： 获取属性值：DOM元素 .getAttribute(&quot;属性名&quot;); 
+属性名，属性值都是字符串类型，注意转化 
+3 移除属性： 移除属性：DOM元素 . removeAttribute(&quot;属性的名字&quot;);  包含类样式 包含类样式 清除事件，清除事件冒泡，清除计时器 清除事件，清除事件冒泡，清除计时器
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/06/26/Js的样式操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DOm介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/20/DOm介绍/">DOm介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2015/06/20/DOm介绍/" class="archive-article-date">
+  	<time datetime="2015-06-20T03:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="DOM的基本知识"><a href="#DOM的基本知识" class="headerlink" title="DOM的基本知识"></a>DOM的基本知识</h4><pre><code>Dom 文档对象模型
+D-document 文档 O-Object 对象 M-module 模型
+文档：html 文件或者xml文件
+    html文件侧重展示
+    xml文件侧重于存储
+DOM理解为树形结构图---树状图
+DOM的目的：通过JS代码操作页面中元素（DOM是文档，标签是对象）
+DOM把页面上每一个标签都视为对象，获取对象，通过点的方式添加属性或者时间处理函数。
+</code></pre><h4 id="DOM可用做什么？"><a href="#DOM可用做什么？" class="headerlink" title="DOM可用做什么？"></a>DOM可用做什么？</h4><pre><code> 找对象（元素）
+ 设置元素的属性
+ 设置元素的样式
+ 动态创建和删除元素
+ 事件触发响应
+ 事件源（事件的触发者）
+ 事件响应程序
+ 页面中所有的内容 (标签,换行,文字) 实际上都是字符串 
+DOM操作页面元素
+BOM操作浏览器内容
+</code></pre><h4 id="元素，标签"><a href="#元素，标签" class="headerlink" title="元素，标签"></a>元素，标签</h4><pre><code>标签叫元素，也可以叫对象。元素 Element
+标签可以嵌套：父子元素
+标签和标签如果是同级元素：兄弟节点或兄弟元素或兄弟标签 
+
+页面中顶级标签：html 
+（HTML文档可以由节点构成的集合，DOM节点有：
+1 元素节点 如&lt;html&gt; &lt;body&gt; &lt;p&gt;
+2 文本节点 向用户展示的内容如&lt;li&gt;...&lt;/li&gt;中的JavaScript、DOM、CSS等文本。
+3 属性节点：元素属性，如&lt;a&gt;标签的链接属性href=&quot;http://www.imooc.com&quot;。）
+浏览器中所有的顶级对象是window
+页面中的顶级对象是document
+页面中document最大
+但window包含document,window可以省略不写
+</code></pre><h4 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h4><pre><code>DOM操作：操作本地内存中的数据
+通过DOM操作页面中的元素，其显示方式发生了改变。但没修改原来的页面内容 【服务器端页面】。 通过网站访问页面，访问的是服务器端的页面，网络将页面内容下载到本地内存，渲 染引擎在加载页面的同时会在内存中生成一个DOM树。所以，DOM操作的是
+</code></pre><h4 id="为标签注册（点击）事件"><a href="#为标签注册（点击）事件" class="headerlink" title="为标签注册（点击）事件"></a>为标签注册（点击）事件</h4><pre><code>1 为单个标签注册点击事件
+document.getElementById(&quot;Id的值&quot;)
+通过id获取标签 注册点击事件，添加事件处理函数
+ 2 为多个标签注册点击事件： 
+ document.getElementByTagName(&quot;标签的名字&quot;)
+  先通过标签名获取标签，构成伪数组【个数不限】 通过循环遍历 通过循环遍历，注册点击事件，为每个标签添加点击事件【this.属性，不用索引方 式】
+
+区分HTML中属性，还是CSS中属性 中属性ҁ对象.style.属性 ) 对象.style.属性 ) 如果属性是多个单词组合中间有-的,到了DOM操作的js代码中,把-去掉,-后面的单词首 字母要大写
+</code></pre><h4 id="获取元素的四种方式"><a href="#获取元素的四种方式" class="headerlink" title="获取元素的四种方式"></a>获取元素的四种方式</h4><pre><code> 1 document.getElementById(&quot;Id的值&quot;) 返回的是一个元素对象
+ 2 document.getElementByTagName(&quot;标签的名字&quot;)，返回的是一个伪数组【用好索引，或属性值】不能数组.属性
+ 例：&lt;input type=&quot;button&quot; id=&quot;btn&quot;&gt;
+ &lt;select name=&quot;haha&quot; id=&quot;ss&quot;&gt;
+    &lt;option value=&quot;hh&quot;&gt;上海&lt;/option&gt;
+    &lt;option value=&quot;hh&quot;&gt;北京&lt;/option&gt;
+    &lt;option value=&quot;hh&quot;&gt;郑州&lt;/option&gt;
+ &lt;/select&gt;
+ &lt;script&gt;
+    document.getElementById(&quot;btn&quot;).onclick=function(){
+        document.getElementById(&quot;ss&quot;).getElementsByTagName(&quot;option&quot;)[1].selected=true&apos;
+    }
+ &lt;/script&gt;
+3 document.getElementsByName(&quot;nsme属性的值&quot;)，返回的是一个伪数组
+4 document.getElementsByClassName(&quot;类样式名字&quot;)    返回一个伪数组    获取相同类样式（相同类名）的元素，得到伪数组
+</code></pre><h4 id="阻止超链接默认跳转-return-false"><a href="#阻止超链接默认跳转-return-false" class="headerlink" title="阻止超链接默认跳转  return false"></a>阻止超链接默认跳转  return false</h4><pre><code>如果给a标签添加事件，由于a具有跳转效果，会先执行自己设置的事件，然后执行默认的跳转效果
+Javascript; 伪协议
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/06/20/DOm介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1213,299 +1454,6 @@ transform:translate(-50%,-50%)
 
 
   
-    <article id="post-Css3阴影及盒子尺寸" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/18/Css3阴影及盒子尺寸/">Css3阴影及盒子尺寸</a>
-    </h1>
-  
-
-        
-        <a href="/2015/04/18/Css3阴影及盒子尺寸/" class="archive-article-date">
-  	<time datetime="2015-04-18T06:08:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="css3的方式设置颜色"><a href="#css3的方式设置颜色" class="headerlink" title="css3的方式设置颜色"></a>css3的方式设置颜色</h3><pre><code>1 颜色的组成，电脑中的三元色
-三原色，所谓三原色，就是指这三种色中的任意一色都不能由另外两种原色混合产生，而其他色可由这三色按照一定的比例混合出来，色彩学上将这三个独立的色称为三原色。
-电脑中的三原色为：红 绿 蓝
-</code></pre><h3 id="css3中设置颜色的方式"><a href="#css3中设置颜色的方式" class="headerlink" title="css3中设置颜色的方式"></a>css3中设置颜色的方式</h3><pre><code>1 transparent 设置北京色伪透明 
-    background-color:transparent;
-2 opacity+颜色 设置北京色伪半透明
-    background-color: red;
-    opacity:0.5;
-3 rgba 设置颜色伪红色，透明度为0.5
-    r(red(红色)) ，green(绿色) blue(蓝色) alpha(透明度)
-    background-color:rgba(255,0,0,0.5)
-4 hsla 设置颜色为红色，透明度为0.5
-    H :色调 哪种哦那个颜色   0~360
-    S : 饱和度
-     饱和度越大，颜色越鲜艳 0%~100%
-    L 亮度 亮度越大，颜色越白 0%~100%
-    A 透明度 0~1
-</code></pre><h3 id="阴影"><a href="#阴影" class="headerlink" title="阴影"></a>阴影</h3><pre><code>1 文本阴影 text-shadow
-    x轴 值越大，阴影越向右偏移，值越小，阴影越向左偏移
-    y轴 值越大，阴影越向下偏移，值越小，阴影越向上偏移
-    模糊半径 值越大，阴影越模糊，值越小，阴影越清晰 最小值为0
-    颜色：自己选择
-    text-shadow:15px 15px 12px yellow;
-2 盒子阴影 box-shadow
-    设置盒子阴影的语法及参数
-    box-shadow: x轴偏移量 y轴偏移量 阴影模糊程度 阴影扩展半径 因应酬颜色 投影方式
-    例： box-shadow: 10px 10px 20px 5px red inset(内阴影);
-    如若在一个文字上叠加多个阴影
-    例： text-shadow:15px 15px 12px yellow;
-                    -15px -15px 12px red;
-                    15px -15px 12px blue; 
-</code></pre><h3 id="设置盒子尺寸"><a href="#设置盒子尺寸" class="headerlink" title="设置盒子尺寸"></a>设置盒子尺寸</h3><pre><code>盒子总宽度=width(内容跨度)+(padding*2)+(border*2); 
-1 box-sizing:content-box
-    当值为content-box的时候，盒子尺寸的计算方式为：盒子总宽度=width(内容跨度)+(padding*2)+(border*2); 
-2 box-sizing: border-box
-    当值为border-box 的时候，盒子尺寸计算方式为：盒子总宽度 =width=(padding*2)+(border*2)+内容的宽度（可变）
-</code></pre><h3 id="边框属性"><a href="#边框属性" class="headerlink" title="边框属性"></a>边框属性</h3><pre><code>1 边框圆角 圆形 border-radius: 50%;(宽高要一致才行)
- 左上：border-top-left-radius: 50%;
- 右上：border-top-right-radius: 50%;
- 右下：border-bottom-right-radius:50%;
- 左下：border-bottom-left-radius:50%;
- 2 边框图片
- 引入图片 border-image-source:url()
- 切割引入的图片 border-image-slice: 27 27 27 27;
- 边框的宽度 border-image-width: 20px;
- 图片的排列方式 border-image-repeat:round;(repeat:平铺； stretch: 拉伸)
-</code></pre><h3 id="css3新背景属性"><a href="#css3新背景属性" class="headerlink" title="css3新背景属性"></a>css3新背景属性</h3><pre><code>以前的背景属性：
-1 background-color:背景颜色
-2 background-image:背景图片
-3 background-repeat：背景重复
-4 background-position:背景定位
-5 background-attachment:背景固定（scroll/fixed)
-</code></pre><h4 id="CSS3图片尺寸及属性值的不同含义"><a href="#CSS3图片尺寸及属性值的不同含义" class="headerlink" title="CSS3图片尺寸及属性值的不同含义"></a>CSS3图片尺寸及属性值的不同含义</h4><pre><code>1 具体像素 作用：定义了背景图片的尺寸
-例：background-size:500px 200px;
-2 百分比  是相对于图片的原始尺寸
-例： background-size:100% 100%;
-3 cover 作用：不论图片如何按比例缩放，都要完全覆盖整个div;
-例：background-size:cover;
-4 contain 作用： 保证图片完全显示在div中，不论是否完全覆盖整个div
-例：background-size:contain;
-</code></pre><h4 id="CSS3设置背景图片定位原点"><a href="#CSS3设置背景图片定位原点" class="headerlink" title="CSS3设置背景图片定位原点"></a>CSS3设置背景图片定位原点</h4><pre><code>1 background-origin 背景原点 
-    background-origin 属性规定background-position 属性相对于什么位置来定位
-    1）background-orgin:padding-box  从padding区域开始显示背景
-    2）background-orgin:border-box 从border区域开始显示背景
-    3）background-orgin:content-box 从content 区域开始显示背景
-2 background-clip 背景裁切
-    background-clip属性规定背景的绘制区域
-    1）background-clip:padding-box 从padding区域项外裁切背景
-    2）background-clip：border-box 从border区域向外裁切背景
-    3）background-clip：content-box; 从content区域有向外裁切背景
-</code></pre><h4 id="CSS3设置多重背景"><a href="#CSS3设置多重背景" class="headerlink" title="CSS3设置多重背景"></a>CSS3设置多重背景</h4><pre><code>1 给多背景图片定位
-分开写：background-position:left top,
-                            right top,
-                            right bottom,
-
-多重背景引入图片
-background-image:url();
-                url(),
-                url();
-2 合起来一起 写：
-background :url() left top no-repeat,
-            url() right top no-repeat
-            url() right bottom no-repeat
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">css3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/04/18/Css3阴影及盒子尺寸/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Css3简介及选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/04/Css3简介及选择器/">Css3简介及选择器</a>
-    </h1>
-  
-
-        
-        <a href="/2015/04/04/Css3简介及选择器/" class="archive-article-date">
-  	<time datetime="2015-04-04T03:29:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="css3的现状"><a href="#css3的现状" class="headerlink" title="css3的现状"></a>css3的现状</h3><pre><code>1 浏览器支持程度擦，需要添加私有前缀。
-私有前缀：各个浏览器根据内核的不同添加的一些本类型的浏览器认识的一些标记。
-作用：伪类兼容本类低版本的浏览器写的一些特殊的字符
-常见的浏览器内核：webkit(chrome opera safari) moz(firefox) IE,edge(ms) opera(o)
-常用私有前缀：
--webkit- chrome opera safari
--moz-  firefox
--ms- IE
--o- opera
-私有前缀的由来
--webkit-border-radius
--moz-border-radius
--ms-border-radius
--o-border-radius
-产看某个属性是否添加私有前缀：www.caniuse.com
-自动的工具：1 autoprefixer 2 gulp 考拉软件
-2 移动短支持优于pc端
-3 不断改进中
-</code></pre><h3 id="什么式渐进增强和优雅降级？"><a href="#什么式渐进增强和优雅降级？" class="headerlink" title="什么式渐进增强和优雅降级？"></a>什么式渐进增强和优雅降级？</h3><pre><code>1 坚持渐进增强原则:针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。
-2 优雅降级:最完美的效果和体验开始，往低版本浏览器进行降级，只留下最核心的内容和信息,如果出现一些小的无关紧要的bug，忽略不计
-</code></pre><h3 id="css3选择器"><a href="#css3选择器" class="headerlink" title="css3选择器"></a>css3选择器</h3><h4 id="属性选择器设置样式"><a href="#属性选择器设置样式" class="headerlink" title="属性选择器设置样式"></a>属性选择器设置样式</h4><pre><code>1 E[attr] 表示存在attr属性即可
-例：a[href]{
-    color:red;
-}//表示所有attr都变色
-2 E[attr=value] 表示属性值完全等于value
-例： a[href=&apos;a.mp4&apos;]{
-    color:red;
-}
-3 E[attr^=val] 表示的属性值里包含val字符并且在“开始”位置
-例： a[href^=&apos;b&apos;]{
-    color:red;
-}
-4 E[attr$=val] 表示的属性值里包含val字符并且在“结束”位置
-例： a[href$=&apos;b&apos;]{
-    color:red;
-}
-5 E[attr*=val] 表示的属性值里包含val字符并且在“任意”位置
-例：a[href*=&apos;b&apos;]{
-    color:red;
-}
-</code></pre><h4 id="伪类选择器设置样式"><a href="#伪类选择器设置样式" class="headerlink" title="伪类选择器设置样式 :"></a>伪类选择器设置样式 :</h4><pre><code>1 E:first-child 第一个子元素
-例： li:first-child{
-    background-color:red;
-}
-2 E:last-child 最后一个子元素
-例：li:last-child{
-    background-color:red;
-}
-3 E:nth-child(n) 第n个子元素，计算方法式E元素的全部兄弟元素
-例： li:nth-child(4)  li元素的第四个元素
-      li:nth-child(2n)  li元素的偶数元素
-      li:nth-child(odd) li的奇数元素
-      li:nth-child(-n+5) 选择到E元素的父元素的前5个子元素
-    E:nth-last-child(n) 同E:nth-child(n) 相似，只是倒着计算
-</code></pre><h4 id="伪元素选择器设置样式"><a href="#伪元素选择器设置样式" class="headerlink" title="伪元素选择器设置样式"></a>伪元素选择器设置样式</h4><pre><code>    E::after&amp;&amp;E::before
-    例：在div前面添加一个::before伪元素
-    div::before{
-        content:&quot;&quot;; 必须写content属性，否则无法添加伪元素
-        display:block; 伪元素都是行内元素
-        width:200px;
-        height:200px;
-        background-color:red;
-    }
-在元素上添加before和after,只能同时各添加一个before和after，不能在同一个元素上出现多个。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">css3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/04/04/Css3简介及选择器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1615,15 +1563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1639,11 +1583,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1655,15 +1603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -152,6 +152,289 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Vue学习第二天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/14/Vue学习第二天/">Vue学习第二天</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/14/Vue学习第二天/" class="archive-article-date">
+  	<time datetime="2016-08-14T15:21:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h4><pre><code>属性：Vue.directive(&apos;指令名称&apos;，function(参数){
+    this.el--&gt;原生dom元素
+    })
+    例：&lt;div v-red&gt;&lt;/div&gt; 注意：必须以v-开头  
+    Vue.directive(&apos;red&apos;,function(){
+        this.el.style.backgroundColor=&quot;red&quot;,
+        })
+</code></pre><h4 id="自定义元素指令-此指令用处不大"><a href="#自定义元素指令-此指令用处不大" class="headerlink" title="自定义元素指令   //此指令用处不大"></a>自定义元素指令   //此指令用处不大</h4><pre><code>属性： Vue.elementDirective(&quot;自定义元素名称&quot;，{
+    bind:function(){
+        this.el.style.属性=&quot; ?&quot;
+    }
+    })
+例： Vue.elementDirective(&apos;zns-red&apos;,{
+    bind:function(){
+        this.el.style.background=&apos;red&apos;;
+    }
+});
+ zns-red{
+    width:100px;
+    background: yellow;
+    height:100px;
+    display: block;
+}    
+</code></pre><h4 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h4><pre><code> Vue.filter(name,function(){           
+     })
+例：&lt;div id=&quot;box&quot;&gt;
+      {{a | toDou}}
+    &lt;/div&gt;
+  Vue.filter(&apos;toDou&apos;,function(input){
+      return input&lt;10?&apos;0&apos;+input:&apos;&apos;+input;
+  });
+</code></pre><h4 id="自定义键盘信息"><a href="#自定义键盘信息" class="headerlink" title="自定义键盘信息"></a>自定义键盘信息</h4><pre><code>Vue.directive(&apos;on&apos;).keyCodes.ctrl=17;
+Vue.directive(&apos;on&apos;).keyCodes.myenter=13;
+</code></pre><h4 id="自定义拖拽"><a href="#自定义拖拽" class="headerlink" title="自定义拖拽"></a>自定义拖拽</h4><pre><code>    &lt;div id=&quot;box&quot;&gt;
+    &lt;div v-drag :style=&quot;{width:&apos;100px&apos;, height:&apos;100px&apos;, background:&apos;blue&apos;, position:&apos;absolute&apos;, right:0, top:0}&quot;&gt;&lt;/div&gt;
+    &lt;div v-drag :style=&quot;{width:&apos;100px&apos;, height:&apos;100px&apos;, background:&apos;red&apos;, position:&apos;absolute&apos;, left:0, top:0}&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+Vue.directive(&apos;drag&apos;,function(){
+    var oDiv=this.el;
+    oDiv.onmousedown=function(ev){
+         var disX=ev.clientX-oDiv.offsetLeft;
+            var disY=ev.clientY-oDiv.offsetTop;
+
+             document.onmousemove=function(ev){
+                var l=ev.clientX-disX;
+                var t=ev.clientY-disY;
+                oDiv.style.left=l+&apos;px&apos;;
+                oDiv.style.top=t+&apos;px&apos;;
+            };
+            document.onmouseup=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+            };
+    }
+    })
+</code></pre><h4 id="计算属性componend"><a href="#计算属性componend" class="headerlink" title="计算属性componend"></a>计算属性componend</h4><pre><code>例：  componend:function(){
+    b:function(){
+        return 值 (如果不return 就娶不到值)
+        }//此b 是属性，不是函数
+}
+完整写法是： computed:{
+    b:{
+        get:function(){
+            return 
+            },
+            set:function(){
+            return 
+            }
+    }
+}    computed 里面可以防止一些逻辑代码，但一定记得return 
+</code></pre><h4 id="Vue-实例简单方法"><a href="#Vue-实例简单方法" class="headerlink" title="Vue 实例简单方法"></a>Vue 实例简单方法</h4><pre><code>var vm=new Vue({
+    el:&quot;#box&quot;
+    data:{}
+    })
+vm.$el  元素
+vm.$data  就是data
+vm.$mount(&apos;#box&apos;) 手动挂载 （可以去掉el:&apos;#box&apos;,和其一样)
+</code></pre><h4 id="循环-v-for-”value-in-data”"><a href="#循环-v-for-”value-in-data”" class="headerlink" title="循环 v-for=”value in data”"></a>循环 v-for=”value in data”</h4><pre><code>会有重复数据？如添加一个数据，但是不能多次添加
+解决方法： track-by=&quot;$index/Uid&quot;(索引/或ID)
+例： &lt;li v-for=&quot;value in data  track-by=&quot;$index&gt;
+&lt;/li&gt;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/14/Vue学习第二天/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-webpack介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/webpack介绍/">webpack介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/12/webpack介绍/" class="archive-article-date">
+  	<time datetime="2016-08-12T05:06:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="webpack是什么？"><a href="#webpack是什么？" class="headerlink" title="webpack是什么？"></a>webpack是什么？</h4><pre><code>weba是一个module.bundler(模块打包工具)其可以兼容多种js书写规范，且可以处理模块间的依赖关系，具有更强大的js模块化的功能。Webpack对它们进行统 一的管理以及打包发布
+</code></pre><h4 id="官网地址"><a href="#官网地址" class="headerlink" title="官网地址"></a>官网地址</h4><pre><code>官网：http://webpack.github.io/docs/ 
+Webpack-handlebook: http://zhaoda.net/webpack-handbook/
+Gitbook: http://fakefish.github.io/react-webpack-cookbook/index.html
+</code></pre><h4 id="为什么使用webpack"><a href="#为什么使用webpack" class="headerlink" title="为什么使用webpack?"></a>为什么使用webpack?</h4><pre><code>1 对CommonJs，AMD ,ES6 的语法做了兼容
+2 对js css图片等资源文件都支持打包
+3  串联式模块加载器以及插件机制，让其具有更好的灵活性和扩展性，例如提供对CoffeeScript、ES6的支持
+4 有独立的配置文件webpack.config.js
+5 可以将代码切割成不同的chunk，实现按需加载，降低了初始化时间
+6 支持 SourceUrls 和 SourceMaps，易于调试
+7 具有强大的Plugin接口，大多是内部插件，使用起来比较灵活
+8 .webpack 使用异步 IO 并具有多级缓存。这使得 webpack 很快且在增量编译上更加快
+</code></pre><h4 id="webpack事物使用"><a href="#webpack事物使用" class="headerlink" title="webpack事物使用"></a>webpack事物使用</h4><pre><code>1 安装webpack与运行介绍
+Deploy是编译之后的可用于文件打包的文件，src中的是开发文件
+2 引入wenpack依赖
+ 在项目根目录打开命令窗口引入项目依赖，全局安装
+ npm  install  webpack  -g // 全局安装webpack
+3 创建配置文件
+ （1）webpack.base.config.js  公用的配置方在这里面（可通过插件继承）
+  （2） webpack.develop.config.js 开发环境中用到的配置文件
+  （3）webpack.publish.config.js 生产环境中用到的配置文件
+</code></pre><h4 id="module-exports-必须有的结构"><a href="#module-exports-必须有的结构" class="headerlink" title="module.exports={// 必须有的结构"></a>module.exports={// 必须有的结构</h4><pre><code>    //所有配置都在{}内部
+    //指定入口
+    entry:{
+        //这里可以有多个入口
+        main:&apos;./main.js&apos;,
+    },
+    optput:{
+        //出口
+        filename:&apos;./build.js&apos;
+    },      
+    对于es6的一些代码，最好我们需要转换
+    module:{
+        包含多个模块，这些模块为对应的代码提供了转化功能
+        loaders:[
+            {tes:/.js/,  告诉webpack什么文件走loader:test要写正则表达式
+            loader:&apos;babel-loader&apos;,
+            告诉loader添加额外的配置
+            option:{
+                出来这个配置带s的不是数组之外，其他都是数组
+                presets:[&apos;es2015&apos;],//设置Es6关键字的解析 在下载的时候babel-plugin-transform-runtime-;
+                plugins:[&apos;transform-runtime&apos;]//解析ES6函数
+            }
+        }
+
+        ]
+    }
+}
+最终我们到当前的webpack.js文件中执行就ok了
+</code></pre><h4 id="运行webpack"><a href="#运行webpack" class="headerlink" title="运行webpack"></a>运行webpack</h4><pre><code> 1 通过配置文件运行
+    在根目录运行webpack的命令，默认会去查找名称为webpack.config.js的文件执行，如果没有就会报配置信息没有配置的错误。
+    命令： Webpack
+ 2 这时候我们可以通过运行下面的命令进行配置文件的选择
+ webpack –-config  webpack.develop.config.js
+你可以运行webpack  -h查看webpack的其他命令，
+注意：但是我们基本上不用这种直接提供的命令，因为我们需要手动的敲打很多字母，我们现在开发通用的方法都是使用配置文件的方式运行。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/12/webpack介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue学习第一天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1097,205 +1380,6 @@ align-content:space-around 环绕均匀对齐
 
 
   
-    <article id="post-浏览器窗口可视区域大小" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/06/浏览器窗口可视区域大小/">浏览器窗口可视区域大小</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/06/浏览器窗口可视区域大小/" class="archive-article-date">
-  	<time datetime="2015-08-06T03:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="浏览器窗口可视区域大小"><a href="#浏览器窗口可视区域大小" class="headerlink" title="浏览器窗口可视区域大小"></a>浏览器窗口可视区域大小</h4><pre><code>window.innerHeight  浏览器窗口的内部高度
-window.innerWidth  浏览器窗口的内部宽度
-</code></pre><h4 id="在不同浏览器都实用的JavaScript方案："><a href="#在不同浏览器都实用的JavaScript方案：" class="headerlink" title="在不同浏览器都实用的JavaScript方案："></a>在不同浏览器都实用的JavaScript方案：</h4><pre><code>var w=document.documentElement.clientWidth || document.body.clientWidth;
-var h=document.documentElement.clientHeight || document.body.clientHeight;
-</code></pre><h4 id="offset-系列"><a href="#offset-系列" class="headerlink" title="offset 系列"></a>offset 系列</h4><pre><code>1 offsetLeft :当前元素到定位父盒子的距离（边框到边框）
-offsetLeft 是自身border左侧到父级padding左侧的距离
-2 offsetWidth 除了margin以外所有的宽度
-3 offsetHeight: 除了margin以外所有的高度
-offsetHeight=height+padding+border
-包括 自身高度 内边距 边框 不包括 外边距（因为有offsetTop)
-4 offsetParpent 可以获取当前元素外面的定位父盒子
-例： box.offsetparpent
-</code></pre><h4 id="scroll-系列属性"><a href="#scroll-系列属性" class="headerlink" title="scroll 系列属性"></a>scroll 系列属性</h4><pre><code>  1 scrollHeight 和scrollWidth
-  标签内部时机内容的高度/宽度
-  1 不计算边框，如果内容不超过盒子。值伪盒子的宽高（不带边框）
-  3 如果内容超出了盒子，就是顶部或者左边边框内侧一直到内容的最外部分（包含边框）
-页面滚动座标非常常用，但是有很大的兼容性问题，可以合写为
-var scrollTop=window.pageYOffset || document.documentElement.scrollTop|| document.body.scrollTop||0;
-</code></pre><h4 id="client-可视系列属性"><a href="#client-可视系列属性" class="headerlink" title="client 可视系列属性"></a>client 可视系列属性</h4><pre><code>1 clientWidth 和clientHeight
- 偏移：offsetWidth: width+padding+border
- 卷曲： scrollWidth: width+padding(不包含border) 内部内容的大小
- 可视：clientWidth:width+padding(不包含border)
- 2 clientTop和clientLeft
- 他们就是borderTop和borderLeft（如果有滚动条会包含滚动条的宽度，但谁见过滚动条在顶部或者左侧的？！）
-</code></pre><h4 id="网页可视区宽高的兼容写法"><a href="#网页可视区宽高的兼容写法" class="headerlink" title="网页可视区宽高的兼容写法"></a>网页可视区宽高的兼容写法</h4><pre><code> 面可视区宽高非常常用，但是有很大的兼容性问题，可以合写为
-var clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/06/浏览器窗口可视区域大小/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-javascript计时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/01/javascript计时器/">javascript计时器</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/01/javascript计时器/" class="archive-article-date">
-  	<time datetime="2015-08-01T02:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="javascript-计时器"><a href="#javascript-计时器" class="headerlink" title="javascript 计时器"></a>javascript 计时器</h4><pre><code>  计时器类型： 仅在指定的延迟时间之后触发一次。
-  间隔性触发计时器：每隔一定的时间间隔就触发一次。
- 计时器方法：
-1   setTimeout()  指定的延迟时间之后来执行代码
-语法：
-setInterval(代码,交互时间);
-参数说明：1)  代码：要调用的函数或要执行的代码串。
-        2)交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。 
-2  clearTimeout() 取消settimeout()设置
-语法：
-clearInterval(id_of_setInterval)
-参数说明:
-id_of_setInterval：由 setInterval() 返回的 ID 值。
-每隔 100 毫秒调用 clock() 函数,并显示时间。当点击按钮时，停止时间,
-3 setInterval() 每隔指定的时间执行代码
-语法:
-setTimeout(代码,延迟时间);
-参数说明：
-1. 要调用的函数或要执行的代码串。
-2. 延时时间：在执行代码前需等待的时间，以毫秒为单位（1s=1000ms)。
-4  clearInterval() 取消setInterval()设置
-调用函数格式(假设有一个clock()函数):
-setInterval(&quot;clock()&quot;,1000)
-语法:
-clearTimeout(id_of_setTimeout)
-参数说明:
-id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/01/javascript计时器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1405,15 +1489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,11 +1509,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,15 +1529,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">

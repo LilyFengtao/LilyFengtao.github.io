@@ -152,6 +152,272 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-H5新增表单" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/H5新增表单/">H5新增表单</a>
+    </h1>
+  
+
+        
+        <a href="/2014/12/18/H5新增表单/" class="archive-article-date">
+  	<time datetime="2014-12-18T01:55:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML-新增表单类型"><a href="#HTML-新增表单类型" class="headerlink" title="HTML 新增表单类型"></a>HTML 新增表单类型</h2><pre><code>- 邮箱&lt;input type=&quot;email&quot; name=&quot;email&quot; id=&quot;email&quot;&gt;
+  注意：会验证邮箱的格式，如果输入错误，则会提示
+- 网址 &lt;input type=&quot;url&quot; name=&quot;url&quot; id=&quot;url&quot;&gt;
+注意：会验证输入的url是否带有http或https协议前缀，如果没有，则会提示
+- 搜索 &lt;input type=&quot;search&quot; name=&quot;search&quot; id=&quot;search&quot;&gt;
+注意：在有内容的情况下，会出现清除按钮
+- 数字 &lt;input type=&quot;number&quot; name=&quot;number&quot; id=&quot;number&quot; max=&quot; min=&quot; step=&quot;&quot; value=&quot;&quot;&gt;
+注意：Max：数字输入框的最大值
+  Min：数字输入框的最小值
+  Step：步进值
+  Value：当前的值
+- 范围 &lt;input type=&quot;range&quot; name=&quot;range&quot; id=&quot;range&quot; max=&quot; min=&quot; step=&quot; value=&quot;&gt;
+    注意：Max：数字输入框的最大值
+      Min：数字输入框的最小值
+      Step：步进值
+      Value：当前的值
+- 时间 &lt;input type=&quot;time&quot; name=&quot;time&quot; id=&quot;time&quot;&gt;
+- 日期 &lt;input type=&quot;date&quot; name=&quot;date&quot; id=&quot;date&quot;&gt;
+- 颜色 &lt;input type=&quot;color&quot; name=&quot;color&quot; id=&quot;color&quot;&gt;
+- 手机号 &lt;input type=&quot;tel&quot; name=&quot;tel&quot; id=&quot;tel&quot;&gt;
+</code></pre><h2 id="新增表单元素"><a href="#新增表单元素" class="headerlink" title="新增表单元素"></a>新增表单元素</h2><pre><code>datalist 数据列表
+一般河input配合使用，要保证datalist的id和input的listd的值完全一致
+例： &lt;input type=&quot;text&quot; name=&quot;text&quot; id=&quot;text&quot; list=&quot;program&quot;&gt;
+&lt;datalist id=&quot;program&quot;&gt;
+    &lt;option value=&quot;java&quot;&gt;&lt;/option&gt;
+    &lt;option value=&quot;php&quot;&gt;&lt;/option&gt;
+    &lt;option value=&quot;C++&quot;&gt;&lt;/option&gt;
+&lt;/datalist&gt;    
+</code></pre><h2 id="新增表单属性"><a href="#新增表单属性" class="headerlink" title="新增表单属性"></a>新增表单属性</h2><pre><code>1 placeholder 占位符 
+告诉用户在该输入框中输入什么样的内容
+2 Autocomplete  自动完成
+当在输入框中输入，提交之后，下次输入可以自动填充
+3 autofouse 
+自动完成，当页面载入之后，光标会自动聚焦在该输入框上
+4 require 
+必填，拥有该属性的输入框，如果不填，则无法成功提交
+5 multiple 
+多选，可以一次性选择多个文件
+6 pattern 
+自定义验证，根据正则表达式验证内容是否符合正则的规则
+</code></pre><h2 id="新增的表单事件"><a href="#新增的表单事件" class="headerlink" title="新增的表单事件"></a>新增的表单事件</h2><pre><code>1 element.oninput=function(){}
+作用：当用户在该输入框中输入的时候，会多次触发该事件
+2 element.oninvalid=function(){}
+作用：当验证不通过的时候，会触发该事件
+3 element.setCustomValidity(&apos;&apos;)
+作用：设置错误提示的信息
+</code></pre><h2 id="HTML5-多媒体标签"><a href="#HTML5-多媒体标签" class="headerlink" title="HTML5 多媒体标签"></a>HTML5 多媒体标签</h2><pre><code>1 Audio 标签媒体标签
+例： &lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot;&gt;
+&lt;source src=&quot;....&quot; type=&quot;audio/mp3&quot;&gt;    
+&lt;/audio&gt;
+2 Video 标签播放视频
+    &lt;audio controls=&quot;controls&quot; autoplay=&quot;autoplay&quot; loop=&quot;loop&quot;&gt;
+    &lt;source src=&quot;....&quot; type=&quot;video/mp4&quot;&gt;    
+    &lt;/audio&gt;
+audio文件格式： ogg, Mp3,WAN,
+video 文件格式： ogg MP4, WebM
+</code></pre><h2 id="HTML5-的DOM扩展"><a href="#HTML5-的DOM扩展" class="headerlink" title="HTML5 的DOM扩展"></a>HTML5 的DOM扩展</h2><pre><code>1 API获取元素
+ document.querySelector(&apos;&apos;);
+ document.querySelectorAll(&apos;&apos;);
+ 2 API 操作类名
+ node.classList.add(&apos;&apos;)  添加类名
+ node.classList.remove(&apos;&apos;) 删除类名
+ node.classList.contains(&apos;&apos;) 判断类名中是否包含一个类名
+ node.classList.toggle(&apos;&apos;)
+ 替换类名 （有则删除，无则添加）
+</code></pre><h2 id="API-自定义属性"><a href="#API-自定义属性" class="headerlink" title="API 自定义属性"></a>API 自定义属性</h2><pre><code>自定义属性设置
+以data开头 
+格式： data-*(自定义的值)=value;
+获取 node.dataset.* （*代表我们自己给属性起的名字）
+用js获取自定义属性的值
+node.dataset.*=value
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/12/18/H5新增表单/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-html5简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/16/html5简介/">html5简介</a>
+    </h1>
+  
+
+        
+        <a href="/2014/12/16/html5简介/" class="archive-article-date">
+  	<time datetime="2014-12-16T02:32:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML5简介"><a href="#HTML5简介" class="headerlink" title="HTML5简介"></a>HTML5简介</h2><pre><code>- 侠义上的html5 ：1  HTML4.0的升级版
+                 2 HTML5+Css3+新增JS API 的结束组合
+ - 广义上的HTML5 1 :HTML5行业的代名词
+                  2 当前新技术的代名词
+</code></pre><h2 id="HTML-技术概括"><a href="#HTML-技术概括" class="headerlink" title="HTML 技术概括"></a>HTML 技术概括</h2><pre><code>1 邢增标签及属性
+2 css3的信特性
+3 Canvas绘图
+4 javascript的新增api
+5 移动端
+</code></pre><h2 id="HTML5的语法规范"><a href="#HTML5的语法规范" class="headerlink" title="HTML5的语法规范"></a>HTML5的语法规范</h2><pre><code>1 文档声明
+&lt;!DOCTYPE html&gt;
+2 字符编码设置
+&lt;meta charset=&apos;UTF-8&apos;&gt;
+3 HTML5 语法更加松散，容错性更高。
+</code></pre><h2 id="语义化标签的定义"><a href="#语义化标签的定义" class="headerlink" title="语义化标签的定义"></a>语义化标签的定义</h2><pre><code>常用的语义化标签
+1 &lt;header&gt;&lt;/header&gt;   定义section 或page的页眉
+    使用要点：
+    可以是“网页”或任意“section”的头部部分
+    没有个数限制
+    如果h1-h6自己能工作的很好，就不要用header
+2 &lt;nav&gt;&lt;/nav&gt;
+使用要点：
+用在整个页面主要导航部分上
+&lt;main&gt;&lt;/main&gt;
+使用要点：
+一般放在主要内容区域，是和header同样层级的元素
+
+3 &lt;section&gt;&lt;/section&gt;  定义文档中的节或段
+    使用要点：
+表示文档的节或段
+Arcitcle、nav、aside可以理解为特殊的section，可以用article、nav、aside就不用section
+4 &lt;article&gt;&lt;/article&gt;  定义文章
+    使用要点：
+    自身独立情况下：用article
+    是相关内容：用section
+    没有语义的：用div
+5 &lt;aside&gt;&lt;/aside&gt;  定义页面内容之外的内容
+    使用要点：
+    Aside在main标签之内，和section或article标签对应，表示这些主要内容的附属信息
+    如果是广告，其他日志链接或者其他分类导航也可以用
+6 &lt;footer&gt;&lt;/footer&gt;  定义section或page 的页脚
+    使用要点：
+</code></pre><h2 id="处理低版本浏览器兼容"><a href="#处理低版本浏览器兼容" class="headerlink" title="处理低版本浏览器兼容"></a>处理低版本浏览器兼容</h2><pre><code>解决方案：
+&lt;script type=&quot;text/javascript&quot; src=&apos;js/html5shiv.js&apos;&gt;&lt;/script&gt;
+
+[if lt IE 6]
+说明：lt(代表less than)  当IE浏览器的版本小于IE6的时候，会执行其中的代码
+[if lte IE 8]
+说明：lte(代表less than equals)当IE浏览器的版本小于等于IE8的时候，会执行其中的代码
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/12/16/html5简介/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-html水平垂直居中" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -720,15 +986,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -744,11 +1006,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -760,15 +1026,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">

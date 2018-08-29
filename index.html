@@ -152,6 +152,170 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react学习二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/22/react学习二/">react学习二  生命周期</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/22/react学习二/" class="archive-article-date">
+  	<time datetime="2018-08-22T11:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期   
+组件的生命周期包含三个阶段：创建阶段（Mounting) 运行和交互阶段(Updating) 卸载阶段(Mounting)
+</code></pre><h3 id="创建阶段-Mounting-该阶段的函数只执行一次。"><a href="#创建阶段-Mounting-该阶段的函数只执行一次。" class="headerlink" title="创建阶段(Mounting)    该阶段的函数只执行一次。"></a>创建阶段(Mounting)    该阶段的函数只执行一次。</h3><h4 id="一：-constructor"><a href="#一：-constructor" class="headerlink" title="一： constructor()"></a>一： constructor()</h4><pre><code>1:  获取props  初始化state
+2:通过constructor()的参数props获取
+            例：class Greeting extends React.Component {
+      constructor(props) {
+        // 获取 props
+        super(props)
+        // 初始化 state
+        this.state = {
+          count: props.initCount
+        }
+      }
+    }
+    // 初始化 props
+    // 语法：通过静态属性 defaultProps 来初始化props
+    Greeting.defaultProps = {
+      initCount: 0
+    };
+</code></pre><h4 id="二：componentWillMount"><a href="#二：componentWillMount" class="headerlink" title="二：componentWillMount()"></a>二：componentWillMount()</h4><pre><code>1 组件被挂载到页面之前调用，在render之前被调用。在这设置状态不会触发渲染。
+2 无法获取页面中的Dom对象
+3 可以调用setState()方法来改变状态值
+4：发送ajax请求获取数据
+componentWillMount() {
+    console.warn(document.getElementById(&apos;btn&apos;)) // null
+    this.setState({
+      count: this.state.count + 1
+    })
+    }
+</code></pre><h4 id="三：render"><a href="#三：render" class="headerlink" title="三：render()"></a>三：render()</h4><pre><code>1 渲染组件到页面中，无法获取页面中的Dom对象
+2 不要在render()方法中调用setState()方法，否则会递归渲染。因为状态改变会调用render()
+3 这个函数能执行多次。只要组件的属性或状态改变了，这个方法就会重新执行。
+render() {            
+  return (
+    &lt;div&gt;
+      &lt;button id=&quot;btn&quot; onClick={this.handleAdd}&gt;打豆豆一次&lt;/button&gt;
+      {
+        this.state.count === 4
+        ? null
+        : &lt;CounterChild initCount={this.state.count}&gt;&lt;/CounterChild&gt;
+      }
+    &lt;/div&gt;
+  )
+ }        
+</code></pre><h4 id="四：componentDidMount"><a href="#四：componentDidMount" class="headerlink" title="四：componentDidMount()"></a>四：componentDidMount()</h4><pre><code>1:组件已经挂载到页面中
+2 ：可以进行Dom操作，比如获取组件DOM对象
+3：可以发送请求获取数据
+4：可以通过setState()修改状态值（在这里修改状态会重新渲染）
+componentDidMount() {
+     // 此时，就可以获取到组件内部的DOM对象
+     console.warn(&apos;componentDidMount&apos;, document.getElementById(&apos;btn&apos;))
+   }
+</code></pre><h3 id="运行阶段（Updating）"><a href="#运行阶段（Updating）" class="headerlink" title="运行阶段（Updating）"></a>运行阶段（Updating）</h3><pre><code>特点：1 该阶段的函数执行多行
+      2 每当组件的props或者state改变的时候，都会触发运行阶段的函数
+</code></pre><h4 id="一：componentWillReceiveProps"><a href="#一：componentWillReceiveProps" class="headerlink" title="一：componentWillReceiveProps()"></a>一：componentWillReceiveProps()</h4><pre><code>1:组件接受新的props前触发这个方法
+2：当前组件的props值
+3：可以通过this.props获取到上一次的值
+4：需要响应属性的改变，通过对比this.props和nextProps并在该方法中使用this.setState()处理状态改变
+5：修改state不会触发该方法
+componentWillReceiveProps(nextProps) {
+  console.warn(&apos;componentWillReceiveProps&apos;, nextProps)
+}
+</code></pre><h4 id="二：shouldComponentUpdate"><a href="#二：shouldComponentUpdate" class="headerlink" title="二：shouldComponentUpdate()"></a>二：shouldComponentUpdate()</h4><pre><code>作用：根据这个方法的返回值决定是否重新渲染组件，返回true重新渲染，否则不渲染
+优势：通过某个条件渲染组件，降低组件渲染频率，提升组件性能
+说明：如果返回值为false，那么，后续render()方法不会被调用
+注意：这个方法必须返回布尔值！！！
+场景：根据随机数决定是否渲染组件
+// - 参数：
+//   - 第一个参数：最新属性对象
+//   - 第二个参数：最新状态对象
+shouldComponentUpdate(nextProps, nextState) {
+  console.warn(&apos;shouldComponentUpdate&apos;, nextProps, nextState)
+
+  return nextState.count % 2 === 0
+}
+</code></pre><h4 id="三：componentWillUpdate"><a href="#三：componentWillUpdate" class="headerlink" title="三：componentWillUpdate()"></a>三：componentWillUpdate()</h4><pre><code>  作用：组件将要更新
+  参数：最新的属性和状态对象
+注意：不能修改章台，否则会循环渲染
+componentWillUpdate(nextProps, nextState) {
+   console.warn(&apos;componentWillUpdate&apos;, nextProps, nextState)
+ }
+</code></pre><h4 id="四：componentDidUpdate"><a href="#四：componentDidUpdate" class="headerlink" title="四：componentDidUpdate()"></a>四：componentDidUpdate()</h4><pre><code>作用：组件已经被更新
+参数：：旧的属性和状态对象
+componentDidUpdate(prevProps, prevState) {
+  console.warn(&apos;componentDidUpdate&apos;, prevProps, prevState)
+}
+</code></pre><h3 id="卸载阶段（Unmounting"><a href="#卸载阶段（Unmounting" class="headerlink" title="卸载阶段（Unmounting)"></a>卸载阶段（Unmounting)</h3><pre><code>componentWillUnmount()
+作用：在卸载组件的时候，执行清理工作
+1 清除定时器
+2 清除componentDidMount创建的Dom对象
+只要组件不再被渲染到页面，这个方法就会被调用
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/22/react学习二/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-React学习—一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -420,92 +584,92 @@ setState可以传两个参数，
 <h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h4 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h4><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
 fnCb要执行的回调函数 （此为浅度监视）
 vm.$watch(name,fnCb,{deep:true})(此为深度复制)
-</code></pre><h4 id="动画-animate"><a href="#动画-animate" class="headerlink" title="动画 animate"></a>动画 animate</h4><pre><code>推荐使用animate.css插件
-使用方法：1安装 npm i --save vue2-animate (以webpack依赖)
-2 在main.js中引入
-    require(&apos;vue2-animate/dist/vue2-animate.min.css&apos;)
-或者
-import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
-3 然后使用（可以看API)
-</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>   1 全局组件注册方式：Vue.component(组件名，{方法})
-   例： &lt;div id=&quot;app&quot;&gt;
-          &lt;my-component&gt;&lt;/my-component&gt;
+</code></pre><h4 id="动画-animate"><a href="#动画-animate" class="headerlink" title="动画 animate"></a>动画 animate</h4><pre><code>        推荐使用animate.css插件
+    使用方法：1安装 npm i --save vue2-animate (以webpack依赖)
+    2 在main.js中引入
+require(&apos;vue2-animate/dist/vue2-animate.min.css&apos;)
+    或者
+    import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
+    3 然后使用（可以看API)
+</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>       1 全局组件注册方式：Vue.component(组件名，{方法})
+       例： &lt;div id=&quot;app&quot;&gt;
+              &lt;my-component&gt;&lt;/my-component&gt;
+            &lt;/div&gt;
+            Vue.component(&quot;my-component&quot;,{
+                template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
+            });
+            new Vue({
+            el:&quot;#app&quot;
+            });
+        注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
+        2 局部组件   直接在Vue实例里面注册
+        例：&lt;body&gt;
+            &lt;div id=&quot;app1&quot;&gt;
+           &lt;child-component&gt;&lt;/child-component&gt;
         &lt;/div&gt;
-        Vue.component(&quot;my-component&quot;,{
-            template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
-        });
-        new Vue({
-        el:&quot;#app&quot;
-        });
-    注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
-    2 局部组件   直接在Vue实例里面注册
-    例：&lt;body&gt;
-        &lt;div id=&quot;app1&quot;&gt;
-       &lt;child-component&gt;&lt;/child-component&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-       new Vue({
-    el: &quot;#app1&quot;,
-    components:{
-        &quot;child-component&quot;:{
-            template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+        &lt;script&gt;
+           new Vue({
+        el: &quot;#app1&quot;,
+        components:{
+            &quot;child-component&quot;:{
+                template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+            }
         }
-    }
-    });&lt;/script&gt;
-    局部组件需注意：1 属性名为components, S千万别忘
-    2 最好模板定义在一个全局变量里
-    方法如下： var child={
-        template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-    }
-     new Vue({
-    el: &quot;#app1&quot;,
-    components:{
-        &quot;child-component&quot;:child
-    } });
+        });&lt;/script&gt;
+        局部组件需注意：1 属性名为components, S千万别忘
+        2 最好模板定义在一个全局变量里
+        方法如下： var child={
+            template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+        }
+         new Vue({
+        el: &quot;#app1&quot;,
+        components:{
+            &quot;child-component&quot;:child
+        } });
        3 组件模板 
-       例：&lt;div id=&quot;box&quot;&gt;
-    &lt;my-aaa&gt;&lt;/my-aaa&gt;
-    &lt;/div&gt;
-    &lt;template id=&quot;aaa&quot;&gt;
-    &lt;ul&gt;
-        &lt;li v-for=&quot;val in arr&quot;&gt;
-            {{val}}
-        &lt;/li&gt;
-    &lt;/ul&gt;
-    &lt;/template&gt;
-    &lt;script&gt;
-    var vm=new Vue({
-        el:&apos;#box&apos;,
-        components:{
-            &apos;my-aaa&apos;:{
-                data(){
-                    return {
-                        msg:&apos;welcome vue&apos;,
-                        arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
-                methods:{
-                    change(){
-                        this.msg=&apos;changed&apos;;
-                    }},                    
-                template:&apos;#aaa&apos;
-            }}});&lt;/script&gt;
-    4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
-    例：    &lt;div id=&quot;box&quot;&gt;
-    &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
-    &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
-    &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
-    &lt;/div&gt;
-    &lt;script&gt;
-    var vm=new Vue({
-        el:&apos;#box&apos;,
-        data:{
-            a:&apos;aaa&apos;    },    
-        components:{
-            &apos;aaa&apos;:{
-                template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
-            &apos;bbb&apos;:{
-                template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
-            }}});
-&lt;/script&gt;
+   例：&lt;div id=&quot;box&quot;&gt;
+&lt;my-aaa&gt;&lt;/my-aaa&gt;
+&lt;/div&gt;
+&lt;template id=&quot;aaa&quot;&gt;
+&lt;ul&gt;
+    &lt;li v-for=&quot;val in arr&quot;&gt;
+        {{val}}
+    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/template&gt;
+&lt;script&gt;
+var vm=new Vue({
+    el:&apos;#box&apos;,
+    components:{
+        &apos;my-aaa&apos;:{
+            data(){
+                return {
+                    msg:&apos;welcome vue&apos;,
+                    arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
+            methods:{
+                change(){
+                    this.msg=&apos;changed&apos;;
+                }},                    
+            template:&apos;#aaa&apos;
+        }}});&lt;/script&gt;
+            4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
+            例：    &lt;div id=&quot;box&quot;&gt;
+            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
+            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
+            &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
+            &lt;/div&gt;
+            &lt;script&gt;
+            var vm=new Vue({
+                el:&apos;#box&apos;,
+                data:{
+                    a:&apos;aaa&apos;    },    
+                components:{
+                    &apos;aaa&apos;:{
+                        template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
+                    &apos;bbb&apos;:{
+                        template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
+                    }}});
+        &lt;/script&gt;
 </code></pre>
       
 
@@ -597,6 +761,90 @@ import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/21/hexo博客的打开及发布/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-github-Hexo博客更换主体外观" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/28/github-Hexo博客更换主体外观/">github+Hexo博客更换主体外观</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/28/github-Hexo博客更换主体外观/" class="archive-article-date">
+  	<time datetime="2017-08-28T11:43:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="所需步骤"><a href="#所需步骤" class="headerlink" title="所需步骤"></a>所需步骤</h3><pre><code>1  找到blog本地存储的地方，点击themes进去
+2 右击选择Git bash 
+3 下载所需要的主题
+4 博客最底层目录下的_config.yml，把themes的名字改成下载的主体名称
+5 然后输入hexo s --debug 进行本地测试
+6 找到主题配置文件_config.yml，然后配置自己想要的界面
+7 输入 hexo clean ; 
+8 hexo genarate回车， 生成
+9 hexo deploy  发布
+</code></pre><h4 id="关于发布后，在github上的改动"><a href="#关于发布后，在github上的改动" class="headerlink" title="关于发布后，在github上的改动"></a>关于发布后，在github上的改动</h4><pre><code>1 点击creat new file 在仓库地址后面加CNAME。
+2 然后加上自己的域名
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/28/github-Hexo博客更换主体外观/">展开全文 >></a>
         </p>
       
 
@@ -1608,268 +1856,6 @@ jQuery(&quot;div&quot;).html(&quot;我不是div的内容&quot;);
 
 
   
-    <article id="post-浅谈RESTful" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/11/浅谈RESTful/">浅谈RESTful</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/11/浅谈RESTful/" class="archive-article-date">
-  	<time datetime="2017-04-11T01:38:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="RESTful-是什么？"><a href="#RESTful-是什么？" class="headerlink" title="RESTful 是什么？"></a>RESTful 是什么？</h2><pre><code>一种软件架构风格，设计风格而不是标准，只是提供了一组设计原则和约束条件‘
-主要用于客户端和服务器交互的软件。可以更简洁，更有层次，更易于缓存等机制。
-地址/user/addUser  方法名 POST canshu {name:&quot;lione&quot;,&quot;age&quot;:2}
-响应 成功{success:&quot;成功&quot;,data:{id:&quot;ddddddd&quot;}}
-失败{error:&quot;失败&quot;,data:{,msg:&quot;哈哈哈&quot;}}
-
-1  增 GET /user 获取user信息列表  GET/getUserlist？page=1
-
-2 查 GET /user/17  查看id为17的具体user信息 GET/getUserById？Id=1
-
- POST /user  新建一个user  POST/addUser
-
-3 改 PUT /user /17 更新id为17的user信息 PUT/updateUser
-
- 4 删 DELETE /user/17 删除id为17de user信息 DELETE /delUserById?id=14
-</code></pre><h1 id="Es6"><a href="#Es6" class="headerlink" title="Es6"></a>Es6</h1><h2 id="什么是Es6"><a href="#什么是Es6" class="headerlink" title="什么是Es6?"></a>什么是Es6?</h2><p>ECMAScript es标准的作用，定义js的发展方向的一套标准</p>
-<h2 id="为什么用es6？"><a href="#为什么用es6？" class="headerlink" title="为什么用es6？"></a>为什么用es6？</h2><p>   新的语法，写起来更严谨更安全更简单</p>
-<h2 id="为什么前端不用，node要用？"><a href="#为什么前端不用，node要用？" class="headerlink" title="为什么前端不用，node要用？"></a>为什么前端不用，node要用？</h2><pre><code>js---&gt;浏览器---&gt;引擎执行js代码
-
-node----&gt;v8执行js代码
-node 不考虑兼容性，es6能给我们带来好处。
-node.js 覆盖了93%de ECMAScript 6 
-</code></pre><h2 id="user-strict-严格模式"><a href="#user-strict-严格模式" class="headerlink" title="user strict 严格模式"></a>user strict 严格模式</h2><pre><code>消除了javascript语法的一些不合理，不严谨之处，减少一些怪异行为
-1 规范了javascript语法
-2 告诉js引擎用什么语法解析
-严格模式下不允许进行全局定义
-</code></pre><h2 id="let"><a href="#let" class="headerlink" title="let"></a>let</h2><pre><code>使用let去定义变量  let  xx==00;
-作用域：都在花括号内
-</code></pre><h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><pre><code>const 使用来定义很顶的值
-node 多用于包的引用，复合作用域在会计作用域内
-</code></pre><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><pre><code>var foo=&quot;asdhfhfjgg&quot;
-var bar=&quot;hehe&quot;+foo+&quot;haha&quot;
-var baz=`hehe${foo}haha`;
-console.log(baz
-)    
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/11/浅谈RESTful/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery浅谈（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/10/jQuery浅谈（三）/">jQuery浅谈（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/10/jQuery浅谈（三）/" class="archive-article-date">
-  	<time datetime="2017-04-10T15:55:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="juery操作Dom（节点）"><a href="#juery操作Dom（节点）" class="headerlink" title="juery操作Dom（节点）"></a>juery操作Dom（节点）</h2><pre><code>1 创建元素
-    $(htmlStr)
-    htmlStr：html格式的字符串
-    $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-2 添加元素
-
-      添加新建的元素
-  +     方法一：将jQuery对象添加到调用者内部的最后面。 
-    var $span = $(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-    $(“div”).append($span);
-
-    + 方法二：参数传字符串，会自动创建成jquery对象
-    $(“div”).append(“&lt;span&gt;这是一个span元素&lt;/span&gt;”);
-    添加已经存在的元素
-    var $p = $(“p”);
-    $(“div”).append($p);
-    注意：如果添加的是已经存在的元素，那么会把之前的元素给干掉。（类似于剪切的功能）。
-
-    prepend() 在子节点的最前面插入    
-
-    before() 在同级元素的前面插入
-
-    after() 在同级元素的后面插入
-
-    appendTo() 添加插入到... 括号内是目标元素
-    例 : $(&quot;#text&quot;).appendTo(&quot;#box&quot;)
-    prependTo() 和appendTo()正好相反
-    例： $(&quot;#box&quot;).appendTo(&quot;#text&quot;)
-</code></pre><h2 id="清空元素"><a href="#清空元素" class="headerlink" title="清空元素"></a>清空元素</h2><pre><code>empty：清空指定节点的所有元素，自身保留(清理门户)
-$(“div”).empty();//清空div的所有内容（推荐使用，会清除子元素上绑定的内容，源码）
-清空元素的第二种方法
-$(“div”).html(“”);//使用html方法来清空元素，有就保留，清除其他的，缺点是，内部标签有事件不清除。（不推荐使用，会造成内存泄漏，绑定的事件不会被清除。）
-</code></pre><h2 id="删除元素"><a href="#删除元素" class="headerlink" title="删除元素"></a>删除元素</h2><pre><code>remove（ ）：相比于empty，自身也删除（自杀），传谁 杀谁。
-</code></pre><h2 id="克隆元素-clone"><a href="#克隆元素-clone" class="headerlink" title="克隆元素 clone()"></a>克隆元素 clone()</h2><pre><code>作用:复制匹配的元素
-复制$(selector)所匹配到的元素（深度复制，即复制标签还复制事件）
-cloneNode(true)
- 返回值为复制的新元素，和原来的元素没有任何关系了。即修改新元素，不会影响到原来的元素。
-$(selector).clone(false);
-浅复制（复制标签和内容）
-</code></pre><h2 id="jQuery操作属性"><a href="#jQuery操作属性" class="headerlink" title="jQuery操作属性"></a>jQuery操作属性</h2><pre><code>1  设置单个属性
-    第一个参数：需要设置的属性名
-    第二个参数：对应的属性值
-    attr(name, value);
-    用法举例
-    $(“img”).attr(“title”,”哎哟，不错哦”);
-    $(“img”).attr(“alt”,“哎哟，不错哦”);
-
-2     设置多个属性
-    参数是一个对象，包含了需要设置的属性名和属性值
-    attr(obj)
-    用法举例
-    $(&quot;img&quot;).attr({
-    title:&quot;哎哟，不错哦&quot;,
-    alt:&quot;哎哟，不错哦&quot;,
-    style:&quot;opacity:.5&quot;
-    });
-</code></pre><h2 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h2><pre><code>传需要获取的属性名称，返回对应的属性值
-attr(name)
-用法举例
-var oTitle = $(&quot;img&quot;).attr(&quot;title&quot;);
-alert(oTitle);
-注意：
-1.    获取属性时，只会获取到第一个元素对应的属性，与css方法一样
-2.    获取属性时，如果该属性不存在，那么会返回undefined
-</code></pre><h2 id="移除事件-removeAttr"><a href="#移除事件-removeAttr" class="headerlink" title="移除事件 removeAttr()"></a>移除事件 removeAttr()</h2><pre><code>参数：需要移除的属性名，如果传空，那么不会有任何操作，注意，并不是移除所有的属性。区分removeClass。
-removeAttr(name);
-用法举例
-$(&quot;img&quot;).removeAttr(&quot;title&quot;);
-</code></pre><h2 id="prop"><a href="#prop" class="headerlink" title="prop"></a>prop</h2><pre><code>注意：在jQuery1.6之后，对于checked、selected、disable这类boolean类型的属性来说，如果使用attr方法获取属性值，得到的不是true和false，而是checked以及undefined。，使用prop方法来获取或者设置checked、selected、disable这类的值。prop方法使用跟attr方法一样。
-设置属性
-$(“:checked”).prop(“checked”,true);
-获取属性
-$(“:checked”).prop(“checked”);//返回true或者false
-</code></pre><h2 id="jQuery操作值与内容"><a href="#jQuery操作值与内容" class="headerlink" title="jQuery操作值与内容"></a>jQuery操作值与内容</h2><pre><code>1  val 方法
-    val方法用于设置和获取表单元素的值，例如input、select、textarea的值
-    设置值
-    $(“#name”).val(“张三”);
-    获取值
-    $(“#name”).val();
-2 html 方法
-    设置内容
-    $(“div”).html(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
-    获取内容
-    $(“div”).html()
-3 text 方法
-    设置内容
-    $(“div”).text(“&lt;span&gt;这是一段内容&lt;/span&gt;”);
-    获取内容
-    $(“div”).text()
-
-html方法与text方法的区别：
-html方法会识别html标签，text方法会把内容直接当成字符串，并不会识别html标签。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/10/jQuery浅谈（三）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1979,15 +1965,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2003,11 +1985,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2019,15 +2005,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">

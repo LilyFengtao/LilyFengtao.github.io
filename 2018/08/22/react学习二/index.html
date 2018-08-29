@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http:lilyfengtao.github.io">
-  <title>git远程仓库 | 李锋涛</title>
+  <title>react学习二  生命周期 | 李锋涛</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="创建共享仓库Git要求共享仓库是一个以.git结尾的目录。 mkdir repo.git 创建以.git结尾目录 cd repo.git 进入这个目录 git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare git与github的关系？git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。 github就是一个网站，一个代码托管平台。 配置gith">
-<meta name="keywords" content="git">
+  <meta name="description" content="生命周期一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期    组件的生命周期包含三个阶段：创建阶段（Mounting) 运行和交互阶段(Updating) 卸载阶段(Mounting) 创建阶段(Mounting)    该阶段的函数只执行一次。一： constructor()1:  获取props  初始化state 2:通过constructor()的参数props获取">
+<meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git远程仓库">
-<meta property="og:url" content="http:lilyfengtao.github.io/2015/09/18/git远程仓库/index.html">
+<meta property="og:title" content="react学习二  生命周期">
+<meta property="og:url" content="http:lilyfengtao.github.io/2018/08/22/react学习二/index.html">
 <meta property="og:site_name" content="李锋涛">
-<meta property="og:description" content="创建共享仓库Git要求共享仓库是一个以.git结尾的目录。 mkdir repo.git 创建以.git结尾目录 cd repo.git 进入这个目录 git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare git与github的关系？git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。 github就是一个网站，一个代码托管平台。 配置gith">
-<meta property="og:updated_time" content="2017-05-07T00:29:15.028Z">
+<meta property="og:description" content="生命周期一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期    组件的生命周期包含三个阶段：创建阶段（Mounting) 运行和交互阶段(Updating) 卸载阶段(Mounting) 创建阶段(Mounting)    该阶段的函数只执行一次。一： constructor()1:  获取props  初始化state 2:通过constructor()的参数props获取">
+<meta property="og:updated_time" content="2018-08-29T08:54:08.413Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git远程仓库">
-<meta name="twitter:description" content="创建共享仓库Git要求共享仓库是一个以.git结尾的目录。 mkdir repo.git 创建以.git结尾目录 cd repo.git 进入这个目录 git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare git与github的关系？git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。 github就是一个网站，一个代码托管平台。 配置gith">
+<meta name="twitter:title" content="react学习二  生命周期">
+<meta name="twitter:description" content="生命周期一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期    组件的生命周期包含三个阶段：创建阶段（Mounting) 运行和交互阶段(Updating) 卸载阶段(Mounting) 创建阶段(Mounting)    该阶段的函数只执行一次。一： constructor()1:  获取props  初始化state 2:通过constructor()的参数props获取">
   
     <link rel="alternative" href="/atom.xml" title="李锋涛" type="application/atom+xml">
   
@@ -152,63 +152,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git远程仓库" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-react学习二" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git远程仓库
+      react学习二  生命周期
     </h1>
   
 
         
-        <a href="/2015/09/18/git远程仓库/" class="archive-article-date">
-  	<time datetime="2015-09-18T09:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-18</time>
+        <a href="/2018/08/22/react学习二/" class="archive-article-date">
+  	<time datetime="2018-08-22T11:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="创建共享仓库"><a href="#创建共享仓库" class="headerlink" title="创建共享仓库"></a>创建共享仓库</h4><pre><code>Git要求共享仓库是一个以.git结尾的目录。
-mkdir repo.git 创建以.git结尾目录
-cd repo.git 进入这个目录
-git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare
-</code></pre><h4 id="git与github的关系？"><a href="#git与github的关系？" class="headerlink" title="git与github的关系？"></a>git与github的关系？</h4><pre><code>git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。
-github就是一个网站，一个代码托管平台。
-</code></pre><h4 id="配置github"><a href="#配置github" class="headerlink" title="配置github"></a>配置github</h4><pre><code>1 在本地电脑上创建一对密钥
-cmd|bash|terminal 上输入指令：ssh-keygen -t rsa  
-</code></pre><h4 id="git指令"><a href="#git指令" class="headerlink" title="git指令"></a>git指令</h4><pre><code>1 git pull [remote url] branchname
-从远程服务器上获取指定仓库的分支，并且与工作目录的分支惊醒何必管操作。
-如果出现冲突，就手动解决即可
-2 git push [remote url] branchname
-如果本地开发工作完成，要将本地仓库的版本递交到远程仓库，实现共享与项目合并。
-3 git fetch [remote url] branch
-</code></pre><h4 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h4><pre><code>1  git config配置本地仓库
-   常用git config --global user.name、git config --global user.email
-2 git config --list查看配置详情
-3 git init 初始一个仓库，添加--bare可以初始化一个共享（裸）仓库
-4 git status 可以查看当前仓库的状态
-5 git add“文件” 将工作区中的文件添加 到暂存区中，其中file可是一个单独的文件，也可以是一个目录、“*”、-A
-6 git commit -m &apos;备注信息&apos; 将暂存区的文件，提交到本地仓库
-7 git log 可以查看本地仓库的提交历史
-8 git branch查看分支
-9 git branch“分支名称” 创建一个新的分支
-10 git checkout“分支名称” 切换分支
-11 git checkout -b deeveloper 他健并切到developer分支
-12 git merge“分支名称” 合并分支
-13 git branch -d “分支名称” 删除分支
-14 git clone “仓库地址”获取已有仓库的副本
-15 git push origin “本地分支名称:远程分支名称”将本地分支推送至远程仓库，
-git push origin hotfix（通常的写法）相当于
-git push origin hotfix:hotfix
-git push origin hotfix:newfeature
-本地仓库分支名称和远程仓库分支名称一样的情况下可以简写成一个，即git push “仓库地址” “分支名称”，如果远程仓库没有对应分支，将会自动创建
-16 git remote add “主机名称” “远程仓库地址”添加远程主机，即给远程主机起个别名，方便使用
-17 git remote 可以查看已添加的远程主机
-18 git remote show “主机名称”可以查看远程主机的信息
+        <h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><pre><code>一个组件从开始到最后消亡所经历的各种状态，就是一个组件的生命周期   
+组件的生命周期包含三个阶段：创建阶段（Mounting) 运行和交互阶段(Updating) 卸载阶段(Mounting)
+</code></pre><h3 id="创建阶段-Mounting-该阶段的函数只执行一次。"><a href="#创建阶段-Mounting-该阶段的函数只执行一次。" class="headerlink" title="创建阶段(Mounting)    该阶段的函数只执行一次。"></a>创建阶段(Mounting)    该阶段的函数只执行一次。</h3><h4 id="一：-constructor"><a href="#一：-constructor" class="headerlink" title="一： constructor()"></a>一： constructor()</h4><pre><code>1:  获取props  初始化state
+2:通过constructor()的参数props获取
+            例：class Greeting extends React.Component {
+      constructor(props) {
+        // 获取 props
+        super(props)
+        // 初始化 state
+        this.state = {
+          count: props.initCount
+        }
+      }
+    }
+    // 初始化 props
+    // 语法：通过静态属性 defaultProps 来初始化props
+    Greeting.defaultProps = {
+      initCount: 0
+    };
+</code></pre><h4 id="二：componentWillMount"><a href="#二：componentWillMount" class="headerlink" title="二：componentWillMount()"></a>二：componentWillMount()</h4><pre><code>1 组件被挂载到页面之前调用，在render之前被调用。在这设置状态不会触发渲染。
+2 无法获取页面中的Dom对象
+3 可以调用setState()方法来改变状态值
+4：发送ajax请求获取数据
+componentWillMount() {
+    console.warn(document.getElementById(&apos;btn&apos;)) // null
+    this.setState({
+      count: this.state.count + 1
+    })
+    }
+</code></pre><h4 id="三：render"><a href="#三：render" class="headerlink" title="三：render()"></a>三：render()</h4><pre><code>1 渲染组件到页面中，无法获取页面中的Dom对象
+2 不要在render()方法中调用setState()方法，否则会递归渲染。因为状态改变会调用render()
+3 这个函数能执行多次。只要组件的属性或状态改变了，这个方法就会重新执行。
+render() {            
+  return (
+    &lt;div&gt;
+      &lt;button id=&quot;btn&quot; onClick={this.handleAdd}&gt;打豆豆一次&lt;/button&gt;
+      {
+        this.state.count === 4
+        ? null
+        : &lt;CounterChild initCount={this.state.count}&gt;&lt;/CounterChild&gt;
+      }
+    &lt;/div&gt;
+  )
+ }        
+</code></pre><h4 id="四：componentDidMount"><a href="#四：componentDidMount" class="headerlink" title="四：componentDidMount()"></a>四：componentDidMount()</h4><pre><code>1:组件已经挂载到页面中
+2 ：可以进行Dom操作，比如获取组件DOM对象
+3：可以发送请求获取数据
+4：可以通过setState()修改状态值（在这里修改状态会重新渲染）
+componentDidMount() {
+     // 此时，就可以获取到组件内部的DOM对象
+     console.warn(&apos;componentDidMount&apos;, document.getElementById(&apos;btn&apos;))
+   }
+</code></pre><h3 id="运行阶段（Updating）"><a href="#运行阶段（Updating）" class="headerlink" title="运行阶段（Updating）"></a>运行阶段（Updating）</h3><pre><code>特点：1 该阶段的函数执行多行
+      2 每当组件的props或者state改变的时候，都会触发运行阶段的函数
+</code></pre><h4 id="一：componentWillReceiveProps"><a href="#一：componentWillReceiveProps" class="headerlink" title="一：componentWillReceiveProps()"></a>一：componentWillReceiveProps()</h4><pre><code>1:组件接受新的props前触发这个方法
+2：当前组件的props值
+3：可以通过this.props获取到上一次的值
+4：需要响应属性的改变，通过对比this.props和nextProps并在该方法中使用this.setState()处理状态改变
+5：修改state不会触发该方法
+componentWillReceiveProps(nextProps) {
+  console.warn(&apos;componentWillReceiveProps&apos;, nextProps)
+}
+</code></pre><h4 id="二：shouldComponentUpdate"><a href="#二：shouldComponentUpdate" class="headerlink" title="二：shouldComponentUpdate()"></a>二：shouldComponentUpdate()</h4><pre><code>作用：根据这个方法的返回值决定是否重新渲染组件，返回true重新渲染，否则不渲染
+优势：通过某个条件渲染组件，降低组件渲染频率，提升组件性能
+说明：如果返回值为false，那么，后续render()方法不会被调用
+注意：这个方法必须返回布尔值！！！
+场景：根据随机数决定是否渲染组件
+// - 参数：
+//   - 第一个参数：最新属性对象
+//   - 第二个参数：最新状态对象
+shouldComponentUpdate(nextProps, nextState) {
+  console.warn(&apos;shouldComponentUpdate&apos;, nextProps, nextState)
+
+  return nextState.count % 2 === 0
+}
+</code></pre><h4 id="三：componentWillUpdate"><a href="#三：componentWillUpdate" class="headerlink" title="三：componentWillUpdate()"></a>三：componentWillUpdate()</h4><pre><code>  作用：组件将要更新
+  参数：最新的属性和状态对象
+注意：不能修改章台，否则会循环渲染
+componentWillUpdate(nextProps, nextState) {
+   console.warn(&apos;componentWillUpdate&apos;, nextProps, nextState)
+ }
+</code></pre><h4 id="四：componentDidUpdate"><a href="#四：componentDidUpdate" class="headerlink" title="四：componentDidUpdate()"></a>四：componentDidUpdate()</h4><pre><code>作用：组件已经被更新
+参数：：旧的属性和状态对象
+componentDidUpdate(prevProps, prevState) {
+  console.warn(&apos;componentDidUpdate&apos;, prevProps, prevState)
+}
+</code></pre><h3 id="卸载阶段（Unmounting"><a href="#卸载阶段（Unmounting" class="headerlink" title="卸载阶段（Unmounting)"></a>卸载阶段（Unmounting)</h3><pre><code>componentWillUnmount()
+作用：在卸载组件的时候，执行清理工作
+1 清除定时器
+2 清除componentDidMount创建的Dom对象
+只要组件不再被渲染到页面，这个方法就会被调用
 </code></pre>
       
 
@@ -243,7 +297,7 @@ git push origin hotfix:newfeature
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
@@ -299,7 +353,7 @@ git push origin hotfix:newfeature
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:http:lilyfengtao.github.io/2015/09/18/git远程仓库/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:http:lilyfengtao.github.io/2018/08/22/react学习二/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -313,20 +367,15 @@ git push origin hotfix:newfeature
   
 <nav id="article-nav">
   
-    <a href="/2015/09/10/git/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/20/React学习—一/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          flex布局
+          React学习—
         
       </div>
     </a>
   
-  
-    <a href="/2016/01/10/bootstrap学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">bootstrap学习</div>
-      <i class="icon-circle-right"></i>
-    </a>
   
 </nav>
 

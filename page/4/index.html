@@ -152,6 +152,205 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-浏览器窗口可视区域大小" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/06/浏览器窗口可视区域大小/">浏览器窗口可视区域大小</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/06/浏览器窗口可视区域大小/" class="archive-article-date">
+  	<time datetime="2015-08-06T03:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="浏览器窗口可视区域大小"><a href="#浏览器窗口可视区域大小" class="headerlink" title="浏览器窗口可视区域大小"></a>浏览器窗口可视区域大小</h4><pre><code>window.innerHeight  浏览器窗口的内部高度
+window.innerWidth  浏览器窗口的内部宽度
+</code></pre><h4 id="在不同浏览器都实用的JavaScript方案："><a href="#在不同浏览器都实用的JavaScript方案：" class="headerlink" title="在不同浏览器都实用的JavaScript方案："></a>在不同浏览器都实用的JavaScript方案：</h4><pre><code>var w=document.documentElement.clientWidth || document.body.clientWidth;
+var h=document.documentElement.clientHeight || document.body.clientHeight;
+</code></pre><h4 id="offset-系列"><a href="#offset-系列" class="headerlink" title="offset 系列"></a>offset 系列</h4><pre><code>1 offsetLeft :当前元素到定位父盒子的距离（边框到边框）
+offsetLeft 是自身border左侧到父级padding左侧的距离
+2 offsetWidth 除了margin以外所有的宽度
+3 offsetHeight: 除了margin以外所有的高度
+offsetHeight=height+padding+border
+包括 自身高度 内边距 边框 不包括 外边距（因为有offsetTop)
+4 offsetParpent 可以获取当前元素外面的定位父盒子
+例： box.offsetparpent
+</code></pre><h4 id="scroll-系列属性"><a href="#scroll-系列属性" class="headerlink" title="scroll 系列属性"></a>scroll 系列属性</h4><pre><code>  1 scrollHeight 和scrollWidth
+  标签内部时机内容的高度/宽度
+  1 不计算边框，如果内容不超过盒子。值伪盒子的宽高（不带边框）
+  3 如果内容超出了盒子，就是顶部或者左边边框内侧一直到内容的最外部分（包含边框）
+页面滚动座标非常常用，但是有很大的兼容性问题，可以合写为
+var scrollTop=window.pageYOffset || document.documentElement.scrollTop|| document.body.scrollTop||0;
+</code></pre><h4 id="client-可视系列属性"><a href="#client-可视系列属性" class="headerlink" title="client 可视系列属性"></a>client 可视系列属性</h4><pre><code>1 clientWidth 和clientHeight
+ 偏移：offsetWidth: width+padding+border
+ 卷曲： scrollWidth: width+padding(不包含border) 内部内容的大小
+ 可视：clientWidth:width+padding(不包含border)
+ 2 clientTop和clientLeft
+ 他们就是borderTop和borderLeft（如果有滚动条会包含滚动条的宽度，但谁见过滚动条在顶部或者左侧的？！）
+</code></pre><h4 id="网页可视区宽高的兼容写法"><a href="#网页可视区宽高的兼容写法" class="headerlink" title="网页可视区宽高的兼容写法"></a>网页可视区宽高的兼容写法</h4><pre><code> 面可视区宽高非常常用，但是有很大的兼容性问题，可以合写为
+var clientWidth = window.innerWidth|| document.documentElement.clientWidth|| document.body.clientWidth|| 0;
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/06/浏览器窗口可视区域大小/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-javascript计时器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/01/javascript计时器/">javascript计时器</a>
+    </h1>
+  
+
+        
+        <a href="/2015/08/01/javascript计时器/" class="archive-article-date">
+  	<time datetime="2015-08-01T02:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="javascript-计时器"><a href="#javascript-计时器" class="headerlink" title="javascript 计时器"></a>javascript 计时器</h4><pre><code>  计时器类型： 仅在指定的延迟时间之后触发一次。
+  间隔性触发计时器：每隔一定的时间间隔就触发一次。
+ 计时器方法：
+1   setTimeout()  指定的延迟时间之后来执行代码
+语法：
+setInterval(代码,交互时间);
+参数说明：1)  代码：要调用的函数或要执行的代码串。
+        2)交互时间：周期性执行或调用表达式之间的时间间隔，以毫秒计（1s=1000ms）。 
+2  clearTimeout() 取消settimeout()设置
+语法：
+clearInterval(id_of_setInterval)
+参数说明:
+id_of_setInterval：由 setInterval() 返回的 ID 值。
+每隔 100 毫秒调用 clock() 函数,并显示时间。当点击按钮时，停止时间,
+3 setInterval() 每隔指定的时间执行代码
+语法:
+setTimeout(代码,延迟时间);
+参数说明：
+1. 要调用的函数或要执行的代码串。
+2. 延时时间：在执行代码前需等待的时间，以毫秒为单位（1s=1000ms)。
+4  clearInterval() 取消setInterval()设置
+调用函数格式(假设有一个clock()函数):
+setInterval(&quot;clock()&quot;,1000)
+语法:
+clearTimeout(id_of_setTimeout)
+参数说明:
+id_of_setTimeout：由 setTimeout() 返回的 ID 值。该值标识要取消的延迟执行代码块。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/08/01/javascript计时器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-String对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1056,247 +1255,6 @@ this.parentNode.removeChild .removeChild（this）  移除元素 移除元素 re
 
 
   
-    <article id="post-Js的样式操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/26/Js的样式操作/">Js的样式操作</a>
-    </h1>
-  
-
-        
-        <a href="/2015/06/26/Js的样式操作/" class="archive-article-date">
-  	<time datetime="2015-06-26T06:52:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a>样式操作</h4><pre><code> 1 访问样式可以通过标签的样式属性
- document.getElementById(&quot;box&quot;).style
- 2 访问样式中具体的某个样式，可以通过style再去访问内部具体样式
- document.getElementById(&quot;box&quot;).style.width=&quot;100px&quot;
-  注意：设置的样式值为字符串形式，并且加单位！
-
-遇到在css中需要加-的写法：background-color 在js中换成驼峰命名法
-例如：设置background-acolor
-document.getElementById(“box”).style.backgroundColor = “red”;
-</code></pre><h4 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a>文本操作</h4><pre><code>1 innerHTML： 
-（1）、    可以设置和获取纯文本
-（2）、    可以设置和获取内部的标签：
-使用innerhtml直接设置可以替换掉box内部的所有的内容
-增加文字的方法： box.innerHTML=box.innerHTML+&quot;内容&quot;
-2 innertext(html中某一对标签中的文字)
-想要设置或者获取某个标签中间的文字内容，使用：innertext属性
-</code></pre><h4 id="innertext和value的区别"><a href="#innertext和value的区别" class="headerlink" title="innertext和value的区别"></a>innertext和value的区别</h4><pre><code>1 innerText 和 value 属性改变里面的内容进行设置 但innerText属性设置后，无论是页面还是elements(F12快捷键)中内容都改变     （只能设置或获取存文本）
-2 value属性只能改变页面显示效果
-</code></pre><h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h4><pre><code>  作用：让页面可以捕获用户的操作
-  事件的三要素
-  1 每个事件都有三个必须的组成部分。
-  事件源--触发事件的对象
-  事件类型--如何触发
-  事件处理程序--事件执行产生的结果
-
-  2 事件的语法
-  事件源.事件类型 = function(){
-事件处理程序：代码会在用户触发事件时执行。
-};
-
-事件相关问题
-现象：多次给一个标签添加同一事件，后设置的会覆盖前面的事件。
-原理：一个属性名只能保存一个数据，一个方法名只能保存一个函数。
-</code></pre><h4 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h4><pre><code>1 添加属性：DOM元素 . setAttribute(&quot;属性名&quot;,&quot;属性值&quot;); 
-2 获取属性值： 获取属性值：DOM元素 .getAttribute(&quot;属性名&quot;); 
-属性名，属性值都是字符串类型，注意转化 
-3 移除属性： 移除属性：DOM元素 . removeAttribute(&quot;属性的名字&quot;);  包含类样式 包含类样式 清除事件，清除事件冒泡，清除计时器 清除事件，清除事件冒泡，清除计时器
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/06/26/Js的样式操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-DOm介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/20/DOm介绍/">DOm介绍</a>
-    </h1>
-  
-
-        
-        <a href="/2015/06/20/DOm介绍/" class="archive-article-date">
-  	<time datetime="2015-06-20T03:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="DOM的基本知识"><a href="#DOM的基本知识" class="headerlink" title="DOM的基本知识"></a>DOM的基本知识</h4><pre><code>Dom 文档对象模型
-D-document 文档 O-Object 对象 M-module 模型
-文档：html 文件或者xml文件
-    html文件侧重展示
-    xml文件侧重于存储
-DOM理解为树形结构图---树状图
-DOM的目的：通过JS代码操作页面中元素（DOM是文档，标签是对象）
-DOM把页面上每一个标签都视为对象，获取对象，通过点的方式添加属性或者时间处理函数。
-</code></pre><h4 id="DOM可用做什么？"><a href="#DOM可用做什么？" class="headerlink" title="DOM可用做什么？"></a>DOM可用做什么？</h4><pre><code> 找对象（元素）
- 设置元素的属性
- 设置元素的样式
- 动态创建和删除元素
- 事件触发响应
- 事件源（事件的触发者）
- 事件响应程序
- 页面中所有的内容 (标签,换行,文字) 实际上都是字符串 
-DOM操作页面元素
-BOM操作浏览器内容
-</code></pre><h4 id="元素，标签"><a href="#元素，标签" class="headerlink" title="元素，标签"></a>元素，标签</h4><pre><code>标签叫元素，也可以叫对象。元素 Element
-标签可以嵌套：父子元素
-标签和标签如果是同级元素：兄弟节点或兄弟元素或兄弟标签 
-
-页面中顶级标签：html 
-（HTML文档可以由节点构成的集合，DOM节点有：
-1 元素节点 如&lt;html&gt; &lt;body&gt; &lt;p&gt;
-2 文本节点 向用户展示的内容如&lt;li&gt;...&lt;/li&gt;中的JavaScript、DOM、CSS等文本。
-3 属性节点：元素属性，如&lt;a&gt;标签的链接属性href=&quot;http://www.imooc.com&quot;。）
-浏览器中所有的顶级对象是window
-页面中的顶级对象是document
-页面中document最大
-但window包含document,window可以省略不写
-</code></pre><h4 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h4><pre><code>DOM操作：操作本地内存中的数据
-通过DOM操作页面中的元素，其显示方式发生了改变。但没修改原来的页面内容 【服务器端页面】。 通过网站访问页面，访问的是服务器端的页面，网络将页面内容下载到本地内存，渲 染引擎在加载页面的同时会在内存中生成一个DOM树。所以，DOM操作的是
-</code></pre><h4 id="为标签注册（点击）事件"><a href="#为标签注册（点击）事件" class="headerlink" title="为标签注册（点击）事件"></a>为标签注册（点击）事件</h4><pre><code>1 为单个标签注册点击事件
-document.getElementById(&quot;Id的值&quot;)
-通过id获取标签 注册点击事件，添加事件处理函数
- 2 为多个标签注册点击事件： 
- document.getElementByTagName(&quot;标签的名字&quot;)
-  先通过标签名获取标签，构成伪数组【个数不限】 通过循环遍历 通过循环遍历，注册点击事件，为每个标签添加点击事件【this.属性，不用索引方 式】
-
-区分HTML中属性，还是CSS中属性 中属性ҁ对象.style.属性 ) 对象.style.属性 ) 如果属性是多个单词组合中间有-的,到了DOM操作的js代码中,把-去掉,-后面的单词首 字母要大写
-</code></pre><h4 id="获取元素的四种方式"><a href="#获取元素的四种方式" class="headerlink" title="获取元素的四种方式"></a>获取元素的四种方式</h4><pre><code> 1 document.getElementById(&quot;Id的值&quot;) 返回的是一个元素对象
- 2 document.getElementByTagName(&quot;标签的名字&quot;)，返回的是一个伪数组【用好索引，或属性值】不能数组.属性
- 例：&lt;input type=&quot;button&quot; id=&quot;btn&quot;&gt;
- &lt;select name=&quot;haha&quot; id=&quot;ss&quot;&gt;
-    &lt;option value=&quot;hh&quot;&gt;上海&lt;/option&gt;
-    &lt;option value=&quot;hh&quot;&gt;北京&lt;/option&gt;
-    &lt;option value=&quot;hh&quot;&gt;郑州&lt;/option&gt;
- &lt;/select&gt;
- &lt;script&gt;
-    document.getElementById(&quot;btn&quot;).onclick=function(){
-        document.getElementById(&quot;ss&quot;).getElementsByTagName(&quot;option&quot;)[1].selected=true&apos;
-    }
- &lt;/script&gt;
-3 document.getElementsByName(&quot;nsme属性的值&quot;)，返回的是一个伪数组
-4 document.getElementsByClassName(&quot;类样式名字&quot;)    返回一个伪数组    获取相同类样式（相同类名）的元素，得到伪数组
-</code></pre><h4 id="阻止超链接默认跳转-return-false"><a href="#阻止超链接默认跳转-return-false" class="headerlink" title="阻止超链接默认跳转  return false"></a>阻止超链接默认跳转  return false</h4><pre><code>如果给a标签添加事件，由于a具有跳转效果，会先执行自己设置的事件，然后执行默认的跳转效果
-Javascript; 伪协议
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/06/20/DOm介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1406,15 +1364,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,11 +1384,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,15 +1404,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">jQuery</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
