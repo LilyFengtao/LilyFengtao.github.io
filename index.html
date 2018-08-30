@@ -152,6 +152,325 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/24/react-四/">react 四  react-router路由</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/24/react-四/" class="archive-article-date">
+  	<time datetime="2018-08-24T03:08:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="react的style的样式"><a href="#react的style的样式" class="headerlink" title="react的style的样式"></a>react的style的样式</h3><pre><code>1 直接写行内样式
+&lt;li style={{border:'1px solid red', fontSize:'12px'}}&gt;&lt;/li&gt;
+2 抽离为对象形式
+var styleH3 = {color:&apos;blue&apos;}
+var styleObj = {
+  liStyle:{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;},
+  h3Style:{color:&apos;green&apos;}
+}
+
+&lt;li style={styleObj.liStyle}&gt;
+  &lt;h3 style={styleObj.h3Style}&gt;评论内容：{props.content}&lt;/h3&gt;
+&lt;/li&gt;
+3  使用样式表定义样式：
+import &apos;../css/comment.css&apos;
+&lt;p className=&quot;pUser&quot;&gt;评论人：{props.user}&lt;/p&gt;
+</code></pre><h3 id="react-路由-reacr-router"><a href="#react-路由-reacr-router" class="headerlink" title="react 路由 reacr-router"></a>react 路由 reacr-router</h3><pre><code>Router组件本身只是一个容器，真正的路由通过Router组件定义
+</code></pre><h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><pre><code>1：导入路由组件
+import {
+  HashRouter as Router,
+  Link, Route
+} from &apos;react-router-dom&apos;
+导入Router, Link ,Route组件
+2：使用&lt;Router&gt;&lt;/Router&gt;作为根容器，包裹整个应用（JSX）
+3：使用&lt;link to=&apos;/movie&apos;&gt;&lt;/Link&gt;作为连接地址，并指定to属性
+4：使用&lt;Route path=&apos;/&apos;  component={Movie}&gt;&lt;Route&gt; 展示路由内容
+&lt;Router&gt;
+
+    // 3 设置 Link
+    &lt;Menu.Item key=&quot;1&quot;&gt;&lt;Link to=&quot;/&quot;&gt;首页&lt;/Link&gt;&lt;/Menu.Item&gt;
+    &lt;Menu.Item key=&quot;2&quot;&gt;&lt;Link to=&quot;/movie&quot;&gt;电影&lt;/Link&gt;&lt;/Menu.Item&gt;
+    &lt;Menu.Item key=&quot;3&quot;&gt;&lt;Link to=&quot;/about&quot;&gt;关于&lt;/Link&gt;&lt;/Menu.Item&gt;
+
+    // 4 设置 Route
+    // exact 表示：绝对匹配（完全匹配，只匹配：/）
+    &lt;Route exact path=&quot;/&quot; component={HomeContainer}&gt;&lt;/Route&gt;
+    &lt;Route path=&quot;/movie&quot; component={MovieContainer}&gt;&lt;/Route&gt;
+    &lt;Route path=&quot;/about&quot; component={AboutContainer}&gt;&lt;/Route&gt;
+//AboutContainer 可以是引入组件的名称
+&lt;/Router&gt;
+</code></pre><h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><pre><code>1：&lt;Router&gt;&lt;/Router&gt;：作为整个组件的根元素，是路由容器，只能有一个唯一的子元素
+2：&lt;Link&gt;&lt;/Link&gt;：类似于vue中的&lt;router-link&gt;&lt;/router-link&gt;标签，to 属性指定路由地址
+3：&lt;Route&gt;&lt;/Route&gt;：类似于vue中的&lt;router-view&gt;&lt;/router-view&gt;，指定路由内容（组件）展示位置
+</code></pre><h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><pre><code>1 配置： 通过Router中的path属性来配置路由参数
+&lt;Route path=&quot;/movie/:movieType&quot;&gt;&lt;/Route&gt;
+2 获取  this.props.match.params获取
+const type = this.props.match.params.movieType
+</code></pre><h3 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h3><pre><code>1 history.push() 方法用于js中页面的跳转
+this.props.history.push(&apos;/movie/movieDetail/&apos; + movieId)
+2 history.go(-1)  用来实现页面的前进(1)和后退(-1)
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/24/react-四/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/23/react-三/">react 三 </a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/react-三/" class="archive-article-date">
+  	<time datetime="2018-08-23T09:20:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="this-props-children-（react提供一个工具方法-React-children来处理this-props-children"><a href="#this-props-children-（react提供一个工具方法-React-children来处理this-props-children" class="headerlink" title="this.props.children （react提供一个工具方法 React.children来处理this.props.children)"></a>this.props.children （react提供一个工具方法 React.children来处理this.props.children)</h3><pre><code>1 this.props 对象的属性与组件的属性一一对应，但this.props.children属性，它表示组件的所有的子节点。
+var NotesList = React.createClass({
+      render: function() {
+        return (
+          &lt;ol&gt;
+          {
+            React.Children.map(this.props.children, function (child) {
+              return &lt;li&gt;{child}&lt;/li&gt;;
+            })
+          }
+          &lt;/ol&gt;
+        );
+      }
+    });
+
+    ReactDOM.render(
+      &lt;NotesList&gt;
+        &lt;span&gt;hello&lt;/span&gt;
+        &lt;span&gt;world&lt;/span&gt;
+      &lt;/NotesList&gt;,
+      document.body
+    );
+    //展示出来的是 hellow world
+    注意：this.props.children的值三种可能
+    1 如果组件没有子节点 ，就是undefind
+    2 如果有一个子节点。数据类型是object
+    3 如果是多个子节点，数据类型就是array
+    所以我们就用React.Children.map来遍历子节点
+</code></pre><h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><pre><code>组件的属性可以接受任意值，字符串，对象，函数等，有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求。
+组件类的propsTypes属性，来验证实例属性是否符合要求。
+var MyTitle = React.createClass({
+    propTypes: {
+      title: React.PropTypes.string.isRequired,
+    },
+
+    render: function() {
+       return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+     }
+  });
+
+  上面例子表明，在MyTitle有一个title属性，并且该属性是字符串类型，且是必填。
+</code></pre><h4 id="getDefaultProps-用来设置组件属性的默认值"><a href="#getDefaultProps-用来设置组件属性的默认值" class="headerlink" title="getDefaultProps 用来设置组件属性的默认值"></a>getDefaultProps 用来设置组件属性的默认值</h4><pre><code>var MyTitle = React.createClass({
+  getDefaultProps : function () {
+    return {
+      title : &apos;Hello World&apos;
+    };
+  },
+
+  render: function() {
+     return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+   }
+});
+
+ReactDOM.render(
+  &lt;MyTitle /&gt;,
+  document.body
+);
+</code></pre><h3 id="获取真实的Dom节点"><a href="#获取真实的Dom节点" class="headerlink" title="获取真实的Dom节点"></a>获取真实的Dom节点</h3><pre><code>1：从组件获取真实 DOM 的节点，这时就要用到 ref 属性。
+2：this.refs.[refName] 返回真实的Dom节点  
+（觉得和vue的ref用法一样）
+3：React 组件支持很多事件，除了 Click 事件以外，还有 KeyDown 、Copy、Scroll 等，
+</code></pre><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><pre><code>用户在表单填入内容，属于用户跟组件互动，不能用this.props。
+ar Input = React.createClass({
+      getInitialState: function() {
+        return {value: &apos;Hello!&apos;};
+      },
+      handleChange: function(event) {
+        this.setState({value: event.target.value});
+      },
+      render: function () {
+        var value = this.state.value;
+        return (
+          &lt;div&gt;
+            &lt;input type=&quot;text&quot; value={value} onChange={this.handleChange} /&gt;
+            &lt;p&gt;{value}&lt;/p&gt;
+          &lt;/div&gt;
+        );
+      }
+    });
+
+    ReactDOM.render(&lt;Input/&gt;, document.body);
+    注意：获取文本输入框的值，要定义一个onChange事件的回调函数，通过event.target.value来获取。
+      textarea,select,radio都是这种情况。
+</code></pre><h3 id="Ajax请求"><a href="#Ajax请求" class="headerlink" title="Ajax请求"></a>Ajax请求</h3><pre><code>1 选择一个HTTP库
+以axios为例
+import React from &apos;react&apos;
+  import ReactDOM from &apos;react-dom&apos;;
+  import axios from &apos;axios&apos;;  //引入axios库
+  class FetchDemo extends React.Component {
+    constructor(props) {    
+      super(props);    
+      this.state = {        
+        posts: []            //把posts设为空数组
+      };
+    }
+    componentDidMount() {  //在componentDidMount 进行Ajax请求
+      axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+        .then(res =&gt; {
+          const posts = res.data.data.children.map(obj =&gt; obj.data);
+          this.setState({ posts });  //在this.setState里面重新赋值
+        });
+    }
+    render() {
+      return (
+        &lt;div&gt;
+          &lt;h1&gt;{`/r/${this.props.subreddit}`}&lt;/h1&gt;
+          &lt;ul&gt;
+            {this.state.posts.map(post =&gt;
+              &lt;li key={post.id}&gt;{post.title}&lt;/li&gt;
+            )}
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      );
+    }
+  }
+  ReactDOM.render(
+    &lt;FetchDemo subreddit=&quot;reactjs&quot;/&gt;,
+    document.getElementById(&apos;root&apos;)
+  );
+  步骤，方法
+  1 先引入axios库
+  2 然后在constructor 里先调用super，接着初始化state，让它拥有一个posts空数组
+  3 componentDidMount是关键所在，这个方法将会在组件插入DOM的第一时间执行。该方法在整个组件的生命周期只会执行一次。
+  4 它使用axios.get方法从subreddit获取数据，反引号的字符串是ES6的模板字符串，${}部分是由表达式的值所取代，所以URL传递给axios.get
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/23/react-三/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react学习二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1223,639 +1542,6 @@ var foo=(v1,v2)=&gt;{
 
 
   
-    <article id="node-readme" class="article article-type-node  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/readme/">开发</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/12/readme/" class="archive-article-date">
-  	<time datetime="2017-04-12T01:06:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="5天课程"><a href="#5天课程" class="headerlink" title="5天课程"></a>5天课程</h4><ul>
-<li>1：webpack基本知识,前端模块构建工具 vue结合，通过webpck来构建一个vue的应用<ul>
-<li>vue两种方式构建，独立构建方式，引包，一个一个js再引入</li>
-<li>通过webpack运行时构建，单文件的方式</li>
-</ul>
-</li>
-<li>2: vue基本知识，vue常用指令，组件的思想和运用，组件通信。。。遗留一点点小知识点，到项目中直接使用</li>
-<li>3-5:项目开发</li>
-</ul>
-<h4 id="今日重点"><a href="#今日重点" class="headerlink" title="今日重点"></a>今日重点</h4><ul>
-<li>webpack.config.js文件中相关属性的作用</li>
-</ul>
-<h3 id="webpack启程"><a href="#webpack启程" class="headerlink" title="webpack启程"></a>webpack启程</h3><hr>
-<h4 id="历史介绍"><a href="#历史介绍" class="headerlink" title="历史介绍"></a>历史介绍</h4><ul>
-<li>commonjs:使用js语法要求的后端语言的规范,模块化、后端语言需要具备的一些要求，可以http、操作文件。。。。<ul>
-<li>require/module.exports</li>
-<li>计算器案例： <ul>
-<li>+-*/ -&gt; cal.js</li>
-<li>index.js 作为页面中动态操作主文件，使用cal.js内部的功能</li>
-<li>index.html 引入顺序</li>
-<li>两大问题: 文件依赖顺序、全局函数命名冲突</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>2009年，commonjs规范还未出来，此时前端开发人员编写的代码都是非模块化的，<ul>
-<li>那个时候开发人员经常需要十分留意文件加载顺序所带来的依赖问题</li>
-</ul>
-</li>
-<li>与此同时 nodejs开启了js全栈大门，而requirejs在国外也带动着前端逐步实现模块化<ul>
-<li>同时国内seajs也进行了大力推广</li>
-<li>AMD 异步模块定义 requirejs</li>
-<li>CMD seajs和nodejs非常相似</li>
-</ul>
-</li>
-<li>AMD和CMD的区别<ul>
-<li>amd 加载前置，需要的依赖提前加载好，在代码上提前声明</li>
-<li>cmd 依赖滞后(延迟加载)，代码也是用的时候才引入<ul>
-<li>commonjs包含模块定义，和CMD比较相似</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>npm集中包管理的方式备受青睐，12年bower、browserify诞生<ul>
-<li>browserify 最大的功能是为了让require的语法能够在浏览器中运行</li>
-<li>并且有相关的一些插件可以结合使用 gulp、ES6语法转化</li>
-<li>此时爆发大量前端工具 webpack也在其中，其是一款模块打包工具<ul>
-<li>压缩、合并、混淆 + 结合插件的代码转化 ，自动化一气呵成<br>、systemjs：万能模块打包工具、跟angular抱大腿，angular4用了</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="webpack优点"><a href="#webpack优点" class="headerlink" title="webpack优点"></a>webpack优点</h4><ul>
-<li>模块来源广泛，支持包括npm/bower等等的各种主流模块安装／依赖解决方案</li>
-<li>模块规范支持全面，amd/cmd以及shimming等一应具全</li>
-<li>浏览器端足迹小，移动端友好，却对热加载乃至热替换有很好的支持</li>
-<li>插件机制完善，实现同样模块化，容易扩展</li>
-</ul>
-<h4 id="webpack基本操作"><a href="#webpack基本操作" class="headerlink" title="webpack基本操作"></a>webpack基本操作</h4><ul>
-<li>npm进行安装 <ul>
-<li>全局安装方式 <code>npm install(i) webpack -g</code></li>
-<li>1:进入到webpack需要进行分析打包的文件夹目录下<ul>
-<li>命令 <code>webpack 入口文件 出口文件</code><ul>
-<li>在index.html文件中，直接引入出口文件</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="使用webpack打包解决文件依赖关系"><a href="#使用webpack打包解决文件依赖关系" class="headerlink" title="使用webpack打包解决文件依赖关系"></a>使用webpack打包解决文件依赖关系</h4><ul>
-<li>基本操作方式: <pre><code>+ `webpack ./main.js ./build.js` -p(压缩混淆)
-</code></pre></li>
-</ul>
-<h4 id="使用webpack配置文件"><a href="#使用webpack配置文件" class="headerlink" title="使用webpack配置文件"></a>使用webpack配置文件</h4><ul>
-<li>webpack在命令行输入webpack命令的时候，首先会在当前的目录查看有没有webpack.config.js文件的存在，如果有，即读取该文件，按该文件的指令来做打包操作<ul>
-<li>如果没有，才走命令</li>
-</ul>
-</li>
-</ul>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li>webpack可以运行的两种方式 cli option (命令行及设置)</li>
-<li>通过webpack.config.js文件运行 <ul>
-<li>所有的配置属性都在module.exports = {内部配置} </li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">   <span class="comment">//指定入口文件</span></div><div class="line">   entry :&#123;</div><div class="line">       <span class="comment">//这里可以有多个入口</span></div><div class="line">       main:<span class="string">'./main.js'</span>, <span class="comment">//主入口</span></div><div class="line">   &#125;,</div><div class="line">   <span class="attr">output</span>:&#123; <span class="comment">//出口</span></div><div class="line">       filename:<span class="string">'./build.js'</span></div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//最终我们到当前有webpack.config.js文件的目录来执行 webpack命令就可以了</span></div></pre></td></tr></table></figure>
-<h3 id="es6"><a href="#es6" class="headerlink" title="es6"></a>es6</h3><hr>
-<h4 id="babel语法转换器"><a href="#babel语法转换器" class="headerlink" title="babel语法转换器"></a>babel语法转换器</h4><ul>
-<li>js代码转换工具<ul>
-<li>ES6、ES7..react 语法的转换工具<ul>
-<li>他本身自带转换cli ，你可以通过<code>npm install babel-cli -g</code> 的全局命令行工具，来完成单独的转化</li>
-<li>他也提供了别的工具使用的支持<ul>
-<li>比如browserify babelify</li>
-<li>比如 webpack babel-core ……</li>
-</ul>
-</li>
-<li>烦心: babel默认只提供了es6关键字的转换 let const</li>
-<li>如果涉及到es6或者es7函数，就需要特定的设置插件</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>1:安装babel核心工具包<ul>
-<li><code>babel-core</code></li>
-</ul>
-</li>
-<li>2:配置babel的预设? babel是一个语法转换器，包含es6/7/react，就是告诉babel要将什么转换成什么，告诉其转化ES6到ES5，预先设置<ul>
-<li><code>babel-preset-es2015</code></li>
-</ul>
-</li>
-<li>3:babel不转换函数API,配置插件,<code>babel-plugin-transform-runtime</code></li>
-<li>4: webpack需要一个<code>babel-loader</code></li>
-</ul>
-<h4 id="webpack-ES6的处理总结"><a href="#webpack-ES6的处理总结" class="headerlink" title="webpack-ES6的处理总结"></a>webpack-ES6的处理总结</h4><ul>
-<li><strong>在babel-loader的处理中，一定加上exclude: /node_modules/，排除node_modules部分</strong></li>
-<li>babel是什么？ 语法转换器<ul>
-<li>babel可以转化ES6、ES7、react</li>
-<li>默认只转换ES6、关键字<ul>
-<li>提供预设转换ES6关键字 下载 <code>npm i babel-preset-es2015 --save-dev</code></li>
-<li>在webpack中配置的方式: <code>presets:[&#39;es2015&#39;]</code></li>
-</ul>
-</li>
-<li>不转换函数 <ul>
-<li>提供插件<ul>
-<li>安装: <code>npm i babel-plugin-transform-runtime --save-dev</code></li>
-<li>在webpack中配置的方式: <code>plugins:[&#39;transform-runtime&#39;]</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>还需要核心包 <code>babel-core</code> 只需要安装就可以了 <code>npm i babel-core --save-dev</code></li>
-</ul>
-</li>
-<li><p>webpack要与babel结合就需要babel-loader</p>
-<ul>
-<li><code>npm i babel-loader --save-dev</code></li>
-</ul>
-</li>
-<li><p>配置方式</p>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">//入口</span></div><div class="line">    entry:&#123;</div><div class="line">        <span class="attr">main</span>:<span class="string">'./main.js'</span>,</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">output</span>:&#123;<span class="comment">//输出</span></div><div class="line">        filename:<span class="string">'./build.js'</span>,</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">module</span>:&#123;</div><div class="line">        <span class="attr">loaders</span>:[</div><div class="line">            &#123;</div><div class="line">                <span class="attr">test</span>:<span class="regexp">/.js$/</span>,<span class="comment">//正则表达式，指定以.js后缀结尾的文件由我这个loader来处理</span></div><div class="line">                loader:<span class="string">'babel-loader'</span>,</div><div class="line">                <span class="attr">options</span>:&#123;</div><div class="line">                    <span class="attr">presets</span>:[<span class="string">'es2015'</span>],</div><div class="line">                    <span class="attr">plugins</span>:[<span class="string">'transform-runtime'</span>],</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="引入css"><a href="#引入css" class="headerlink" title="引入css"></a>引入css</h4><ul>
-<li>原理：通过js代码动态创建css对象，再通过style标签，做动态插入</li>
-<li>具体操作:<ul>
-<li>原来我们有es6的解析，此时，暂时把其移除了，</li>
-<li>留下的是通过require的方式引入css,<ul>
-<li>import ‘./index.css’ 也是一样的操作</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>配置方式</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">    <span class="comment">//入口+ 出口</span></div><div class="line">    <span class="built_in">module</span>:&#123;</div><div class="line">        <span class="attr">loaders</span>:[</div><div class="line">            &#123;</div><div class="line">                <span class="attr">test</span>:<span class="regexp">/.css$/</span>,<span class="comment">//需要操作的文件-&gt;正则</span></div><div class="line">                loader:<span class="string">'style-loader!css-loader'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>如何在main.js中使用某个css?<ul>
-<li>不使用es6的方式，<code>require(&#39;./index.css&#39;);</code></li>
-<li>使用ES6导入的方式 <code>import &#39;./index.css&#39;;</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="css-autoprefixer"><a href="#css-autoprefixer" class="headerlink" title="css + autoprefixer"></a>css + autoprefixer</h4><ul>
-<li>1:安装包<code>npm i autoprefixer-loader -D</code></li>
-<li>2: 在配置文件中加入 loaders内部加入一个对象:{ test: /.css$/,loader:’style-loader!css-loader!autoprefixer-loader’ }</li>
-</ul>
-<h4 id="less的使用"><a href="#less的使用" class="headerlink" title="less的使用"></a>less的使用</h4><ul>
-<li>和css前面的操作都一样<ul>
-<li>提前编译less需要 less-loader 和less这两个包</li>
-<li>安装依赖包 <code>npm i less-loader less -D</code></li>
-</ul>
-</li>
-<li>配置文件的写法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line"></div><div class="line">    <span class="attr">module</span>:&#123;</div><div class="line">        <span class="attr">loaders</span>:[</div><div class="line">            &#123;</div><div class="line">                <span class="attr">test</span>:<span class="regexp">/.less$/</span>,</div><div class="line">                <span class="attr">loader</span>:<span class="string">'style-loader!css-loader!autoprefixer-loader!less-loader'</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>由于less-loader依赖于less 所以需要先下载less，再下载less-loader</li>
-</ul>
-<h4 id="处理图片"><a href="#处理图片" class="headerlink" title="处理图片"></a>处理图片</h4><ul>
-<li>需要先下载：</li>
-<li><p>原理:会把依赖的图片生成一个url，通过该url去访问图片，由于需要读取图片，就需要操作文件,由此： 需要file-loader + url-loader   </p>
-<ul>
-<li>url-loader不用在webpack中写出来，只用安装即可</li>
-</ul>
-</li>
-<li><p>设置limit=1 的时候生成了一张图片，然后build.js大小是73kb</p>
-</li>
-<li>设置limit=199182 的时候，大图片了一个字节，就不生成图片</li>
-</ul>
-<h4 id="base64编码"><a href="#base64编码" class="headerlink" title="base64编码"></a>base64编码</h4><ul>
-<li>A-Za-Z0-9+/  共是64个</li>
-<li>他可以跟随css一起加载，减少请求次数到0</li>
-<li>不适合过大的图片，只能是小图片，频繁使用的小图片</li>
-<li>普遍用在邮件的发送中</li>
-<li>常规认为base64图片加密会增大个三分之一左右</li>
-<li><strong>注意：其不是绝对为了加密的产生，可以编码也可以解码，但是可以将二进制的数据作为字符串传输</strong></li>
-</ul>
-<h4 id="base64-在node中的编码解码"><a href="#base64-在node中的编码解码" class="headerlink" title="base64 在node中的编码解码"></a>base64 在node中的编码解码</h4><blockquote>
-<p>Buffer.from(‘javascript’).toString(‘base64’);<br>‘amF2YXNjcmlwdA==’<br>Buffer.from(‘amF2YXNjcmlwdA==’,’base64’).toString(‘utf8’);<br>‘javascript’</p>
-</blockquote>
-<h4 id="yarn的使用"><a href="#yarn的使用" class="headerlink" title="yarn的使用"></a>yarn的使用</h4><ul>
-<li>安装全局命令行工具 <code>npm i yarn -g</code></li>
-<li>安装对应的包<ul>
-<li>安装一个包 <code>yarn add 包名@版本号 -S|-D</code></li>
-<li>卸载一个包 <code>yarn remove 包名@ -S|-D</code></li>
-<li>恢复所有package.json文件中依赖的包 <code>npm install [--production]</code><ul>
-<li>只恢复生产依赖的包，既-S的包</li>
-</ul>
-</li>
-<li>yarn中恢复包的命令就是 <code>yarn install [--production]</code></li>
-<li>更新到最新 <code>yarn update 包名</code></li>
-</ul>
-</li>
-</ul>
-<h4 id="总结上午问题"><a href="#总结上午问题" class="headerlink" title="总结上午问题"></a>总结上午问题</h4><ul>
-<li>ES6报错</li>
-<li>commonJS 模块化和 ES6模块化方式区别<ul>
-<li>commonJS模块化中的使用方式<ul>
-<li>导入: var xxx = require(‘模块路径ID’);</li>
-<li>导出: module.exports = xxxx;</li>
-</ul>
-</li>
-<li>导入: <ul>
-<li>导入文件不需要返回值:<ul>
-<li>import ‘./文件路径’;</li>
-</ul>
-</li>
-<li>导入需要返回值:<ul>
-<li>import 变量名 from ‘./文件路径.js’;</li>
-</ul>
-</li>
-<li>导出:<ul>
-<li>export default xxx;</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="处理字体图片"><a href="#处理字体图片" class="headerlink" title="处理字体图片"></a>处理字体图片</h4><ul>
-<li>比较流行的一种方案<ul>
-<li>相比图片，大小更小</li>
-<li>更灵活,可以通过font-size。。。设置其大小</li>
-</ul>
-</li>
-<li>也会使用到字体图标</li>
-</ul>
-<h4 id="MUI"><a href="#MUI" class="headerlink" title="MUI"></a>MUI</h4><ul>
-<li><a href="http://dev.dcloud.net.cn/mui/" target="_blank" rel="external">http://dev.dcloud.net.cn/mui/</a></li>
-</ul>
-<h4 id="生成html文件插件"><a href="#生成html文件插件" class="headerlink" title="生成html文件插件"></a>生成html文件插件</h4><ul>
-<li>webpack-html-plugin</li>
-<li><p>安装这个插件,这个插件依赖于webpack</p>
-<ul>
-<li>webpack -&gt; 在任意命令行使用webpack命令</li>
-<li>如果在js文件中，存在webpack对象的话，是不是必须让其作为项目的依赖</li>
-<li><strong>该插件依赖于webpack</strong></li>
-</ul>
-</li>
-<li><p>操作步骤:</p>
-<ul>
-<li>1：安装webpack和webpack-html-plugin插件<ul>
-<li>在webpack.config.js文件中进行配置</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">三大属性:entry、output、<span class="built_in">module</span></div><div class="line"><span class="keyword">const</span> webpackHtmlPlugin = <span class="built_in">require</span>(<span class="string">'webpack-html-plugin'</span>);</div><div class="line">plugins:[</div><div class="line">    <span class="keyword">new</span> webpackHtmlPlugin(&#123;</div><div class="line">        <span class="attr">filename</span>:<span class="string">'index.html'</span>,<span class="comment">//生成的文件名</span></div><div class="line">        template:<span class="string">'./src/html/index.html'</span>,<span class="comment">//参照的文件名</span></div><div class="line">        &#125;)</div><div class="line">]</div></pre></td></tr></table></figure>
-<ul>
-<li>注意，09案例中，我们把相对路径都进行了更改，此时有些entry和output我们需要做一个改动，最好检查template:’./src/html/index.html’</li>
-</ul>
-<h4 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h4><ul>
-<li>这个工具包含前面提到热加载，热替换功能，<ul>
-<li>修改css或者一些加载过程中的代码，立刻不通过刷新，直接改变</li>
-<li><strong>只要是你上级包含非法符号，就会导致热替换不成功、无法监视你的文件改动，获取不了目录、{}()</strong>  </li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">     <span class="attr">module</span>:&#123;&#125;,</div><div class="line">     <span class="attr">plugins</span>:[</div><div class="line">        <span class="keyword">new</span> webpackHtmlPlugin(&#123;</div><div class="line">            <span class="attr">filename</span>:<span class="string">'index.html'</span>, <span class="comment">//虚拟的html文件，供webpack-dev-server使用</span></div><div class="line">            template:<span class="string">'./src/html/index.html'</span></div><div class="line">            &#125;)</div><div class="line">    ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>启动命令 ,.在package.json文件的目录下<ul>
-<li>运行命令 yarn test<ul>
-<li>实际运行的是scripts: test命令<ul>
-<li>../node_modules/.bin/webpack-dev-server –inline –hot –open –port 9999</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>相关命令：<ul>
-<li>inline 自动刷新</li>
-<li>hot 热加载、热替换(不经过刷新，不重启程序)</li>
-<li>open 自动打开浏览器</li>
-<li>port 指定端口</li>
-</ul>
-</li>
-</ul>
-<h4 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h4><ul>
-<li>启动webpack命令 能在dist下面运行index.html</li>
-<li>在package.json文件的目录能运行yarn test 启动程序，修改代码实现热替换</li>
-</ul>
-<h4 id="ES6中的模块"><a href="#ES6中的模块" class="headerlink" title="ES6中的模块"></a>ES6中的模块</h4><ul>
-<li>import 对象 from ‘./xxx.js’;</li>
-<li>和按需加载 import {对象中的属性} from  ‘./xxx.js’;</li>
-<li><strong>注意:一个默认导出，是不区分名称的,按需加载必须区分名称</strong><ul>
-<li>按需加载 引入的时候 import { 接口名称} from ‘./xx.js’</li>
-<li>导出：  <ul>
-<li>1:声明式导出 export var add(接口名称) = function(){ }; //类似export {add}</li>
-<li>2: 在代码最终导出<ul>
-<li>export {接口名称||对象,多个… }</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>按需的方式一定要名称对应</li>
-</ul>
-</li>
-</ul>
-<h4 id="ES6中的代码变化"><a href="#ES6中的代码变化" class="headerlink" title="ES6中的代码变化"></a>ES6中的代码变化</h4><ul>
-<li>函数的声明：<ul>
-<li>var obj = {  add:function(){ }  }</li>
-<li>简写: <code>var obj = {  add(){}            }</code></li>
-<li>声明对象：var name=’abc’; var obj = {name}  //obj的name属性的值就是abc</li>
-</ul>
-</li>
-</ul>
-<h3 id="VUE"><a href="#VUE" class="headerlink" title="VUE"></a>VUE</h3><hr>
-<h4 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h4><blockquote>
-<p>尤雨溪毕业于上海复旦附中，在美国完成大学学业，本科毕业于Colgate University，后在Parsons设计学院获得Design &amp; Technology艺术硕士学位，现任职于纽约Google Creative Lab。<br>2014年2月，开源了一个前端开发库Vue.js。Vue.js 是构建 Web 界面的 JavaScript 库，是一个通过简洁的API提供高效的数据绑定和灵活的组件系统。<br>2016年9月3日，在南京的JSConf上，Vue作者尤雨溪正式宣布加盟阿里巴巴Weex团队，尤雨溪称他将以技术顾问的身份加入 Weex 团队来做 Vue 和 Weex 的 JavaScript runtime 整合，目标是让大家能用 Vue 的语法跨三端</p>
-</blockquote>
-<h4 id="作为库的使用方式-渐进式、初体验-、独立构建"><a href="#作为库的使用方式-渐进式、初体验-、独立构建" class="headerlink" title="作为库的使用方式(渐进式、初体验)、独立构建"></a>作为库的使用方式(渐进式、初体验)、独立构建</h4><ul>
-<li>双向数据绑定<ul>
-<li>1:引入文件</li>
-<li>2: 通过全局的Vue对象构造了一个vue的实例</li>
-<li>3：传递一个对象作为参数<ul>
-<li>el 未来由vue来管理的元素</li>
-<li>data:{ text:’xxx’}  //这些属性可以在模板当中使用</li>
-<li>template: ‘<h1><h1>‘  设置了template就会覆盖原来的内容</h1></h1></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="单文件的使用方式-运行时构建"><a href="#单文件的使用方式-运行时构建" class="headerlink" title="单文件的使用方式(运行时构建)"></a>单文件的使用方式(运行时构建)</h4><ul>
-<li>以一个个的xxx.vue的文件形成<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 放置html内容的地方，可以使用vue中的一些对象，进行双向数据交互 --&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">    <span class="comment">//组件动态操作，数据初始化</span></div><div class="line">    <span class="comment">//存放一些js代码，可以操作当前模块页面组件对象的属性值及相关动态操作</span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="undefined"></span></div><div class="line">    /*给定一个scoped属性以后，这个css只在当前的template中有效*/</div><div class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/readme/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery浅谈（四）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/11/jQuery浅谈（四）/">jQuery浅谈（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/11/jQuery浅谈（四）/" class="archive-article-date">
-  	<time datetime="2017-04-11T11:28:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="jQuery操作尺寸"><a href="#jQuery操作尺寸" class="headerlink" title="jQuery操作尺寸"></a>jQuery操作尺寸</h2><pre><code>1 height  设置或者获取高度
-
-    带参数表示设置高度
-    $(“img”).height(200);
-    不带参数获取高度
-    $(“img”).height();
-    返回值是number类型（比如200），而使用$(“img”).css(“width”)返回的是字符串（比如200px）
-2 width    设置或获取宽度，与高度操作功能一样
-
-    带参数表示设置宽度
-    $(“img”).width(200);
-    不带参数获取宽度
-    $(“img”).width();
-</code></pre><h2 id="jQuery-操作坐标值"><a href="#jQuery-操作坐标值" class="headerlink" title="jQuery 操作坐标值"></a>jQuery 操作坐标值</h2><pre><code>1 offset   设置或获取元素相对于文档document位置        
-    设置位置
-
-    $(selector).offset({left:100, top: 150});
-    获取位置
-    $(selector).offset();
-    注意：使用offset操作，如果元素没有设置定位(默认position:static)，则会把position修改为relative.会修改left、top
-
-2    position 获取相对于其最近的有定位的父元素的位置
-
-    获取，返回值为对象：{left:num, top:num}        
-    $(selector).position();
-    注意：position方法只能获取，不能设置
-
-3  scrollTop 设置或者获取垂直滚动条的位置
-
-    有参数表示设置偏移，参数为数值类型
-    $(selector).scrollTop(100);
-    无参数表示获取偏移
-    $(selector).scrollTop();
-
-4  scrollLeft 设置或者获取水平滚动条的位置
-
-    有参数表示设置偏移，参数为数值类型
-    $(selector).scrollLeft(100);
-    无参数表示获取偏移
-    $(selector).scrollLeft();
-</code></pre><h2 id="jQuery事件机制"><a href="#jQuery事件机制" class="headerlink" title="jQuery事件机制"></a>jQuery事件机制</h2><pre><code>JavaScript中已经学习过了事件，但是jQuery对JavaScript事件进行了封装，增加并扩展了事件处理机制。jQuery不仅提供了更加优雅的事件处理语法，而且极大的增强了事件的处理能力。
-</code></pre><h2 id="jQuery事件的发展历程"><a href="#jQuery事件的发展历程" class="headerlink" title="jQuery事件的发展历程"></a>jQuery事件的发展历程</h2><pre><code>    简单事件绑定&gt;&gt;bind事件绑定&gt;&gt;delegate事件绑定&gt;&gt;on事件绑定(推荐)
-1 简单事件绑定
-    click(handler)  单击事件
-    mouseenter(handler)  鼠标进入事件
-    mouseleaver(handeler) 鼠标离开事件
-    scroll(handler)   滚动事件
-    缺点： 一次只能绑定一次事件
-2 bind 事件绑定    
-    不推荐使用，jQuery1.7版本后被on取代
-    绑定多个事件
-    第一个参数：事件类型
-    第二个参数：事件处理程序
-    $(&quot;p&quot;).bind(&quot;click mouseenter&quot;, function(){
-    事件响应方法
-    });
-    缺点：不支持动态创建出来的元素绑定事件。
-3 delegate 事件绑定
-     第一个参数：selector，要绑定事件的元素
-     第二个参数：事件类型
-     第三个参数：事件处理函数
-    $(&quot;.parentBox&quot;).delegate(&quot;p&quot;, &quot;click&quot;, function(){
-    为 .parentBox下面的所有的p标签绑定事件
-    });
-    理解：为什么delegate支持动态绑定事件？原因是事件冒泡机制。因为事件时绑定到父元素上的，由子元素触发。
-</code></pre><h2 id="on-事件绑定（重点）"><a href="#on-事件绑定（重点）" class="headerlink" title="on 事件绑定（重点）"></a>on 事件绑定（重点）</h2><pre><code>jQuery1.7之后，jQuery用on统一了所有事件的处理方法。
-优势：最现代的方式，兼容zepto(移动端类似jQuery的一个库)，强烈建议使用此。
-
- 第一个参数：events，绑定事件的名称可以是由空格分隔的多个事件（标准事件或者自定义事件）
- 第二个参数：selector, 执行事件的后代元素（可选），如果没有后代元素，那么事件将有自己执行。
-第三个参数：data，传递给处理函数的数据，事件触发的时候通过event.data来使用（不常使用）
- 第四个参数：handler，事件处理函数
-$(selector).on(events[,selector][,data],handler);
-
-例子：
- 表示给$(selector)绑定代理事件，当必须是它的内部元素span才能触发这个事件，支持动态绑定
-$(selector).on( &quot;click&quot;,“span”, function() {});
-表示给$(selector)绑定事件，并且由自己触发，不支持动态绑定（不使用代理）。
-
-$(selector).on( &quot;click&quot;, function() {});
-</code></pre><h2 id="事件解绑"><a href="#事件解绑" class="headerlink" title="事件解绑"></a>事件解绑</h2><pre><code>1     unbind() 方法
-    $(selector).unbind(); //解绑所有的事件
-    $(selector).unbind(“click”); //解绑指定的事件
-2  undelegate() 作用：解除事件绑定
-    ( selector ).undelegate(); //解绑所有的delegate事件
-    $( selector).undelegate( “click” ); //解绑所有的click事
-</code></pre><h2 id="off-作用：解除绑定"><a href="#off-作用：解除绑定" class="headerlink" title="off 作用：解除绑定"></a>off 作用：解除绑定</h2><pre><code> 解绑匹配元素的所有事件
-$(selector).off();
-解绑匹配元素的所有click事件
-$(selector).off(“click”);
- 解绑所有代理的click事件，元素本身的事件不会被解绑 
-$(selector).off( “click”, “**” ); 
-</code></pre><h2 id="事件触发"><a href="#事件触发" class="headerlink" title="事件触发"></a>事件触发</h2><pre><code>简单事件触发
-$(selector).click(); //触发 click事件
-trigger方法触发事件
-$(selector).trigger(“click”);
-triggerHandler触发 事件响应方法，不触发浏览器行为
-比如:文本框获得焦点的默认行为
-$(selector).triggerHandler(“focus”);
-</code></pre><h2 id="jQuery-事件对象"><a href="#jQuery-事件对象" class="headerlink" title="jQuery 事件对象()"></a>jQuery 事件对象()</h2><pre><code>    事件类型
-event.type     对象属性    
-event.data     存储绑定事件时传递的附加数据
-event.target   点了谁就是谁
-event.currentTarget  当前DOM元素，等同于this
-event.delegateTarget  代理对象
-screenX和screenY   对应屏幕最左上角的值
-offsetX和offsetY    点击的位置距离元素的左上角的位置
-clientX和clientY   距离页面左上角的位置（忽视滚动条）
-pageX和pageY    距离页面最顶部的左上角的位置（会计算滚动条的距离）
-event.witch   鼠标按键类型，1=鼠标左键 2=鼠标中键 3=鼠标右键
-event.keyCode  按下的键盘代码
-event.stopPropagation()   阻止事件冒泡行为
-event.preventDefault()  阻止浏览器默认行为
-return false;
-</code></pre><h2 id="链式编程"><a href="#链式编程" class="headerlink" title="链式编程"></a>链式编程</h2><pre><code>链式编程原理：return this;
-通常情况下，只有设置操作才能把链式编程延续下去。因为获取操作的时候，会返回获取到的相应的值，无法返回 this。
-
-
-end(); // 筛选选择器会改变jQuery对象的DOM对象，想要回复到上一次的状态，并且返回匹配元素之前的状态。
-</code></pre><h2 id="隐式迭代"><a href="#隐式迭代" class="headerlink" title="隐式迭代"></a>隐式迭代</h2><pre><code>隐式迭代的意思是：在方法的内部会为匹配到的所有元素进行循环遍历，执行相应的方法；而不用我们再进行循环，简化我们的操作，方便我们调用。
-如果获取的是多元素的值，大部分情况下返回的是第一个元素的值。
-设置性操作的时候：设置的是所有的元素
-获取性操作：获取的是第一个元素。
-</code></pre><h2 id="each-方法"><a href="#each-方法" class="headerlink" title="each 方法"></a>each 方法</h2><pre><code>    有了隐式迭代，为什么还要使用each函数遍历？
-
-    大部分情况下是不需要使用each方法的，因为jQuery的隐式迭代特性。
-如果要对每个元素做不同的处理，这时候就用到了each方法
-
-作用：遍历jQuery对象集合，为每个匹配的元素执行一个函数
-参数一表示当前元素在所有匹配元素中的索引号
-参数二表示当前元素（DOM对象）
-$(selector).each(function(index,element){});
-</code></pre><h2 id="多库共存"><a href="#多库共存" class="headerlink" title="多库共存"></a>多库共存</h2><pre><code>    我们知道jQuery占用了$这个标识符，如果引用的其他库也用到$这个标识符，这时候为了保证每个库都能正常使用，这时候就存在了多库共存的问题。
-    后引入的$的会覆盖掉先引入的库中的$。
-    $ === jQuery
-    解决办法：
-jQuery的$和jQuery是两个相同的变量，因此遇到多库共存的时候，可以让jquery交出$符的控制权，这个时候还是可以使用$.
-console.log($);//function(selector, context){}
-$.noConflict();//释放$的控制权
-console.log($);{name:”zhangsan”,age:12}
-
-jQuery(function () {
-jQuery(&quot;div&quot;).html(&quot;我不是div的内容&quot;);
-});
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/11/jQuery浅谈（四）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1973,6 +1659,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1985,15 +1675,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2001,11 +1683,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">

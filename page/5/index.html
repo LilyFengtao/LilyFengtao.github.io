@@ -152,6 +152,237 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-节点Node" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/05/节点Node/">节点Node</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/05/节点Node/" class="archive-article-date">
+  	<time datetime="2015-07-05T12:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="节点属性"><a href="#节点属性" class="headerlink" title="节点属性"></a>节点属性</h4><pre><code>1 nodeName:节点的名称
+- 元素节点的 nodeName 与标签名相同
+- 属性节点的 nodeName 是属性的名称
+- 文本节点的 nodeName 永远是 #text
+- 文档节点的 nodeName 永远是 #document
+2 nodeValue 节点的值
+- 元素节点的 nodeValue 是 undefined 或 null
+- 文本节点的 nodeValue 是文本自身
+- 属性节点的 nodeValue 是属性的值
+3 nodeType 节点的类型
+   元素类型    节点类型
+     元素          1
+     属性          2
+     文本          3
+     注释          8
+     文档          9
+</code></pre><h4 id="节点的一些操作"><a href="#节点的一些操作" class="headerlink" title="节点的一些操作"></a>节点的一些操作</h4><pre><code> 1 访问子节点 childNodes
+ 语法： elementNode.childNodes
+   注意：
+   如果选定的节点没有子节点，则该属性返回不包含节点的 NodeList。
+ 2 访问子节点的第一和最后项
+ - firstChild 属性返回‘childNodes’数组的第一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+     语法： node.firstChild
+     说明：与elementNode.childNodes[0]是同样的效果。 
+ - lastChild  属性返回‘childNodes’数组的最后一个子节点。如果选定的节点没有子节点，则该属性返回 NULL。
+     语法： node.lastChild
+     说明：与elementNode.childNodes[elementNode.childNodes.length-1]是同样的效果。 
+3 访问父节点 parentNode
+    语法：elementNode.parentNode
+    注意:父节点只能有一个。
+4 访问兄弟节点 
+ - nextSibling 属性可返回某个节点之后紧跟的节点（处于同一树层级中）。
+ 语法： nodeObject.nextSibling
+ 说明：如果无此节点，则该属性返回 null。
+ -  previousSibling 属性可返回某个节点之前紧跟的节点（处于同一树层级中）。
+ 语法：nodeObject.previousSibling
+ 说明：如果无此节点，则该属性返回 null。
+</code></pre><h4 id="节点的添加，插入，删除，替换，创建"><a href="#节点的添加，插入，删除，替换，创建" class="headerlink" title="节点的添加，插入，删除，替换，创建"></a>节点的添加，插入，删除，替换，创建</h4><pre><code>1 添加节点 appendChild()
+在指定节点的最后一个子节点列表之后添加一个新的子节点。
+语法：appendChild(newnode)
+2 插入节点 insertBefore()
+    insertBefore() 方法可在已有的子节点前插入一个新的子节点。
+    语法：insertBefore(newnode,node);
+  参数:newnode: 要插入的新节点。
+      node: 指定此节点前插入节点。
+3 删除节点 removeChild()
+removeChild() 方法从子节点列表中删除某个节点。如删除成功，此方法可返回被删除的节点，如失败，则返回 NULL。
+语法：nodeObject.removeChild(node)
+参数： node 必须，指定要删除的节点
+4 替换元素节点 replaceChild()
+  语法：node.replaceChild (newnode,oldnew ) 
+  参数：newnode : 必需，用于替换 oldnew 的对象。 
+      oldnew : 必需，被 newnode 替换的对象。
+5 创建元素节点 createElement
+    createElement()方法可创建元素节点。此方法可返回一个 Element 对象。
+    语法：document.createElement(tagName)
+    参数：tagName：字符串值，这个字符串用来指明创建元素的类型。
+    注意：要与appendChild() 或 insertBefore()方法联合使用，将元素显示在页面中。
+ 6 创建文本节点 createTextNode
+     createTextNode() 方法创建新的文本节点，返回新创建的 Text 节点。
+     语法：document.createTextNode(data)
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/05/节点Node/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-动态创建元素" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/02/动态创建元素/">动态创建元素</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/02/动态创建元素/" class="archive-article-date">
+  	<time datetime="2015-07-02T07:37:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="动态创建元素的三种方式"><a href="#动态创建元素的三种方式" class="headerlink" title="动态创建元素的三种方式"></a>动态创建元素的三种方式</h4><pre><code> 1 document.write()
+ 弊端：会把页面中的内容全部干掉（保留自己）
+document.weiteln()浏览器解析成+空格显示
+常用：嵌入外部代码，广告 
+2 标签.innerHTML=标签+内容 标签+内容（创建大量标签，不会追加，只创建一次） 
+【标签+内容--引用字符串拼接 或 数组追加元素 导出】
+例： box.innerHTML=box.innerHTML+&quot;新内容&quot; 
+3 document.createElement(&quot;标签代码&quot;)  创建一个元素节点
+A元素.appendChild(创建的元素)  A元素中添加创建的元素（配合使用）
+removeChild()     从父元素中移除子元素    从父元素中移除子元素    移除子元素（只创建一个元素 时，移除多余的元素） 
+this.parentNode.removeChild .removeChild（this）  移除元素 移除元素 replaceChild() replaceChild()  用新节点替换某个子节点 只创建一次元素: 只创建一次元素: * 
+1.没有的时候才创建 
+2.如果这个元素存在则删除,然后重新创建
+</code></pre><h4 id="元素获取"><a href="#元素获取" class="headerlink" title="元素获取"></a>元素获取</h4><pre><code>1 获取子元素
+ 父元素 . children
+2 获取父级元素 获取父级元素 
+ 子元素 .  parentElement
+3 获取第一个子元素 获取第一个子元素 
+ 元素 .  firstElementChild
+4 获取后一个子元素 获取后一个子元素 
+ 元素 .  lastElementChild
+5 获取上一个兄弟元素 previousElementSibling previousElementSibling
+获取下一个兄弟元素 获取下一个兄弟元素 
+节点 . nextElementSibling 
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/02/动态创建元素/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Js的样式操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1114,346 +1345,6 @@ Continue语句：
 
 
   
-    <article id="post-认识JS及类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/01/认识JS及类型/">认识JS及类型</a>
-    </h1>
-  
-
-        
-        <a href="/2015/05/01/认识JS及类型/" class="archive-article-date">
-  	<time datetime="2015-05-01T05:40:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="认识JS"><a href="#认识JS" class="headerlink" title="认识JS"></a>认识JS</h3><pre><code>1 JS概念
-JS：一门运行在客户端的脚本编程语言
-2 JS组成   ECMASCript 语法标准
-           DOM（API）  操作页面中的元素
-           BOM（API）  浏览器操作
-3 JS特带你及使用范围
- - 简单易用（JS封装好了方法，直接调用）
- - JS属于解释执行语言
-    编译执行： C#(html)===》编译（.dll）===&gt;计算机执行dll文件
- - 基于对象
-   三大特点： 继承性
-                封装型
-                多态性（涉及模式）
-4 JS书写位置
-   1 内嵌式 
-   代码写在&lt;script&gt;&lt;/script&gt;内；
-   注意： 推荐将JS代码放到body标签之后，优先让body标签中的内容加载显示，提高用户体验。
-   2 外联式写法
-        首先新建一个JS文件
-        通过script标签引用js文件即可
-    3 行内式写法
-    例： &lt;div onclick=&quot;js代码&quot;&gt;&lt;/div&gt;
-5 JS在页面中输出(显示)消息方式
- - alert(内容) 方法：以弹窗的形式显示消息
- 注意： 写完一段完整的JS代码后，需要加上分号 “；”。
- - console.log(内容)  在控制台中显示消息
- - document.write(内容)  直接在页面中输出消息
- 注意： 该方法中可以设置html标签，要使用双引号包含。
- - prompt(提示信息)  接受用户输入消息
- - confirm(消息)  配合条件判断使用
-</code></pre><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><pre><code>变量：变化的量，用来存储数据的容器
-变量的定义： 使用var关键字 +变量名
-变量的赋值： 通过“=”赋值运算符，给变量赋值
-注意：1 如果方法中放的是一个一个变量，那么该变量不需要加引号。
-     2 变量一次只能保存一个值，最后一次的赋值结果。
-     3变量赋值的顺序，先执行赋值运算符右侧的代码，然后将得到的结果赋值给“=”左侧的变量。
-</code></pre><h3 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h3><pre><code>1 不能使用数字或以数字开头定义变量
-2 不能使用特殊字符或者以特殊字符开头定义变量（“_” “$”）
-3 不能使用汉字定义变量
-4 不能使用关键字定义变量（var , if, for,Array,break,switch......）
-5 不能使用保留字定义变量（）
-6 JS中区分字母大小写
-7 变量中不能出现空格。
-</code></pre><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><pre><code>简单数据类型
-    - 数字类型 number
-    - 字符串类型(string)
-    - 布尔类型(boolean)
-    - undefined类型
-    复杂数据类型
-    - object
-    - Array
-</code></pre><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><pre><code>- 如果一个变量的值是数字（整数，负数，小数），那      么该变量的数据类型就是数字类型number
-- 数字的其他表示方式：
-        十进制表示法
-        十六进制表示法： 以0x  0-9和 a（A）-f(F)
-        八进制表示法： 以0开始  0-7 
--   能表示的最大值是±1.7976931348623157乘以10        的308次方
-    能表示的最小值是±5 乘以10的-324次方
-</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><pre><code>如果一个变量的值使用双引号或者单引号，那么该变量的数据类型就是：字符串类型。
-转义字符： 只有在字符串中才能用转义字符
-                \”   转双引号
-            \’   转单引号
-            \r   回车符
-           \n      换行符
-           \t    tab
-</code></pre><h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><pre><code>如果一个变量的值是true或者false,那么该变量的数据类型就是：布尔类型。
- true：   正确的 ====》  条件满足
-
- false:    错误的=====》  条件不满足
-</code></pre><h3 id="undefined-类型"><a href="#undefined-类型" class="headerlink" title="undefined 类型"></a>undefined 类型</h3><pre><code>如果一个变量的值是undefined，那么该变量的数据类型就是undefined类型
-注意：  如果在页面中定义了一个变量，没有给该变量赋值，那么该变量的默认值就是undefined。
-</code></pre><h3 id="数据类型判断"><a href="#数据类型判断" class="headerlink" title="数据类型判断"></a>数据类型判断</h3><pre><code>typeof(变量)  ===》 获取到对应变量的数据类型。
-</code></pre><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><pre><code>&gt;   &lt;     &gt;=    &lt;=    ==(===)
-结果：通过比较运算符得到的是一个布尔类型的结果。
-</code></pre><h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><pre><code> + 加运算
- 特点：1 如果是数字类型的变量相加，得到的结果是数字类型的结果。
-        2 如果是字符串类型的变量相加，得到的结果是字符串类型的结果（拼字符串）
-- 减运算
-特点：1 如果是数字类型的变量相减，结果是数字类型。
-     2 如果是数字的字符串相减，结果是数字类型。【因为变量进行了隐式数据类型转换】
-     3 如果是非数字的字符串相减，结果是NaN
-      NaN：not  a number    
-      NaN的数据类型是number类型。
-/ 除运算
-特点：1如果是数字类型的变量相除，得到的结果是数字类型。
-2 如果是数字的字符串相除，得到的结果是数字类型【因为变量进行了隐式数据类型转换】
-3 如果是非数字字符串相除，得到的结果是NaN
-4 如果除数是0，的到的结果是infinity(无穷大)
-</code></pre><p>　　％ 取余</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/01/认识JS及类型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Css3渐变及转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/25/Css3渐变及转换/">Css3渐变及转换</a>
-    </h1>
-  
-
-        
-        <a href="/2015/04/25/Css3渐变及转换/" class="archive-article-date">
-  	<time datetime="2015-04-25T07:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><pre><code>1 线性渐变 liner-gradient 
-    有四个属性值：方向 起始颜色 终止颜色 距离
-    默认的方向是自上向下，距离就是div的高度
-    例: 实现一个45度的渐变，起始颜色黄色，终止颜色粉色，距离就是div的宽度
-    background-image:linear-gradient(-45deg,yellow,pink)
-2 径向渐变 radial-gradient
-    background-image:radial-gradient(半径 at 位置 ，颜色，颜色)
-</code></pre><h3 id="CSS3的过渡属性"><a href="#CSS3的过渡属性" class="headerlink" title="CSS3的过渡属性"></a>CSS3的过渡属性</h3><pre><code>1 如变化的属性过多就用 transition:all 
-2 过度持续时间 transition-duration:1s;
-3 设置过度速度 transition-timing-function:linear/ease(匀速/缓慢);
-4 过渡延迟时间 transition-delay:1s;
-</code></pre><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><pre><code>transform:translate X(横坐标：正向右，负向左)
-transform:translate Y(纵坐标：正向下，负向上)
-transform:translate(-50%,-50%) 未知盒子宽高居中
-
-水平居中一个已知尺寸的元素
-position:absolute;
-top:50%;
-left:50%;
-margin-top:-高的一半;
-margin-left:-宽的一半;
-
-水平居中一个未知尺寸的元素
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%)
-</code></pre><h4 id="旋转-transform-rotate"><a href="#旋转-transform-rotate" class="headerlink" title="旋转 transform:rotate;"></a>旋转 transform:rotate;</h4><pre><code>1 transform:rotate(正值为顺时针，负值为逆时针)
- rotateX() 横坐标旋转 routeY()  纵坐标旋转
- 2 transform:scole(?) ? 为放大倍数
- scoleX() 横坐标缩放 scoleY()纵坐标缩放
- 3 倾斜 transform:skew(30deg)
-</code></pre><h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><pre><code>动画的创建： 关键字：@keyframes 动画名称
-格式：@keyframes 动画名称{
-        百分比{}
-        百分比{}
-        }
-1 动画名称 animation-name (需要调用)
-2 动画延迟 animation-dely:3s;
-3 动画总时间 animation-duration:5s;
-4 动画速度 animation-timing-function:liner;
-5 动画次数 animation-iteration-count:?
-6 控制动画完成时的状态 animation-fill-mode:back wards(回到初)/both()
-
-动画创建方式一：
-@keyframes move {
-    0%{
-        transform:translate(0px,0px);
-    }
-    25%{
-    transform:translate(500px,0px)
-    }
-    50%{
-        transform:translate(500px,500px)
-    }
-    75{
-        transform:translate(0px,500px)
-    }
-    100%{
-        transform:translate(0px,0px)
-    }
-}
-创建的第二中方法：
-@keyframes route{
-    from{
-        transform:translate(0deg);
-    }
-    to{
-        transform:translate(360deg)
-    }
-}
-</code></pre><h3 id="伸缩布局"><a href="#伸缩布局" class="headerlink" title="伸缩布局"></a>伸缩布局</h3><pre><code>1 传统布局：基于盒状模型，依赖 display属性 + position属性 + float属性
-缺点：不方便，比如垂直居中不容易实现
-2 伸缩布局
-1）伸缩容器：只要给某个元素display:flex 就是伸缩容器
-2）伸缩项目：只要包含在伸缩容器中的直接子元素，就是伸缩项目
-3）主轴：是可以调整方向的，默认是水平方向
-4）侧轴：侧轴是垂直于主轴的
-</code></pre><h3 id="伸缩布局的相关属性并解释其含义"><a href="#伸缩布局的相关属性并解释其含义" class="headerlink" title="伸缩布局的相关属性并解释其含义"></a>伸缩布局的相关属性并解释其含义</h3><pre><code>1 设置某个元素为伸缩容器    display:flex;
-2 调整伸缩容器的主轴方向 
-    flex-direction:row 从左向右
-    flex-direction:row-reverse 从右向左
-    flex-direction:column 从上往下
-    flex-direction:column-reverse 从下往上
-
-3 主轴对齐方式
-    justify-content:flex-start 主轴起点对齐
-    justify-content:flex-end 主轴终点对齐
-    justify-content:flex-center 中心对齐
-    justify-content:flex-space-between 两端对齐
-    justify-content:flex-space-around 控件环绕
-4 设置伸缩项目是否换行
-    flex-wrap:nowrap 默认不换行
-    flex-wrap:wrap 换行
-5 设置侧轴对齐方式
-    align-items:flex-start 侧轴起点对齐
-    align-items:flex-end 侧轴终点对齐
-    align-items:center 侧轴中心对齐
-    align-items:stretch 拉伸
-6 设置换行后的对齐方式
-    align-content:flex-start 侧轴起点对齐
-    align-content:flex-end 侧轴终点对齐
-    align-content:flex-center 中心对齐
-    align-content:space-between 两端对齐
-    align-content:space-around 控件环绕
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">css3</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/04/25/Css3渐变及转换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1571,6 +1462,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1583,15 +1478,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1599,11 +1486,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">

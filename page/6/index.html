@@ -152,6 +152,346 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-认识JS及类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/01/认识JS及类型/">认识JS及类型</a>
+    </h1>
+  
+
+        
+        <a href="/2015/05/01/认识JS及类型/" class="archive-article-date">
+  	<time datetime="2015-05-01T05:40:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="认识JS"><a href="#认识JS" class="headerlink" title="认识JS"></a>认识JS</h3><pre><code>1 JS概念
+JS：一门运行在客户端的脚本编程语言
+2 JS组成   ECMASCript 语法标准
+           DOM（API）  操作页面中的元素
+           BOM（API）  浏览器操作
+3 JS特带你及使用范围
+ - 简单易用（JS封装好了方法，直接调用）
+ - JS属于解释执行语言
+    编译执行： C#(html)===》编译（.dll）===&gt;计算机执行dll文件
+ - 基于对象
+   三大特点： 继承性
+                封装型
+                多态性（涉及模式）
+4 JS书写位置
+   1 内嵌式 
+   代码写在&lt;script&gt;&lt;/script&gt;内；
+   注意： 推荐将JS代码放到body标签之后，优先让body标签中的内容加载显示，提高用户体验。
+   2 外联式写法
+        首先新建一个JS文件
+        通过script标签引用js文件即可
+    3 行内式写法
+    例： &lt;div onclick=&quot;js代码&quot;&gt;&lt;/div&gt;
+5 JS在页面中输出(显示)消息方式
+ - alert(内容) 方法：以弹窗的形式显示消息
+ 注意： 写完一段完整的JS代码后，需要加上分号 “；”。
+ - console.log(内容)  在控制台中显示消息
+ - document.write(内容)  直接在页面中输出消息
+ 注意： 该方法中可以设置html标签，要使用双引号包含。
+ - prompt(提示信息)  接受用户输入消息
+ - confirm(消息)  配合条件判断使用
+</code></pre><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><pre><code>变量：变化的量，用来存储数据的容器
+变量的定义： 使用var关键字 +变量名
+变量的赋值： 通过“=”赋值运算符，给变量赋值
+注意：1 如果方法中放的是一个一个变量，那么该变量不需要加引号。
+     2 变量一次只能保存一个值，最后一次的赋值结果。
+     3变量赋值的顺序，先执行赋值运算符右侧的代码，然后将得到的结果赋值给“=”左侧的变量。
+</code></pre><h3 id="变量的命名规范"><a href="#变量的命名规范" class="headerlink" title="变量的命名规范"></a>变量的命名规范</h3><pre><code>1 不能使用数字或以数字开头定义变量
+2 不能使用特殊字符或者以特殊字符开头定义变量（“_” “$”）
+3 不能使用汉字定义变量
+4 不能使用关键字定义变量（var , if, for,Array,break,switch......）
+5 不能使用保留字定义变量（）
+6 JS中区分字母大小写
+7 变量中不能出现空格。
+</code></pre><h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><pre><code>简单数据类型
+    - 数字类型 number
+    - 字符串类型(string)
+    - 布尔类型(boolean)
+    - undefined类型
+    复杂数据类型
+    - object
+    - Array
+</code></pre><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><pre><code>- 如果一个变量的值是数字（整数，负数，小数），那      么该变量的数据类型就是数字类型number
+- 数字的其他表示方式：
+        十进制表示法
+        十六进制表示法： 以0x  0-9和 a（A）-f(F)
+        八进制表示法： 以0开始  0-7 
+-   能表示的最大值是±1.7976931348623157乘以10        的308次方
+    能表示的最小值是±5 乘以10的-324次方
+</code></pre><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><pre><code>如果一个变量的值使用双引号或者单引号，那么该变量的数据类型就是：字符串类型。
+转义字符： 只有在字符串中才能用转义字符
+                \”   转双引号
+            \’   转单引号
+            \r   回车符
+           \n      换行符
+           \t    tab
+</code></pre><h3 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h3><pre><code>如果一个变量的值是true或者false,那么该变量的数据类型就是：布尔类型。
+ true：   正确的 ====》  条件满足
+
+ false:    错误的=====》  条件不满足
+</code></pre><h3 id="undefined-类型"><a href="#undefined-类型" class="headerlink" title="undefined 类型"></a>undefined 类型</h3><pre><code>如果一个变量的值是undefined，那么该变量的数据类型就是undefined类型
+注意：  如果在页面中定义了一个变量，没有给该变量赋值，那么该变量的默认值就是undefined。
+</code></pre><h3 id="数据类型判断"><a href="#数据类型判断" class="headerlink" title="数据类型判断"></a>数据类型判断</h3><pre><code>typeof(变量)  ===》 获取到对应变量的数据类型。
+</code></pre><h3 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h3><pre><code>&gt;   &lt;     &gt;=    &lt;=    ==(===)
+结果：通过比较运算符得到的是一个布尔类型的结果。
+</code></pre><h3 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h3><pre><code> + 加运算
+ 特点：1 如果是数字类型的变量相加，得到的结果是数字类型的结果。
+        2 如果是字符串类型的变量相加，得到的结果是字符串类型的结果（拼字符串）
+- 减运算
+特点：1 如果是数字类型的变量相减，结果是数字类型。
+     2 如果是数字的字符串相减，结果是数字类型。【因为变量进行了隐式数据类型转换】
+     3 如果是非数字的字符串相减，结果是NaN
+      NaN：not  a number    
+      NaN的数据类型是number类型。
+/ 除运算
+特点：1如果是数字类型的变量相除，得到的结果是数字类型。
+2 如果是数字的字符串相除，得到的结果是数字类型【因为变量进行了隐式数据类型转换】
+3 如果是非数字字符串相除，得到的结果是NaN
+4 如果除数是0，的到的结果是infinity(无穷大)
+</code></pre><p>　　％ 取余</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/05/01/认识JS及类型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Css3渐变及转换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/25/Css3渐变及转换/">Css3渐变及转换</a>
+    </h1>
+  
+
+        
+        <a href="/2015/04/25/Css3渐变及转换/" class="archive-article-date">
+  	<time datetime="2015-04-25T07:43:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="渐变"><a href="#渐变" class="headerlink" title="渐变"></a>渐变</h3><pre><code>1 线性渐变 liner-gradient 
+    有四个属性值：方向 起始颜色 终止颜色 距离
+    默认的方向是自上向下，距离就是div的高度
+    例: 实现一个45度的渐变，起始颜色黄色，终止颜色粉色，距离就是div的宽度
+    background-image:linear-gradient(-45deg,yellow,pink)
+2 径向渐变 radial-gradient
+    background-image:radial-gradient(半径 at 位置 ，颜色，颜色)
+</code></pre><h3 id="CSS3的过渡属性"><a href="#CSS3的过渡属性" class="headerlink" title="CSS3的过渡属性"></a>CSS3的过渡属性</h3><pre><code>1 如变化的属性过多就用 transition:all 
+2 过度持续时间 transition-duration:1s;
+3 设置过度速度 transition-timing-function:linear/ease(匀速/缓慢);
+4 过渡延迟时间 transition-delay:1s;
+</code></pre><h3 id="转换"><a href="#转换" class="headerlink" title="转换"></a>转换</h3><pre><code>transform:translate X(横坐标：正向右，负向左)
+transform:translate Y(纵坐标：正向下，负向上)
+transform:translate(-50%,-50%) 未知盒子宽高居中
+
+水平居中一个已知尺寸的元素
+position:absolute;
+top:50%;
+left:50%;
+margin-top:-高的一半;
+margin-left:-宽的一半;
+
+水平居中一个未知尺寸的元素
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%)
+</code></pre><h4 id="旋转-transform-rotate"><a href="#旋转-transform-rotate" class="headerlink" title="旋转 transform:rotate;"></a>旋转 transform:rotate;</h4><pre><code>1 transform:rotate(正值为顺时针，负值为逆时针)
+ rotateX() 横坐标旋转 routeY()  纵坐标旋转
+ 2 transform:scole(?) ? 为放大倍数
+ scoleX() 横坐标缩放 scoleY()纵坐标缩放
+ 3 倾斜 transform:skew(30deg)
+</code></pre><h3 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h3><pre><code>动画的创建： 关键字：@keyframes 动画名称
+格式：@keyframes 动画名称{
+        百分比{}
+        百分比{}
+        }
+1 动画名称 animation-name (需要调用)
+2 动画延迟 animation-dely:3s;
+3 动画总时间 animation-duration:5s;
+4 动画速度 animation-timing-function:liner;
+5 动画次数 animation-iteration-count:?
+6 控制动画完成时的状态 animation-fill-mode:back wards(回到初)/both()
+
+动画创建方式一：
+@keyframes move {
+    0%{
+        transform:translate(0px,0px);
+    }
+    25%{
+    transform:translate(500px,0px)
+    }
+    50%{
+        transform:translate(500px,500px)
+    }
+    75{
+        transform:translate(0px,500px)
+    }
+    100%{
+        transform:translate(0px,0px)
+    }
+}
+创建的第二中方法：
+@keyframes route{
+    from{
+        transform:translate(0deg);
+    }
+    to{
+        transform:translate(360deg)
+    }
+}
+</code></pre><h3 id="伸缩布局"><a href="#伸缩布局" class="headerlink" title="伸缩布局"></a>伸缩布局</h3><pre><code>1 传统布局：基于盒状模型，依赖 display属性 + position属性 + float属性
+缺点：不方便，比如垂直居中不容易实现
+2 伸缩布局
+1）伸缩容器：只要给某个元素display:flex 就是伸缩容器
+2）伸缩项目：只要包含在伸缩容器中的直接子元素，就是伸缩项目
+3）主轴：是可以调整方向的，默认是水平方向
+4）侧轴：侧轴是垂直于主轴的
+</code></pre><h3 id="伸缩布局的相关属性并解释其含义"><a href="#伸缩布局的相关属性并解释其含义" class="headerlink" title="伸缩布局的相关属性并解释其含义"></a>伸缩布局的相关属性并解释其含义</h3><pre><code>1 设置某个元素为伸缩容器    display:flex;
+2 调整伸缩容器的主轴方向 
+    flex-direction:row 从左向右
+    flex-direction:row-reverse 从右向左
+    flex-direction:column 从上往下
+    flex-direction:column-reverse 从下往上
+
+3 主轴对齐方式
+    justify-content:flex-start 主轴起点对齐
+    justify-content:flex-end 主轴终点对齐
+    justify-content:flex-center 中心对齐
+    justify-content:flex-space-between 两端对齐
+    justify-content:flex-space-around 控件环绕
+4 设置伸缩项目是否换行
+    flex-wrap:nowrap 默认不换行
+    flex-wrap:wrap 换行
+5 设置侧轴对齐方式
+    align-items:flex-start 侧轴起点对齐
+    align-items:flex-end 侧轴终点对齐
+    align-items:center 侧轴中心对齐
+    align-items:stretch 拉伸
+6 设置换行后的对齐方式
+    align-content:flex-start 侧轴起点对齐
+    align-content:flex-end 侧轴终点对齐
+    align-content:flex-center 中心对齐
+    align-content:space-between 两端对齐
+    align-content:space-around 控件环绕
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">css3</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/04/25/Css3渐变及转换/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Css3阴影及盒子尺寸" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1256,271 +1596,6 @@ text-indent： 2em;    首行缩进2个汉字大小
 
 
   
-    <article id="post-关于html5的一些面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/24/关于html5的一些面试题/">关于html5的一些面试题</a>
-    </h1>
-  
-
-        
-        <a href="/2014/12/24/关于html5的一些面试题/" class="archive-article-date">
-  	<time datetime="2014-12-24T02:24:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="什么是HTML-5？"><a href="#什么是HTML-5？" class="headerlink" title="什么是HTML 5？"></a>什么是HTML 5？</h4><pre><code>HTML 5是HTML的新标准，其主要目标是无需任何额外的插件如Flash、Silverlight等，就可以传输所有内容。它囊括了动画、视频、丰富的图形用户界面等。
-
-HTML5是由万维网联盟（W3C）和Web Hypertext Application Technology Working Group （Web超文本应用技术工作组—WHATWG）合作创建的HTML新版本。
-</code></pre><h4 id="如果我不输入-lt-DOCTYPE-HTML-gt-，HTML-5能工作吗？"><a href="#如果我不输入-lt-DOCTYPE-HTML-gt-，HTML-5能工作吗？" class="headerlink" title="如果我不输入&lt;!DOCTYPE HTML&gt;，HTML 5能工作吗？"></a>如果我不输入&lt;!DOCTYPE HTML&gt;，HTML 5能工作吗？</h4><pre><code>No，浏览器将无法识别HTML文件，并且HTML 5标签将无法正常工作。
-</code></pre><h4 id="哪些浏览器支持HTML-5？"><a href="#哪些浏览器支持HTML-5？" class="headerlink" title="哪些浏览器支持HTML 5？"></a>哪些浏览器支持HTML 5？</h4><pre><code>几乎所有的浏览器都支持HTML 5，例如Safari，Chrome，火狐，Opera，IE等。
-</code></pre><h4 id="HTML-5的页面结构和HTML-4或早先的HTML有什么不同？"><a href="#HTML-5的页面结构和HTML-4或早先的HTML有什么不同？" class="headerlink" title="HTML 5的页面结构和HTML 4或早先的HTML有什么不同？"></a>HTML 5的页面结构和HTML 4或早先的HTML有什么不同？</h4><pre><code>一个典型的Web页面有页眉（header），页脚（footer），导航（navigation），正文（central area）和侧栏（side bar）。现在如果是在HTML 4中，HTML部分中的上述这些专用名词需要使用DIV标签来描述。
-
-但是，如果是在HTML 5，可以专门为这些区域创建特定的元素名，让HTML更具可读性。
-</code></pre><h4 id="以下是形成页面结构的HTML-5元素的更多细节。"><a href="#以下是形成页面结构的HTML-5元素的更多细节。" class="headerlink" title="以下是形成页面结构的HTML 5元素的更多细节。"></a>以下是形成页面结构的HTML 5元素的更多细节。</h4><pre><code>&lt;header&gt;：表现HTML的标题数据。
-
-&lt;footer&gt;：页面的页脚部分。
-
-&lt;nav&gt;：页面中的导航元素。
-
-&lt;article&gt;：正文内容。
-
-&lt;section&gt;：用在正文中定义section或区段内容。
-
-&lt;aside&gt;：表现页面侧边栏内容。
-</code></pre><h4 id="HTML-5中的DataList是什么？"><a href="#HTML-5中的DataList是什么？" class="headerlink" title="HTML 5中的DataList是什么？"></a>HTML 5中的DataList是什么？</h4><pre><code>HTML 5中的DataList控件元素有助于提供自动完成功能的文本框，如下图所示。
-</code></pre><h4 id="下面是DataList控件功能的HTML代码："><a href="#下面是DataList控件功能的HTML代码：" class="headerlink" title="下面是DataList控件功能的HTML代码："></a>下面是DataList控件功能的HTML代码：</h4><pre><code>&lt;input list=&quot;Country&quot;&gt;
-&lt;datalist id=&quot;Country&quot;&gt;
-&lt;option value=&quot;India&quot;&gt;
-&lt;option value=&quot;Italy&quot;&gt;
-&lt;option value=&quot;Iran&quot;&gt;
-&lt;option value=&quot;Israel&quot;&gt;
-
-&lt;option value=&quot;Indonesia&quot;&gt;
-&lt;/datalist&gt;
-</code></pre><h4 id="HTML-5中的本地存储概念？"><a href="#HTML-5中的本地存储概念？" class="headerlink" title="HTML 5中的本地存储概念？"></a>HTML 5中的本地存储概念？</h4><pre><code>很多时候，我们想在本地计算机存储有关用户的信息。例如，假设用户已经填满了一半的长表单，互联网却突然连接中断。此时，用户希望能在本地存储这些信息，然后当重新连接到互联网的时候，获取这些信息，并将其发送到服务器进行存储。
-
-现代的浏览器存储称为“本地存储”，可以让你存储这些信息。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/12/24/关于html5的一些面试题/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-html5文件读取及一些API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/12/20/html5文件读取及一些API/">html5文件读取及一些API</a>
-    </h1>
-  
-
-        
-        <a href="/2014/12/20/html5文件读取及一些API/" class="archive-article-date">
-  	<time datetime="2014-12-20T08:45:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-12-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="网络状态检测"><a href="#网络状态检测" class="headerlink" title="网络状态检测"></a>网络状态检测</h2><pre><code>我们可以通过window.onLine 来检测，用户当前的网络状况，返回一个布尔值。
-1 window.online用户网络连接时被调用
- 例：window.addEventListener(&apos;online&apos;,function(){
-     alert(&apos;已经建立了网络链接&apos;)
-     })
-2  window.offline用户网络断开时被调用
-例： window.addEventListener(&apos;offline&apos;,function(){
-    alert(&apos;已经失去了网络链接&apos;)
-    })
-</code></pre><h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><pre><code>    通过FileReader对象我们可以读取本地存储的文件，可以使用 File 对象来指定所要读取的文件或数据。其中File对象可以是来自用户在一个 &lt;input&gt; 元素上选择文件后返回的FileList 对象，也可以来自由拖放操作生成的  DataTransfer
- 1 FileList 对象
-    由于HTML5中我们可以通过为表单元素添加multiple属性，因此我们通过&lt;input&gt;上传文件后得到的是一个FileList对象（伪数组形式）。
-2 FileReader 对象
-    HTML5新增内建对象(内置对象，内嵌对象)，可以读取本地文件内容。
-</code></pre><h2 id="DataUrl"><a href="#DataUrl" class="headerlink" title="DataUrl"></a>DataUrl</h2><pre><code>1 readAsDataURL()
-以DataURL形式读取文件
-2 事件监听
-onload 当文件读取完成时调用
-3 属性
-result 文件读取结果
-    参考资料
-    https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader#toc
-</code></pre><h2 id="视频常用api"><a href="#视频常用api" class="headerlink" title="视频常用api"></a>视频常用api</h2><pre><code>方法：load() 加载， play() 播放， pause() 暂停
-属性： currentTime 视频播放的当前进度
-        duraton 视频的总时间
-事件： oncanplay 事件在用户可以开始播放视频/音频（audio/video)时触发
-    ontimeupdate : 通过该事件来报告当前播放进度
-    onended: 播放完时触发
-    video.webkitRequestFullScreen()  全屏
-</code></pre><h2 id="全屏"><a href="#全屏" class="headerlink" title="全屏"></a>全屏</h2><pre><code>HTML5规范允许用户自定义网页上任一元素全屏显示。
-requestFullscreen() 开启全屏显示
-cancleFullscreen() 关闭全屏显示
-</code></pre><h2 id="不同浏览器需要添加前缀如"><a href="#不同浏览器需要添加前缀如" class="headerlink" title="不同浏览器需要添加前缀如"></a>不同浏览器需要添加前缀如</h2><pre><code>webkitRequestFullscreen, mozrequestFullScreen
-webkitCancleFullScreen、mozCancleFullScreen
-通过document.fullscreen 检测当前是否处于全屏
-全屏伪类
-    :full-screen .box {}、:-webkit-full-screen {}、:moz-full-screen {}
-</code></pre><h2 id="拖拽-draggable"><a href="#拖拽-draggable" class="headerlink" title="拖拽  draggable"></a>拖拽  draggable</h2><pre><code>在HTML5的规范中，我们可以通过为元素增加draggable=&quot;true&quot;来设置此元素是否可以进行拖拽操作，其中图片、链接默认是开启的。
-1 拖拽元素
-    页面设置了draggable=&apos;true&apos;属性的元素
-2 目标元素
-    页面中任何一个元素都可以成为目标元素
-3 事件监听
-    拖拽元素
-    ondrag 应用于拖拽元素，整个拖拽过程都会调用
-    ondragstart 应用于拖拽元素，当拖拽开始时调用
-    ondragleave 应用于拖拽元素，当鼠标离开拖拽元素时调用
-    ondragend 应用于拖拽元素，当拖拽结束时调用
-    目标元素
-    ondragenter 应用于目标元素，当拖拽元素进入时调用
-    onderagover 应用于目标元素，当停留在目标元素上时调用
-    ondrop 应用于目标元素，当在目标元素上松开鼠标时调用
-    ondragleave 应用于目标元素，当鼠标离开目标元素时调用
-</code></pre><h2 id="WEB-存储"><a href="#WEB-存储" class="headerlink" title="WEB 存储"></a>WEB 存储</h2><pre><code>随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，传统方式我们以document.cookie来进行存储的，但是由于其存储大小只有4k左右，并且解析也相当的复杂，给开发带来诸多不便，HTML5规范则提出解决方案。
-storage 存储
-window.sessionStorage  
-session 会话声明周期和localstorage 不一样，存储时间比较短
-window.localStorage     local本地
-(向本地保存数据,有可能在浏览器内存里面，有可能在硬盘上面.)
-</code></pre><h2 id="storage特性"><a href="#storage特性" class="headerlink" title="storage特性"></a>storage特性</h2><pre><code>1 设置，读取方便
-2 容量大 sessionStorage约5M、localStorage约20M
-3 只能存储字符串，可以讲对象JSON.stringify()编码厚存储
-</code></pre><h2 id="window-sessionStorage和window-localStorage区别"><a href="#window-sessionStorage和window-localStorage区别" class="headerlink" title="window.sessionStorage和window.localStorage区别"></a>window.sessionStorage和window.localStorage区别</h2><pre><code>window.sessionStorage
-1 声明周期为关闭浏览器窗口
-2 在同一个窗口下数据可以共享
-window.localStorage
-1 拥挤生效。除非手动删除
-2 可以多窗口共享
-</code></pre><h2 id="方法详解"><a href="#方法详解" class="headerlink" title="方法详解"></a>方法详解</h2><pre><code>setltem(key,value) 设置存储内容
-getltem(key) 读取存储内容
-removeltem(key) 删除键值为key的存储内容
-clear() 清空所有存储内容
-key(n) 以索引值来获取存储内容
-</code></pre><h2 id="应用缓存-离线存储"><a href="#应用缓存-离线存储" class="headerlink" title="应用缓存 离线存储"></a>应用缓存 离线存储</h2><pre><code>HTML5中我们可以轻松的构建一个离线（无网络状态）应用，只需要创建一个cache manifest文件。
-1 优势
-- 可以配置 需要缓存的资源
-- 网络无链接应用仍课用
-- 本地读取缓存资源，提升访问熟读，增强用户体验
-- 减少请求，环节服务器负担
-</code></pre><h2 id="缓存清单"><a href="#缓存清单" class="headerlink" title="缓存清单"></a>缓存清单</h2><pre><code>一个普通文本文件，其中列出了浏览器应缓存以供离线访问的资源，推荐使用.appcache为后缀名，添加MIME类型
-AddType text/cache-manifest .appcache
-例如我们创建了一个名为demo.appcache的文件，然后在需要应用缓存在页面的根元素(html)添加属性manifest=&quot;demo.appcache&quot;，路径要保证正确。
-</code></pre><h2 id="manifest-文件格式"><a href="#manifest-文件格式" class="headerlink" title="manifest 文件格式"></a>manifest 文件格式</h2><pre><code>1、顶行写CACHE MANIFEST
-2、CACHE: 换行 指定我们需要缓存的静态资源，如.css、image、js等
-3、NETWORK: 换行 指定需要在线访问的资源，可使用通配符
-4、FALLBACK: 当前页面无法访问时退回的页面(回退;  后退)
- 换行 当被缓存的文件找不到时的备用资源 可自行查阅资料
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">html5</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/12/20/html5文件读取及一些API/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1638,6 +1713,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1650,15 +1729,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1666,11 +1737,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http:lilyfengtao.github.io">
-  <title>Archives: 2015/8 | 李锋涛</title>
+  <title>react 四  react-router路由 | 李锋涛</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="低调才是最牛逼的炫耀">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李锋涛">
-<meta property="og:url" content="http:lilyfengtao.github.io/archives/2015/08/index.html">
+  <meta name="description" content="react的style的样式1 直接写行内样式 &amp;lt;li style={{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;}}&amp;gt;&amp;lt;/li&amp;gt; 2 抽离为对象形式 var styleH3 = {color:&amp;apos;blue&amp;apos;} var styleObj = {   liStyle:{border:&amp;apos;1px solid red&amp;">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react 四  react-router路由">
+<meta property="og:url" content="http:lilyfengtao.github.io/2018/08/24/react-四/index.html">
 <meta property="og:site_name" content="李锋涛">
-<meta property="og:description" content="低调才是最牛逼的炫耀">
+<meta property="og:description" content="react的style的样式1 直接写行内样式 &amp;lt;li style={{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;}}&amp;gt;&amp;lt;/li&amp;gt; 2 抽离为对象形式 var styleH3 = {color:&amp;apos;blue&amp;apos;} var styleObj = {   liStyle:{border:&amp;apos;1px solid red&amp;">
+<meta property="og:updated_time" content="2018-08-30T06:17:30.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李锋涛">
-<meta name="twitter:description" content="低调才是最牛逼的炫耀">
+<meta name="twitter:title" content="react 四  react-router路由">
+<meta name="twitter:description" content="react的style的样式1 直接写行内样式 &amp;lt;li style={{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;}}&amp;gt;&amp;lt;/li&amp;gt; 2 抽离为对象形式 var styleH3 = {color:&amp;apos;blue&amp;apos;} var styleObj = {   liStyle:{border:&amp;apos;1px solid red&amp;">
   
     <link rel="alternative" href="/atom.xml" title="李锋涛" type="application/atom+xml">
   
@@ -150,136 +152,219 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-四" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react 四  react-router路由
+    </h1>
+  
+
+        
+        <a href="/2018/08/24/react-四/" class="archive-article-date">
+  	<time datetime="2018-08-24T03:08:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="react的style的样式"><a href="#react的style的样式" class="headerlink" title="react的style的样式"></a>react的style的样式</h3><pre><code>1 直接写行内样式
+&lt;li style={{border:'1px solid red', fontSize:'12px'}}&gt;&lt;/li&gt;
+2 抽离为对象形式
+var styleH3 = {color:&apos;blue&apos;}
+var styleObj = {
+  liStyle:{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;},
+  h3Style:{color:&apos;green&apos;}
+}
+
+&lt;li style={styleObj.liStyle}&gt;
+  &lt;h3 style={styleObj.h3Style}&gt;评论内容：{props.content}&lt;/h3&gt;
+&lt;/li&gt;
+3  使用样式表定义样式：
+import &apos;../css/comment.css&apos;
+&lt;p className=&quot;pUser&quot;&gt;评论人：{props.user}&lt;/p&gt;
+</code></pre><h3 id="react-路由-reacr-router"><a href="#react-路由-reacr-router" class="headerlink" title="react 路由 reacr-router"></a>react 路由 reacr-router</h3><pre><code>Router组件本身只是一个容器，真正的路由通过Router组件定义
+</code></pre><h4 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h4><pre><code>1：导入路由组件
+import {
+  HashRouter as Router,
+  Link, Route
+} from &apos;react-router-dom&apos;
+导入Router, Link ,Route组件
+2：使用&lt;Router&gt;&lt;/Router&gt;作为根容器，包裹整个应用（JSX）
+3：使用&lt;link to=&apos;/movie&apos;&gt;&lt;/Link&gt;作为连接地址，并指定to属性
+4：使用&lt;Route path=&apos;/&apos;  component={Movie}&gt;&lt;Route&gt; 展示路由内容
+&lt;Router&gt;
+
+    // 3 设置 Link
+    &lt;Menu.Item key=&quot;1&quot;&gt;&lt;Link to=&quot;/&quot;&gt;首页&lt;/Link&gt;&lt;/Menu.Item&gt;
+    &lt;Menu.Item key=&quot;2&quot;&gt;&lt;Link to=&quot;/movie&quot;&gt;电影&lt;/Link&gt;&lt;/Menu.Item&gt;
+    &lt;Menu.Item key=&quot;3&quot;&gt;&lt;Link to=&quot;/about&quot;&gt;关于&lt;/Link&gt;&lt;/Menu.Item&gt;
+
+    // 4 设置 Route
+    // exact 表示：绝对匹配（完全匹配，只匹配：/）
+    &lt;Route exact path=&quot;/&quot; component={HomeContainer}&gt;&lt;/Route&gt;
+    &lt;Route path=&quot;/movie&quot; component={MovieContainer}&gt;&lt;/Route&gt;
+    &lt;Route path=&quot;/about&quot; component={AboutContainer}&gt;&lt;/Route&gt;
+//AboutContainer 可以是引入组件的名称
+&lt;/Router&gt;
+</code></pre><h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><pre><code>1：&lt;Router&gt;&lt;/Router&gt;：作为整个组件的根元素，是路由容器，只能有一个唯一的子元素
+2：&lt;Link&gt;&lt;/Link&gt;：类似于vue中的&lt;router-link&gt;&lt;/router-link&gt;标签，to 属性指定路由地址
+3：&lt;Route&gt;&lt;/Route&gt;：类似于vue中的&lt;router-view&gt;&lt;/router-view&gt;，指定路由内容（组件）展示位置
+</code></pre><h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><pre><code>1 配置： 通过Router中的path属性来配置路由参数
+&lt;Route path=&quot;/movie/:movieType&quot;&gt;&lt;/Route&gt;
+2 获取  this.props.match.params获取
+const type = this.props.match.params.movieType
+</code></pre><h3 id="路由跳转"><a href="#路由跳转" class="headerlink" title="路由跳转"></a>路由跳转</h3><pre><code>1 history.push() 方法用于js中页面的跳转
+this.props.history.push(&apos;/movie/movieDetail/&apos; + movieId)
+2 history.go(-1)  用来实现页面的前进(1)和后退(-1)
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/21/数组的正反向遍历/" class="archive-article-date">
-  	<time datetime="2015-08-21T12:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/21/数组的正反向遍历/">数组的正反向遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:http:lilyfengtao.github.io/2018/08/24/react-四/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/06/浏览器窗口可视区域大小/" class="archive-article-date">
-  	<time datetime="2015-08-06T03:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/23/react-三/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          react 三 
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/06/浏览器窗口可视区域大小/">浏览器窗口可视区域大小</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/01/javascript计时器/" class="archive-article-date">
-  	<time datetime="2015-08-01T02:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/01/javascript计时器/">javascript计时器</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -302,8 +387,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

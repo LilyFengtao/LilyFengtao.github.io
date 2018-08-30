@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http:lilyfengtao.github.io">
-  <title>Archives: 2015/8 | 李锋涛</title>
+  <title>react 三  | 李锋涛</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="低调才是最牛逼的炫耀">
-<meta property="og:type" content="website">
-<meta property="og:title" content="李锋涛">
-<meta property="og:url" content="http:lilyfengtao.github.io/archives/2015/08/index.html">
+  <meta name="description" content="this.props.children （react提供一个工具方法 React.children来处理this.props.children)1 this.props 对象的属性与组件的属性一一对应，但this.props.children属性，它表示组件的所有的子节点。 var NotesList = React.createClass({       render: function() {">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react 三 ">
+<meta property="og:url" content="http:lilyfengtao.github.io/2018/08/23/react-三/index.html">
 <meta property="og:site_name" content="李锋涛">
-<meta property="og:description" content="低调才是最牛逼的炫耀">
+<meta property="og:description" content="this.props.children （react提供一个工具方法 React.children来处理this.props.children)1 this.props 对象的属性与组件的属性一一对应，但this.props.children属性，它表示组件的所有的子节点。 var NotesList = React.createClass({       render: function() {">
+<meta property="og:updated_time" content="2018-08-30T02:55:06.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="李锋涛">
-<meta name="twitter:description" content="低调才是最牛逼的炫耀">
+<meta name="twitter:title" content="react 三 ">
+<meta name="twitter:description" content="this.props.children （react提供一个工具方法 React.children来处理this.props.children)1 this.props 对象的属性与组件的属性一一对应，但this.props.children属性，它表示组件的所有的子节点。 var NotesList = React.createClass({       render: function() {">
   
     <link rel="alternative" href="/atom.xml" title="李锋涛" type="application/atom+xml">
   
@@ -150,136 +152,299 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-三" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react 三 
+    </h1>
+  
+
+        
+        <a href="/2018/08/23/react-三/" class="archive-article-date">
+  	<time datetime="2018-08-23T09:20:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="this-props-children-（react提供一个工具方法-React-children来处理this-props-children"><a href="#this-props-children-（react提供一个工具方法-React-children来处理this-props-children" class="headerlink" title="this.props.children （react提供一个工具方法 React.children来处理this.props.children)"></a>this.props.children （react提供一个工具方法 React.children来处理this.props.children)</h3><pre><code>1 this.props 对象的属性与组件的属性一一对应，但this.props.children属性，它表示组件的所有的子节点。
+var NotesList = React.createClass({
+      render: function() {
+        return (
+          &lt;ol&gt;
+          {
+            React.Children.map(this.props.children, function (child) {
+              return &lt;li&gt;{child}&lt;/li&gt;;
+            })
+          }
+          &lt;/ol&gt;
+        );
+      }
+    });
+
+    ReactDOM.render(
+      &lt;NotesList&gt;
+        &lt;span&gt;hello&lt;/span&gt;
+        &lt;span&gt;world&lt;/span&gt;
+      &lt;/NotesList&gt;,
+      document.body
+    );
+    //展示出来的是 hellow world
+    注意：this.props.children的值三种可能
+    1 如果组件没有子节点 ，就是undefind
+    2 如果有一个子节点。数据类型是object
+    3 如果是多个子节点，数据类型就是array
+    所以我们就用React.Children.map来遍历子节点
+</code></pre><h3 id="PropTypes"><a href="#PropTypes" class="headerlink" title="PropTypes"></a>PropTypes</h3><pre><code>组件的属性可以接受任意值，字符串，对象，函数等，有时，我们需要一种机制，验证别人使用组件时，提供的参数是否符合要求。
+组件类的propsTypes属性，来验证实例属性是否符合要求。
+var MyTitle = React.createClass({
+    propTypes: {
+      title: React.PropTypes.string.isRequired,
+    },
+
+    render: function() {
+       return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+     }
+  });
+
+  上面例子表明，在MyTitle有一个title属性，并且该属性是字符串类型，且是必填。
+</code></pre><h4 id="getDefaultProps-用来设置组件属性的默认值"><a href="#getDefaultProps-用来设置组件属性的默认值" class="headerlink" title="getDefaultProps 用来设置组件属性的默认值"></a>getDefaultProps 用来设置组件属性的默认值</h4><pre><code>var MyTitle = React.createClass({
+  getDefaultProps : function () {
+    return {
+      title : &apos;Hello World&apos;
+    };
+  },
+
+  render: function() {
+     return &lt;h1&gt; {this.props.title} &lt;/h1&gt;;
+   }
+});
+
+ReactDOM.render(
+  &lt;MyTitle /&gt;,
+  document.body
+);
+</code></pre><h3 id="获取真实的Dom节点"><a href="#获取真实的Dom节点" class="headerlink" title="获取真实的Dom节点"></a>获取真实的Dom节点</h3><pre><code>1：从组件获取真实 DOM 的节点，这时就要用到 ref 属性。
+2：this.refs.[refName] 返回真实的Dom节点  
+（觉得和vue的ref用法一样）
+3：React 组件支持很多事件，除了 Click 事件以外，还有 KeyDown 、Copy、Scroll 等，
+</code></pre><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><pre><code>用户在表单填入内容，属于用户跟组件互动，不能用this.props。
+ar Input = React.createClass({
+      getInitialState: function() {
+        return {value: &apos;Hello!&apos;};
+      },
+      handleChange: function(event) {
+        this.setState({value: event.target.value});
+      },
+      render: function () {
+        var value = this.state.value;
+        return (
+          &lt;div&gt;
+            &lt;input type=&quot;text&quot; value={value} onChange={this.handleChange} /&gt;
+            &lt;p&gt;{value}&lt;/p&gt;
+          &lt;/div&gt;
+        );
+      }
+    });
+
+    ReactDOM.render(&lt;Input/&gt;, document.body);
+    注意：获取文本输入框的值，要定义一个onChange事件的回调函数，通过event.target.value来获取。
+      textarea,select,radio都是这种情况。
+</code></pre><h3 id="Ajax请求"><a href="#Ajax请求" class="headerlink" title="Ajax请求"></a>Ajax请求</h3><pre><code>1 选择一个HTTP库
+以axios为例
+import React from &apos;react&apos;
+  import ReactDOM from &apos;react-dom&apos;;
+  import axios from &apos;axios&apos;;  //引入axios库
+  class FetchDemo extends React.Component {
+    constructor(props) {    
+      super(props);    
+      this.state = {        
+        posts: []            //把posts设为空数组
+      };
+    }
+    componentDidMount() {  //在componentDidMount 进行Ajax请求
+      axios.get(`http://www.reddit.com/r/${this.props.subreddit}.json`)
+        .then(res =&gt; {
+          const posts = res.data.data.children.map(obj =&gt; obj.data);
+          this.setState({ posts });  //在this.setState里面重新赋值
+        });
+    }
+    render() {
+      return (
+        &lt;div&gt;
+          &lt;h1&gt;{`/r/${this.props.subreddit}`}&lt;/h1&gt;
+          &lt;ul&gt;
+            {this.state.posts.map(post =&gt;
+              &lt;li key={post.id}&gt;{post.title}&lt;/li&gt;
+            )}
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      );
+    }
+  }
+  ReactDOM.render(
+    &lt;FetchDemo subreddit=&quot;reactjs&quot;/&gt;,
+    document.getElementById(&apos;root&apos;)
+  );
+  步骤，方法
+  1 先引入axios库
+  2 然后在constructor 里先调用super，接着初始化state，让它拥有一个posts空数组
+  3 componentDidMount是关键所在，这个方法将会在组件插入DOM的第一时间执行。该方法在整个组件的生命周期只会执行一次。
+  4 它使用axios.get方法从subreddit获取数据，反引号的字符串是ES6的模板字符串，${}部分是由表达式的值所取代，所以URL传递给axios.get
+</code></pre>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/21/数组的正反向遍历/" class="archive-article-date">
-  	<time datetime="2015-08-21T12:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/21/数组的正反向遍历/">数组的正反向遍历</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http:http:lilyfengtao.github.io/2018/08/23/react-三/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/06/浏览器窗口可视区域大小/" class="archive-article-date">
-  	<time datetime="2015-08-06T03:39:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/08/22/react学习二/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          react学习二  生命周期
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/24/react-四/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react 四  react-router路由</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/06/浏览器窗口可视区域大小/">浏览器窗口可视区域大小</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/08/01/javascript计时器/" class="archive-article-date">
-  	<time datetime="2015-08-01T02:50:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/08/01/javascript计时器/">javascript计时器</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -302,8 +467,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

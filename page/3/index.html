@@ -152,6 +152,258 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-用hexo-github搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/10/用hexo-github搭建博客/">用hexo+github搭建博客</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/10/用hexo-github搭建博客/" class="archive-article-date">
+  	<time datetime="2016-10-10T01:44:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="注册github账户"><a href="#注册github账户" class="headerlink" title="注册github账户"></a>注册github账户</h3><pre><code>1 注册
+2 创建仓库
+ 在仓库名字输入框中输入：
+
+ Github昵称.github.io
+ 然后点击Create repository即可。
+3 生成添加密钥
+ 在终端（Terminal）输入：
+
+ ssh-keygen -t rsa -C &quot;Github的注册邮箱地址&quot;
+ 一路Enter过来就好，待秘钥生成完毕，会得到两个文件id_rsa和id_rsa.pub，用带格式的记事本打开id_rsa.pub，Ctrl + a复制里面的所有内容，然后进入https://github.com/settings/ssh：
+
+
+ 将复制的内容粘贴到Key的输入框，随便写好Title里面的内容，点击Add SSH key按钮即可。
+4 安装node.js
+5 安装git
+6 安装hexo (此为重中之重)
+ 6.1 npm install hexo -cli -g 安装hexo
+ 6.2 在终端输入hexo
+
+ 7 初始化博客
+    // 建立一个博客文件夹，并初始化博客，&lt;folder&gt;为文件夹的名称，可以随便起名字
+    $ hexo init &lt;folder&gt;
+    // 进入博客文件夹，&lt;folder&gt;为文件夹的名称
+    $ cd &lt;folder&gt;
+    // node.js的命令，根据博客既定的dependencies配置安装所有的依赖包
+    $ npm install
+ 8 配置博客 （此部分省略）
+ 9 发表文章
+  在终端输入：
+
+ 1 // 新建一篇文章
+    hexo new &quot;文章标题&quot;
+
+ 2  保存后，我们进行本地发布：
+
+  $ hexo server
+  打开浏览器，输入：
+
+ http://localhost:4000/
+ 3 但是毕竟我们目前发布的只有本机看得到，怎么让其他人看到我们写的博客呢？这时候我们来看看博客的部署。
+
+   我们只要在终端执行这样的命令即可：
+
+    $ hexo generate 生成
+    $ hexo deploy  发布
+
+      参考大神 链接：http://www.jianshu.com/p/e99ed60390a8
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">hexo+github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/10/用hexo-github搭建博客/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-webpack使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/webpack使用/">webpack使用</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/20/webpack使用/" class="archive-article-date">
+  	<time datetime="2016-08-20T02:16:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="把运行命令配置到npm的script中"><a href="#把运行命令配置到npm的script中" class="headerlink" title="把运行命令配置到npm的script中"></a>把运行命令配置到npm的script中</h4><pre><code> 1 为什么要用npm的script？
+ （1）npm 是一个非常好用的用来编译的指令，通过 npm 你可以不用去担心项目中使用了什么技术，你只要调用这个指令就可以了，只要你在 package.json 中设置 scripts 的值就可以了。
+ （2）真正开发的时候你的webpack的命令会敲很长，因为有很多命令需要设置，即便你用了配置文件的方式，但一些--colors  --hot这些命令是没法在配置文件中配置的。比如：
+webpack-dev-server --devtool eval --progress --colors --hot --content-base build
+所以你不可能每次都敲这么长，因而我们就把这一大串配置到npm中
+</code></pre><h4 id="npm的script的使用"><a href="#npm的script的使用" class="headerlink" title="npm的script的使用"></a>npm的script的使用</h4><pre><code> 1你首先需要安装webpack，这时候不全局安装
+ npm i webpack --save
+ 2 配置npm 的packge.json文件中
+ &quot;scripts&quot;: {
+      &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;,
+      &quot;develop&quot;: &quot;webpack --config webpack.develop.config.js&quot;,
+      &quot;publish&quot;: &quot;webpack --config webpack.publish.config.js&quot;
+}
+3 在根目录打开的命令窗口运行
+npm run develop
+</code></pre><h4 id="为发布目录启动服务"><a href="#为发布目录启动服务" class="headerlink" title="为发布目录启动服务"></a>为发布目录启动服务</h4><pre><code>1、安装webpack-dev-server
+   npm   i   webpack-dev-server   –save-dev
+2、调整npm的package.json scripts 部分中开发命令的配置
+   {
+    &quot;scripts&quot;: {
+    &quot;develop&quot;: &quot;webpack-dev-server  --config webpack.develop.config.js --devtool eval --progress --colors --hot --content-base src&quot;,
+   &quot;publish&quot;: &quot;webpack --config webpack.publish.config.js&quot;,
+   &quot;watch&quot;: &quot;webpack --config webpack.develop.config.js --watch --hot&quot;
+    }
+   }
+   注释：
+   webpack-dev-server - 在 localhost:8080 建立一个 Web 服务器
+   --devtool eval - 为你的代码创建源地址。当有任何报错的时候可以让你更加精确地定位到文件和行号
+   --progress - 显示合并代码进度
+   --colors -- hot，命令行中显示颜色！
+   --content-base  指向设置的输出目录//这点一定是我们的发布目录
+3  访问 http://localhost:8080 你会看到效果。
+   总的来说，当你运行 npm run develop 的时候，会启动一个 Web 服务器，然后监听文件修改，然后自动重新合并你的代码。真的非常简洁！
+
+   注意
+   (1)用webpack-dev-server生成bundle.js文件是在内存中的，并没有实际生成
+   (2)如果引用的文件夹中已经有bundle.js就不会自动刷新了，你需要先把bundle.js文件手动删除
+   （3）用webstorm的注意了，因为他是自动保存的，所以可能识别的比较慢，你需要手动的ctrl+s一下
+</code></pre><h2 id="webpack-config-js相关属性的作用"><a href="#webpack-config-js相关属性的作用" class="headerlink" title="webpack.config.js相关属性的作用"></a>webpack.config.js相关属性的作用</h2><pre><code>commonjs：使用js语法要求后端语言的规范，模块化，后端语言需要具备的一些要求，可以http,操作文件
+
+webpack就是一款模块打包工具（压缩，合并，混淆+结合插件的代码转化，自动化一气呵成）
+</code></pre><h2 id="webpack的优点"><a href="#webpack的优点" class="headerlink" title="webpack的优点"></a>webpack的优点</h2><pre><code>1 模块来源广泛
+2 模块规范支持全面
+3插件机制完善，实现同样模块化，容易拓展
+</code></pre><p>##总结<br>    webpack 可以运行两种方式cli option(命令行及设置)<br>    通过webpack.config.js文件运行<br>        所有的配置属性都在module.exports={内部配置}</p>
+<h2 id="babel是什么？"><a href="#babel是什么？" class="headerlink" title="babel是什么？"></a>babel是什么？</h2><pre><code>答：语法转化器
+js代码转换工具
+可以转换ES6,ES7,react，默认只转换ES6，关键字presets:[&apos;es2015&apos;]
+
+语法转换工具
+它本身自带cli，可以通过npm i babel-cli -g
+
+ 的全局命令工具，来完成单独的转换
+它也提供了别的工具使用的支持
+比如browerify babelify,webpack babel-core....
+缺点：babel 默认只提供了es6关键字的转换 let const. 如果涉及到es6或者es7函数，就需要特定的配置插件
+1 安装babel 核心的工具包
+2 配置babel 的预设 babel 师一个语法转换器，包含es6/7/react,就是告诉babel要将什么转换什么
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/20/webpack使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue学习第二天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1169,217 +1421,6 @@ align-content:space-around 环绕均匀对齐
 
 
   
-    <article id="post-shell和vi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/04/shell和vi/">shell和vi</a>
-    </h1>
-  
-
-        
-        <a href="/2015/09/04/shell和vi/" class="archive-article-date">
-  	<time datetime="2015-09-04T09:31:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="什么是shell"><a href="#什么是shell" class="headerlink" title="什么是shell"></a>什么是shell</h4><pre><code>在计算机科学中，Shell俗称壳，用来区别于Kernel（核），是指“提供使用者使用界面”的软件（命令解析器）。它接收用户命令，然后调用相应的应用程序。
-</code></pre><h4 id="shell分类"><a href="#shell分类" class="headerlink" title="shell分类"></a>shell分类</h4><pre><code>1 图形界面shell：提供提供友好的可视化界面，调用相应的应用程序：如windows系列操作系统，Linux系统上的图形化应用程序GNOME、KDE等
-2 命令行shell：提供键盘输入特定命令的方式，调用相应的应用程序，如windows系统的cmd.exe、Windows PowerShell，Linux系统的Bourne shell ( sh)、Bourne Again shell ( bash)等。
-</code></pre><h4 id="认识bash这个shell"><a href="#认识bash这个shell" class="headerlink" title="认识bash这个shell"></a>认识bash这个shell</h4><pre><code>再window系统下使用bash，需要一个软件，这个软件模拟集成了bash大部分命令。
-1 1、bash命令格式
-  命令 [-options]  [参数]，如：tar  zxvf  demo.tar.gz
-  查看帮助：命令 --help
-2 bash常见命令
-- pwd(print working Director) 查看当前目录
- - ls(list) 产看当前目录下内容 如ls-al
- - cd(change Directory) 切换目录 如cd/etc
- cd .. 上一级目录
- - mkdir(Make Directory) 创建目录，如mkdir blog
- - touch 创建文件如touch index.html
- - cat 擦好看文件全部内容 如cat index.html
- - more less 查看文件 如more/etc/password,less/etc/passwd
- - rm(remove) 删除文件 如rm index.html
- - rmdir(remove Directory) 删除文件夹，只删除空文件夹
- - mv(move) 移动文件或重命名 如mv index.html./demo/index.html
- - cp(copy) 复制文件 cp index.html ./demo/index.html
- - head 产看文件前几行 如head-5 index.html
- - tail 查看文件后几行 -n-f 如tail -f -n 5 index.html
- - tab 自动补全，连按两次会将所有匹配内容显示出来
- - history 查看操作历史
- - ssh 远程登录，如ssh root@gitlab.study.com
- - &gt; 和 &gt;&gt;重定向，如echo hello world! &gt; README.md，&gt;覆盖 &gt;&gt;追加
- - wget 下载，如wget https://nodejs.org/dist/v4.4.0/node-v4.4.0.tar.gz
- - tar 解压缩，如tar zxvf node-v4.4.0.tar.gz
- - curl 网络请求，如curl http://www.baidu.com
- - whoami 查看当前用户
- - | 管道符可以将多个命令连接使用，上一次（命令）的执行结果当成下一次（命令）的参数。
- - grep 匹配内容，一般结合管道符使用
-</code></pre><h4 id="vi编译器"><a href="#vi编译器" class="headerlink" title="vi编译器"></a>vi编译器</h4><pre><code>vi编译器提供了三种模式，分别是命令模式，插入模式，底行模式。
-1 打开/创建文件 vi 文件路径
-2 底行模式 （小写）w保存 w filenme 另存为
-3 底行模式 q 退出
-4 底行模式 e!撤销更改。返回上一次保存的状态
-5 底行模式 q! 不保存强制退出
-6 底行模式 set nu 设置行号
-
-7 命令模式 ZZ 保存并退出
-8 命令模式  u撤销操作，可多次使用
-9 命令模式 dd删除当前行
-10 命令模式 yy复制当前行
-11命令模式  p黏贴内容
-12 命令模式 ctrl+f 向前翻页
-13 命令模式  ctrl+b 向后翻页
-14 命令模式 i进入编辑模式，当前光标处插入
-命令模式 a进入编辑模式，当前光标后插入
-15 命令模式 A进入编辑模式，光标移动到行尾
-16 命令模式 o进入编辑模式，当前行下面插入新行
-17 命令模式 O进入编辑模式，当前行上面插入新行
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/04/shell和vi/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数组的正反向遍历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/08/21/数组的正反向遍历/">数组的正反向遍历</a>
-    </h1>
-  
-
-        
-        <a href="/2015/08/21/数组的正反向遍历/" class="archive-article-date">
-  	<time datetime="2015-08-21T12:49:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="数组的正向遍历"><a href="#数组的正向遍历" class="headerlink" title="数组的正向遍历"></a>数组的正向遍历</h4><pre><code>例: var arr=[1,2,3,4,5,6,7,8];
-    for(var i=0;i&lt;=arr.length;i++){
-        console.log(arr[i])
-    }
-</code></pre><h4 id="数组的反向遍历"><a href="#数组的反向遍历" class="headerlink" title="数组的反向遍历"></a>数组的反向遍历</h4><pre><code>例： var arr=[1,2,3,4,5,6,7,8];
-    for(var i=arr.length;i&gt;=0;i--){
-        console.log(arr[i])
-    }
-</code></pre><h4 id="给数组添加索引"><a href="#给数组添加索引" class="headerlink" title="给数组添加索引"></a>给数组添加索引</h4><pre><code>例： var arr=[1,2,3,4]
-        arr[arr.length]=5;
-        arr[arr.length]=6;
-        console.log(arr)// 1,2,3,4,5,6
-向数组中添加一个新元素，索引值为arr.length;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/08/21/数组的正反向遍历/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1497,6 +1538,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1509,15 +1554,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1525,11 +1562,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">html</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">html</a>
               </li>
              
               <li class="article-tag-list-item">
