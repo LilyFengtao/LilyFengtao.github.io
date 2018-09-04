@@ -15,7 +15,7 @@
 <meta property="og:url" content="http:lilyfengtao.github.io/2018/03/31/Vue学习第三天/index.html">
 <meta property="og:site_name" content="李锋涛">
 <meta property="og:description" content="title: Vue学习第三天date: 2016-9-21 15:00:52 tags: vue watch 监听vm.$watch(name，fnCb)// name:要被监视的数据 fnCb要执行的回调函数 （此为浅度监视） vm.$watch(name,fnCb,{deep:true})(此为深度复制) 动画 animate        推荐使用animate.css插件     使用">
-<meta property="og:updated_time" content="2018-08-28T11:40:32.621Z">
+<meta property="og:updated_time" content="2018-08-30T06:42:52.320Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="李锋涛">
 <meta name="twitter:description" content="title: Vue学习第三天date: 2016-9-21 15:00:52 tags: vue watch 监听vm.$watch(name，fnCb)// name:要被监视的数据 fnCb要执行的回调函数 （此为浅度监视） vm.$watch(name,fnCb,{deep:true})(此为深度复制) 动画 animate        推荐使用animate.css插件     使用">
@@ -159,7 +159,7 @@
       
         <hr>
 <p>title: Vue学习第三天<br>date: 2016-9-21 15:00:52</p>
-<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h4 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h4><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
+<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h3 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h3><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
 fnCb要执行的回调函数 （此为浅度监视）
 vm.$watch(name,fnCb,{deep:true})(此为深度复制)
 </code></pre><h4 id="动画-animate"><a href="#动画-animate" class="headerlink" title="动画 animate"></a>动画 animate</h4><pre><code>        推荐使用animate.css插件
@@ -169,85 +169,85 @@ require(&apos;vue2-animate/dist/vue2-animate.min.css&apos;)
     或者
     import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
     3 然后使用（可以看API)
-</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>       1 全局组件注册方式：Vue.component(组件名，{方法})
-       例： &lt;div id=&quot;app&quot;&gt;
-              &lt;my-component&gt;&lt;/my-component&gt;
-            &lt;/div&gt;
-            Vue.component(&quot;my-component&quot;,{
-                template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
-            });
-            new Vue({
-            el:&quot;#app&quot;
-            });
-        注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
-        2 局部组件   直接在Vue实例里面注册
-        例：&lt;body&gt;
-            &lt;div id=&quot;app1&quot;&gt;
-           &lt;child-component&gt;&lt;/child-component&gt;
-        &lt;/div&gt;
-        &lt;script&gt;
-           new Vue({
-        el: &quot;#app1&quot;,
-        components:{
-            &quot;child-component&quot;:{
-                template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-            }
-        }
-        });&lt;/script&gt;
-        局部组件需注意：1 属性名为components, S千万别忘
-        2 最好模板定义在一个全局变量里
-        方法如下： var child={
-            template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-        }
-         new Vue({
-        el: &quot;#app1&quot;,
-        components:{
-            &quot;child-component&quot;:child
-        } });
-       3 组件模板 
-   例：&lt;div id=&quot;box&quot;&gt;
-&lt;my-aaa&gt;&lt;/my-aaa&gt;
-&lt;/div&gt;
-&lt;template id=&quot;aaa&quot;&gt;
-&lt;ul&gt;
-    &lt;li v-for=&quot;val in arr&quot;&gt;
-        {{val}}
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/template&gt;
-&lt;script&gt;
-var vm=new Vue({
-    el:&apos;#box&apos;,
-    components:{
-        &apos;my-aaa&apos;:{
-            data(){
-                return {
-                    msg:&apos;welcome vue&apos;,
-                    arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
-            methods:{
-                change(){
-                    this.msg=&apos;changed&apos;;
-                }},                    
-            template:&apos;#aaa&apos;
-        }}});&lt;/script&gt;
-            4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
-            例：    &lt;div id=&quot;box&quot;&gt;
-            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
-            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
-            &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
-            &lt;/div&gt;
-            &lt;script&gt;
-            var vm=new Vue({
-                el:&apos;#box&apos;,
-                data:{
-                    a:&apos;aaa&apos;    },    
-                components:{
-                    &apos;aaa&apos;:{
-                        template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
-                    &apos;bbb&apos;:{
-                        template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
-                    }}});
-        &lt;/script&gt;
+</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>1 全局组件注册方式：Vue.component(组件名，{方法})
+例： &lt;div id=&quot;app&quot;&gt;
+       &lt;my-component&gt;&lt;/my-component&gt;
+     &lt;/div&gt;
+     Vue.component(&quot;my-component&quot;,{
+         template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
+     });
+     new Vue({
+     el:&quot;#app&quot;
+     });
+ 注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
+ 2 局部组件   直接在Vue实例里面注册
+ 例：&lt;body&gt;
+     &lt;div id=&quot;app1&quot;&gt;
+    &lt;child-component&gt;&lt;/child-component&gt;
+ &lt;/div&gt;
+ &lt;script&gt;
+    new Vue({
+ el: &quot;#app1&quot;,
+ components:{
+     &quot;child-component&quot;:{
+         template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+     }
+ }
+ });&lt;/script&gt;
+ 局部组件需注意：1 属性名为components, S千万别忘
+ 2 最好模板定义在一个全局变量里
+ 方法如下： var child={
+     template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+ }
+  new Vue({
+ el: &quot;#app1&quot;,
+ components:{
+     &quot;child-component&quot;:child
+ } });
+        3 组件模板 
+    例：&lt;div id=&quot;box&quot;&gt;
+     &lt;my-aaa&gt;&lt;/my-aaa&gt;
+     &lt;/div&gt;
+     &lt;template id=&quot;aaa&quot;&gt;
+     &lt;ul&gt;
+         &lt;li v-for=&quot;val in arr&quot;&gt;
+             {{val}}
+         &lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;/template&gt;
+     &lt;script&gt;
+     var vm=new Vue({
+     el:&apos;#box&apos;,
+     components:{
+         &apos;my-aaa&apos;:{
+     data(){
+         return {
+             msg:&apos;welcome vue&apos;,
+             arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
+     methods:{
+         change(){
+             this.msg=&apos;changed&apos;;
+         }},                    
+     template:&apos;#aaa&apos;
+     }}});&lt;/script&gt;
+     4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
+     例：    &lt;div id=&quot;box&quot;&gt;
+     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
+     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
+     &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
+     &lt;/div&gt;
+     &lt;script&gt;
+     var vm=new Vue({
+         el:&apos;#box&apos;,
+         data:{
+             a:&apos;aaa&apos;    },    
+         components:{
+             &apos;aaa&apos;:{
+                 template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
+             &apos;bbb&apos;:{
+                 template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
+             }}});
+     &lt;/script&gt;
 </code></pre>
       
 
@@ -490,15 +490,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -510,6 +506,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
@@ -518,7 +518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -526,7 +526,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -539,6 +539,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">

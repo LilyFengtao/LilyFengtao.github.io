@@ -152,6 +152,390 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-react的虚拟Dom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: react的Diff算法<br>date: 2018-08-24 18:43:40</p>
+<h2 id="tags-react"><a href="#tags-react" class="headerlink" title="tags: react"></a>tags: react</h2><h3 id="React的虚拟Dom"><a href="#React的虚拟Dom" class="headerlink" title="React的虚拟Dom"></a>React的虚拟Dom</h3><pre><code>DOm和虚拟DOM的区别：
+1 DOM ：浏览器中提供的概念，用js对象表示页面上的元素，并提供操作元素的API
+2 虚拟DOM：是框架中的概念，是开发框架的程序员，手动用js对象来模拟DOM元素的嵌套关系；
+本质：用js对象来模拟DOM元素的嵌套关系；
+目的：就是为了实现页面元素的高效更新
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/30/react的虚拟Dom/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-原型以及原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/30/原型以及原型链/">原型以及原型链</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/30/原型以及原型链/" class="archive-article-date">
+  	<time datetime="2018-08-30T09:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/30/原型以及原型链/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-关于Es6的一些常用特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/25/关于Es6的一些常用特性/">关于Es6的一些常用特性</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/25/关于Es6的一些常用特性/" class="archive-article-date">
+  	<time datetime="2018-08-25T06:54:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="cons和let"><a href="#cons和let" class="headerlink" title="cons和let"></a>cons和let</h3><pre><code>1： let的用法和var 类似，但是，let 在let命令所在的代码块内有效。
+什么是块级作用域？ 
+在{}内的代码就可以被看成是块级作用域
+ 例：{
+      let a = 10;
+      var b = 1;
+    }
+    a // ReferenceError: a is not defined.
+    b // 1
+ for循环比较适合用let声明
+ 2： 不存在变量提升
+  let的声明变量一定在声明后使用，要不报错。
+  // var 的情况
+    console.log(foo); // 输出undefined
+    var foo = 2;
+    // let 的情况
+    console.log(bar); // 报错ReferenceError
+    let bar = 2;
+ 3：暂时性死区
+ ES6 明确规定，如果区块中存在let和const命令，这个区块对这些命令声明的变量，从一开始就形成了封闭作用域。凡是在声明之前就使用这些变量，就会报错。总之，在代码块内，使用let命令声明变量之前，该变量都是不可用的。这在语法上，称为“暂时性死区”（temporal dead zone，简称 TDZ）。
+ 4：let 不允许重复声明
+         // 报错
+    function func() {
+      let a = 10;
+      let a = 1;
+    }
+</code></pre><h4 id="const"><a href="#const" class="headerlink" title="const"></a>const</h4><pre><code>const只能被定义一次，再次赋值就会报错，就如下面代码这样：
+const name = &apos;lux&apos;
+name = &apos;joe&apos; //再次赋值此时会报错      
+</code></pre><h3 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h3><pre><code>我们在以往使用js做大量字符串拼接时，经常会出现这样情况：
+var s = &apos;js&apos;+&apos;html&apos;+&apos;css&apos;+&apos;vue&apos;+&apos;react&apos;+&apos;jquery&apos;;
+// 再或者这样的
+var msg = &quot;Hi \
+niaho\
+my name is ES6 ${s}&quot;
+var s = &apos;js&apos;+&apos;html&apos;+&apos;css&apos;+&apos;vue&apos;+&apos;react&apos;+&apos;jquery&apos;;
+// 再或者这样的
+var msg = &quot;Hi \
+niaho\
+my name is ES6 ${s}&quot;
+
+用ES6的模板字符串来简化，变量${}来界定
+var s = `js html css vue react jquery`
+var msg = `Hi 
+niaho
+my name is ES6`
+</code></pre><h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><pre><code> 1：函数默认参数
+ 在ES5中
+  function action(num) {
+    num = num || 200
+    //当传入num时，num为传入的值
+    //当没传入参数时，num即有了默认值200
+    return num
+  }
+在ES6中
+  // 在定义函数时便初始化了这个参数
+  function action(num = 200) {
+      console.log(num)
+  }
+  action() //200
+  action(300) //300
+ 2： 箭头函数    三个特点
+ 1）：不需要通过function 关键词来创建
+ 2）：可以省略掉return关键词
+ 3）：继承当前上下文的this关键词
+  //例如：
+  [32,320,1,5].map( x =&gt;; x + 1 )
+  //等同于：
+  [32,320,1,5].map((function(x){
+      return x + 1
+  }).bind(this))
+  在使用箭头函数时，如果只有一个参数，可以省略括号，当大于一个参数时，要：
+  var people = (name, age) =&amp;gt; {
+    const fullName = &apos;h&apos; + name
+    return fullName
+  } 
+  //如果缺少()或者{}就会报错
+</code></pre><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3><pre><code> 拓展的对象功能
+ 在ES5中，都是键值对的形式书写
+ function people(name, age) {
+        return {
+            name: name,
+            age: age
+        };
+      }
+在ES6 中可以简写：
+  function people(name, age) {
+      return {
+          name,
+          age
+      };
+  }
+  2： 给对象添加方法
+  ES5： var people = {
+      name: &apos;lux&apos;,
+      getName: function() {
+          console.log(this.name)
+      }
+  }
+  ES6可以省略的function 和冒号
+  const people = {
+      name: &apos;lux&apos;,
+      getName () {
+          console.log(this.name)
+      }
+  }
+</code></pre><h3 id="更方便的数据访问–解构"><a href="#更方便的数据访问–解构" class="headerlink" title="更方便的数据访问–解构"></a>更方便的数据访问–解构</h3><pre><code>1： 数组的解构赋值
+ES5 只能直接指定值
+例：let a = 1;
+   let b = 2;
+   let c = 3;
+ES6 从数组中提取值，按照对应位置，对应量赋值。本质上，这种写法属于模式匹配，只要等号两边的模式相同，左边的变量就会被赋予对应的值。
+let [a, b, c] = [1, 2, 3];
+如果解构不成功，变量的值等于undefind
+
+解构赋值指定默认值
+  let [foo = true] = [];
+  foo // true
+  let [x, y = &apos;b&apos;] = [&apos;a&apos;]; // x=&apos;a&apos;, y=&apos;b&apos;
+  let [x, y = &apos;b&apos;] = [&apos;a&apos;, undefined]; // x=&apos;a&apos;, y=&apos;b&apos;
+  注意，ES6 内部使用严格相等运算符（===）
+
+  2：对象的解构赋值
+  let { foo, bar } = { foo: &quot;aaa&quot;, bar: &quot;bbb&quot; };
+  foo // &quot;aaa&quot;
+  bar // &quot;bbb&quot;
+  数组的元素是按次序排列的，标量的取值由它的位置决定。对象的属性没有次序，变量必须与属性同名，才能取到正确值。
+  let { bar, foo } = { foo: &quot;aaa&quot;, bar: &quot;bbb&quot; };
+  foo // &quot;aaa&quot;
+  bar // &quot;bbb&quot;
+  let { baz } = { foo: &quot;aaa&quot;, bar: &quot;bbb&quot; 
+  如果变量名与属性名不一致，必须写成下面这样：
+  let { foo: baz } = { foo: &apos;aaa&apos;, bar: &apos;bbb&apos; };
+  baz // &quot;aaa&quot;
+
+  let obj = { first: &apos;hello&apos;, last: &apos;world&apos; };
+  let { first: f, last: l } = obj;
+  f // &apos;hello&apos;
+  l // &apos;world&apos;
+</code></pre><h3 id="Spread-Operator-展开运算符"><a href="#Spread-Operator-展开运算符" class="headerlink" title="Spread Operator 展开运算符"></a>Spread Operator 展开运算符</h3><pre><code>在ES6有三个点的玩法，就是Spread Operator
+1：数组合并
+const color = [&apos;red&apos;, &apos;yellow&apos;]
+const colorful = [...color, &apos;green&apos;, &apos;pink&apos;]
+console.log(colorful) //[red, yellow, green, pink]
+2:合并对象
+const alp = { fist: &apos;a&apos;, second: &apos;b&apos;}
+const alphabets = { ...alp, third: &apos;c&apos; }
+console.log(alphabets) //{ &quot;fist&quot;: &quot;a&quot;, &quot;second&quot;: &quot;b&quot;, &quot;third&quot;: &quot;c&quot;
+ 组合Object,有重复，右边覆盖左边，（即最后的那个覆盖前面的）
+ const first = {
+      a: 1,
+      b: 2,
+      c: 6,
+  }
+  const second = {
+      c: 3,
+      d: 4
+  }
+  const total = { ...first, ...second }
+  console.log(total) // { a: 1, b: 2, c: 3, d: 4 }
+
+  用来筛选
+  //数组
+  const number = [1,2,3,4,5]
+  const [first, ...rest] = number  //此时的first解构为了1
+  console.log(rest) //2,3,4,5
+  //对象
+  const user = {
+      username: &apos;lux&apos;,
+      gender: &apos;female&apos;,
+      age: 19,
+      address: &apos;peking&apos;
+  }
+  const { username, ...rest } = user
+  console.log(rest) //{&quot;address&quot;: &quot;peking&quot;, &quot;age&quot;: 19, &quot;gender&quot;: &quot;female&quot;
+</code></pre><h3 id="import-和export-分别是导入，导出模块"><a href="#import-和export-分别是导入，导出模块" class="headerlink" title="import 和export 分别是导入，导出模块"></a>import 和export 分别是导入，导出模块</h3><pre><code>//全部导入
+import people from &apos;./example&apos;
+//有一种特殊情况，即允许你将整个模块当作单一对象进行导入
+//该模块的所有导出都会作为对象的属性存在
+import * as example from &quot;./example.js&quot;
+
+//导入部分
+import {name, age} from &apos;./example&apos;
+
+// 导出默认, 有且只有一个默认
+export default App
+// 部分导出
+export class App extend Component {};
+关于导入的时候有无大括号的区别：
+
+1:当用export default people导出时，就用 import people 导入（不带大括号）
+2:一个文件里，有且只能有一个export default。但可以有多个export。
+3:当用export name 时，就用import { name }导入（记得带上大括号）
+4:当一个文件里，既有一个export default people, 又有多个export name 或者 export age时，导入就用 import people, { name, age }
+5:当一个文件里出现n多个 export 导出很多模块，导入时除了一个一个导入，也可以用import * as example
+</code></pre><h3 id="promise"><a href="#promise" class="headerlink" title="promise"></a>promise</h3>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ES6</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/25/关于Es6的一些常用特性/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -900,7 +1284,7 @@ setState可以传两个参数，
       
         <hr>
 <p>title: Vue学习第三天<br>date: 2016-9-21 15:00:52</p>
-<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h4 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h4><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
+<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h3 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h3><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
 fnCb要执行的回调函数 （此为浅度监视）
 vm.$watch(name,fnCb,{deep:true})(此为深度复制)
 </code></pre><h4 id="动画-animate"><a href="#动画-animate" class="headerlink" title="动画 animate"></a>动画 animate</h4><pre><code>        推荐使用animate.css插件
@@ -910,85 +1294,85 @@ require(&apos;vue2-animate/dist/vue2-animate.min.css&apos;)
     或者
     import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
     3 然后使用（可以看API)
-</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>       1 全局组件注册方式：Vue.component(组件名，{方法})
-       例： &lt;div id=&quot;app&quot;&gt;
-              &lt;my-component&gt;&lt;/my-component&gt;
-            &lt;/div&gt;
-            Vue.component(&quot;my-component&quot;,{
-                template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
-            });
-            new Vue({
-            el:&quot;#app&quot;
-            });
-        注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
-        2 局部组件   直接在Vue实例里面注册
-        例：&lt;body&gt;
-            &lt;div id=&quot;app1&quot;&gt;
-           &lt;child-component&gt;&lt;/child-component&gt;
-        &lt;/div&gt;
-        &lt;script&gt;
-           new Vue({
-        el: &quot;#app1&quot;,
-        components:{
-            &quot;child-component&quot;:{
-                template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-            }
-        }
-        });&lt;/script&gt;
-        局部组件需注意：1 属性名为components, S千万别忘
-        2 最好模板定义在一个全局变量里
-        方法如下： var child={
-            template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-        }
-         new Vue({
-        el: &quot;#app1&quot;,
-        components:{
-            &quot;child-component&quot;:child
-        } });
-       3 组件模板 
-   例：&lt;div id=&quot;box&quot;&gt;
-&lt;my-aaa&gt;&lt;/my-aaa&gt;
-&lt;/div&gt;
-&lt;template id=&quot;aaa&quot;&gt;
-&lt;ul&gt;
-    &lt;li v-for=&quot;val in arr&quot;&gt;
-        {{val}}
-    &lt;/li&gt;
-&lt;/ul&gt;
-&lt;/template&gt;
-&lt;script&gt;
-var vm=new Vue({
-    el:&apos;#box&apos;,
-    components:{
-        &apos;my-aaa&apos;:{
-            data(){
-                return {
-                    msg:&apos;welcome vue&apos;,
-                    arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
-            methods:{
-                change(){
-                    this.msg=&apos;changed&apos;;
-                }},                    
-            template:&apos;#aaa&apos;
-        }}});&lt;/script&gt;
-            4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
-            例：    &lt;div id=&quot;box&quot;&gt;
-            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
-            &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
-            &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
-            &lt;/div&gt;
-            &lt;script&gt;
-            var vm=new Vue({
-                el:&apos;#box&apos;,
-                data:{
-                    a:&apos;aaa&apos;    },    
-                components:{
-                    &apos;aaa&apos;:{
-                        template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
-                    &apos;bbb&apos;:{
-                        template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
-                    }}});
-        &lt;/script&gt;
+</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>1 全局组件注册方式：Vue.component(组件名，{方法})
+例： &lt;div id=&quot;app&quot;&gt;
+       &lt;my-component&gt;&lt;/my-component&gt;
+     &lt;/div&gt;
+     Vue.component(&quot;my-component&quot;,{
+         template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
+     });
+     new Vue({
+     el:&quot;#app&quot;
+     });
+ 注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
+ 2 局部组件   直接在Vue实例里面注册
+ 例：&lt;body&gt;
+     &lt;div id=&quot;app1&quot;&gt;
+    &lt;child-component&gt;&lt;/child-component&gt;
+ &lt;/div&gt;
+ &lt;script&gt;
+    new Vue({
+ el: &quot;#app1&quot;,
+ components:{
+     &quot;child-component&quot;:{
+         template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+     }
+ }
+ });&lt;/script&gt;
+ 局部组件需注意：1 属性名为components, S千万别忘
+ 2 最好模板定义在一个全局变量里
+ 方法如下： var child={
+     template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
+ }
+  new Vue({
+ el: &quot;#app1&quot;,
+ components:{
+     &quot;child-component&quot;:child
+ } });
+        3 组件模板 
+    例：&lt;div id=&quot;box&quot;&gt;
+     &lt;my-aaa&gt;&lt;/my-aaa&gt;
+     &lt;/div&gt;
+     &lt;template id=&quot;aaa&quot;&gt;
+     &lt;ul&gt;
+         &lt;li v-for=&quot;val in arr&quot;&gt;
+             {{val}}
+         &lt;/li&gt;
+     &lt;/ul&gt;
+     &lt;/template&gt;
+     &lt;script&gt;
+     var vm=new Vue({
+     el:&apos;#box&apos;,
+     components:{
+         &apos;my-aaa&apos;:{
+     data(){
+         return {
+             msg:&apos;welcome vue&apos;,
+             arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
+     methods:{
+         change(){
+             this.msg=&apos;changed&apos;;
+         }},                    
+     template:&apos;#aaa&apos;
+     }}});&lt;/script&gt;
+     4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
+     例：    &lt;div id=&quot;box&quot;&gt;
+     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
+     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
+     &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
+     &lt;/div&gt;
+     &lt;script&gt;
+     var vm=new Vue({
+         el:&apos;#box&apos;,
+         data:{
+             a:&apos;aaa&apos;    },    
+         components:{
+             &apos;aaa&apos;:{
+                 template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
+             &apos;bbb&apos;:{
+                 template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
+             }}});
+     &lt;/script&gt;
 </code></pre>
       
 
@@ -1080,439 +1464,6 @@ var vm=new Vue({
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/21/hexo博客的打开及发布/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github-Hexo博客更换主体外观" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/28/github-Hexo博客更换主体外观/">github+Hexo博客更换主体外观</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/28/github-Hexo博客更换主体外观/" class="archive-article-date">
-  	<time datetime="2017-08-28T11:43:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="所需步骤"><a href="#所需步骤" class="headerlink" title="所需步骤"></a>所需步骤</h3><pre><code>1  找到blog本地存储的地方，点击themes进去
-2 右击选择Git bash 
-3 下载所需要的主题
-4 博客最底层目录下的_config.yml，把themes的名字改成下载的主体名称
-5 然后输入hexo s --debug 进行本地测试
-6 找到主题配置文件_config.yml，然后配置自己想要的界面
-7 输入 hexo clean ; 
-8 hexo genarate回车， 生成
-9 hexo deploy  发布
-</code></pre><h4 id="关于发布后，在github上的改动"><a href="#关于发布后，在github上的改动" class="headerlink" title="关于发布后，在github上的改动"></a>关于发布后，在github上的改动</h4><pre><code>1 点击creat new file 在仓库地址后面加CNAME。
-2 然后加上自己的域名
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/28/github-Hexo博客更换主体外观/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-上传代码到github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/20/上传代码到github/">上传代码到github</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/20/上传代码到github/" class="archive-article-date">
-  	<time datetime="2017-08-20T07:03:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一：创建一个本地的版本库（其实就是一个文件夹）"><a href="#一：创建一个本地的版本库（其实就是一个文件夹）" class="headerlink" title="一：创建一个本地的版本库（其实就是一个文件夹）"></a>一：创建一个本地的版本库（其实就是一个文件夹）</h3><pre><code>1 点击进去，右击选择Git bash
-2 通过命令git init 把文件夹变成Git可管理仓库
-3 这时候你就可以把你的项目粘贴到这个本地Git仓库里面（粘贴后你可以通过git status来查看你当前的状态），
-然后通过git add把项目添加到仓库（或git add .把该目录下的所有文件添加到仓库，注意点是用空格隔开的）。
-在这个过程中你其实可以一直使用git status来查看你当前的状态。
-</code></pre><h4 id="git-三步走"><a href="#git-三步走" class="headerlink" title="git 三步走"></a>git 三步走</h4><pre><code>1 git add .   添加
-2 git commit -m &apos;信息描述&apos;   把项目递交到仓库
-3 git status   查看状态
-</code></pre><h4 id="在github上创建库"><a href="#在github上创建库" class="headerlink" title="在github上创建库"></a>在github上创建库</h4><pre><code>1 和本地库关联，根据创建好的Git仓库页面的提示，可以在本地TEST仓库的命令行输入：
-git remote add origin github库的地址
-注意：origin后面加的是你Github上创建好的仓库的地址。
-例如：$ git remote add origin https://github.com/guyibang/TEST2.git
-</code></pre><h4 id="关联好之后我们就可以把本地库的所有内容推送到远程仓库（也就是Github）上了，通过："><a href="#关联好之后我们就可以把本地库的所有内容推送到远程仓库（也就是Github）上了，通过：" class="headerlink" title="关联好之后我们就可以把本地库的所有内容推送到远程仓库（也就是Github）上了，通过："></a>关联好之后我们就可以把本地库的所有内容推送到远程仓库（也就是Github）上了，通过：</h4><pre><code>git push -u origin master
-由于新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，下次再从本地库上传内容的时候只需git push origin master可以了：
-</code></pre><h4 id="注意：创建远程仓库的时候，如果你勾选了Initialize-this-repository-with-a-README（就是创建仓库的时候自动给你创建一个README文件），那么到了第九步你将本地仓库内容推送到远程仓库的时候就会报一个failed-to-push-some-refs-to-https-github-com-guyibang-TEST2-git的错"><a href="#注意：创建远程仓库的时候，如果你勾选了Initialize-this-repository-with-a-README（就是创建仓库的时候自动给你创建一个README文件），那么到了第九步你将本地仓库内容推送到远程仓库的时候就会报一个failed-to-push-some-refs-to-https-github-com-guyibang-TEST2-git的错" class="headerlink" title="注意：创建远程仓库的时候，如果你勾选了Initialize this repository with a README（就是创建仓库的时候自动给你创建一个README文件），那么到了第九步你将本地仓库内容推送到远程仓库的时候就会报一个failed to push some refs to  https://github.com/guyibang/TEST2.git的错"></a>注意：创建远程仓库的时候，如果你勾选了Initialize this repository with a README（就是创建仓库的时候自动给你创建一个README文件），那么到了第九步你将本地仓库内容推送到远程仓库的时候就会报一个failed to push some refs to  <a href="https://github.com/guyibang/TEST2.git的错" target="_blank" rel="external">https://github.com/guyibang/TEST2.git的错</a></h4><pre><code>解决方法：git pull --rebase origin master
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/20/上传代码到github/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Nodejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/12/Nodejs/">Node.js 入门（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/12/Nodejs/" class="archive-article-date">
-  	<time datetime="2017-04-12T12:42:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="初识node-js"><a href="#初识node-js" class="headerlink" title="初识node.js"></a>初识node.js</h2><pre><code>node.js是javascript运行的一个环境 基于chrome浏览器的v8引擎
-node.js的特点： 事件驱动，无阻塞的io模型，使node轻量高效
-包生态系统----&gt;npm  node package manager是一个客户端工具 世界上最大的包管理系统
-</code></pre><h2 id="浏览器与node-js运行js的模型"><a href="#浏览器与node-js运行js的模型" class="headerlink" title="浏览器与node.js运行js的模型"></a>浏览器与node.js运行js的模型</h2><pre><code>1 浏览器与js的关系   被动
-2 node.js 与js的关系  主动
-3 node.js 如何运行js 文件
-答：node +文件路径，node是调用已经安装的node应用程序
-文件路径是给node 传的一个参数
-</code></pre><h2 id="如何执行js文件"><a href="#如何执行js文件" class="headerlink" title="如何执行js文件"></a>如何执行js文件</h2><pre><code>1 用node执行js文件，文件在当前目录下----&gt;node +文件名
-2 如果不在当前目录下，node +文件路径的形式执行
-
-   相对路径
-       ./ 当前路径
-       ../ 上级目录
-
-     绝对路径执行js的方式
-    node c:\Users\cena\Desktop\code\01helloworld.js
-    注意点：不能跨盘去调用js文件
-</code></pre><h2 id="js的引擎"><a href="#js的引擎" class="headerlink" title="js的引擎"></a>js的引擎</h2><pre><code>1 转化： 汽油转化能量
-例如： 模板引擎  模板+数据---》页面
-     js引擎   js代码---&gt;可以被电脑运行的代码     
- 2.移植  node是给v8引擎套了一个壳
-</code></pre><h2 id="node-的应用场景"><a href="#node-的应用场景" class="headerlink" title="node 的应用场景"></a>node 的应用场景</h2><pre><code>1 读写文件
-2 写网站后端（服务器)
-</code></pre><h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><pre><code>注意点： node 是后台的技术，是门技术不是语言，使用js干后台干的事情
-</code></pre><h2 id="如何确认是否安装成功"><a href="#如何确认是否安装成功" class="headerlink" title="如何确认是否安装成功?"></a>如何确认是否安装成功?</h2><pre><code>`win + r` ，然后输入 `cmd` ，然后敲回车 就可以进入 cmd 控制台
-  node -v
-</code></pre><h2 id="node-的群居环境"><a href="#node-的群居环境" class="headerlink" title="node 的群居环境"></a>node 的群居环境</h2><pre><code>  global和window很像，都是全局对象
-node运行js的时候一个js里面的代码的作用域就是这个js
-</code></pre><h2 id="node-js-得模块化"><a href="#node-js-得模块化" class="headerlink" title="node.js 得模块化"></a>node.js 得模块化</h2><pre><code>1 一个js文件就是一个模块，模块里面的代码的作用域就在这个文件中
-优点 1.一次编写多次使用
-      2.便于维护
-2. node的模块化符合commonjs规范
-所谓的模块化开发其实也就是如何有效的组织你的JavaScript代码
-全局函数直接写到html中
-将js代码提取出来放到单独的js文件中
-封装对象的方式解决全局函数面临的问题
-给对象加入独立的作用域空间
-</code></pre><h2 id="commonjs规范"><a href="#commonjs规范" class="headerlink" title="commonjs规范"></a>commonjs规范</h2><pre><code>希望JavaScript可以在任何地方运行，以达到像Java、PHP、Ruby、Python具备开发大型应用的能力
-出发点：
-没有模块系统
-标准库较少
-缺乏包管理系统
-1. 模块引用require
-2. 模块定义
-一个文件就是一个模块
-将方法挂载到exports对象上作为属性即可定义导出的方式
-3. 模块标识
-必须是符合小驼峰命名的字符串
-以.、..开头的相对路径
-绝对路径
-可以没有文件名后缀.js
-</code></pre><h2 id="commonjs-特点"><a href="#commonjs-特点" class="headerlink" title="commonjs 特点"></a>commonjs 特点</h2><pre><code>所有代码都运行在模块作用域，不会污染全局作用域
-模块可以多次加载,但是只会在第一次加载时运行一次,然后运行结果就缓存了，以后再加载,就直接读取缓存结果。
-模块加载的顺序，按照其在代码中出现的顺序
-</code></pre><h2 id="node-js-模块介绍"><a href="#node-js-模块介绍" class="headerlink" title="node.js 模块介绍"></a>node.js 模块介绍</h2><pre><code>Node程序由许多模块组成，每个模块就是一个文件。Node模块采用了CommonJS规范。
-Node.js本身就是一个高度模块化的一个平台
-根据CommonJS规范，每一个模块都是一个单独的作用域
-CommonJS规定，每个文件对外的接口是module.exports对象，该对象所有属性和方法，都可以被其它文件导入。
-</code></pre><h2 id="module-模块对象"><a href="#module-模块对象" class="headerlink" title="module  模块对象"></a>module  模块对象</h2><pre><code>    module.id    带有绝对路径的模块文件名
-    module.filename      模块的文件名，带有绝对路径
-    module.loaded          表示模块是否已经完成加载
-    module.parent        返回一个对象，表示调用该模块的模块。
-    module.children      返回一个数组，表示该模块要用到的其他模块。
-    module.exports          模块对外输出的值
-
-
-当运行js的时候，有一个js，node 就会为其创建一个module去存储这个js的相关信息
-</code></pre><h2 id="module-exports-全局对象"><a href="#module-exports-全局对象" class="headerlink" title="module.exports  全局对象"></a>module.exports  全局对象</h2><pre><code>module.exports属性表示当前模块对外输出的接口，其它文件加载该模块,实际上就是读取module.exports属性
-点儿导出单个函数、对象或者值的时候非常有用，本质上就是少了一个.
-
-module.exports 打破封装性，通过模块间传递module.exports对象，来打破封装性
-module.exports 是全局的对象，初始值是空对象
-暴露什么（方法、对象、数字）都行
-module.exports=123 使用直接赋值的形式只能使用一次
-module.exports.foo=123;
-module.exports.bar=456;使用属性赋值的形式能够使用多次
-exports替代module.exports在属性赋值的时候使用
-</code></pre><h2 id="require-全局方法"><a href="#require-全局方法" class="headerlink" title="require 全局方法"></a>require 全局方法</h2><pre><code>第一次加载js（module）的时候，会执行一遍js里面的代码
-第二次加载js的时候，不执行js代码的，直接去内存中找到第一次加载js对应的module对象，
-从中找到module.exports
-</code></pre><h2 id="exports"><a href="#exports" class="headerlink" title="exports"></a>exports</h2><pre><code>exports 是module.exports的别名，外号、花名
-</code></pre><h2 id="模块化总结"><a href="#模块化总结" class="headerlink" title="模块化总结"></a>模块化总结</h2><pre><code>1. 模块化的代码具有封装性，对代码进行包装，我想让你用什么接口，使用什么
-2. 有封装就有打破封装，需要给别人开接口 module.exports exports
-3. module.exports直接赋值
-4. exports 当一个js中有很多的属性很方法的时候，就使用exports向外曝露
-
-5. 一个js文件就是一个模块
-6. 一个模块的信息被保存在module对象里面，每一个模块都有一个module与之对应
-   module对象产生了以后，第二次加载就不会再去执行，而是去内存中的module对象中找module.exports
-</code></pre><h2 id="模块得种类"><a href="#模块得种类" class="headerlink" title="模块得种类"></a>模块得种类</h2><pre><code>第一类，核心模块（原生模块），node自带，用名称直接可以加载。
-核心模块
-  + fs file system 文件系统
-  + http  制作网站的
-  + os   获取电脑信息    
-  + path 路径拼接用的
-  + query  
-  + url
-  ...
-  require(&apos;fs&apos;)
-核心模块存在的意义，
-  我们需要node给我们提供一些方法，让我们可以方便的去处理电    脑的硬件，
-第二类，文件模块，用路径加载，有一种特殊的文件模块-----&gt;包，可以用名字。
-</code></pre><h2 id="什么是3m"><a href="#什么是3m" class="headerlink" title="什么是3m?"></a>什么是3m?</h2><pre><code>npm nrm nvm 
-</code></pre><h2 id="require-参数解析"><a href="#require-参数解析" class="headerlink" title="require 参数解析"></a>require 参数解析</h2><pre><code>    require(&apos;./foo&apos;);
-    require(&apos;fs&apos;);//
-
-引入一个叫fs的模块，node会帮我们把fs加载进来
-var fs=require(&apos;fs&apos;);
-</code></pre><h2 id="fs-readFile-读文件"><a href="#fs-readFile-读文件" class="headerlink" title="fs.readFile() 读文件"></a>fs.readFile() 读文件</h2><pre><code>参数：1 路径
-    2 编码格式
-    3 回调函数 1，err错误对象  2 读得参数
-fs.readFile(&apos;路径&apos;,&apos;utf8&apos;,function(){
-
-    })
-</code></pre><h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><pre><code>还有一种特殊的文件模块，其实就是包
-包的作用：在模块的基础上进一步组织JavaScript代码
-</code></pre><h2 id="包得组成"><a href="#包得组成" class="headerlink" title="包得组成"></a>包得组成</h2><pre><code>   包结构
-包就是一个文件夹，文件夹的名字最好是包名。
-（1、2是必选项）
-    1. 入口文件 index.js或app.js  写大的应用例如网站的时候，叫app.js
-    2. 包说明文件，不只是给人看的~~~~----&gt;package.json
-    3. lib文件夹 存放js文件的
-    4. bin文件夹 二进制文件或者脚本文件
-    5. test  测试文件夹
-    6. docs  文档放这里
-    7. node_modules 如果我需要引入别的包,不能改
-
-  8 包描述文件package.json
-    描述你的当前的包的一些相关的信息
-</code></pre><h2 id="package-json-属性解释"><a href="#package-json-属性解释" class="headerlink" title="package.json 属性解释"></a>package.json 属性解释</h2><pre><code>- name 包名
-- version 版本号
-- description 包的描述
-- main 入口文件
-- keywords 关键词
-- author 作者
-- repository 代码库地址
-- bugs 提交地址
-- license 许可证
-- devDependencies 开发环境包依赖
-- dependencies 生产环境包依赖
-</code></pre><h2 id="dependencies"><a href="#dependencies" class="headerlink" title="+ dependencies"></a>+ dependencies</h2><pre><code>-  包名：“版本号” 
--  &gt; +版本号   下载大于某个版本号，npm会下最新版
--  &lt; +版本号   下载小于某个版本号，npm会下小于这个版本号最新版
--  &lt;= 小于等于 一定会下你写的这个版本，除非没有你写的这个版本
--  &gt;= 大于等于  下载最新版
--   *、&quot; &quot;、X  任意 npm会给你下最新版
--   ^ +版本号  不跃迁版本下载，^2.1.0 npm会下载大版本不变，去下载2.x.x版本里的最近版
--   ~ +版本号  会去下约等于这个版本的最新版，在大版本不变的情况下下一个比较新的版本
-</code></pre><h2 id="语义化版本号"><a href="#语义化版本号" class="headerlink" title="语义化版本号"></a>语义化版本号</h2><pre><code>1.2.3
-1表示重大更新
-2表示向下兼容
-3表示补丁包更新
-</code></pre><h1 id="npm"><a href="#npm" class="headerlink" title="npm"></a>npm</h1><pre><code>即为node package manager 得缩写 
-（通过 npm help 查看命令列表 
-npm –l 查看各个命令的简单用法）
-
-- 基于Node.js开发的包的托管网站
-- Node.js包管理工具
-
-npm :基于包的规范实现的一个包管理工具
-1 npm init 初始化一个package.json
-
-2 npm install  安装package.json里面设定好的依赖的包
-
-- npm install 包名
-  npm i jquery@3.2.1
-
-3 npm install --save 生产环境
-npm i -S jquery
-
-4  npm install -g 包名 只要是全局安装就是安装命令行工具
-
-- npm install 缩写 npm i
-- npm install -save-dev 开发环境
-npm i -D jquery
-5 npm config set prefix  修改全局安装目录
-</code></pre><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><pre><code>        箭头函数就是一种语法糖
-语法糖是一种语法，用这种语法能尝到甜头，能是编程高效
-当函数体有一个参数有返回值的时候
-
-var foo=function(v){ return v;}
-var foo=v=&gt;v;
-当函数体没有参数有返回值的时候
-
-var foo=function(){ return v;}
-
-var foo=()=&gt;v;
-当函数体有多个参数有返回值的时候
-
-var foo=function(v1,v2){ return v1+v2;}
-var foo=(v1,v2)=&gt;v1+v2;
-当函数体有多个参数没有返回值的时候
-var foo=function(v1,v2){ 
-  console.log(v1); console.log(v2);
-  }
-var foo=(v1,v2)=&gt;{
-  console.log(v1); console.log(v2);
-  };
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/12/Nodejs/">展开全文 >></a>
         </p>
       
 
@@ -1651,15 +1602,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1671,6 +1618,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
@@ -1679,7 +1630,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1687,7 +1638,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1700,6 +1651,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">

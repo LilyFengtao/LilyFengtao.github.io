@@ -152,6 +152,319 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Gulp插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/26/Gulp插件/">Gulp插件</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/26/Gulp插件/" class="archive-article-date">
+  	<time datetime="2017-01-26T13:29:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Gulp-API"><a href="#Gulp-API" class="headerlink" title="Gulp API"></a>Gulp API</h4><pre><code>  Gulp是基于Nodejs的，通过require可以引入一个Nodejs的包（模块），其作用类似浏览器中的script标签引入资源，被引入的包放入node_modules目录下
+1 gulp.task() 定义各种不同的任务，
+例： gulp.task(&apos;less&apos;,function(){})
+不同任务存在依赖关系，可以指定依赖
+gulp.task(&apos;less&apos;,[&apos;依赖1&apos;,&apos;依赖2&apos;],function(){})
+2 gulp.src()  需要构建资源的路径，字符串或数组（可以正则方式书写）
+例： //less任务名称 回调方法里定义任务
+gulp.task(&apos;less&apos;,function(){
+    //需要编译less
+    gulp.src(&apos;./public/less/**/*.js&apos;)
+    })
+3 gulp.pipe()  管道，将需要构建的资源输送给插件
+例： gulp.task(&apos;less&apos;,function(){
+    gulp.src(./public/less/**/*.js&apos;)
+    .pipe(less())
+    })
+4 gulp.dest() 构建任务完成资源存放的路径（自动创建）
+    例：gulp.task(&apos;less&apos;,function(){
+    gulp.src(./public/less/**/*.js&apos;)
+    .pipe(less())
+    .pipe(gulp.dest(&apos;./public/css&apos;))
+    })
+5 gulp.watch()
+    通过监视某静态资源的修改，然后可以调用相应任务。
+</code></pre><h4 id="常用Gulp插件"><a href="#常用Gulp插件" class="headerlink" title="常用Gulp插件"></a>常用Gulp插件</h4><pre><code>1 gulp-less 编译LESS文件
+2 gulp-autoprefixer 添加CSS私有前缀
+3 gulp-cssmin 压缩Css
+4 gulp-imagemin 压缩图片
+5 gulp-uglify 压缩javascript
+6 gulp-concat 合并
+7 gulp-htmlmin 压缩HTML  
+8 gulp-rev 添加版本好
+使用md5 生成字符串，添加在参数后面，用于解决缓存问题。 生成对应版本.
+gulp-rev-collector 内容替换存储【
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Gulp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/26/Gulp插件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Gulp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/23/Gulp/">Gulp</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/23/Gulp/" class="archive-article-date">
+  	<time datetime="2017-01-23T12:43:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="项目构建"><a href="#项目构建" class="headerlink" title="项目构建"></a>项目构建</h4><pre><code>项目构建是指项目上线之前对项目源代码进行一系列处理，使其以最佳的形式运行于线上服务器。常见处理任包括以下几方面：
+1 模块化开发可以实现功能的复用并解决模块间的依赖关系，缺点：使功能代码的碎片化程度增加。
+2 使用less、sass等预处理器，可以降低CSS的维护成本，最终需要将这些预处理器编译成css文件；
+3 对静态资源（css、js、html、images）压缩合并可以提升网页打开速度，提高性能；
+
+常见的构建工具：Grunt,Gulp,webpack等
+</code></pre><h4 id="Gulp"><a href="#Gulp" class="headerlink" title="Gulp"></a>Gulp</h4><pre><code>Gulp是基于Nodejs开发的一个构建工具，借助gulp插件可以实现不同的构建任务，其优点是，简洁的配置和卓越的性能。
+全局安装  
+npm install -g gulp 会给我们配置一个环境变量
+ 环境变量:我们在命令行输入命令，可以分为两种
+1 windows 自带的命令  ipconfig/all 自带的命令
+2  第三方的软件提供的命令.
+     我们怎么去看着环境变量,计算机--属性--高级系统设置--环境变量
+  找到一个path 的变量名，这个是路径.
+  我在命令行去输入命令，都是根据环境变量里面的path 去找对应的命令
+</code></pre><h4 id="Gulp基础"><a href="#Gulp基础" class="headerlink" title="Gulp基础"></a>Gulp基础</h4><pre><code>1 本地安装gulp
+进入项目根目录执行 npm install gulp --save-dev(添加--save-dev会在package.json记录依赖关系)
+2 在项目根目录中创建gulpfile.js,gulp会参考配置文件执行构建任务
+例： //引入gulp
+    var gulp=require(&quot;gulp&quot;);
+    gulp.task(&quot;default&quot;,function(){
+        //定义任务
+        })
+3 定义任务
+在gulpfile.js定义构建任务，如压缩，合并等。
+gulp是通过调用插件来完成具体构建任务，并且插件也都基于Nodejs，以编译LESS伪例
+ 安装 npm install gulp-less
+ 例：var gulp=require(&quot;gulp&quot;);
+         less=require(&quot;gulp-less&quot;);
+         gulp.task(&quot;less&quot;,function(){
+             //定义任务
+             return gulp.src(&apos;./public/less/*.less&apos;)
+             .pipe(less())
+             .pipe(gulp.dest(&apos;./public/css&apos;))
+             })
+  4 执行任务
+   打开命令行窗口并切换到项目根目录下，执行命令gulp less,这时候全局安装的gulp便以定义好的gulpfile.js执行构建任务了。
+</code></pre><h4 id="Gulp工作原理"><a href="#Gulp工作原理" class="headerlink" title="Gulp工作原理"></a>Gulp工作原理</h4><pre><code> 自动化任务运行器{
+         文件合并 gulp-concat
+         文本替换 gulp-replace
+         文件拷贝 gulp-copy
+         JS压缩   gulp-uglify
+         CSS压缩  gulp-cssmin
+         图片压缩  gulp-imagemin
+ }
+通过不同的插件实现构建任务，gulp只是配置文件调用执行了这些插件。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Gulp</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/23/Gulp/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-混合app开发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/21/混合app开发/">混合app开发</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/21/混合app开发/" class="archive-article-date">
+  	<time datetime="2017-01-21T01:32:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么式混合app？"><a href="#什么式混合app？" class="headerlink" title="什么式混合app？"></a>什么式混合app？</h4><pre><code>application(应用)
+用web前端只是开发出来app的方式叫做混合app开发
+</code></pre><h4 id="移动端开发的框架"><a href="#移动端开发的框架" class="headerlink" title="移动端开发的框架"></a>移动端开发的框架</h4><pre><code>Ionic
+Html5+
+AppCan
+</code></pre><h4 id="现在app开发类型有几种？"><a href="#现在app开发类型有几种？" class="headerlink" title="现在app开发类型有几种？"></a>现在app开发类型有几种？</h4><pre><code>1 webApp：就是浏览器中运行的web应用
+2 NativeApp：用android和Object-C等原生语言开发的应用
+3 HybidApp:就是外面式原生的壳，里面是webapp应 用，兼具二者优势
+</code></pre><h4 id="webApp-HybridApp-NativeApp对比"><a href="#webApp-HybridApp-NativeApp对比" class="headerlink" title="webApp HybridApp NativeApp对比"></a>webApp HybridApp NativeApp对比</h4><pre><code> webApp(网页应用) HybridApp(混合应用) NativeApp(原生应用)
+开发成本      低                    中                    高
+维护更新
+</code></pre><h4 id="基于事务"><a href="#基于事务" class="headerlink" title="基于事务"></a>基于事务</h4><pre><code>在indexDB中，事物会自动递交或回滚，所以无需手动commit或者rollback
+事物分三种
+1 IDBTrans
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">app</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/21/混合app开发/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-用hexo-github搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1003,424 +1316,6 @@ Deploy是编译之后的可用于文件打包的文件，src中的是开发文�
 
 
   
-    <article id="post-bootstrap学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/10/bootstrap学习/">bootstrap学习</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/10/bootstrap学习/" class="archive-article-date">
-  	<time datetime="2016-01-10T00:31:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="bootstrap-的简介"><a href="#bootstrap-的简介" class="headerlink" title="bootstrap 的简介"></a>bootstrap 的简介</h3><pre><code>bootstrap 是一个快速开发web 应用程序和网站的前端框架，是基于HTML CSS Javascript的。
-</code></pre><h4 id="为什么用bootstrap？"><a href="#为什么用bootstrap？" class="headerlink" title="为什么用bootstrap？"></a>为什么用bootstrap？</h4><pre><code>1 移动端设备优先：自 Bootstrap 3 起，框架包含了贯穿于整个库的移动设备优先的样式。
-2 浏览器支持 ：所有的主流浏览器都支持bootstrap
-3 响应式设计： bootstrap的响应式css能够自适应台式机，平板电脑和手机。
-</code></pre><h2 id="环境安装及配置"><a href="#环境安装及配置" class="headerlink" title="环境安装及配置"></a>环境安装及配置</h2><h3 id="引入以下五个-为基本模板"><a href="#引入以下五个-为基本模板" class="headerlink" title="引入以下五个,为基本模板"></a>引入以下五个,为基本模板</h3><pre><code>//      引入boothstrap的核心css部分
- 1&lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt;
-&lt;!--htnl5shiv是标签兼容 兼容IE8一下--&gt;
-&lt;script src=&quot;lib/html5shiv/html5shiv.min.js&quot;&gt;&lt;/script&gt;
-&lt;!--引入respond的媒体查询的兼容性问题--&gt;
-&lt;script src=&quot;lib/respond/respond.min.js&quot;&gt;&lt;/script&gt;
-&lt;!--引入jquery--&gt;
-&lt;script src=&quot;lib/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
-&lt;!--引入bootstrap--&gt;
-&lt;script src=&quot;lib/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
-</code></pre><h3 id="排版部分"><a href="#排版部分" class="headerlink" title="排版部分"></a>排版部分</h3><pre><code>   一： 标题部分
- 1.1 h1~h6 
-
- 1.2 主标题下面有副标题的情况  用small
-  例： &lt;h1&gt;我是主标题 &lt;small&gt;我是付标题&lt;/small&gt;&lt;/h1&gt;
-
- 1.3  段落部分（正文部分） p
-
- 1.4  强调内容  lead 其作用就是增大文本字号，加粗文本，而且对行高和margin也做相应的处理。
-  例：&lt;p class=&quot;lead&quot;&gt;我是强调的段落&lt;/p&gt;
-
- 1.5 &lt;b&gt;和&lt;strong&gt;标签让文本直接加粗。
-
- 1.6 &lt;em&gt;或&lt;i&gt;来实现斜体
-
- 1.7 强调相关的类
-   .text-muted：提示，使用浅灰色（#999）
-   .text-primary：主要，使用蓝色（#428bca）
-   .text-success：成功，使用浅绿色(#3c763d)
-   .text-info：通知信息，使用浅蓝色（#31708f）
-   .text-warning：警告，使用黄色（#8a6d3b）
-   .text-danger：危险，使用褐色（#a94442）
-
-  1.8 文本对齐风格
-     .text-left：左对齐
-     .text-center：居中对齐
-     .text-right：右对齐
-.text-justify：两端对齐
-
-   1.9 列表
-    通过给无序列表添加一个类名“.list-unstyled”,这样就可以去除默认的列表样式的风格。
-
-   1.10 表格行
-    .active    表示当前活动的信息
-    .success    表示成功或者正确的行为
-    .info    表示中立的信息或行为
-    .warning    表示警告，需要特别注意
-    .danger    表示危险或者可能是错误的行为
-</code></pre><h3 id="表单部分"><a href="#表单部分" class="headerlink" title="表单部分"></a>表单部分</h3><pre><code> 表单主要功能用来与用户做交流的一个网页控件，主要包括：文本输入框，下拉选择框，单选按钮，文本域和按钮。
-1.1水平表单
-    在Bootstrap框架中要实现水平表单效果，必须满足以下两个条件：
- 1、在&lt;form&gt;元素是使用类名“form-horizontal”。
- 在&lt;form&gt;元素上使用类名“form-horizontal”主要有以下几个作用：
- 1、设置表单控件padding和margin值。
- 2、改变“form-group”的表现形式，类似于网格系统的“row”。
- 2、配合Bootstrap框架的网格系统。
-
-1.2 内联表单
-    你只需要在&lt;form&gt;元素中添加类名“form-inline”即可。
-
-1.3 表单控件 (文本域textarea）
- 因为Bootstrap框架中的“form-control”样式的表单控件宽度为100%或auto。
-
- 1.4 表单控件（按钮）
- 在Bootstrap框架中的按钮都是采用&lt;button&gt;来实现。
- 1 按钮大小 .btn-lg 变大  .btn.sm 变小  .btn.xs 超小 
-
- 1.5 表单控件大小 
- 1、input-sm:让控件比正常大小更小
- 2、input-lg:让控件比正常大小更大
-
- 1.6 复选框checkbox 和单选按钮 radio
-     1 如果checkbox 需要水平排列，只需在label 标签添加类名 checkbox-inline
-     2 如果radio 炫耀水平排列，在label 标签上添加类名 radio-inline
- 1.7 表单控件 (输入框 input)
-
- 1.8 表单控件 （下拉选择框select）
-
- 1.9 表单控件状态
- 焦点状态是通过伪类 focus 来实现的
-
- 1.10 表单的控件（禁用状态：disabled)
-
- 1.11 表单的验证状态
- 1 .has-warning :警告状态（黄色）
- 2 .has-error: 错误状态（红色）
- 3 .hsa-success :成功状态 （绿色）
-
- 1.12表单提示信息  help-block
-
- 1.13 按钮激活状态  
-    点击状态 :active  
-   焦点状态：focus
-
- 1.14 图像
- 1 img-responsive 响应式图片，主要对于响应式设计
- 2 img-rounded 圆角图片
- 3 img-circle 圆形图片
- 4 img-thumbnail 缩略图
- 使用方法，在img 标签添加对应的类名
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/10/bootstrap学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/18/git远程仓库/">git远程仓库</a>
-    </h1>
-  
-
-        
-        <a href="/2015/09/18/git远程仓库/" class="archive-article-date">
-  	<time datetime="2015-09-18T09:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="创建共享仓库"><a href="#创建共享仓库" class="headerlink" title="创建共享仓库"></a>创建共享仓库</h4><pre><code>Git要求共享仓库是一个以.git结尾的目录。
-mkdir repo.git 创建以.git结尾目录
-cd repo.git 进入这个目录
-git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare
-</code></pre><h4 id="git与github的关系？"><a href="#git与github的关系？" class="headerlink" title="git与github的关系？"></a>git与github的关系？</h4><pre><code>git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。
-github就是一个网站，一个代码托管平台。
-</code></pre><h4 id="配置github"><a href="#配置github" class="headerlink" title="配置github"></a>配置github</h4><pre><code>1 在本地电脑上创建一对密钥
-cmd|bash|terminal 上输入指令：ssh-keygen -t rsa  
-</code></pre><h4 id="git指令"><a href="#git指令" class="headerlink" title="git指令"></a>git指令</h4><pre><code>1 git pull [remote url] branchname
-从远程服务器上获取指定仓库的分支，并且与工作目录的分支惊醒何必管操作。
-如果出现冲突，就手动解决即可
-2 git push [remote url] branchname
-如果本地开发工作完成，要将本地仓库的版本递交到远程仓库，实现共享与项目合并。
-3 git fetch [remote url] branch
-</code></pre><h4 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h4><pre><code>1  git config配置本地仓库
-   常用git config --global user.name、git config --global user.email
-2 git config --list查看配置详情
-3 git init 初始一个仓库，添加--bare可以初始化一个共享（裸）仓库
-4 git status 可以查看当前仓库的状态
-5 git add“文件” 将工作区中的文件添加 到暂存区中，其中file可是一个单独的文件，也可以是一个目录、“*”、-A
-6 git commit -m &apos;备注信息&apos; 将暂存区的文件，提交到本地仓库
-7 git log 可以查看本地仓库的提交历史
-8 git branch查看分支
-9 git branch“分支名称” 创建一个新的分支
-10 git checkout“分支名称” 切换分支
-11 git checkout -b deeveloper 他健并切到developer分支
-12 git merge“分支名称” 合并分支
-13 git branch -d “分支名称” 删除分支
-14 git clone “仓库地址”获取已有仓库的副本
-15 git push origin “本地分支名称:远程分支名称”将本地分支推送至远程仓库，
-git push origin hotfix（通常的写法）相当于
-git push origin hotfix:hotfix
-git push origin hotfix:newfeature
-本地仓库分支名称和远程仓库分支名称一样的情况下可以简写成一个，即git push “仓库地址” “分支名称”，如果远程仓库没有对应分支，将会自动创建
-16 git remote add “主机名称” “远程仓库地址”添加远程主机，即给远程主机起个别名，方便使用
-17 git remote 可以查看已添加的远程主机
-18 git remote show “主机名称”可以查看远程主机的信息
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/18/git远程仓库/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/10/git/">flex布局</a>
-    </h1>
-  
-
-        
-        <a href="/2015/09/10/git/" class="archive-article-date">
-  	<time datetime="2015-09-10T06:04:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="父元素设置"><a href="#父元素设置" class="headerlink" title="父元素设置"></a>父元素设置</h4><pre><code>使用flex布局的时候，给父元素设置display:flex;
-justify-content:center  水平居中
-align-items:center  垂直居中
-</code></pre><h4 id="设置子元素沿主轴排列-justify-content"><a href="#设置子元素沿主轴排列-justify-content" class="headerlink" title="设置子元素沿主轴排列 justify-content"></a>设置子元素沿主轴排列 justify-content</h4><pre><code>1 flex-start 沿开始位置对齐
-  display:flex;
-    justify-content:flex-start
-2 flex-end 沿末端位置对齐
-    display:flex
-    justify-content:flex-end
-3 center 居中对齐
-  display:flex
-  justify-content:center
-4 space-around 环绕均匀分布
-  display:flex;
-  justify-content:space-around;
-5  space-between 两端对齐的均匀分布
-   display:flex
-   justify-content:space-between
-</code></pre><h4 id="设置子容器如何沿交叉轴排列-align-items"><a href="#设置子容器如何沿交叉轴排列-align-items" class="headerlink" title="设置子容器如何沿交叉轴排列  align-items"></a>设置子容器如何沿交叉轴排列  align-items</h4><pre><code>1 flex-start 沿开始位置对齐
-  display:flex
-  align-items:flex-start
-2 flex-ensd 沿末尾对齐
-     dispay:flex 
-     align-item:flex-end
-3 center 沿中间对齐
-        diplay:flex
-        align-items:center
-4 baseline 基线对齐
-  diplay:flex
-  align-items:baseline
-5 stretch 拉伸致和父元素一致
-    diplay:flex
-    align-items:stretch
-</code></pre><h4 id="子容器"><a href="#子容器" class="headerlink" title="子容器"></a>子容器</h4><pre><code>1 在主容器上设置display:flex
-2 单独设置子容器的排列 align-self 
-每个子容器可以单独自定义沿主轴排列的方式，此属性和父容器的align-items 属性完全一致
-如果两个同时设置，则以子容器align-self 属性为准
-</code></pre><h4 id="主轴的方向"><a href="#主轴的方向" class="headerlink" title="主轴的方向"></a>主轴的方向</h4><pre><code> justify-content 决定子容器的主轴排列方式， align-items 为交叉轴的排列方式
- flex-direction 属性决定主轴的方向 ,交叉轴方向有主轴决定
-1 向右   flex-direction:row
-2 向下 flex-direction:column
-3 向上 flex-direction:column-reverse
-4 向左 flex-direction:row-reverse
-</code></pre><h4 id="flex-进阶-父容器"><a href="#flex-进阶-父容器" class="headerlink" title="flex 进阶 父容器"></a>flex 进阶 父容器</h4><pre><code>1 设置换行方式  flex-wrap 
-display:flex
-flex-wrap:nowrap  //不换行
-flex-wrap:wrap 换行
-flex-wrap:wrap-reverse //逆序换行（沿着交叉轴的反方向换行）
-</code></pre><h4 id="多行沿交叉轴对齐-align-content"><a href="#多行沿交叉轴对齐-align-content" class="headerlink" title="多行沿交叉轴对齐 align-content"></a>多行沿交叉轴对齐 align-content</h4><pre><code>1 display:flex
- align-content:flex-start 沿起始端对齐 
-2 display:flex
- align-content:flex-end  沿末尾对齐
-3 display:flex 
- align-content:center 沿中间对齐
-4 display:flex 
-align-content:space-around 环绕均匀对齐
-5 display:flex
-  align-content:stretch  拉伸和父容器一样的高度
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">css 布局</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/09/10/git/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1530,15 +1425,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1550,6 +1441,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
@@ -1558,7 +1453,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1566,7 +1461,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1579,6 +1474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">

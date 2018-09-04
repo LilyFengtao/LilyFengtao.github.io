@@ -152,6 +152,336 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jQuery功能操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/15/jQuery功能操作/">jQuery功能操作</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/15/jQuery功能操作/" class="archive-article-date">
+  	<time datetime="2015-07-14T17:29:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Css操作"><a href="#Css操作" class="headerlink" title="Css操作"></a>Css操作</h2><pre><code>功能：设置或者修改样式，操作的是style属性。
+
+1 设置单个样式
+    name：需要设置的样式名称
+    value：对应的样式值
+    css(name, value);
+    使用案例
+    $(&quot;#one&quot;).css(&quot;background&quot;,&quot;gray&quot;);//将背景色修改为灰色
+2 设置多个样式
+
+  参数是一个对象，对象中包含了需要设置的样式名和样式值
+    css(obj);
+    使用案例
+    $(&quot;#one&quot;).css({
+    &quot;background&quot;:&quot;gray&quot;,
+    &quot;width&quot;:&quot;400px&quot;,
+    &quot;height&quot;:&quot;200px&quot;
+    });
+
+3 获取样式
+
+    name:需要获取的样式名称
+    css(name);
+    案例
+    $(&quot;div&quot;).css(&quot;background-color&quot;);
+    注意：获取样式操作只会返回第一个元素对应的样式值。
+</code></pre><h2 id="class操作"><a href="#class操作" class="headerlink" title="class操作"></a>class操作</h2><pre><code>1 添加样式 addClass()
+    name：需要添加的样式类名，注意参数不要带点.
+    addClass(name);
+    例子,给所有的div添加one的样式。
+    $(“div”).addClass(“one”);
+2 移除所有样式 removeClass()
+     不带参数，移除所有的样式类
+    removeClass()
+    例子，移除div所有的样式类
+    $(“div”).removeClass();
+3 移除单个样式
+    name:需要移除的样式类名
+    removeClass(“name”);
+    例子，移除div中one的样式类名
+    $(“div”).removeClass(“one”);
+4  判断是否有样式值 hasClass()
+    name:用于判断的样式类名，返回值为true false
+    hasClass(name)
+    例子，判断第一个div是否有one的样式类
+    $(“div”).hasClass(“one”);
+5 切换样式 toggleClass() 
+    toggleClass(name);
+    例子
+    $(“div”).toggleClass(“one”);
+
+    经验总结：
+    1.    如果操作到的样式非常少，可以考虑css方法
+    2. 如果操作到的样式非常多，那么可以通过class方法来操作，将样式写到一个class类里面。
+    3.    如果考虑到后期维护方便，将css从js中分离出来，那么推荐使用class的方式来操作。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/15/jQuery功能操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-jQuery介绍及选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/10/jQuery介绍及选择器/">jQuery介绍及选择器</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/10/jQuery介绍及选择器/" class="archive-article-date">
+  	<time datetime="2015-07-10T08:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是jQuery"><a href="#什么是jQuery" class="headerlink" title="什么是jQuery?"></a>什么是jQuery?</h2><pre><code>jQery是一个javascript的库，使用js文件，内部封装了许多方法供我们使用。
+</code></pre><h2 id="jQ的入口函数"><a href="#jQ的入口函数" class="headerlink" title="jQ的入口函数"></a>jQ的入口函数</h2><pre><code>1 $(document).ready(function(){    });
+2 $(function(){ })
+jQ的入口函数加载时机，页面生成后触发；
+jQ两种执行顺序，谁在签名先执行谁。
+</code></pre><h2 id="jQ对象和Dom对象之间的关系？"><a href="#jQ对象和Dom对象之间的关系？" class="headerlink" title="jQ对象和Dom对象之间的关系？"></a>jQ对象和Dom对象之间的关系？</h2><pre><code>1 Dom对象就是原生Jjs种提供的对象，使用js方法获取的对象
+2 jQ 对象就是提供jQ的方式不获取的对象
+2 Dom对象无法使用jq的属性和方法，jq也无法使用Dom的属性和方法
+4 jq对象的内部包含了所需要的Dom对象，jq对象是Dom对象的包装集
+</code></pre><h2 id="jQ对象和Dom对象之间的转换？"><a href="#jQ对象和Dom对象之间的转换？" class="headerlink" title="jQ对象和Dom对象之间的转换？"></a>jQ对象和Dom对象之间的转换？</h2><pre><code>1 使用$()包裹一个Dom对象，可以将这个Dom对象转换为jq对象
+    例：$box=$(#box)
+2 将jq转换为Dom 对象
+    例： $(&quot;box&quot;)[0]或 $(&quot;box&quot;).get(0);
+</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>1 传统选择器
+
+- 标签选择器： $(&quot;div&quot;)
+- 类选择器: $(&quot;.box&quot;)
+- id 选择器 $(&quot;#box&quot;)
+- 子代选择器 $(&quot;#list&gt;li&quot;)
+- 后代选择器 $(&quot;#list li&quot;)
+
+2 过滤选择器
+
+- eq(书写索引值) 可以去除索引值
+- even 选中索引值为偶数的元素
+- odd 选中索引值为奇数的元素
+
+3  筛选选择器
+- children() 子代选择器 
+- find()      后代选择器
+- siblings()  兄弟选择器，获取所有同级元素
+- parent()  父元素，想弹鼓parentNode
+- eq()       筛选选择器（可以获取一些标签种指定的标签)
+- next()    获取最后一个同级元素
+- prev()     获取抢一个同级元素
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/10/jQuery介绍及选择器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-事件响应及让网页交互" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/07/09/事件响应及让网页交互/">事件响应及让网页交互</a>
+    </h1>
+  
+
+        
+        <a href="/2015/07/09/事件响应及让网页交互/" class="archive-article-date">
+  	<time datetime="2015-07-09T09:08:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是事件？"><a href="#什么是事件？" class="headerlink" title="什么是事件？"></a>什么是事件？</h4><pre><code> JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为。 网页中的每个元素都可以产生某些可以触发 JavaScript 函数或程序的事件。
+1 鼠标单击事件 onclick
+    onclick是鼠标单击事件，当在网页上单击鼠标时，就会发生该事件。同时onclick事件调用的程序块就会被执行，通常与按钮一起使用。
+2 鼠标经过事件 onmouseover
+    鼠标经过事件，当鼠标移到一个对象上时，该对象就触发onmouseover事件，并执行onmouseover事件调用的程序。
+3 鼠标移开事件 onmouseout
+    鼠标移开事件，当鼠标移开当前对象时，执行onmouseout调用的程序。
+4 光标聚集事件 onfocus
+    当网页中的对象获得聚点时，执行onfocus调用的程序就会被执行。
+5 失焦事件 onblur
+    onblur事件与onfocus是相对事件，当光标离开当前获得聚焦对象的时候，触发onblur事件，同时执行被调用的程序。
+6 内容选中事件 onselect
+ 选中事件，当文本框或者文本域中的文字被选中时，触发onselect事件，同时调用的程序就会被执行。
+ 7 文本框内容改变事件 onchange
+ 通过改变文本框的内容来触发onchange事件，同时执行被调用的程序
+ 8 加载事件 onload
+     事件会在页面加载完成后，立即发生，同时执行被调用的程序。
+    注意：1. 加载页面时，触发onload事件，事件写在&lt;body&gt;标签内。
+      2. 此节的加载页面，可理解为打开一个新页面时。
+  9 卸载事件 onunload
+      当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/07/09/事件响应及让网页交互/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-节点Node" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -956,395 +1286,6 @@ var fun2=function(){
 
 
   
-    <article id="post-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/23/数组/">数组</a>
-    </h1>
-  
-
-        
-        <a href="/2015/05/23/数组/" class="archive-article-date">
-  	<time datetime="2015-05-23T11:14:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><pre><code>数组定义：
-var 数组名（例如：ary)=[]或者
-var ary=new Array();
-数组赋值：
-通过下标（索引）的方式给数组赋值。索引从0开始。
-例：var  ary=[]
-    ary[0]=&quot;哈哈&quot;
-    alert(ary)
-数组取值：
-通过索引的方式取值   
-例：var ary[1,2,3,4,5,6]  
-  alert(ary[1])     
-</code></pre><h4 id="数组的遍历"><a href="#数组的遍历" class="headerlink" title="数组的遍历"></a>数组的遍历</h4><pre><code>获取数组的长度：通过length属性获取长度
-数组名.length
-例：数组的长度
-    var ary=[1,2,3,4,5,6]
-    alert(ary.length)
-数组的遍历
-var ary=[1,2,3,4,5,6]
-for(var i=0;i&lt;ary.length;i++){
-    if(ary[i]%2==0){
-        alert(ary[i])
-    }
-}
-</code></pre><h4 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h4><pre><code>1 数组的合并 concat
-var ary3=ary1.concat(ary2)
-alert(ary3)
-注意：通过数组合并的方法后，得到的是一个新数组。                                           
-2 数组中设置链接的字符 join
-var ary=[1,2,3,4,5]
-var newary=ary.join(&quot;|&quot;)
-alert(newary)
-注意: 通过join方法返回的是一个字符串
-3 push()
-所有的参数都会被按照顺序添加到ary的最后面，作为新的元素
-4 pop()
-从数组最后删除一个元素，返回值为删除掉的元素
-5 unshift()
-所有参数都会被按照顺序添加到ary的最前面，作为新的元素，发布会最为新的数组。
-6 shift()
-从最前面删除一个元素，返回值为删除掉的元素
-7 slice(start,end) 拷贝数组中的一段数据（只含start，不包括end)
-8 splice(start,length) 截取数组ary中的一部分元素，并返回 
-例：  object.splice(a)从左边开始删除a个元素
-      object.splice(a,b) 从a开始截取其中b个元素
-      object.splice(a,b,c.d)从a位置开始截取b个元素，并将c,和d或者更多的元素插入原数组
-</code></pre><h4 id="数组的检测方式"><a href="#数组的检测方式" class="headerlink" title="数组的检测方式"></a>数组的检测方式</h4><pre><code>1 Arrray.isArray()
-有兼容问题。ie低版本不支持
-2 (ary)instanceof Array
-3 object.protype.tostring.call(ary)
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/23/数组/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-switch语句及循环" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/16/switch语句及循环/">switch语句及循环</a>
-    </h1>
-  
-
-        
-        <a href="/2015/05/16/switch语句及循环/" class="archive-article-date">
-  	<time datetime="2015-05-16T03:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="switch-语句"><a href="#switch-语句" class="headerlink" title="switch 语句"></a>switch 语句</h3><pre><code>语法格式：
- switch(变量){
-     case 值1:
-     代码语句,
-     break,
-     case  值2:
-    代码语句;
-    break;
-    default:
-    代码语句;
-    break;
-        }
- }
-注意：1switch中变量的数据类型必须与case后的值数据类型保持一致。 
-2 每一个case语句结束后，必须以break结束。
-3 一般变量的值是一个具体值，推荐使用switch，如果变量表示的是一个范围，推荐使用条件判断。
-4 在switch语句中，case后面的值可以放到一块判断。
-</code></pre><h3 id="变量自增自减"><a href="#变量自增自减" class="headerlink" title="变量自增自减"></a>变量自增自减</h3><pre><code>i++
-如果把i++赋值给一个变量，那么该变量的值等于变量i增加1之前的值  【先赋值后计算】
-++i
-如果把++i 赋值给一个变量，那么该变量的值等于变量i增加1之后的值【先计算后赋值】
- 自减：
-        i--：
-       先赋值后计算
-        --i：
-        先计算后赋值
-</code></pre><h3 id="while-循环"><a href="#while-循环" class="headerlink" title="while 循环"></a>while 循环</h3><pre><code>语法格式：
-while(条件表达式){
-    循环体代码
-}
-执行顺序：
-    首先程序判断条件表达式是否成立，如果成立（true）,那么循环体中的代码一直执行。如果条件表达式为false,那么循环体中的代码不会执行。
-    注意：
-          在写循环中，一定要注意避免死循环。
-</code></pre><h3 id="do-while-循环"><a href="#do-while-循环" class="headerlink" title="do while 循环"></a>do while 循环</h3><pre><code> 语法格式：
-       do{
-            循环体代码；
-         }while(条件表达式);
- 执行顺序：
-     首先执行do中的循环体代码，然后判断条件是否满足，如果满足，那么循环体中的代码继续执行，否则不再执行。
-
-do while循环与while循环的区别：
- 在条件不满足的情况下，do while循环要比while循环多执行一次。
-</code></pre><h3 id="for-循环"><a href="#for-循环" class="headerlink" title="for 循环"></a>for 循环</h3><pre><code> 语法格式：
-for(变量初始化;条件表达式; 变量自增（变量自减）){
-              循环体代码；
-         }
-执行顺序：
-       首先执行变量初始化，然后判断条件，如果条件满足，执行循环体代码，最后执行变量自增或自减。然后继续判断条件是否满足，如果满足重复执行，否则循环体代码不再执行。
-</code></pre><h3 id="break-语句和continue语句"><a href="#break-语句和continue语句" class="headerlink" title="break 语句和continue语句"></a>break 语句和continue语句</h3><pre><code> Break语句：
-          在循环中，代码遇到break语句时，程序立即结束当前循环。
-Continue语句：
-        在循环中，代码遇到continue语句时，程序立即结束本次循环，进入到下一次循环中。 执行完cotinue语句后，后面的代码不会执行
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/16/switch语句及循环/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JS数据类型转换及Math对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/10/JS数据类型转换及Math对象/">JS数据类型转换及Math对象</a>
-    </h1>
-  
-
-        
-        <a href="/2015/05/10/JS数据类型转换及Math对象/" class="archive-article-date">
-  	<time datetime="2015-05-10T07:02:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Math-对象"><a href="#Math-对象" class="headerlink" title="Math 对象"></a>Math 对象</h3><pre><code>1 Math.ceil(x) 天花板函数 对数字进行向上舍入返回一个大于当前数字的最接近的整数。
-2 Math.floor(x) 地板函数 对数字进行向下舍入，返回一个小于当前数字的最接近的整数。
-3 Math.pow(x,y) 返回x值的y次方
-4 Math,max(x,y)  返回最大值
-5 Math.mix(x,y) 返回最小值
-6 Math.random()  返回0-1的随机数
-7 Math.round(X)  返回一个数字四舍五入后的整数
-8 Math.abs(x)   返回一个值的绝对值
-</code></pre><h3 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h3><pre><code>1 隐式类型转换： 变量在运算过程中发生的数据类型转换
-2 显示（强制）类型转换
-</code></pre><h3 id="强制类型转换"><a href="#强制类型转换" class="headerlink" title="强制类型转换"></a>强制类型转换</h3><pre><code>1 （数字转字符串）
-- String(变量)
-- 变量.tostring()
-2 字符串转数字类型
-- Number(变量)
-通过该方法可以讲字符串转换为数字类型，得到的结果式原来变量值的内容
-- parseInt(变量)
-通过该方法可以将字符串转换为数字类型，结果只能保留整数部分
--parseFloat(变量)
-通过该方法可以将字符串转换为数字类型，保留原来的内容
-</code></pre><h3 id="转布尔类型"><a href="#转布尔类型" class="headerlink" title="转布尔类型"></a>转布尔类型</h3><pre><code>在变量中，除0 &quot;&quot; undefined  NaN  null 外通过该方法都可以转换为布尔类型中的true
-布尔类型中的true 和false 本质上就是1 和0
-通过Number()方法可以将布尔类型转换为数字类型的 0 和 1
-</code></pre><h3 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h3><pre><code>1 且 (&amp;&amp;) 并且 体哦阿健同时满足
-特点：- 如果是两个false的条件进行且运算，最后的结果为false
-     - 如果有一个结果为false进行且运算，最后的结果都为false.
-     - 只有结果都为true的情况下，最后的结果才为true.
-2 或 （||) 或者 条件满足一个即可
-特点：- 结果中只要有一个为true，通过或运算后，最后的结果都为true.
-      - 只有结果都为false，通过或运算后，最后的结果都为false。
-3 非 (!)  获取反面
-特点：-通过逻辑运算符可以连接多个条件表达式
-     - 通过逻辑运算符得到结果是一个布尔类型的结果。
-</code></pre><h3 id="符号运算符"><a href="#符号运算符" class="headerlink" title="符号运算符"></a>符号运算符</h3><pre><code>    =     赋值运算符
-
-       ==   判断相等
-    ===  判断相等
-“==”与”===” 的区别：
-==判断相等，只考虑内容
-===判断相等，要同时考虑数据类型和内容
- !=   不相等
- !==     不相等
-</code></pre><h3 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h3><pre><code>语法格式： if(条件){
-           代码1; 
-        }else{
-           代码2；
-      }
-执行顺序：1首先判断条件表达式的结果是否为true,如果为true，那么程序执行if语句中的代码（代码1）
-2  如果条件表达式的结果为false,那么程序执行else中的语句（代码2）
-</code></pre><h3 id="条件结构嵌套"><a href="#条件结构嵌套" class="headerlink" title="条件结构嵌套"></a>条件结构嵌套</h3><pre><code>语法格式： if(条件表达式){
-                 代码语句；
-        }else if (条件表达式){
-             代码语句;
-            }else if(条件表达式){
-              代码语句;
-            }else {
-               代码语句;
-            }
-</code></pre><h3 id="调试程序"><a href="#调试程序" class="headerlink" title="调试程序"></a>调试程序</h3><pre><code>1 首先运行程序
-2 打开浏览器控制台程序（F12） 选择sources
-3 设置断点（单击鼠标左键，设置断点)
-4 运行程序（F5）
-5 监视变量
-    - 直接将鼠标放到对应的变量名上
-    - 在监事窗口中查看变量信息
-</code></pre><h3 id="三元运算符"><a href="#三元运算符" class="headerlink" title="三元运算符"></a>三元运算符</h3><pre><code>语法格式：
-    条件表达式 ？ 条件为true执行该处代码 ：条件为false执行该处代码
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/05/10/JS数据类型转换及Math对象/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1454,15 +1395,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1474,6 +1411,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
@@ -1482,7 +1423,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1490,7 +1431,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1503,6 +1444,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">

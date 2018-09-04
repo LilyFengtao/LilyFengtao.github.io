@@ -152,6 +152,424 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-bootstrap学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/10/bootstrap学习/">bootstrap学习</a>
+    </h1>
+  
+
+        
+        <a href="/2016/01/10/bootstrap学习/" class="archive-article-date">
+  	<time datetime="2016-01-10T00:31:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="bootstrap-的简介"><a href="#bootstrap-的简介" class="headerlink" title="bootstrap 的简介"></a>bootstrap 的简介</h3><pre><code>bootstrap 是一个快速开发web 应用程序和网站的前端框架，是基于HTML CSS Javascript的。
+</code></pre><h4 id="为什么用bootstrap？"><a href="#为什么用bootstrap？" class="headerlink" title="为什么用bootstrap？"></a>为什么用bootstrap？</h4><pre><code>1 移动端设备优先：自 Bootstrap 3 起，框架包含了贯穿于整个库的移动设备优先的样式。
+2 浏览器支持 ：所有的主流浏览器都支持bootstrap
+3 响应式设计： bootstrap的响应式css能够自适应台式机，平板电脑和手机。
+</code></pre><h2 id="环境安装及配置"><a href="#环境安装及配置" class="headerlink" title="环境安装及配置"></a>环境安装及配置</h2><h3 id="引入以下五个-为基本模板"><a href="#引入以下五个-为基本模板" class="headerlink" title="引入以下五个,为基本模板"></a>引入以下五个,为基本模板</h3><pre><code>//      引入boothstrap的核心css部分
+ 1&lt;link rel=&quot;stylesheet&quot; href=&quot;lib/bootstrap/css/bootstrap.css&quot; /&gt;
+&lt;!--htnl5shiv是标签兼容 兼容IE8一下--&gt;
+&lt;script src=&quot;lib/html5shiv/html5shiv.min.js&quot;&gt;&lt;/script&gt;
+&lt;!--引入respond的媒体查询的兼容性问题--&gt;
+&lt;script src=&quot;lib/respond/respond.min.js&quot;&gt;&lt;/script&gt;
+&lt;!--引入jquery--&gt;
+&lt;script src=&quot;lib/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;!--引入bootstrap--&gt;
+&lt;script src=&quot;lib/bootstrap/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><h3 id="排版部分"><a href="#排版部分" class="headerlink" title="排版部分"></a>排版部分</h3><pre><code>   一： 标题部分
+ 1.1 h1~h6 
+
+ 1.2 主标题下面有副标题的情况  用small
+  例： &lt;h1&gt;我是主标题 &lt;small&gt;我是付标题&lt;/small&gt;&lt;/h1&gt;
+
+ 1.3  段落部分（正文部分） p
+
+ 1.4  强调内容  lead 其作用就是增大文本字号，加粗文本，而且对行高和margin也做相应的处理。
+  例：&lt;p class=&quot;lead&quot;&gt;我是强调的段落&lt;/p&gt;
+
+ 1.5 &lt;b&gt;和&lt;strong&gt;标签让文本直接加粗。
+
+ 1.6 &lt;em&gt;或&lt;i&gt;来实现斜体
+
+ 1.7 强调相关的类
+   .text-muted：提示，使用浅灰色（#999）
+   .text-primary：主要，使用蓝色（#428bca）
+   .text-success：成功，使用浅绿色(#3c763d)
+   .text-info：通知信息，使用浅蓝色（#31708f）
+   .text-warning：警告，使用黄色（#8a6d3b）
+   .text-danger：危险，使用褐色（#a94442）
+
+  1.8 文本对齐风格
+     .text-left：左对齐
+     .text-center：居中对齐
+     .text-right：右对齐
+.text-justify：两端对齐
+
+   1.9 列表
+    通过给无序列表添加一个类名“.list-unstyled”,这样就可以去除默认的列表样式的风格。
+
+   1.10 表格行
+    .active    表示当前活动的信息
+    .success    表示成功或者正确的行为
+    .info    表示中立的信息或行为
+    .warning    表示警告，需要特别注意
+    .danger    表示危险或者可能是错误的行为
+</code></pre><h3 id="表单部分"><a href="#表单部分" class="headerlink" title="表单部分"></a>表单部分</h3><pre><code> 表单主要功能用来与用户做交流的一个网页控件，主要包括：文本输入框，下拉选择框，单选按钮，文本域和按钮。
+1.1水平表单
+    在Bootstrap框架中要实现水平表单效果，必须满足以下两个条件：
+ 1、在&lt;form&gt;元素是使用类名“form-horizontal”。
+ 在&lt;form&gt;元素上使用类名“form-horizontal”主要有以下几个作用：
+ 1、设置表单控件padding和margin值。
+ 2、改变“form-group”的表现形式，类似于网格系统的“row”。
+ 2、配合Bootstrap框架的网格系统。
+
+1.2 内联表单
+    你只需要在&lt;form&gt;元素中添加类名“form-inline”即可。
+
+1.3 表单控件 (文本域textarea）
+ 因为Bootstrap框架中的“form-control”样式的表单控件宽度为100%或auto。
+
+ 1.4 表单控件（按钮）
+ 在Bootstrap框架中的按钮都是采用&lt;button&gt;来实现。
+ 1 按钮大小 .btn-lg 变大  .btn.sm 变小  .btn.xs 超小 
+
+ 1.5 表单控件大小 
+ 1、input-sm:让控件比正常大小更小
+ 2、input-lg:让控件比正常大小更大
+
+ 1.6 复选框checkbox 和单选按钮 radio
+     1 如果checkbox 需要水平排列，只需在label 标签添加类名 checkbox-inline
+     2 如果radio 炫耀水平排列，在label 标签上添加类名 radio-inline
+ 1.7 表单控件 (输入框 input)
+
+ 1.8 表单控件 （下拉选择框select）
+
+ 1.9 表单控件状态
+ 焦点状态是通过伪类 focus 来实现的
+
+ 1.10 表单的控件（禁用状态：disabled)
+
+ 1.11 表单的验证状态
+ 1 .has-warning :警告状态（黄色）
+ 2 .has-error: 错误状态（红色）
+ 3 .hsa-success :成功状态 （绿色）
+
+ 1.12表单提示信息  help-block
+
+ 1.13 按钮激活状态  
+    点击状态 :active  
+   焦点状态：focus
+
+ 1.14 图像
+ 1 img-responsive 响应式图片，主要对于响应式设计
+ 2 img-rounded 圆角图片
+ 3 img-circle 圆形图片
+ 4 img-thumbnail 缩略图
+ 使用方法，在img 标签添加对应的类名
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bootstrap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/01/10/bootstrap学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git远程仓库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/18/git远程仓库/">git远程仓库</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/18/git远程仓库/" class="archive-article-date">
+  	<time datetime="2015-09-18T09:09:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="创建共享仓库"><a href="#创建共享仓库" class="headerlink" title="创建共享仓库"></a>创建共享仓库</h4><pre><code>Git要求共享仓库是一个以.git结尾的目录。
+mkdir repo.git 创建以.git结尾目录
+cd repo.git 进入这个目录
+git init --bare 初始化一个共享仓库，也叫裸仓库 注意选项--bare
+</code></pre><h4 id="git与github的关系？"><a href="#git与github的关系？" class="headerlink" title="git与github的关系？"></a>git与github的关系？</h4><pre><code>git时一种软件，是一种版本控制工具。通过git提供的指令，方便管理代码。
+github就是一个网站，一个代码托管平台。
+</code></pre><h4 id="配置github"><a href="#配置github" class="headerlink" title="配置github"></a>配置github</h4><pre><code>1 在本地电脑上创建一对密钥
+cmd|bash|terminal 上输入指令：ssh-keygen -t rsa  
+</code></pre><h4 id="git指令"><a href="#git指令" class="headerlink" title="git指令"></a>git指令</h4><pre><code>1 git pull [remote url] branchname
+从远程服务器上获取指定仓库的分支，并且与工作目录的分支惊醒何必管操作。
+如果出现冲突，就手动解决即可
+2 git push [remote url] branchname
+如果本地开发工作完成，要将本地仓库的版本递交到远程仓库，实现共享与项目合并。
+3 git fetch [remote url] branch
+</code></pre><h4 id="命令汇总"><a href="#命令汇总" class="headerlink" title="命令汇总"></a>命令汇总</h4><pre><code>1  git config配置本地仓库
+   常用git config --global user.name、git config --global user.email
+2 git config --list查看配置详情
+3 git init 初始一个仓库，添加--bare可以初始化一个共享（裸）仓库
+4 git status 可以查看当前仓库的状态
+5 git add“文件” 将工作区中的文件添加 到暂存区中，其中file可是一个单独的文件，也可以是一个目录、“*”、-A
+6 git commit -m &apos;备注信息&apos; 将暂存区的文件，提交到本地仓库
+7 git log 可以查看本地仓库的提交历史
+8 git branch查看分支
+9 git branch“分支名称” 创建一个新的分支
+10 git checkout“分支名称” 切换分支
+11 git checkout -b deeveloper 他健并切到developer分支
+12 git merge“分支名称” 合并分支
+13 git branch -d “分支名称” 删除分支
+14 git clone “仓库地址”获取已有仓库的副本
+15 git push origin “本地分支名称:远程分支名称”将本地分支推送至远程仓库，
+git push origin hotfix（通常的写法）相当于
+git push origin hotfix:hotfix
+git push origin hotfix:newfeature
+本地仓库分支名称和远程仓库分支名称一样的情况下可以简写成一个，即git push “仓库地址” “分支名称”，如果远程仓库没有对应分支，将会自动创建
+16 git remote add “主机名称” “远程仓库地址”添加远程主机，即给远程主机起个别名，方便使用
+17 git remote 可以查看已添加的远程主机
+18 git remote show “主机名称”可以查看远程主机的信息
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/18/git远程仓库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/10/git/">flex布局</a>
+    </h1>
+  
+
+        
+        <a href="/2015/09/10/git/" class="archive-article-date">
+  	<time datetime="2015-09-10T06:04:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-09-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="父元素设置"><a href="#父元素设置" class="headerlink" title="父元素设置"></a>父元素设置</h4><pre><code>使用flex布局的时候，给父元素设置display:flex;
+justify-content:center  水平居中
+align-items:center  垂直居中
+</code></pre><h4 id="设置子元素沿主轴排列-justify-content"><a href="#设置子元素沿主轴排列-justify-content" class="headerlink" title="设置子元素沿主轴排列 justify-content"></a>设置子元素沿主轴排列 justify-content</h4><pre><code>1 flex-start 沿开始位置对齐
+  display:flex;
+    justify-content:flex-start
+2 flex-end 沿末端位置对齐
+    display:flex
+    justify-content:flex-end
+3 center 居中对齐
+  display:flex
+  justify-content:center
+4 space-around 环绕均匀分布
+  display:flex;
+  justify-content:space-around;
+5  space-between 两端对齐的均匀分布
+   display:flex
+   justify-content:space-between
+</code></pre><h4 id="设置子容器如何沿交叉轴排列-align-items"><a href="#设置子容器如何沿交叉轴排列-align-items" class="headerlink" title="设置子容器如何沿交叉轴排列  align-items"></a>设置子容器如何沿交叉轴排列  align-items</h4><pre><code>1 flex-start 沿开始位置对齐
+  display:flex
+  align-items:flex-start
+2 flex-ensd 沿末尾对齐
+     dispay:flex 
+     align-item:flex-end
+3 center 沿中间对齐
+        diplay:flex
+        align-items:center
+4 baseline 基线对齐
+  diplay:flex
+  align-items:baseline
+5 stretch 拉伸致和父元素一致
+    diplay:flex
+    align-items:stretch
+</code></pre><h4 id="子容器"><a href="#子容器" class="headerlink" title="子容器"></a>子容器</h4><pre><code>1 在主容器上设置display:flex
+2 单独设置子容器的排列 align-self 
+每个子容器可以单独自定义沿主轴排列的方式，此属性和父容器的align-items 属性完全一致
+如果两个同时设置，则以子容器align-self 属性为准
+</code></pre><h4 id="主轴的方向"><a href="#主轴的方向" class="headerlink" title="主轴的方向"></a>主轴的方向</h4><pre><code> justify-content 决定子容器的主轴排列方式， align-items 为交叉轴的排列方式
+ flex-direction 属性决定主轴的方向 ,交叉轴方向有主轴决定
+1 向右   flex-direction:row
+2 向下 flex-direction:column
+3 向上 flex-direction:column-reverse
+4 向左 flex-direction:row-reverse
+</code></pre><h4 id="flex-进阶-父容器"><a href="#flex-进阶-父容器" class="headerlink" title="flex 进阶 父容器"></a>flex 进阶 父容器</h4><pre><code>1 设置换行方式  flex-wrap 
+display:flex
+flex-wrap:nowrap  //不换行
+flex-wrap:wrap 换行
+flex-wrap:wrap-reverse //逆序换行（沿着交叉轴的反方向换行）
+</code></pre><h4 id="多行沿交叉轴对齐-align-content"><a href="#多行沿交叉轴对齐-align-content" class="headerlink" title="多行沿交叉轴对齐 align-content"></a>多行沿交叉轴对齐 align-content</h4><pre><code>1 display:flex
+ align-content:flex-start 沿起始端对齐 
+2 display:flex
+ align-content:flex-end  沿末尾对齐
+3 display:flex 
+ align-content:center 沿中间对齐
+4 display:flex 
+align-content:space-around 环绕均匀对齐
+5 display:flex
+  align-content:stretch  拉伸和父容器一样的高度
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">css 布局</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/09/10/git/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-shell和vi" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -905,336 +1323,6 @@ javascript提供的内置对象：String,Date,Array等
 
 
   
-    <article id="post-jQuery功能操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/15/jQuery功能操作/">jQuery功能操作</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/15/jQuery功能操作/" class="archive-article-date">
-  	<time datetime="2015-07-14T17:29:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Css操作"><a href="#Css操作" class="headerlink" title="Css操作"></a>Css操作</h2><pre><code>功能：设置或者修改样式，操作的是style属性。
-
-1 设置单个样式
-    name：需要设置的样式名称
-    value：对应的样式值
-    css(name, value);
-    使用案例
-    $(&quot;#one&quot;).css(&quot;background&quot;,&quot;gray&quot;);//将背景色修改为灰色
-2 设置多个样式
-
-  参数是一个对象，对象中包含了需要设置的样式名和样式值
-    css(obj);
-    使用案例
-    $(&quot;#one&quot;).css({
-    &quot;background&quot;:&quot;gray&quot;,
-    &quot;width&quot;:&quot;400px&quot;,
-    &quot;height&quot;:&quot;200px&quot;
-    });
-
-3 获取样式
-
-    name:需要获取的样式名称
-    css(name);
-    案例
-    $(&quot;div&quot;).css(&quot;background-color&quot;);
-    注意：获取样式操作只会返回第一个元素对应的样式值。
-</code></pre><h2 id="class操作"><a href="#class操作" class="headerlink" title="class操作"></a>class操作</h2><pre><code>1 添加样式 addClass()
-    name：需要添加的样式类名，注意参数不要带点.
-    addClass(name);
-    例子,给所有的div添加one的样式。
-    $(“div”).addClass(“one”);
-2 移除所有样式 removeClass()
-     不带参数，移除所有的样式类
-    removeClass()
-    例子，移除div所有的样式类
-    $(“div”).removeClass();
-3 移除单个样式
-    name:需要移除的样式类名
-    removeClass(“name”);
-    例子，移除div中one的样式类名
-    $(“div”).removeClass(“one”);
-4  判断是否有样式值 hasClass()
-    name:用于判断的样式类名，返回值为true false
-    hasClass(name)
-    例子，判断第一个div是否有one的样式类
-    $(“div”).hasClass(“one”);
-5 切换样式 toggleClass() 
-    toggleClass(name);
-    例子
-    $(“div”).toggleClass(“one”);
-
-    经验总结：
-    1.    如果操作到的样式非常少，可以考虑css方法
-    2. 如果操作到的样式非常多，那么可以通过class方法来操作，将样式写到一个class类里面。
-    3.    如果考虑到后期维护方便，将css从js中分离出来，那么推荐使用class的方式来操作。
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/15/jQuery功能操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jQuery介绍及选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/10/jQuery介绍及选择器/">jQuery介绍及选择器</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/10/jQuery介绍及选择器/" class="archive-article-date">
-  	<time datetime="2015-07-10T08:07:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="什么是jQuery"><a href="#什么是jQuery" class="headerlink" title="什么是jQuery?"></a>什么是jQuery?</h2><pre><code>jQery是一个javascript的库，使用js文件，内部封装了许多方法供我们使用。
-</code></pre><h2 id="jQ的入口函数"><a href="#jQ的入口函数" class="headerlink" title="jQ的入口函数"></a>jQ的入口函数</h2><pre><code>1 $(document).ready(function(){    });
-2 $(function(){ })
-jQ的入口函数加载时机，页面生成后触发；
-jQ两种执行顺序，谁在签名先执行谁。
-</code></pre><h2 id="jQ对象和Dom对象之间的关系？"><a href="#jQ对象和Dom对象之间的关系？" class="headerlink" title="jQ对象和Dom对象之间的关系？"></a>jQ对象和Dom对象之间的关系？</h2><pre><code>1 Dom对象就是原生Jjs种提供的对象，使用js方法获取的对象
-2 jQ 对象就是提供jQ的方式不获取的对象
-2 Dom对象无法使用jq的属性和方法，jq也无法使用Dom的属性和方法
-4 jq对象的内部包含了所需要的Dom对象，jq对象是Dom对象的包装集
-</code></pre><h2 id="jQ对象和Dom对象之间的转换？"><a href="#jQ对象和Dom对象之间的转换？" class="headerlink" title="jQ对象和Dom对象之间的转换？"></a>jQ对象和Dom对象之间的转换？</h2><pre><code>1 使用$()包裹一个Dom对象，可以将这个Dom对象转换为jq对象
-    例：$box=$(#box)
-2 将jq转换为Dom 对象
-    例： $(&quot;box&quot;)[0]或 $(&quot;box&quot;).get(0);
-</code></pre><h2 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h2><pre><code>1 传统选择器
-
-- 标签选择器： $(&quot;div&quot;)
-- 类选择器: $(&quot;.box&quot;)
-- id 选择器 $(&quot;#box&quot;)
-- 子代选择器 $(&quot;#list&gt;li&quot;)
-- 后代选择器 $(&quot;#list li&quot;)
-
-2 过滤选择器
-
-- eq(书写索引值) 可以去除索引值
-- even 选中索引值为偶数的元素
-- odd 选中索引值为奇数的元素
-
-3  筛选选择器
-- children() 子代选择器 
-- find()      后代选择器
-- siblings()  兄弟选择器，获取所有同级元素
-- parent()  父元素，想弹鼓parentNode
-- eq()       筛选选择器（可以获取一些标签种指定的标签)
-- next()    获取最后一个同级元素
-- prev()     获取抢一个同级元素
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jQuery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/10/jQuery介绍及选择器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-事件响应及让网页交互" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/07/09/事件响应及让网页交互/">事件响应及让网页交互</a>
-    </h1>
-  
-
-        
-        <a href="/2015/07/09/事件响应及让网页交互/" class="archive-article-date">
-  	<time datetime="2015-07-09T09:08:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="什么是事件？"><a href="#什么是事件？" class="headerlink" title="什么是事件？"></a>什么是事件？</h4><pre><code> JavaScript 创建动态页面。事件是可以被 JavaScript 侦测到的行为。 网页中的每个元素都可以产生某些可以触发 JavaScript 函数或程序的事件。
-1 鼠标单击事件 onclick
-    onclick是鼠标单击事件，当在网页上单击鼠标时，就会发生该事件。同时onclick事件调用的程序块就会被执行，通常与按钮一起使用。
-2 鼠标经过事件 onmouseover
-    鼠标经过事件，当鼠标移到一个对象上时，该对象就触发onmouseover事件，并执行onmouseover事件调用的程序。
-3 鼠标移开事件 onmouseout
-    鼠标移开事件，当鼠标移开当前对象时，执行onmouseout调用的程序。
-4 光标聚集事件 onfocus
-    当网页中的对象获得聚点时，执行onfocus调用的程序就会被执行。
-5 失焦事件 onblur
-    onblur事件与onfocus是相对事件，当光标离开当前获得聚焦对象的时候，触发onblur事件，同时执行被调用的程序。
-6 内容选中事件 onselect
- 选中事件，当文本框或者文本域中的文字被选中时，触发onselect事件，同时调用的程序就会被执行。
- 7 文本框内容改变事件 onchange
- 通过改变文本框的内容来触发onchange事件，同时执行被调用的程序
- 8 加载事件 onload
-     事件会在页面加载完成后，立即发生，同时执行被调用的程序。
-    注意：1. 加载页面时，触发onload事件，事件写在&lt;body&gt;标签内。
-      2. 此节的加载页面，可理解为打开一个新页面时。
-  9 卸载事件 onunload
-      当用户退出页面时（页面关闭、页面刷新等），触发onUnload事件，同时执行被调用的程序
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/07/09/事件响应及让网页交互/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1344,15 +1432,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gulp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,6 +1448,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
               </li>
              
@@ -1372,7 +1460,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1380,7 +1468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">css 布局</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,6 +1481,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ES6</a>
               </li>
              
               <li class="article-tag-list-item">
