@@ -152,6 +152,338 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-对象" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/13/对象/">对象</a>
+    </h1>
+  
+
+        
+        <a href="/2015/06/13/对象/" class="archive-article-date">
+  	<time datetime="2015-06-13T02:24:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="什么是对象？"><a href="#什么是对象？" class="headerlink" title="什么是对象？"></a>什么是对象？</h4><pre><code>具体的东西我们称为对象。
+每一个对象都具有一些静态的特征（属性），还有一些动态的行为（方法）
+对象的创建方式
+var obj=new Object()
+</code></pre><h4 id="属性和方法"><a href="#属性和方法" class="headerlink" title="属性和方法"></a>属性和方法</h4><pre><code> 1 对象属性的设置：
+     对象.属性名=属性值  例：ls.name=&quot;李三&quot;     
+ 2 对象属性的获取：
+  对象.属性名
+ 3 对象 的方法设置：
+     对象.方法名=function(){}
+ 4 调用对象的方法：
+ 对象.方法名();
+注意 : 方法其实也是属性。只不过这个属性保存的值是函数。
+</code></pre><h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><pre><code>在对象的方法中使用this时，这个this就指代了方法属于的对象（简单记忆）
+在函数中可以使用this，这个this指向函数的调用者。
+</code></pre><h4 id="对象的属性访问方式"><a href="#对象的属性访问方式" class="headerlink" title="对象的属性访问方式"></a>对象的属性访问方式</h4><pre><code>1 obj.name
+2 obj[&quot;name&quot;]
+</code></pre><h4 id="对象的第二中声明方式"><a href="#对象的第二中声明方式" class="headerlink" title="对象的第二中声明方式"></a>对象的第二中声明方式</h4><pre><code>对象字面量  var obj={}
+例： 对象字面量：可以初始化属性和方法
+    var obj={
+        name=&quot;张三&quot;,
+        age=15,
+        sayHi:function(){
+            console.log(&quot;hahaha&quot;)
+        }
+    }
+构造函数创建 var obj=new Object()
+</code></pre><h4 id="for-in-遍历"><a href="#for-in-遍历" class="headerlink" title="for in 遍历"></a>for in 遍历</h4><pre><code>数组是一种有序的数据存储形式
+（数组遍历用for循环）
+对象是是一种无序的数据存储形式，所以用for in
+例：obj是要遍历的对象
+    for(var k in obj){
+        //k 是字符串的属性名
+        console.log(obj[k])
+        //向要访问每个属性的值，用obj[k]
+    }
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/06/13/对象/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-预解析及回调函数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/06/预解析及回调函数/">预解析及回调函数</a>
+    </h1>
+  
+
+        
+        <a href="/2015/06/06/预解析及回调函数/" class="archive-article-date">
+  	<time datetime="2015-06-06T13:30:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-06-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h4><pre><code>在每个作用域代码执行前都有一个阶段称为预解析（提前分析代码）
+1 找到当前作用域中的var（变量声明语句），将变量声明语句提升到当前作用域顶端,赋值语句保留在原地
+2 2、    找到当前作用域中的function(函数声明语句),将函数体整体提升到当前作用域顶端,调用不提升
+3 变量提升和函数提升没有先后顺序
+注意：变量和函数重名
+如果变量有值，取得是变量值，如果变量没有值，取得是函数值。
+</code></pre><h4 id="函数的数据类型"><a href="#函数的数据类型" class="headerlink" title="函数的数据类型"></a>函数的数据类型</h4><pre><code>函数其实也是一种数据类型，类型名叫做&quot;function&quot;;
+使用typeof可以获取函数的类型
+
+函数作为一个基本值
+1 可以直接使用
+2 可以保存在变量中使用：函数表达式 var fun=function(){}
+3 可以作为函数的参数----回调函数
+</code></pre><h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><pre><code>由于函数也是一个值，可以进行参数传递。
+当我们的函数功能中某一个部分的功能不确定，但是大体确定了，我们可以在调用时，根据需求传入函数，参与代码执行。
+例： function test(n,fn){
+    //参数的传递就是一个复制的过程
+    n=100;
+    fu=function(){}
+    fu()
+}
+如若传递的是匿名函数，这个匿名函数就是一个函数体
+例： test(100,function(){})
+</code></pre><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><pre><code>1 构造函数的作用：创建对象实例的函数
+2 构造函数的首字母需要大写
+3 做的事情：给新创建的对象添加属性和方法
+3 调用是加new 
+注意：new的第二个作用是将构造函数内的this指向创建出来的对象
+</code></pre><h4 id="入口函数"><a href="#入口函数" class="headerlink" title="入口函数"></a>入口函数</h4><pre><code>window.onload=function(){
+    这个函数内的代码在页面完全加载后（页面结构，文件，图片）执行。
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/06/06/预解析及回调函数/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-函数的介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/31/函数的介绍/">函数的介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2015/05/31/函数的介绍/" class="archive-article-date">
+  	<time datetime="2015-05-31T12:51:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="函数-方法"><a href="#函数-方法" class="headerlink" title="函数(方法)"></a>函数(方法)</h4><pre><code>第一种：函数声明语句
+ 定义： function+fun(){
+     函数体
+ }
+函数的调用： fun(),括号代表执行
+函数声明语句可以在声明的前后调用。
+第二种：函数表达式，变量中保存的是一个匿名函数（没有名字的函数）
+var fun2=function(){
+    console.log(&quot;....&quot;)
+}
+调用时用： fun2()
+函数表达式只能在函数表达式后面调用。
+</code></pre><h4 id="函数-的参数"><a href="#函数-的参数" class="headerlink" title="函数 的参数"></a>函数 的参数</h4><pre><code>1、函数具有length属性，可以获取函数设置的形参个数
+2、在函数内可以使用arguments，用于访问当前函数调用所传入的所有实参。
+3、arguments是一个伪数组。
+4、伪数组是一个具有数组形式的数据结构，但是不具有数组方法。
+5、伪数组的作用，模拟函数重载。
+</code></pre><h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><pre><code>作用域一共有两种：
+1、全局作用域：不在任何的函数内，在script内
+2、局部作用域（函数作用域）：在每个函数内部都是一个局部作用域，在js中只有函数可以分割作用域。
+</code></pre><h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><pre><code>量的查找规则：
+</code></pre><p>1、如果当前作用域没有找到这个变量num的声明，会向父级作用域查找，如果再没有，<br> 再向上，最终找到全局作用域，如果还是没有，这时声明一个全局变量。<br>2、如果在某一个父级作用域中找到了num的声明语句，这时会修改这个父级中num的值。</p>
+<h4 id="函数的基础概念"><a href="#函数的基础概念" class="headerlink" title="函数的基础概念"></a>函数的基础概念</h4><pre><code> 1 为什么要使用函数？
+ 同一段功能多次使用，每次都需要书写，代码利用率很低。
+ 2 函数的作用 
+ 重用
+ 3 什么时候使用函数？ 
+ 一段功能代码需要多次使用时。
+ 4 函数代码如何执行？
+ 函数本身不会执行，需要进行调用
+ 5 在哪进行调用？
+ 哪里需要就在哪里调
+ 6 什么时候设置参数？
+ 当函数内某些值不确定或者某段功能不确定时，设置参数
+ 7  参数的分类
+ 形参：写在函数体的小括号中，用于占位置。去（相当于变量）
+实参：写在函数调用语句中，是实际参与函数执行的值。
+1）实参少于形参：如果运算，结果为NAN
+2）实参等于形参：正常执行
+3）实参多于形参，正常执行（执行前面的）
+ 8 为什么要设置返回值 return？
+ 有时我们需要在函数外得到函数内的计算结果，但是函数内声明的变量在函数外无法访问，所以需要通过返回值的形式。
+ return第一个作用：跳出函数
+ 二：函数的调用语句本身就是返回值
+ 9 如何接收返回值？
+ 函数调用语句具有两个功能，1 执行函数内所有代码 2 调用语句代表函数返回值。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/05/31/函数的介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数组" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1174,413 +1506,9 @@ background :url() left top no-repeat,
 
 
   
-    <article id="post-Css定位" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/26/Css定位/">Css基础（五）之定位</a>
-    </h1>
-  
-
-        
-        <a href="/2015/03/26/Css定位/" class="archive-article-date">
-  	<time datetime="2015-03-26T01:04:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h3><pre><code>作用：实现网页布局（移动盒子）
-分类：1 静态定位(static)
-      2 绝对定位(absolute)
-      3 相对定位(relative)
-      4 固定定位(fixed)
-</code></pre><h3 id="静态定位-static"><a href="#静态定位-static" class="headerlink" title="静态定位(static)"></a>静态定位(static)</h3><pre><code>用法：position:static;
-left/right/top/bottom: length....
-特点： 1 静态定位不能移动盒子。
-      2 静态定位的盒子就是标准流下的盒子
-</code></pre><h3 id="绝对定位-absolute-看脸型"><a href="#绝对定位-absolute-看脸型" class="headerlink" title="绝对定位(absolute)(看脸型)"></a>绝对定位(absolute)(看脸型)</h3><pre><code>语法：position:absolute;
-left| right| top| bottom:  length...
-特点：1 如果给一个元素设置绝对定位，如果该元素的父元素没有设置定位或者设置了静态定位，那么该绝对定位的元素以body标签为参照进行移动。
-     2     如果设置了绝对定位的元素，如果该元素的父元素设置了除静态定位以为的其他定位，那么该绝对定位的子元素是以父元素为参照进行移动。
-     3 绝对定位的元素脱标（不占位置）
-     4 绝定位可以实现模式转换
-
-使用场景：在页面中，有盒子压盒子的布局时候，使用绝对定位。
-</code></pre><h3 id="相对定位-自恋性"><a href="#相对定位-自恋性" class="headerlink" title="相对定位(自恋性)"></a>相对定位(自恋性)</h3><pre><code>语法：position:relative;
-left| right| top| bottom:  length...
-特点：1  相对定位的元素，只会以元素原来的位置为参照设置定位进行移动。
-      2 相对定位的元素没有脱标（占位置）
-      3 子绝父相（子元素设置绝对定位，父元素设置相对定位）
-</code></pre><h3 id="固定定位-死心眼子"><a href="#固定定位-死心眼子" class="headerlink" title="固定定位(死心眼子)"></a>固定定位(死心眼子)</h3><pre><code>语法：position:fixed;
- left| right| top| bottom:  length...
- 特点：
- 1 固定定位的元素只以body标签为参照设置定位。
- 2 固定定位的元素不占位置（脱标
- 3 固定定位可以实现元素的模式转化 
-</code></pre><h3 id="z-index"><a href="#z-index" class="headerlink" title="z-index"></a>z-index</h3><pre><code>注意：
-1 只有定位的元素才有层级关系
-2 设置z-index值的时候，该元素必须是一个定位的元素。
-特点：
-1 通过设置z-index值可以改变元素的层级关系
-2 z-index值的默认值为auto (0)
-3 z-index值越大，元素越靠上显示。
-4 如果z-index值相同，后面的盒子会压着前面的盒子
-5 如果元素的父元素设置了z-index值，父元素z-index值越大，元素越靠上显示。
-</code></pre><h3 id="绝对定位居中"><a href="#绝对定位居中" class="headerlink" title="绝对定位居中"></a>绝对定位居中</h3><pre><code>1 margin: 0 auto;  只能让标准流的盒子居中显示
-2 如何让绝对定位的盒子居中显示？
-1) 通过设置left:50% ;         父元素宽度的一半
-2) 设置margin-left:-元素自己宽度一半；
-例： .nav{
-    width:300px;
-    height:500px;
-    background-color:red;
-    position:ansolute;
-    margin: 0 auto;
-    left:50%;
-    margin-left:-150px;
-}
-</code></pre><h3 id="标签包含规范"><a href="#标签包含规范" class="headerlink" title="标签包含规范"></a>标签包含规范</h3><pre><code>1 段落标签不能包含段落或者标题
-2 段落标签不能包含div
-3 不推荐使用行内元素包含块级元素，行内元素可以包含行内元素
-</code></pre><h3 id="网页布局规避脱标流"><a href="#网页布局规避脱标流" class="headerlink" title="网页布局规避脱标流"></a>网页布局规避脱标流</h3><pre><code>1 网页布局中优先考虑标准流
-2 然后浮动
-3 最后使用定位
-4 元素要进行模式转换的时候，就是使用display属性。
-</code></pre><h3 id="vertical-align属性"><a href="#vertical-align属性" class="headerlink" title="vertical-align属性"></a>vertical-align属性</h3><pre><code>作用：设置元素的垂直方向上的对齐方式。
-ertical-align属性：
-行内宽元素中设置垂直方向的对齐方式。
-1 baseline 默认基线位置对齐
-2 top 顶部对齐
-3 bottom 地步对齐
-4 middle 中间对齐
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/03/26/Css定位/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Css清除浮动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/18/Css清除浮动/">Css清除浮动</a>
-    </h1>
-  
-
-        
-        <a href="/2015/03/18/Css清除浮动/" class="archive-article-date">
-  	<time datetime="2015-03-18T15:35:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="标准流"><a href="#标准流" class="headerlink" title="标准流"></a>标准流</h3><pre><code>标准流：元素在浏览器中默认的显示方式。
-</code></pre><h3 id="浮动"><a href="#浮动" class="headerlink" title="浮动"></a>浮动</h3><pre><code>float:left/right
-特点：1） 元素脱离标准流
-      2） 浮动可以让块元素在一行上显示
-注意：如果想让块级元素在一行上显示，需要给所有的块级元素设置浮动。
-      3） 该元素不占位置。
-      4） 实现元素的模式转换（脱标）
-作用：
-    1）实现网页布局  （让网页中块级元素的盒子在一行上显示）
-    2）用来制作网页导航（使用列表制作）
-
-    3）根本的作用： 实现图片文字环绕效果 （文字不会被浮动的元素压着）
-</code></pre><h3 id="清除浮动"><a href="#清除浮动" class="headerlink" title="清除浮动"></a>清除浮动</h3><pre><code>清除浮动：消除浮动的影响。
-什么时候需要清除浮动？
-1 父容器没有设置高度（不需要设置height属性）
-2 父容器中所有的子元素都设置了浮动
-</code></pre><h3 id="清除浮动的方式"><a href="#清除浮动的方式" class="headerlink" title="清除浮动的方式"></a>清除浮动的方式</h3><pre><code>1 使用clean:left /right/    both
-2 给父容器设置 overflow：hidden;
- 注意：如果使用overflow:hidden清除浮动，首先要保证父容器中没有定位的元素，如果有定位的元素，则不推荐使用该方法清除浮动。
-3 使用伪元素清除浮动
-    .clearfix:after{
-        content:&quot;&quot;;
-        height:0;
-        line-height:0;
-        clear:both;
-        display:block;
-        visibility:hidden;
-    }
-    .clearfix{
-        zoom:1;// 兼容IE浏览器
-    }
-4 使用双伪元素清除浮动
-    .clearfix:before,.clearfix:after{
-        content:&quot;&quot;;
-        height:0;
-        line-height:0;
-        clear:both;
-        display:block;
-        visibility:hidden;
-    }
-    .clearfix{
-        zoom:1;// 兼容IE浏览器
-    }
-</code></pre><h3 id="清除浮动中遇到的问题"><a href="#清除浮动中遇到的问题" class="headerlink" title="清除浮动中遇到的问题"></a>清除浮动中遇到的问题</h3><pre><code>1 首先看父元素有没有设置固定高度
-2 父元素中是不是所有的子元素都设置了浮动
-3 清除浮动的代码有没有问题
-4 调用清除浮动的标签是否正确
-5 最后检查html结构是否有问题 
-</code></pre><h3 id="css-初始化"><a href="#css-初始化" class="headerlink" title="css 初始化"></a>css 初始化</h3><pre><code>1  通过设置样式将页面中标签默认的样式层叠掉（margin，padding,list-style...）
-2  设置页面中标签的默认样式（统一性）
-</code></pre><h3 id="overflow-的用法"><a href="#overflow-的用法" class="headerlink" title="overflow 的用法"></a>overflow 的用法</h3><pre><code>[溢出，超出] overflow:visible(默认值)
-            overflow: hidden 超出部分隐藏
-            overflow: scroll 添加滚动条
-            overflow: auto 根据内容判断是否添加滚动条
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/03/18/Css清除浮动/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Css行高及盒子模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/25/Css行高及盒子模型/">Css行高及盒子模型</a>
-    </h1>
-  
-
-        
-        <a href="/2015/02/25/Css行高及盒子模型/" class="archive-article-date">
-  	<time datetime="2015-02-25T01:56:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="浏览器中默认文字大小"><a href="#浏览器中默认文字大小" class="headerlink" title="浏览器中默认文字大小"></a>浏览器中默认文字大小</h3><pre><code>默认文字大小为16px;
-</code></pre><h3 id="行高"><a href="#行高" class="headerlink" title="行高"></a>行高</h3><pre><code>默认文字的行高为18px;
-行高=文字大小+上间距+下间距
-特点：
-   1）文字大小会影响行高（不设置行高）
-   2）文字字体也会影响行高
-   3）行高只能影响文字
-   作用：
-       实现文字垂直居中
-        1） 给一个盒子中的文字设置行高值等于该盒子的高度
-</code></pre><h3 id="行高单位问题"><a href="#行高单位问题" class="headerlink" title="行高单位问题"></a>行高单位问题</h3><pre><code>px, em,百分比（%），不带单位。
-
-      ✔当给一个单独的标签设置行高（默认该标签中    的文字大小为20px）
-     ☞如果行高值为px，那么文字的行高就是设置的行高值。与设置的文字大小无关。
-     ☞如果行高值为em，那么文字的行高=文字大小*设置的行高值
-      ☞如果设置行高为%，那么文字的行高=文字大小*设置的行高值
-     ☞如果设置的行高不带单位，那么文字的行高=文字大小*设置的行高值
-    ✔当给一个父元素设置行高，研究子元素中的文字行高大小。
-      ☞如果父元素设置的行高值为px，默认子元素的行高=父元素的行高（行高继承）
-      ☞如果父元素设置的行高为em, 默认子元素的行高=父元素的文字大小*父元素设置的行高值。（先计算后继承）
-      ☞如果父元素设置的行高为%， 默认子元素的行高=父元素的文字大小*父元素设置的行高值。（先计算后继承）
-      ☞如果父元素设置的行高不带单位， 默认子元素的行高=子元素的文字大小*父元素设置的行高值。（先继承后计算
-</code></pre><h3 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h3><pre><code>作用： 进行网页布局
-盒子的组成部分：
-1 边框 border
-2 内边距 padding 内容与边框之间的距离
-(通过内边距可以移动盒子中的内容)
-3 外边距 margin 盒子与盒子之间的距离
-（通过外边距移动盒子）
-</code></pre><h3 id="盒子模型边框-border"><a href="#盒子模型边框-border" class="headerlink" title="盒子模型边框 border"></a>盒子模型边框 border</h3><pre><code>1 border-width      设置边框的宽度    
-2 border-style       设置边框的样式
-    默认值： none  没有边框
-            solid  实线边框
-            dotted 点线边框
-            dashed 虚线边框
-3 border-color 设置边框的颜色
-    注意：
-     1）去掉边框  border:0  none;
-     2) 去掉轮廓线  outline-style:   none;
-优化写法： border:1px solid red;
-合并边框： border-collapse：collapse;
-注意： border-clooapse属性只能在表格中使用
-</code></pre><h3 id="内边距-padding"><a href="#内边距-padding" class="headerlink" title="内边距 padding"></a>内边距 padding</h3><pre><code>注意：
- 1）设置的宽度和高度，指的是盒子中内容范围的大小。
-内边距： padding-left/right/top/bottom;
-内边距属性联写：
-padding:5px 
-内边距为：上，右，下，左各为5px
-padding:10px 10px
-内边距为：上下，左右各为10px
-</code></pre><h3 id="盒子大小问题"><a href="#盒子大小问题" class="headerlink" title="盒子大小问题"></a>盒子大小问题</h3><pre><code>1）边框可以改变盒子大小
-2）内边距可以改变盒子大小
-盒子真正宽度=内容的宽度+左右边框+左右内边距
- 盒子真正高度=内容的高度+上下边框+上下内边距
-</code></pre><h3 id="padding-值特殊性"><a href="#padding-值特殊性" class="headerlink" title="padding 值特殊性"></a>padding 值特殊性</h3><pre><code>会影响）
-</code></pre><h3 id="外边距-margin"><a href="#外边距-margin" class="headerlink" title="外边距 margin"></a>外边距 margin</h3><pre><code>注意：
-    1）外边距移动的是盒子。
-    2）外边距不会影响盒子大小
-外边距属性联写,与padding属性联写的设置方向一样。
-</code></pre><h3 id="外边距特带你"><a href="#外边距特带你" class="headerlink" title="外边距特带你"></a>外边距特带你</h3><pre><code>1) 垂直外边距合并： 在垂直方向上设置外边距，以最大值为准。（水平方向不会发生合并）
-2）垂直外边距塌陷： 当给子元素设置margin-top的时候，父元素也随之移动。
-☞ 给父元素设置边框。
-☞ 给父元素设置
-overflow:hidden;  
- 注意：
-     给父元素设overflow:hidden 会触发父元素的bfc(格式化上下文) 
-不要给行内元素设置上下内外边距。浏览器直接忽略
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/02/25/Css行高及盒子模型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
@@ -1679,11 +1607,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1695,6 +1623,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1703,15 +1635,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1719,11 +1643,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">

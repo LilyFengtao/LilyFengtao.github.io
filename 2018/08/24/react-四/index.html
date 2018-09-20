@@ -15,7 +15,7 @@
 <meta property="og:url" content="http:lilyfengtao.github.io/2018/08/24/react-四/index.html">
 <meta property="og:site_name" content="李锋涛">
 <meta property="og:description" content="react的style的样式1 直接写行内样式 &amp;lt;li style={{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;}}&amp;gt;&amp;lt;/li&amp;gt; 2 抽离为对象形式 var styleH3 = {color:&amp;apos;blue&amp;apos;} var styleObj = {   liStyle:{border:&amp;apos;1px solid red&amp;">
-<meta property="og:updated_time" content="2018-08-30T06:17:30.052Z">
+<meta property="og:updated_time" content="2018-09-06T06:37:53.770Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react 四  react-router路由">
 <meta name="twitter:description" content="react的style的样式1 直接写行内样式 &amp;lt;li style={{border:&apos;1px solid red&apos;, fontSize:&apos;12px&apos;}}&amp;gt;&amp;lt;/li&amp;gt; 2 抽离为对象形式 var styleH3 = {color:&amp;apos;blue&amp;apos;} var styleObj = {   liStyle:{border:&amp;apos;1px solid red&amp;">
@@ -213,6 +213,7 @@ import {
 &lt;/Router&gt;
 </code></pre><h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><pre><code>1：&lt;Router&gt;&lt;/Router&gt;：作为整个组件的根元素，是路由容器，只能有一个唯一的子元素
 2：&lt;Link&gt;&lt;/Link&gt;：类似于vue中的&lt;router-link&gt;&lt;/router-link&gt;标签，to 属性指定路由地址
+  若要使用多个&lt;Link&gt;&lt;/Link&gt;，必须在&lt;Link&gt;&lt;/Link&gt;外包裹一个标签，要不报错。这是router 4.0的改变。
 3：&lt;Route&gt;&lt;/Route&gt;：类似于vue中的&lt;router-view&gt;&lt;/router-view&gt;，指定路由内容（组件）展示位置
 </code></pre><h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><pre><code>1 配置： 通过Router中的path属性来配置路由参数
 &lt;Route path=&quot;/movie/:movieType&quot;&gt;&lt;/Route&gt;
@@ -466,11 +467,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -482,6 +483,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -490,15 +495,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -506,11 +503,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">

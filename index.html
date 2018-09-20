@@ -152,19 +152,102 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-react的虚拟Dom" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js基本类型和引入类型的区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/18/js基本类型和引入类型的区别/">js基本类型和引入类型的区别</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/18/js基本类型和引入类型的区别/" class="archive-article-date">
+  	<time datetime="2018-09-18T08:17:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-18</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<p>title: react的Diff算法<br>date: 2018-08-24 18:43:40</p>
-<h2 id="tags-react"><a href="#tags-react" class="headerlink" title="tags: react"></a>tags: react</h2><h3 id="React的虚拟Dom"><a href="#React的虚拟Dom" class="headerlink" title="React的虚拟Dom"></a>React的虚拟Dom</h3><pre><code>DOm和虚拟DOM的区别：
-1 DOM ：浏览器中提供的概念，用js对象表示页面上的元素，并提供操作元素的API
-2 虚拟DOM：是框架中的概念，是开发框架的程序员，手动用js对象来模拟DOM元素的嵌套关系；
-本质：用js对象来模拟DOM元素的嵌套关系；
-目的：就是为了实现页面元素的高效更新
-</code></pre>
+        <h3 id="一：基本类型"><a href="#一：基本类型" class="headerlink" title="一：基本类型"></a>一：基本类型</h3><pre><code>基本类型有：undefind  boolean  number string null.
+基本类型的访问是按值访问的，就是说，可以操作保存在变量中的实际的值。
+</code></pre><h4 id="1-基本类型的值是不可变得："><a href="#1-基本类型的值是不可变得：" class="headerlink" title="1 基本类型的值是不可变得："></a>1 基本类型的值是不可变得：</h4><pre><code>任何方法都无法改变一个基本类型的值
+例：var name = &apos;jozo&apos;;
+    name.toUpperCase(); // 输出 &apos;JOZO&apos;
+    console.log(name); // 输出  &apos;jozo&apos;
+原始的name并未发生改变，而是调用toUpperCase()方法后返回一个新的 字符串
+
+var person = &apos;jozo&apos;;
+person.age = 22;
+person.method = function(){//...};
+
+console.log(person.age); // undefined
+console.log(person.method); // undefined
+可以看出，我们不能给基本类型添加属性和方法。(基本类型值不可变)
+</code></pre><h4 id="2-基本类型的比较是值的比较"><a href="#2-基本类型的比较是值的比较" class="headerlink" title="2 基本类型的比较是值的比较"></a>2 基本类型的比较是值的比较</h4><pre><code>例：var a = &apos;jozo&apos;;
+    var b = &apos;jozo&apos;;
+    console.log(a === b);//true        
+</code></pre><h4 id="3-基本类型的变量是存放在栈区的（栈区指向内存里的栈内存）"><a href="#3-基本类型的变量是存放在栈区的（栈区指向内存里的栈内存）" class="headerlink" title="3 基本类型的变量是存放在栈区的（栈区指向内存里的栈内存）"></a>3 基本类型的变量是存放在栈区的（栈区指向内存里的栈内存）</h4><pre><code>栈区包括了变量的标识符和变量的值
+例：var name = &apos;jozo&apos;;
+   var city = &apos;guangzhou&apos;;
+   var age = 22;
+   栈区就是：name  jozo
+            city   guangzhou
+            age    22
+</code></pre><h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><pre><code>javascript中除了上面的基本类型(number,string,boolean,null,undefined)之外就是引用类型了，也可以说是就是对象了。对象是属性和方法的集合。
+     也就是说引用类型可以拥有属性和方法，属性又可以包含基本类型和引用类型。来看看引用类型的一些特性：
+</code></pre><h4 id="1-引用类型的值是可变的"><a href="#1-引用类型的值是可变的" class="headerlink" title="1 引用类型的值是可变的"></a>1 引用类型的值是可变的</h4><pre><code> 我们可以为引入类型添加属性和方法，也可以删除属性方法，
+例：var person = {};//创建个控对象 --引用类型
+  person.name = &apos;jozo&apos;;
+  person.age = 22;
+  person.sayName = function(){console.log(person.name);} 
+  person.sayName();// &apos;jozo&apos;
+
+  delete person.name; //删除person对象的name属性
+  person.sayName(); // undefined
+</code></pre><h4 id="2-引用类型的值是同时保存在栈内存和堆内存中的对象"><a href="#2-引用类型的值是同时保存在栈内存和堆内存中的对象" class="headerlink" title="2 引用类型的值是同时保存在栈内存和堆内存中的对象"></a>2 引用类型的值是同时保存在栈内存和堆内存中的对象</h4><pre><code>javascript,不允许直接访问内存中的位置，也就是不能直接操作对象 的内存空间。
+方法：操作对象的引用，所以，引用类型的值，是按引用访问的。
+(引用类型的存储要内存的栈区和堆区共同完成的。栈区保存变量标识符和指向对内存中该对象是指针，就是该对象在堆内存的地址。)
+</code></pre><h4 id="3：引用类型的比较是引用的比较-即内存地址比较"><a href="#3：引用类型的比较是引用的比较-即内存地址比较" class="headerlink" title="3：引用类型的比较是引用的比较(即内存地址比较)"></a>3：引用类型的比较是引用的比较(即内存地址比较)</h4><pre><code>例：基本类型比较
+var person1 = &apos;{}&apos;;
+var person2 = &apos;{}&apos;;
+console.log(person1 == person2); // true
+引入类型比较
+var person1 = {};
+var person2 = {};
+console.log(person1 == person2); // false
+因为引用类型按引用访问，就是按两个对象内存中的地址。person1和person2在堆内存中地址是不同的,所以是false.
+</code></pre><h3 id="简单赋值"><a href="#简单赋值" class="headerlink" title="简单赋值"></a>简单赋值</h3><pre><code>在从一个变量向另一个变量赋值基本类型时，会在该变量上创建一个新值，然后再把该值赋值到新变量分配的位置上。
+var a = 10;
+var b = a;
+
+a ++ ;
+console.log(a); // 11
+console.log(b); // 10
+此时，a中保存的值为 10 ，当使用 a 来初始化 b 时，b 中保存的值也为10，但b中的10与a中的是完全独立的，该值只是a中的值的一        个副本，此后，
+这两个变量可以参加任何操作而相互不受影响。
+
+也就是说基本类型在赋值操作后，两个变量是相互不受影响的。
+</code></pre><h3 id="对象引用"><a href="#对象引用" class="headerlink" title="对象引用"></a>对象引用</h3><pre><code>当从一个变量向另一个变量赋值引用类型的值时，同样也会将存储在变量中的对象的值复制一份放到为新变量分配的空间中。
+因为引用类型保存在变量中的是对象在堆内存中的地址。
+而这个指针指向存储在堆内存的一个对象。那么赋值操作后，
+两个变量都保存了同一个对象地址，则这两个变量指向了同一个对象。因此，改变其中任何一个变量，都会相互影响：
+var a = {}; // a保存了一个空对象的实例
+var b = a;  // a和b都指向了这个空对象
+
+a.name = &apos;jozo&apos;;
+console.log(a.name); // &apos;jozo&apos;
+console.log(b.name); // &apos;jozo&apos;
+
+b.age = 22;
+console.log(b.age);// 22
+console.log(a.age);// 22
+
+console.log(a == b);// true
+</code></pre><h4 id="引用类型的赋值其实是对象保存在栈区地址指针的赋值，因此两个变量指向同一个对象，任何的操作都会相互影响"><a href="#引用类型的赋值其实是对象保存在栈区地址指针的赋值，因此两个变量指向同一个对象，任何的操作都会相互影响" class="headerlink" title="引用类型的赋值其实是对象保存在栈区地址指针的赋值，因此两个变量指向同一个对象，任何的操作都会相互影响"></a>引用类型的赋值其实是对象保存在栈区地址指针的赋值，因此两个变量指向同一个对象，任何的操作都会相互影响</h4>
       
 
       
@@ -172,11 +255,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/30/react的虚拟Dom/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/18/js基本类型和引入类型的区别/">展开全文 >></a>
         </p>
       
 
@@ -206,27 +300,77 @@
 
 
   
-    <article id="post-原型以及原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-js高级-面向对象-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/30/原型以及原型链/">原型以及原型链</a>
+      <a class="article-title" href="/2018/09/17/js高级-面向对象-一/">js高级-面向对象(一)</a>
     </h1>
   
 
         
-        <a href="/2018/08/30/原型以及原型链/" class="archive-article-date">
-  	<time datetime="2018-08-30T09:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
+        <a href="/2018/09/17/js高级-面向对象-一/" class="archive-article-date">
+  	<time datetime="2018-09-17T06:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="一：面向对象"><a href="#一：面向对象" class="headerlink" title="一：面向对象"></a>一：面向对象</h3><pre><code>1 面向对象：使用对象时，只关注对象提供的功能，不关注内部细节。
+2 js对象的组成：方法和属性
+</code></pre><h4 id="面向对象与面向过程的异同"><a href="#面向对象与面向过程的异同" class="headerlink" title="面向对象与面向过程的异同"></a>面向对象与面向过程的异同</h4><pre><code>面向过程：所有的细节、步骤、过程要一步步亲历亲为（执行者）
+面向对象：找到能完成这个事情的对象，让它帮你完成（调度者）
+面向对象是对面向过程的封装。
+</code></pre><h4 id="全局污染"><a href="#全局污染" class="headerlink" title="全局污染"></a>全局污染</h4><pre><code>1 使用大量函数无法管理
+2 在全局范围内有效
+</code></pre><h3 id="二：创建对象"><a href="#二：创建对象" class="headerlink" title="二：创建对象"></a>二：创建对象</h3><pre><code>1 对象是键值对的集合
+例：var p = {
+    name: &quot;jim&quot;,
+    age: 19,
+    sex: &quot;男&quot;,
+    sayHello: function() {
+        alert(&quot;你好，哈哈哈哈&quot;);
+    }};
+ p.sayHello();p[&quot;sayHello&quot;](); // 关联数组
+ 缺点：无法复用
+
+ 2 构造函数   优点：可以复用
+ 构造函数使用注意点：
+ 1） 函数名以大写字母开头（推荐）
+ 2）不需要返回值
+ 3）为对象添加成员使用： this.成员名=值；
+ 4) 创建对象使用new 关键字
+ 例：var Person = function() {
+        this.name = &quot;jim&quot;;
+        this.age = 19;
+        this.gender = &quot;男&quot;;
+        this.sayHello = function() {
+            alert(&quot;你好，哈哈哈哈&quot;);
+        };};
+        // 创建对象（构造函数Person的对象）var p = new Person();// 访问对象的 属性console.log(p.name);
+        // 访问对象的方法p.sayHello();
+</code></pre><h3 id="三：原型"><a href="#三：原型" class="headerlink" title="三：原型"></a>三：原型</h3><pre><code>1 原型的概念：函数对象的prototype属性所引用的对象。
+2 原型 的本质就是 对象；一般函数 都有prototype属性，也就是说函数都有原型。
+3 声明一个函数时，原型就随之而产生。此时默认原型 是一个空对象。但是具有一个默认的属性constructor，该属性指向其构造函数.
+4 在原型上的成员(属性和方法),都可以直接被其实例访问.
+</code></pre><h3 id="获取原型的方式"><a href="#获取原型的方式" class="headerlink" title="获取原型的方式"></a>获取原型的方式</h3><pre><code>1 通过函数 ： &lt;fnName&gt;.prototype
+2 通过对象：&lt;object&gt;.\__proto__
+</code></pre><h3 id="proto-与-prototype的区别"><a href="#proto-与-prototype的区别" class="headerlink" title="proto 与 prototype的区别"></a><em>proto</em> 与 prototype的区别</h3><pre><code>1 _proto_是一个非标准的属性
+2 对象的_proto_与创建它的构造函数的prototype是一个东西
+3 prototype是原型属性
+_proto_与prototype的异同
+相同点：这两个都是属性，存储的是对象是引用，这两个属性的引用指向了同一个对象
+
+不同点：
+        站在不同的角度新看这两个属性：
+    prototype是站在构造函数的角度
+    _proto_是站在对象的角度，是非标准属性
+    原型属性和原型对象，是同一个东西，只是站在不同的角度去看一个东西，对它的不同叫法。
+</code></pre>
       
 
       
@@ -234,11 +378,237 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/30/原型以及原型链/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/17/js高级-面向对象-一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-react项目中遇到的一些问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/react项目中遇到的一些问题/">react项目中遇到的一些问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/12/react项目中遇到的一些问题/" class="archive-article-date">
+  	<time datetime="2018-09-12T12:37:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="引入本地图片"><a href="#引入本地图片" class="headerlink" title="引入本地图片"></a>引入本地图片</h3><pre><code>1 &lt;img src={require(&apos;../img/icon1.png&apos;)} alt=&quot;&quot; /&gt;
+2 import search from &apos;../img/search.png&apos;
+  &lt;img src={search} alt=&quot;&quot; /&gt;
+</code></pre><h4 id="背景图片引入方式"><a href="#背景图片引入方式" class="headerlink" title="背景图片引入方式"></a>背景图片引入方式</h4><pre><code>const divStyle = {
+    color: &apos;red&apos;,
+    backgroundImage: &apos;url(&apos; + imgUrl + &apos;)&apos;,
+  // 或者 background: `url${require(&quot;1.jpg&quot;)}`
+};
+
+function HelloWorldComponent() {
+  return &lt;div style={divStyle}&gt;Hello World!&lt;/div&gt;;
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/12/react项目中遇到的一些问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-this-的四种绑定规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/07/this-的四种绑定规则/">this 的四种绑定规则</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/07/this-的四种绑定规则/" class="archive-article-date">
+  	<time datetime="2018-09-07T02:06:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简单介绍this"><a href="#简单介绍this" class="headerlink" title="简单介绍this"></a>简单介绍this</h3><pre><code>1： 有对象，就指向调用对象
+2：没有对象，就指向全局对象
+3：用new构造，就指向新对象
+4： 通过apply或call或bind来改变this的所指。
+</code></pre><h3 id="一：函数有所属对象时：指向所属对象。"><a href="#一：函数有所属对象时：指向所属对象。" class="headerlink" title="一：函数有所属对象时：指向所属对象。"></a>一：函数有所属对象时：指向所属对象。</h3><pre><code>函数有所属对象时，通常通过.表达式调用，这时this自然指向所属对象。
+var myObject={value:100};
+myObject.getValue=function(){
+console.log(this.value)   //输出100
+
+//输出 { value: 100, getValue: [Function] }
+//其实就是myObject对象本身
+console.log(this)  //输出的就是myObject对象
+
+return this.value;
+}
+console.log(myObject.getValue());   //100  因为getValue() 的返回值 this.value,即是myObject.value
+
+总结： getValue() 属于对象myObject,并且myObject进行.调用，因此this指向对象myObject
+</code></pre><h3 id="二：函数没有所属对象：指向全局对象"><a href="#二：函数没有所属对象：指向全局对象" class="headerlink" title="二：函数没有所属对象：指向全局对象"></a>二：函数没有所属对象：指向全局对象</h3><pre><code>var myObject={value:100};
+myObject.getValue=function(){
+var foo=function(){
+console.log(this.value)   //undefind  因为value 为被赋值
+console.log(this)    //输出全局对象global
+}
+foo(); //函数调用
+
+return this.value;  
+}
+console.log(myObject.getValue()); // =&gt; 100
+
+总结：在上述代码中，foo函数虽然定义在getValue的函数体内，但实际上它既不属于getValue也不属于myObject.
+foo并没有绑定在任何对象上，所以调用它是，他的this指针指向全局对象global.
+</code></pre><h3 id="三：构造器中的this-指向新对象"><a href="#三：构造器中的this-指向新对象" class="headerlink" title="三：构造器中的this:指向新对象"></a>三：构造器中的this:指向新对象</h3><pre><code>1:要以构造函数的方式调用函数，只需要在调用时在函数名称前加new 关键字
+ 使用构造器new一个对象时，this就指向新对象.this会绑定在新对象上。
+ 例： var oneObject=function(){
+ this.value=100;
+ }
+
+ var myObj=new oneObject()
+ console.log(myObj.value)  //100
+ console.log(myObj)  //SomeClass {value: 100} value: 100__proto__: Object
+</code></pre><h3 id="四：apply和call调用以及bind绑定：指向绑定的对象"><a href="#四：apply和call调用以及bind绑定：指向绑定的对象" class="headerlink" title="四：apply和call调用以及bind绑定：指向绑定的对象"></a>四：apply和call调用以及bind绑定：指向绑定的对象</h3><pre><code>   var myObject={
+        value:100
+    }
+    var foo=function(){
+        console.log(this);  //window
+        console.log(this.value);  //undefind
+        console.log(&quot;...............&quot;);
+    }
+    foo();
+    foo.apply(myObject);  //{value:100}
+    foo.call(myObject);    //{value:100}
+    var newFoo=foo.bind(myObject);   //{value:100}
+    newFoo();
+
+总结：foo本来指向全局对象window,但是call,apply和bind将this绑定到了myObject上，所以，
+foo里，面的this就指向了myObject.
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/07/this-的四种绑定规则/">展开全文 >></a>
         </p>
       
 
@@ -597,6 +967,7 @@ import {
 &lt;/Router&gt;
 </code></pre><h4 id="注意点："><a href="#注意点：" class="headerlink" title="注意点："></a>注意点：</h4><pre><code>1：&lt;Router&gt;&lt;/Router&gt;：作为整个组件的根元素，是路由容器，只能有一个唯一的子元素
 2：&lt;Link&gt;&lt;/Link&gt;：类似于vue中的&lt;router-link&gt;&lt;/router-link&gt;标签，to 属性指定路由地址
+  若要使用多个&lt;Link&gt;&lt;/Link&gt;，必须在&lt;Link&gt;&lt;/Link&gt;外包裹一个标签，要不报错。这是router 4.0的改变。
 3：&lt;Route&gt;&lt;/Route&gt;：类似于vue中的&lt;router-view&gt;&lt;/router-view&gt;，指定路由内容（组件）展示位置
 </code></pre><h3 id="路由参数"><a href="#路由参数" class="headerlink" title="路由参数"></a>路由参数</h3><pre><code>1 配置： 通过Router中的path属性来配置路由参数
 &lt;Route path=&quot;/movie/:movieType&quot;&gt;&lt;/Route&gt;
@@ -735,10 +1106,17 @@ ReactDOM.render(
   &lt;MyTitle /&gt;,
   document.body
 );
-</code></pre><h3 id="获取真实的Dom节点"><a href="#获取真实的Dom节点" class="headerlink" title="获取真实的Dom节点"></a>获取真实的Dom节点</h3><pre><code>1：从组件获取真实 DOM 的节点，这时就要用到 ref 属性。
-2：this.refs.[refName] 返回真实的Dom节点  
-（觉得和vue的ref用法一样）
-3：React 组件支持很多事件，除了 Click 事件以外，还有 KeyDown 、Copy、Scroll 等，
+</code></pre><h3 id="获取真实的Dom节点"><a href="#获取真实的Dom节点" class="headerlink" title="获取真实的Dom节点"></a>获取真实的Dom节点</h3><pre><code>  1：从组件获取真实 DOM 的节点，这时就要用到 ref 属性。
+  2：this.refs.[refName] 返回真实的Dom节点  
+  （觉得和vue的ref用法一样）
+  3: ref 的回调函数方式
+  例：&lt;input
+  type=&quot;text&quot;
+  ref={(input) =&gt; { this.textInput = input; }} /&gt;
+  //此时input参数就是表示该DOM本身
+&lt;input
+         用this.textInput.value  可以取到input实时的值。
+  3：React 组件支持很多事件，除了 Click 事件以外，还有 KeyDown 、Copy、Scroll 等，
 </code></pre><h3 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h3><pre><code>用户在表单填入内容，属于用户跟组件互动，不能用this.props。
 ar Input = React.createClass({
       getInitialState: function() {
@@ -1277,225 +1655,9 @@ setState可以传两个参数，
 
 
   
-    <article id="post-Vue学习第三天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: Vue学习第三天<br>date: 2016-9-21 15:00:52</p>
-<h2 id="tags-vue"><a href="#tags-vue" class="headerlink" title="tags: vue "></a>tags: vue </h2><h3 id="watch-监听"><a href="#watch-监听" class="headerlink" title="watch 监听"></a>watch 监听</h3><pre><code>vm.$watch(name，fnCb)// name:要被监视的数据
-fnCb要执行的回调函数 （此为浅度监视）
-vm.$watch(name,fnCb,{deep:true})(此为深度复制)
-</code></pre><h4 id="动画-animate"><a href="#动画-animate" class="headerlink" title="动画 animate"></a>动画 animate</h4><pre><code>        推荐使用animate.css插件
-    使用方法：1安装 npm i --save vue2-animate (以webpack依赖)
-    2 在main.js中引入
-require(&apos;vue2-animate/dist/vue2-animate.min.css&apos;)
-    或者
-    import &apos;vue2-animate/dist/vue2-animate.min.css&apos;;
-    3 然后使用（可以看API)
-</code></pre><h4 id="组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json"><a href="#组件-组件里面放数据：data必须是函数形式，函数必须返回一个对象（json" class="headerlink" title="组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)"></a>组件 (组件里面放数据：data必须是函数形式，函数必须返回一个对象（json)</h4><pre><code>1 全局组件注册方式：Vue.component(组件名，{方法})
-例： &lt;div id=&quot;app&quot;&gt;
-       &lt;my-component&gt;&lt;/my-component&gt;
-     &lt;/div&gt;
-     Vue.component(&quot;my-component&quot;,{
-         template:&quot;&lt;h1&gt;我是全局组件&lt;/h1&gt;&quot;
-     });
-     new Vue({
-     el:&quot;#app&quot;
-     });
- 注意：全局组件必须写在Vue实例创建之前，才你能在根元素下面生效
- 2 局部组件   直接在Vue实例里面注册
- 例：&lt;body&gt;
-     &lt;div id=&quot;app1&quot;&gt;
-    &lt;child-component&gt;&lt;/child-component&gt;
- &lt;/div&gt;
- &lt;script&gt;
-    new Vue({
- el: &quot;#app1&quot;,
- components:{
-     &quot;child-component&quot;:{
-         template:&quot;&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
-     }
- }
- });&lt;/script&gt;
- 局部组件需注意：1 属性名为components, S千万别忘
- 2 最好模板定义在一个全局变量里
- 方法如下： var child={
-     template:&lt;h1&gt;我是局部组件&lt;/h1&gt;&quot;
- }
-  new Vue({
- el: &quot;#app1&quot;,
- components:{
-     &quot;child-component&quot;:child
- } });
-        3 组件模板 
-    例：&lt;div id=&quot;box&quot;&gt;
-     &lt;my-aaa&gt;&lt;/my-aaa&gt;
-     &lt;/div&gt;
-     &lt;template id=&quot;aaa&quot;&gt;
-     &lt;ul&gt;
-         &lt;li v-for=&quot;val in arr&quot;&gt;
-             {{val}}
-         &lt;/li&gt;
-     &lt;/ul&gt;
-     &lt;/template&gt;
-     &lt;script&gt;
-     var vm=new Vue({
-     el:&apos;#box&apos;,
-     components:{
-         &apos;my-aaa&apos;:{
-     data(){
-         return {
-             msg:&apos;welcome vue&apos;,
-             arr:[&apos;apple&apos;,&apos;banana&apos;,&apos;orange&apos;]}},                        
-     methods:{
-         change(){
-             this.msg=&apos;changed&apos;;
-         }},                    
-     template:&apos;#aaa&apos;
-     }}});&lt;/script&gt;
-     4 动态组件 &lt;component :is=&quot;组件名称&quot;&gt;&lt;/component&gt;  (主要考察的是is)
-     例：    &lt;div id=&quot;box&quot;&gt;
-     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;aaa&apos;&quot; value=&quot;aaa组件&quot;&gt;
-     &lt;input type=&quot;button&quot; @click=&quot;a=&apos;bbb&apos;&quot; value=&quot;bbb组件&quot;&gt;
-     &lt;component :is=&quot;a&quot;&gt;&lt;/component&gt;
-     &lt;/div&gt;
-     &lt;script&gt;
-     var vm=new Vue({
-         el:&apos;#box&apos;,
-         data:{
-             a:&apos;aaa&apos;    },    
-         components:{
-             &apos;aaa&apos;:{
-                 template:&apos;&lt;h2&gt;我是aaa组件&lt;/h2&gt;&apos;}，        
-             &apos;bbb&apos;:{
-                 template:&apos;&lt;h2&gt;我是bbb组件&lt;/h2&gt;&apos;
-             }}});
-     &lt;/script&gt;
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/31/Vue学习第三天/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo博客的打开及发布" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/21/hexo博客的打开及发布/">hexo博客的打开及发布</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/21/hexo博客的打开及发布/" class="archive-article-date">
-  	<time datetime="2017-10-21T14:07:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="新建"><a href="#新建" class="headerlink" title="新建"></a>新建</h4><pre><code>在页面打开 git base Heare,然后输入hexo new &apos;博客的名称&apos;
-</code></pre><h4 id="生成及发布"><a href="#生成及发布" class="headerlink" title="生成及发布"></a>生成及发布</h4><pre><code>      以后每次新建文章后，待你完成编辑。即可以此执行下面几个命令来把新的文章部署到服务器上: 
-- hexo clean 
-- hexo g 
-- hexo d
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/21/hexo博客的打开及发布/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1594,11 +1756,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1610,6 +1772,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1618,15 +1784,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1634,11 +1792,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">

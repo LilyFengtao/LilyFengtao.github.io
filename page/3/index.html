@@ -152,6 +152,308 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-AngularJs简介与学习（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/09/AngularJs简介与学习（一）/">AngularJs简介与学习（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/09/AngularJs简介与学习（一）/" class="archive-article-date">
+  	<time datetime="2017-04-09T15:26:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Angular-和jQuery的区别？"><a href="#Angular-和jQuery的区别？" class="headerlink" title="Angular 和jQuery的区别？"></a>Angular 和jQuery的区别？</h3><pre><code>1 jQuery 相比我们angular jQuery 算一个类库，jQuery 特点是以dom 操作为核心 ，大部分操作操作。
+2 AngularJS则一个框架（诸多类库的集合），以数据和逻辑做为驱动（核心）。
+</code></pre><h3 id="AngularJS有着诸多特性，那些功能？"><a href="#AngularJS有着诸多特性，那些功能？" class="headerlink" title="AngularJS有着诸多特性，那些功能？"></a>AngularJS有着诸多特性，那些功能？</h3><pre><code>1 模块化 angular 里面都是以模块化进行管理.好处：最大限度的重用，提供代码的重用性（项目下面可以分为很多的模块，模块下面可以分为很多的小的功能，功能里面对应很多的函数。函数里面肯定是业务逻辑实现.）
+2 双向数据绑定
+3 语义化标签 
+（ html 有自带的标签，angular扩展了一些标签，这些标签可以做业务逻辑处理）
+4 依赖注入
+</code></pre><h3 id="什么是mvc-模式？"><a href="#什么是mvc-模式？" class="headerlink" title="什么是mvc 模式？"></a>什么是mvc 模式？</h3><pre><code>mvc 模式，它只是软件设计的一种模式。
+ m 代表的model 代表的模型，就是数据，读取，设置数据。
+v 代表的就是视图，展示数据的部分，页面的html 标签
+c 代表的控制，起的衔接作用，m 型的数据要到那个视图上面展示。
+</code></pre><h3 id="怎样创建一个简单的页面的angular的mvc的层次结构？"><a href="#怎样创建一个简单的页面的angular的mvc的层次结构？" class="headerlink" title="怎样创建一个简单的页面的angular的mvc的层次结构？"></a>怎样创建一个简单的页面的angular的mvc的层次结构？</h3><pre><code> 1：ng-app 定义应用
+2：var App=angular.module(&quot;app&quot;,[]);
+3: 要将视图跟控制进行关联 ng-controller
+4: 要将模型跟控制器关联 把它理解成模型，名字必须是$scope
+    App.controller(&quot;xxController&quot;,[&quot;$scope&quot;,function($scope){
+
+    }]);
+</code></pre><h3 id="angular-的指令"><a href="#angular-的指令" class="headerlink" title="angular 的指令"></a>angular 的指令</h3><pre><code>    ng-if   控制元素是否“存在”，true存在、false不存在
+ng-show 控制元素是否显示，true显示、false不显示
+ng-hide 控制元素是否隐藏，true隐藏、false不隐藏
+ng-app  指定应用根元素，至少有一个元素指定了此属性。
+ng-controller   指定控制器
+ng-bind  {{}}
+ng-model 将视图的数据向模型进行绑定
+ng-init 可以初始化模型（Model）也就是$scope。
+ng-bind-template
+ng-class    控制类名
+ng-readonly 表单只读
+ng-checked  单/复选框表单选中
+ng-selected 下拉框表单选中
+ng-disabled 表单禁用
+ng-include  引入模板
+ng-src  增强图片路径
+ng-href 增强地址
+ng-repeat   可以将数组或对象数据迭代到视图模板中
+ng-switch   可以对数据进行筛选。
+ng-switch-when
+ng-click // 事件
+</code></pre><h3 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h3><pre><code>var app=angular.module(&quot;app&quot;,[]);
+使用directive 定义指令
+app.directive(&quot;directiveName&quot;,function(){
+    return {
+        restrict:&quot;用来指定指令的类型&quot;
+         （4 种类型 ECMA
+          E  element  元素
+          C  class  样式
+          M  mark  注释
+          A  attribute 属性）
+          replace:true,是否替换原来的标签
+          template:&quot;&lt;h1&gt;hello world&lt;/h1&gt;&quot;里面的值一定要使用标签包含起来
+          templateUrl:&quot;&quot;。载入一个页面.
+    }
+    })
+</code></pre><h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3><pre><code>   1 模型的数据，流行到视图。
+ $scope 里面的数据,视图里面获取 
+ 方法：ng-bind=&quot;&quot; ，{{}}
+2 视图的数据流向到模型，一般是表单输入。
+方法： input ng-module=&quot;msg&quot; 
+(如果模型 $scope里面的数据发生了改变，angular 去更新dom里面的内容。)
+ng-init 初始化模型的数据
+ng-click ng-mouseover 事件处理
+ (使用angular 的事件，可以直接去获取模型里面的数据.
+数据处理  )
+ng-repeat 去迭代数据。
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">AngularJs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/09/AngularJs简介与学习（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/08/数据库/">数据库</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/08/数据库/" class="archive-article-date">
+  	<time datetime="2017-04-08T05:28:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于-MongoDB"><a href="#关于-MongoDB" class="headerlink" title="关于 MongoDB"></a>关于 MongoDB</h2><ul>
+<li>官网：<a href="https://www.mongodb.com/" target="_blank" rel="external">https://www.mongodb.com/</a></li>
+<li>下载地址：<a href="https://www.mongodb.com/download-center?jmp=nav" target="_blank" rel="external">https://www.mongodb.com/download-center?jmp=nav</a><h3 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h3></li>
+<li><a href="https://www.smartftp.com/support/kb/the-program-cant-start-because-api-ms-win-crt-runtime-l1-1-0dll-is-missing-f2702.html?lang=zh-CN" target="_blank" rel="external">https://www.smartftp.com/support/kb/the-program-cant-start-because-api-ms-win-crt-runtime-l1-1-0dll-is-missing-f2702.html?lang=zh-CN</a></li>
+<li><a href="http://stackoverflow.com/questions/33265663/api-ms-win-crt-runtime-l1-1-0-dll-is-missing-when-opening-microsoft-office-file" target="_blank" rel="external">http://stackoverflow.com/questions/33265663/api-ms-win-crt-runtime-l1-1-0-dll-is-missing-when-opening-microsoft-office-file</a><h2 id="启动和关闭-MongoDB-数据库服务程序"><a href="#启动和关闭-MongoDB-数据库服务程序" class="headerlink" title="启动和关闭 MongoDB 数据库服务程序"></a>启动和关闭 MongoDB 数据库服务程序</h2><pre><code>  mongod.exe 是我们要启动的服务器文件
+  moggo的客户端去连我们的服务器
+  -打开终端 输入mongod 回车
+  +`mongod` 命令用来启动 MongoDB 数据服务
++ MongoDB 服务默认将 C:/data/db 目录作为数据目录
++ 所以你需要先在 C:/ 根目录新建一个目录：C:/data/db
++ 当你执行 mongod 命令的时候，默认会去使用 c:/data/db 目录作为数据存储目录
++ 如果你不想使用 c:/data/db 目录
++ mongod --dbpath=路径
+</code></pre><h2 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h2><h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3></li>
+</ul>
+<ol>
+<li><p>什么是数据？</p>
+<pre><code>数据是信息的表现形式和载体，可以是符号、文字、数字、语音、图像、视频等。
+通俗一点，数据就是信息，例如，个人信息、账户信息、家庭信息、企业信息、财务信息等等。
+</code></pre></li>
+</ol>
+<p>2 什么是数据库？</p>
+<pre><code>数据库是按照数据结构来组织，存储和管理数据的仓库
+</code></pre><p>3 为什么要用数据库？</p>
+<pre><code>- 查找方便
+- 数据安全
+</code></pre><p>4 什么是数据库管理系统（DataBase Management System，DBMS）？</p>
+<pre><code>- 数据库管理系统（DataBase Management  System，DBMS）是为管理数据库而设计的大型电脑软件管理系统
+    例如，Oracle、Microsoft SQL Server、Access、MySQL、PostgreSQL、db2等等
+    我们可以简称这些数据库管理系统为数据库，虽然这种叫法不是很严谨，但是一般人都听的懂。
+</code></pre><p>5 数据库分类</p>
+<pre><code>- 关系型数据库 sql语言
+关系数据库管理系统(Relational Database Management System)，
+是将数据组织为相关的行和列的系统，而管理关系数据库的计算机软件就是关系数据库管理系统，常用的数据库软件有Oracle、SQL Server、MySQL等。
+- 非关系型数据库 nosql 
++ 内存数据库 redis
++ 面向文档数据库 mongodb （存储在硬盘中,针对与大数据的存储)
+</code></pre><h3 id="文档document"><a href="#文档document" class="headerlink" title="文档document"></a>文档document</h3><pre><code>文档是一个键值对的集合，是mongodb最小的单位
+{&quot;foo&quot;:1,&quot;bar&quot;:&quot;baz&quot;}
+</code></pre><h3 id="集合-collection"><a href="#集合-collection" class="headerlink" title="集合 collection"></a>集合 collection</h3><pre><code>集合就是一组文档，特点是动态模式
+集合种的每一个文档都有可能不一样
+例：
+    {&quot;name&quot;:&quot;zyc&quot;,&quot;age&quot;:&quot;88&quot;,&quot;sex&quot;:&quot;未知&quot;,&quot;num&quot;:&quot;15500000000&quot;}
+    {&quot;name&quot;:&quot;klt&quot;,&quot;age&quot;:18,&quot;sex&quot;:&quot;&quot;}
+    {&quot;name&quot;:&quot;crs&quot;,&quot;age&quot;:8,&quot;sex&quot;:&quot;女&quot;,&quot;num&quot;:&quot;&quot;}
+    {&quot;a&quot;:123}
+    {&quot;foo&quot;:123}
+     在一个 MongoDB 服务实例上可以创建多个数据库
+  1 按照你的应用程序来划分
+   例如 a 网站 就可以为 a 网站在 MongoDB 服务创建一个对应的 a网站数据库
+   例如 b 网站 就可以为 b 网站在 MongoDB 服务创建一个对应的 b网站数据库
+ 一个数据库中可以有多个集合
+   集合就类似于数组
+  2 按照不同的数据划分到一个集合中
+   例如一个网站的用户数据放到 用户集合中
+   订单数据就放到 订单集合中
+   集合中存储的是文档
+   集合是动态的，也就是说一个集合中存储的文档的结构可以是不一样的
+  但是建议在一个集合中存储的文档最好结构都是一样的，方便统一管理
+- 一个集合中存储的是文档（其实就是 json 对象）
+  + 文档其实就是 json 对象
+  + 结构可以灵活变化
+</code></pre><h2 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h2><pre><code>  默认连接 locasthost:27017
+
+## 基本命令
+- show dbs  查看MongDb服务中有那些数据
+- use +数据库名称  
++ 切换数据库
++ 如果该数据库不存在，会先静茹该数据库
++ （只有当你真正在该数据库中存储了一个集合之后，才会真正的创建）
+- db.集合名.insert({文档对象})  增加文档
+- db.集合名.find() 查找集合
+- db.集合名.update({name=&quot;lili&quot;},$set{name=&quot;zizi&quot;}) 更新集合内容
+- db.集合名.remove({name:&quot;lili&quot;}) 删
+
+更新：
+
+    js
+    db.集合名.update({更新条件}, {
+      $set: { 
+    要更新的字段名: 字段值
+      }
+    })
+
+
+    如果被更新的字段已存在，则直接更新，如果不存在，则直接向被匹配的文档中增加该字段。
+
+    删除数据：
+
+js
+db.集合名.remove({删除条件})
+
+
+- db.collection.drop()
+</code></pre><h3 id="js链接MongoDB"><a href="#js链接MongoDB" class="headerlink" title="js链接MongoDB"></a>js链接MongoDB</h3><pre><code>1. mongodb包 使用起来就像在打mongo命令，mongodb提供的方法基本与mongo shell命令同名
+2. mongoose包 new一个对象，通过对象的方法.save()等方法做增伤改查
+
+api地址
+http://mongodb.github.io/node-mongodb-native/2.2/api
+
+### mvc
+好处用于代码的抽象，一次编写多次使用
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/08/数据库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Gulp插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -557,6 +859,97 @@ AppCan
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/10/10/用hexo-github搭建博客/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-原型以及原型链" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/30/原型以及原型链/">原型以及原型链</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/30/原型以及原型链/" class="archive-article-date">
+  	<time datetime="2016-08-30T09:00:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一：普通对象与函数对象"><a href="#一：普通对象与函数对象" class="headerlink" title="一：普通对象与函数对象"></a>一：普通对象与函数对象</h3><pre><code>在javascript中，万物皆对象。但对象分两类
+1 凡是通过new Function()创建的对象都是函数对象
+2 除了上面的。都是普通对象
+例：var o1 = {}; 
+    var o2 =new Object();
+    var o3 = new f1();
+</code></pre><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><pre><code> 例：
+function Person(name, age) {
+ this.name = name;
+ this.age = age;
+ this.sayName = function() { alert(this.name) } 
+}
+var person1 = new Person(&apos;Zaxlct&apos;, 28, &apos;Software Engineer&apos;);
+var person2 = new Person(&apos;Mick&apos;, 23, &apos;Doctor&apos;);
+ console.log(person1.constructor == Person); //true
+  console.log(person2.constructor == Person); //true
+1：person1和person2都是构造函数person的实例
+2：实例的构造函数属性(constructor)，指向构造函数
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/30/原型以及原型链/">展开全文 >></a>
         </p>
       
 
@@ -1000,325 +1393,9 @@ Deploy是编译之后的可用于文件打包的文件，src中的是开发文�
 
 
   
-    <article id="post-Vue学习第一天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/22/Vue学习第一天/">vue学习第一天</a>
-    </h1>
-  
-
-        
-        <a href="/2016/07/22/Vue学习第一天/" class="archive-article-date">
-  	<time datetime="2016-07-22T04:32:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="一：-书写方式"><a href="#一：-书写方式" class="headerlink" title="一： 书写方式"></a>一： 书写方式</h4><pre><code>  el代表的是element 
- Data:{  (存储数据)}
-   格式为： new Vue({
-   el :”要绑定的元素，可以是body Id选择元素  类名选择元素”
-   data :{要存储的数据
-}})
-</code></pre><h4 id="二：-关于类名-v-bind-class-”XXX”-可以简写-class-”XXX"><a href="#二：-关于类名-v-bind-class-”XXX”-可以简写-class-”XXX" class="headerlink" title="二： 关于类名   v-bind:class=”XXX” 可以简写  :class=”XXX"></a>二： 关于类名   v-bind:class=”XXX” 可以简写  :class=”XXX</h4><pre><code>1 &lt;strong :class=&quot;[re]&quot;&gt;文字...&lt;/strong&gt;
-  &lt;p :class=&quot;re&quot;&gt; xxxxxx&lt;/p&gt;
-  :class=”re” 和：class=”[ re]效果一样 只是[ ]可以绑定多个类名
-2 &lt;strong :class=&quot;{red:true,blue:true}&quot;&gt;文字...&lt;/strong&gt;
-      ：class=“”  也可以绑定布尔值， true显示 false 就不显示
-3  此 ：class=” a”   a的值也可以在data:{ }中显示 用true或false来判断
-4 ：class=“json” 此在data: { }中可以多个用布尔值判定
-</code></pre><h4 id="三：在style-中-和class一样-都有简写：style-””-此用法和class-一摸一样"><a href="#三：在style-中-和class一样-都有简写：style-””-此用法和class-一摸一样" class="headerlink" title="三：在style 中 和class一样 都有简写：style=”” 此用法和class 一摸一样"></a>三：在style 中 和class一样 都有简写：style=”” 此用法和class 一摸一样</h4><h4 id="四-过滤器"><a href="#四-过滤器" class="headerlink" title="四 过滤器"></a>四 过滤器</h4><pre><code>1 {{‘hellow’|uppercase}}  此是转化为大写
-2 {{‘HELLOW’|lowercase}} 此是转化成小写
-3 {{12|currency}} 转化为钱币
-{{12|currency $}} 转化的是美元  {{12 |currency ￥}}转化的是人民币
-4 debounce    要配合事件 延迟执行
- 例：&lt;input type=&quot;text&quot; @keyup=&quot;show | debounce 2000&quot;&gt; 意思是延迟两秒执行，必须和事件配合执行
-   5 数据配合过滤器
-   5.1 LimitBy 参数（去几个  从哪开始）
-   例：  &lt;li v-for=&quot;val in arr | limitBy 2 arr.length-2&quot;&gt;
-               {{val}}
-           &lt;/li&gt;  此意思是取后面两位
-   5.2 orderBy 排序 1 是正序 -1是倒序
-   例：&lt;li v-for=&quot;val in arr | orderBy -1（o如果是o，意思就是从o开始排序）&quot;&gt;
-               {{val}}
-           &lt;/li&gt;
-   5.3 filterBy 过滤器  过滤包含的
-   例：&lt;li v-for=&quot;val in arr | filterBy a&quot;&gt;
-               {{val}}
-  &lt;/li&gt;  过滤的是包含有a 的
-</code></pre><h4 id="五-事件"><a href="#五-事件" class="headerlink" title="五 事件"></a>五 事件</h4><pre><code>1 v-on:click=”a” 点击事件 可以简写成@click=”a”
-2 dblclick  双击事件 
-3 mouseenter 移入事件
-4 mouseout 移出事件
- 用法实例：methods:{a:function(){要执行的函数} }
-</code></pre><h4 id="六-双向数据绑定-v-model-”msg”"><a href="#六-双向数据绑定-v-model-”msg”" class="headerlink" title="六 双向数据绑定 v-model=”msg”"></a>六 双向数据绑定 v-model=”msg”</h4><pre><code>  实例：&lt;div id=&quot;box&quot;&gt;
-    &lt;input type=&quot;text&quot; v-model=&quot;msg&quot;&gt;
-          {{msg}}
-&lt;/div&gt;
-此msg 有两种显示方式 1 可以随绑定的v-model的msg 变化而变化 2 可以在data:{ }中 msg的值写上
-</code></pre><h4 id="七-属性src"><a href="#七-属性src" class="headerlink" title="七 属性src"></a>七 属性src</h4><pre><code>1 &lt;img :src=&quot;url&quot; alt=&quot;&quot; :width=&quot;w&quot; :title=&quot;t&quot;&gt;可以在src中直接写url 然后在data 中写上url的地址
-2 可以写多个属性  只需在data 的url中用逗号隔开。
-</code></pre><h4 id="八-循环-v-for-”item-in-items”"><a href="#八-循环-v-for-”item-in-items”" class="headerlink" title="八 循环 v-for=”item in items”"></a>八 循环 v-for=”item in items”</h4><pre><code>1 直接{{item}} 就可以循环items 的内容了
-2 {{$index}} 可以打印出索引值
-3 {{$key}} 可以打印出对象的key值 例如 json:{a:&apos;apple&apos;,b:&apos;banana&apos;,c:&apos;orange&apos;}
-{{$key}} 可以打印出a b c
-</code></pre><h4 id="九-键盘事件"><a href="#九-键盘事件" class="headerlink" title="九 键盘事件"></a>九 键盘事件</h4><pre><code>1 @keydown 点击下去的时候触发事件&lt;input type=&quot;text&quot; @keydown=&quot;show($event)&quot;&gt;
- methods:{
-              show:function(ev){
-                  alert(ev.keyCode);
-              }
-          } 此ev.keyCode 能打印出keydown 的当前值
-2 @keyup 点击离开后触发事件
-3 3 &lt;input type=&quot;text&quot; @keyup.enter=&quot;show()&quot;&gt; 这是绑定的回车键 @keyup.left=’show()’ 这是绑定了左键
-4 默认行为 @contextmenu=&quot;show($event)&quot; 就比如ev.preventDefault 
-5 事件冒泡 ev.cancelBubble=true;(在事件的函数中)
-6 事件对象 ev.clientX 横坐标的值
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/07/22/Vue学习第一天/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bootstrap插件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/25/bootstrap插件/">bootstrap插件</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/25/bootstrap插件/" class="archive-article-date">
-  	<time datetime="2016-01-25T10:48:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="插件对的导入"><a href="#插件对的导入" class="headerlink" title="插件对的导入"></a>插件对的导入</h4><pre><code>1 一次性导入 ：Bootstrap提供了一个单一的文件，这个文件包含了Bootstrap的所有JavaScript插件，即                        bootstrap.js（压缩版本：bootstrap.min.js）。
-2 单独导入
-为了方便单独导入，bootstrap提供了12种javascript插件：
-1） 动画过度 transition.js
-2 ) 模态弹框   modal.js
-3 ) 下拉菜单  dropdown.js
-4 ) 滚动帧测  scrollspy.js
-5 ) 选项卡  tab.js
-6 )提示框 tooltop.js
-7 )弹出框 popover.js
-8 ) 警告框 alert.js
-9 )按钮 button.js
-10 )折叠/手风琴 collapse.js
-11 )图片轮播 carouse.js
-12 )自动定位浮标 affix.js
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/25/bootstrap插件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-bootstrap学习二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/13/bootstrap学习二/">bootstrap学习二</a>
-    </h1>
-  
-
-        
-        <a href="/2016/01/13/bootstrap学习二/" class="archive-article-date">
-  	<time datetime="2016-01-13T08:43:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-01-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="网格系统"><a href="#网格系统" class="headerlink" title="网格系统"></a>网格系统</h4><pre><code>一 实现原理： 将容器大小，评分12份，再调整内外边距，最后结合媒体查询，制成强大的响应式网格系统。
-
-   二： 工作原理：
-   1 数据行（.row)必须包含在容器（。content)中，以便为其赋予合适的对齐方式和内边距padding
-   例：&lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;row&quot;&gt;&lt;/div&gt;
-    &lt;/div&gt;
-2 在（.row)中可以添加（.column).但是烈数不能超过评分总数，比如12.
-例：&lt;div class=&quot;container&quot;&gt;
-&lt;div class=&quot;row&quot;&gt;
-      &lt;div class=&quot;col-md-4&quot;&gt;&lt;/div&gt;
-  &lt;div class=&quot;col-md-8&quot;&gt;&lt;/div&gt;
-  3 具体内容应当放置在列容器（column）之内，而且只有列（column）才可以作为行容器(.row)的直接子元素
-  4 通过设置内边距padding，从而创建列与列之间的间距，然后通过为第一列和最后一列设置负值的外距（margin）来抵消内距(padding)的影响
-
-三： 基本用法
- col-xs 超小屏并且以上生效
- col-sm 小屏及以上
- col-md 中屏及以上
- col-lg 大屏及以上
-
-四： 列偏移
- 只需在元素添加类名 col-md-offset* （*代表要偏移的咧组合数）
-</code></pre>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bootstrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/01/13/bootstrap学习二/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1417,11 +1494,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">css3</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color5">css3</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1433,6 +1510,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">html5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
@@ -1441,15 +1522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">html5</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bootstrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1457,11 +1530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
